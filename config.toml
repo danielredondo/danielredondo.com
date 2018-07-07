@@ -1,0 +1,60 @@
+## Basic Configuration
+baseurl = "/"
+theme = "hyde-hyde"
+languageCode = "en"
+ignoreFiles     = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
+title = "Daniel Redondo"
+paginate = 5
+paginatepath = "page"
+     
+## Hugo Built-in Features
+# disqusShortname = "your-disqus-shortname"
+# googleAnalytics = "your-google-analytics-id"
+# enableRobotsTXT = true
+
+## Site Settings
+[params]
+    author = "Daniel Redondo"
+    description = "danielredondo.com"
+    authorimage = "/img/piramide.png"
+    dateformat = "Jan 2, 2006"
+    highlightjs = true
+    themeColor = "theme-custom-drs"
+    #highlightjsstyle = "github"
+    # please choose either GraphComment or Disqus
+    # GraphCommentId = "your-graph-comment-id"
+    # layoutReverse = true
+    # sidebarSticky = true
+
+## Social Accounts
+[params.social]
+    github = "danielredondo"
+    # instagram = "<username>"
+    # xing = "<username>"
+    # linkedin = "<username>"
+    twitter = "dredondosanchez"
+    # facebook = "<username>"
+    # stackoverflow = "<username>"
+    email = "danielredondosanchez@hotmail.com"
+
+## Main Menu
+[[menu.main]]
+    name = "PUBLICACIONES"
+    weight = 100
+    identifier = "posts"
+    url = "/posts/"
+[[menu.main]]
+    name = "VISUALIZANDO..."
+    weight = 110
+    identifier = "visualizando"
+    url = "/tags/visualizando"
+[[menu.main]]
+    name = "APLICACIONES"
+    weight = 120
+    identifier = "apps"
+    url = "/aplicaciones/"
+[[menu.main]]
+    name = "SOBRE MÍ"
+    identifier = "about"
+    weight = 200
+    url = "/about/"
