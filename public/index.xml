@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Daniel Redondo</title>
+    <link>/</link>
+    <description>Recent content on Daniel Redondo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 24 May 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Visualizando... la Liga (o cómo añadir imágenes a un ggplot)</title>
+      <link>/posts/20180524_vis_laliga/</link>
+      <pubDate>Thu, 24 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/20180524_vis_laliga/</guid>
+      <description>Ahora que ha terminado la Liga, es buen momento para echar la vista atrás y visualizar algunas de las estadísticas que nos deja. En concreto, vamos a analizar la relación “Goles a favor” - “Puntos conseguidos”.
+Las estadísticas están sacadas de la web de La Liga, y los gráficos se harán usando R.
+En una primera representación con ggplot, las etiquetas no se verían correctamente:
+ggplot(data = estadisticas, aes(GF, Pt, label = equipo)) +geom_point() + geom_smooth(method = &amp;quot;lm&amp;quot;, se = FALSE) +geom_text() + xlab(&amp;quot;Goles a favor&amp;quot;) +ylab(&amp;quot;Puntos&amp;quot;) + theme_classic()El gráfico mejora notablemente usando el paquete ggrepel para que las etiquetas se muestren correctamente:</description>
+    </item>
+    
+    <item>
+      <title>Aplicaciones</title>
+      <link>/aplicaciones/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/aplicaciones/</guid>
+      <description>Las siguientes aplicaciones están desarrolladas con R y shiny.
+ iDEAL Granada: Aplicación basada en web-scraping para visualizar noticias del periódico IDEAL, creada con sólo 54 líneas de código.  También soy co-autor de las siguientes aplicaciones, de contexto científico, que están desarrolladas por Miguel Ángel Luque-Fernández.
+ Expected date of delivery: Aplicación web que calcula la fecha estimada de un parto y crea un enlace con acontecimientos importantes que ocurrieron ese día.</description>
+    </item>
+    
+    <item>
+      <title>Sobre mí</title>
+      <link>/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/about/</guid>
+      <description>Soy Daniel Redondo Sánchez, y soy matemático. Trabajo como investigador del cáncer.
+Aquí encontrarás publicaciones sobre visualización de datos, aplicaciones web y otros temas que me resultan interesantes y desarrollo en mi tiempo libre.
+Trabajo con R* (shiny, ggplot, leaflet, &amp;hellip;), Microsoft Access (SQL + VBA) y Stata.
+* (De hecho, esta web está hecha con R y blogdown.)
+Puedes encontrarme en:  Twitter: @dredondosanchez
+ Github: danielredondo Correo: danielredondosanchez [at] hotmail.</description>
+    </item>
+    
+    <item>
+      <title>Migración Tumblr - blogdown y Hugo</title>
+      <link>/posts/20180701_migracion/</link>
+      <pubDate>Sun, 01 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/20180701_migracion/</guid>
+      <description>Como podéis observar, me he mudado de Tumblr. Mi nueva web está hecha con blogdown, Hugo y Netlify, así que ahora dirijo mi página sin salir de RStudio, lo que es un placer inmenso. Ha sido un proceso largo, pero en el que he aprendido mucho.
+Motivos de la migración Este cambio se ha producido, principalmente, porque quería tener el control absoluto de mi contenido.</description>
+    </item>
+    
+    <item>
+      <title>Visualizando... la Liga (estadísticas individuales)</title>
+      <link>/posts/20180614_vis_laliga/</link>
+      <pubDate>Thu, 14 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/20180614_vis_laliga/</guid>
+      <description>Recordemos que en la primera parte de &amp;ldquo;Visualizando… la Liga&amp;rdquo; mostrábamos por equipos la relación partidos-goles a favor, aprovechando el ejemplo para insertar imágenes en un gráfico de R.
+En esta nueva entrega, nos centraremos en las estadísticas individuales de los jugadores. Para la visualización, se usará R y los paquetes ggplot2, y ggrepel. Además de representar la nube de puntos, se mostrarán los nombres de los 10 jugadores (alguno más en caso de empate) con mejor relación entre la estadística seleccionada y el número de partidos jugados, y que además hayan disputado un mínimo de 5 partidos.</description>
+    </item>
+    
+    <item>
+      <title>Desastre gráfico: El Granada CF y su filial</title>
+      <link>/posts/20180502_desastre_granadacf/</link>
+      <pubDate>Wed, 02 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/20180502_desastre_granadacf/</guid>
+      <description>El Granada Club de Fútbol, equipo de Segunda División, tiene un equipo filial, el “Granada B” que juega en el grupo cuarto de Segunda División B. Hace unas semanas pensaron en cambiarle el nombre al filial, y llamarlo “Club Recreativo Granada”. El club realizó una consulta para que sus abonados mostrasen su opinión al respecto, y los resultados se publicaron el 5 de Febrero.
+¡Aviso: gráficos no aptos para personas sensibles!</description>
+    </item>
+    
+    <item>
+      <title>iDEAL, la web para visualizar noticias del IDEAL</title>
+      <link>/posts/20180418_ideal_shiny/</link>
+      <pubDate>Wed, 18 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/20180418_ideal_shiny/</guid>
+      <description>Hace unos días, con una treintena de líneas de código, conseguí leer noticias del periódico IDEAL sin salir de R, ese software libre de enfoque estadístico todoterreno.
+Lo que hace unos días era un pequeño script en R ha madurado ahora en una web, más accesible y amigable:
+http://bitly.com/iDEALgranada El manual de empleo es simple: pegas la URL del artículo que quieres leer, y la noticia aparece a la derecha, con un diseño mejorable, pero que cumple.</description>
+    </item>
+    
+    <item>
+      <title>Leyendo el periódico en R</title>
+      <link>/posts/20180403_ideal/</link>
+      <pubDate>Tue, 03 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/20180403_ideal/</guid>
+      <description>Este post continúa en: iDEAL, la web para visualizar noticias del periódico IDEAL.
+El periódico Ideal es el más leído en la provincia de Granada, con una penetración sobre el total de lectores de diarios (sea lo que sea eso) del 89%.
+A principios de año, este diario adoptaba en su versión digital una medida llena de controversia: limitar el acceso a sus artículos, estableciendo un límite mensual de noticias. Al superar este límite, esto es todo lo que podemos ver en su página web:</description>
+    </item>
+    
+    <item>
+      <title>Visualizando... la lotería de Navidad</title>
+      <link>/posts/20180215_vis_navidad/</link>
+      <pubDate>Thu, 15 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/20180215_vis_navidad/</guid>
+      <description>Bienvenidos a la primera publicación de este blog. En la sección “Visualizando&amp;hellip; ”, analizaremos gráficamente algún contenido interesante, buscando comunicar de forma clara y concisa. Comenzaremos esta sección con una interpretación de la lotería de Navidad de 2017.
+Fuente de los datos: Para empezar, obtener los datos de números premiados suponía un pequeño reto, ya que el listado oficial deja mucho que desear desde el punto de vista analítico. Tras una búsqueda por la web, esta lista de pedreas parecía ser la más útil para el proyecto.</description>
+    </item>
+    
+  </channel>
+</rss>

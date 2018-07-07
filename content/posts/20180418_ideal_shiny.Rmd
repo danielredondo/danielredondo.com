@@ -1,0 +1,26 @@
+---
+date: 2018-04-18
+title: "iDEAL, la web para visualizar noticias del IDEAL"
+tags: ["web scraping"]
+---
+
+Hace unos días, con una treintena de líneas de código, conseguí leer noticias del periódico IDEAL sin salir de R, ese software libre de enfoque ~~estadístico~~ todoterreno. 
+
+Lo que hace unos días era un pequeño script en
+R ha madurado ahora en una web, más accesible y amigable:
+
+## **[http://bitly.com/iDEALgranada](http://bitly.com/iDEALgranada)**  
+
+El manual de empleo es simple: pegas la URL del artículo que quieres leer, y la noticia aparece a la derecha, con un diseño mejorable, pero que cumple.  
+
+![](\posts\20180418_ideal_shiny\ejemplo.png)
+
+## **Contra las barreras, código abierto.**
+
+Detrás de tanta letra, cómo no: _Shiny_. El código -sólo 54 líneas- lo podéis encontrar en
+**[mi Github](https://github.com/danielredondo/iDEAL-Granada/blob/master/app.R)**. Estas últimas dos frases no las habría escrito nunca sin la ayuda de
+**[Miguel Ángel](http://migariane.github.io/)** (y se convertirían, por tanto, en un _counterfactual_).
+
+La web debería funcionar sin problema con todas
+las versiones del periódico Ideal (Granada, Almería y Jaén). Si encontráis
+algún problema, **[abre un problema en el repositorio de  Github](https://github.com/danielredondo/iDEAL-Granada/issues)**.

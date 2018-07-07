@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>/posts/20180524_vis_laliga/</loc>
+    <lastmod>2018-05-24T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/aplicaciones/</loc>
+  </url>
+  
+  <url>
+    <loc>/about/</loc>
+  </url>
+  
+  <url>
+    <loc>/posts/20180701_migracion/</loc>
+    <lastmod>2018-07-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/posts/20180614_vis_laliga/</loc>
+    <lastmod>2018-06-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/posts/20180502_desastre_granadacf/</loc>
+    <lastmod>2018-05-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/posts/20180418_ideal_shiny/</loc>
+    <lastmod>2018-04-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/posts/20180403_ideal/</loc>
+    <lastmod>2018-04-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/posts/20180215_vis_navidad/</loc>
+    <lastmod>2018-02-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/</loc>
+    <lastmod>2018-05-24T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/futbol/</loc>
+    <lastmod>2018-05-24T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/posts/</loc>
+    <lastmod>2018-05-24T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+    <lastmod>2018-05-24T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/visualizando/</loc>
+    <lastmod>2018-05-24T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/web-scraping/</loc>
+    <lastmod>2018-04-18T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+</urlset>

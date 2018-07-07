@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en" class="wf-firasans-n4-active wf-active">
+	<head>
+    <link href="http://gmpg.org/xfn/11" rel="profile">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Enable responsiveness on mobile devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    
+    
+    <meta name="generator" content="Hugo 0.41" />
+    
+    <title>Visualizando... la Liga (estadísticas individuales) &middot; Daniel Redondo</title>
+    <meta content="Visualizando... la Liga (estadísticas individuales) - Daniel Redondo" property="og:title">
+    <meta content=" - " property="og:description">
+    <!-- CSS -->
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans:300,300i,400,400i|Roboto+Mono:300,300i,400,400i" rel="stylesheet">
+    <link rel="stylesheet" href="/css/print.css" media="print">
+    <link rel="stylesheet" href="/css/poole.css">
+    <link rel="stylesheet" href="/css/hyde.css">
+    <!-- Font-Awesome -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js" integrity="sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe" crossorigin="anonymous"></script>
+    <!-- highlight.js-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <!-- Customised CSS -->
+    <link rel="stylesheet" href="/css/custom.css">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+    <link rel="shortcut icon" href="/img/favicon.png">
+    
+
+	</head>
+    <body class="theme-custom-drs ">
+        <div class="sidebar">
+  <div class="container text-center ">
+    <div class="sidebar-about text-center">
+      <a href="/"><h1 class="brand">Daniel Redondo</h1></a>
+       <img src="/img/piramide.png" alt="Author Image" class="img-circle headshot center"> 
+      <p class="lead">
+         danielredondo.com 
+      </p>
+    </div>
+    
+<div>
+	<ul class="sidebar-nav">
+		
+		
+				<li>
+					<a href="/posts/"> <span>PUBLICACIONES</span></a>
+				</li>
+				<li>
+					<a href="/tags/visualizando"> <span>VISUALIZANDO...</span></a>
+				</li>
+				<li>
+					<a href="/aplicaciones/"> <span>APLICACIONES</span></a>
+				</li>
+				<li>
+					<a href="/about/"> <span>SOBRE MÍ</span></a>
+				</li>
+		</li>
+	</ul>
+</div>
+
+    <p>
+      <section class="row text-center">
+	
+	<a href="https://twitter.com/dredondosanchez"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	&nbsp;<a href="https://github.com/danielredondo"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	&nbsp;<a href="mailto:danielredondosanchez@hotmail.com"><i class="fas fa-at fa-lg" aria-hidden="true"></i></a>
+	
+</section>
+
+    </p>
+    <p class="copyright">&copy; 2018 Daniel Redondo.
+      <a href="https://creativecommons.org/licenses/by/4.0"><br/>Some Rights Reserved</a>.<br/>Built with <a href="https://github.com/rstudio/blogdown">blogdown</a>, <a href="https://gohugo.io/">Hugo</a> &amp; <a href="https://github.com/htr3n/hyde-hyde">hyde-hyde</a>.
+    </p>
+  </div>
+  <div>
+  </div>
+</div>
+
+        <div class="content container">
+            <div class="post">
+  <h1>Visualizando... la Liga (estadísticas individuales)</h1>
+  
+  <div class="col-sm-12 col-md-12">
+    <span class="text-left post-date meta">
+            
+       
+        <i class="fas fa-calendar-alt"></i> Jun 14, 2018
+      
+      
+      
+      
+        
+        
+            <br/>
+             <i class="fas fa-tags"></i>
+            
+            <a class="meta" href="/tags/futbol">futbol</a> 
+        
+            <a class="meta" href="/tags/visualizando">visualizando</a>
+        
+      
+      
+      <br/>
+      <i class="fas fa-clock"></i> 2 min read 
+      </span>  
+  </div>    
+  
+  
+
+<p>Recordemos que <strong><a href="/posts/20180524_vis_laliga">en la primera parte de &ldquo;Visualizando… la Liga&rdquo;</a></strong> mostrábamos por equipos la relación partidos-goles a favor, aprovechando el ejemplo para insertar imágenes en un gráfico de R.</p>
+
+<p><img src="https://78.media.tumblr.com/83c7f152d79e0a19d87b5b896c80b934/tumblr_inline_p96l71knmR1qemyzq_1280.png" alt="" /></p>
+
+<h2 id="en-esta-nueva-entrega-nos-centraremos-en-las-estadísticas-individuales-de-los-jugadores">En esta nueva entrega, nos centraremos en las estadísticas individuales de los jugadores.</h2>
+
+<p>Para la visualización, se usará R y los paquetes <code>ggplot2</code>, y <code>ggrepel</code>. Además de representar la nube de puntos, se mostrarán
+los nombres de los 10 jugadores (alguno más en caso de empate) con mejor relación
+entre la estadística seleccionada y el número de partidos jugados, y que además
+hayan disputado un mínimo de 5 partidos.</p>
+
+<h2 id="goles"><strong>Goles</strong></h2>
+
+<p><img src="https://78.media.tumblr.com/9951cf1ce6bc01a4d448deb57243b248/tumblr_inline_pa61exJbb01qemyzq_1280.png" alt="" /></p>
+
+<p>Messi destaca claramente como pichichi de la competición, seguido por Cristiano Ronaldo y Luis Suárez.</p>
+
+<p>Entre los jugadores con muchos goles y pocos partidos, destacan Bakambu (que salió del Villarreal en el mercado invernal con destino a China) y Sanabria (lesionado entre las jornadas 14 y 31).</p>
+
+<hr />
+
+<h2 id="asistencias"><strong>Asistencias</strong></h2>
+
+<p><img src="https://78.media.tumblr.com/c798f93642e5c788e6f57b0965635773/tumblr_inline_pa61jgBORE1qemyzq_1280.png" alt="" /></p>
+
+<p>El triple empate a asistencias se produce entre los barcelonistas Luis Suárez y Messi y el jugador del Villarreal Pablo Fornals. Entre los más asistentes destaca la presencia de un defensa: José Ángel, lateral del Eibar.</p>
+
+<hr />
+
+<h2 id="tiros"><strong>Tiros</strong></h2>
+
+<p><img src="https://78.media.tumblr.com/7bdc6890d5ef64d31a25e1ddc930cd49/tumblr_inline_pa61jlHzaM1qemyzq_1280.png" alt="" /></p>
+
+<p>Los más tiradores de la Liga son, en su mayoría, delanteros centro con gran instinto goleador.</p>
+
+<hr />
+
+<h2 id="tiros-a-puerta"><strong>Tiros a puerta</strong></h2>
+
+<p><img src="https://78.media.tumblr.com/97935354ca321860f6fdf84048a490ba/tumblr_inline_pa61jppLgc1qemyzq_1280.png" alt="" /></p>
+
+<p>Pero si analizamos la efectividad de los tiros, vemos que desaparecen del top 10 jugadores como Calleri, Rodrigo, Willian José y Raúl García para dar entrada a Griezmann, Stuani, Ben Yedder y Coutinho.</p>
+
+<hr />
+
+<h2 id="balones-robados"><strong>Balones robados</strong></h2>
+
+<p><img src="https://78.media.tumblr.com/efeb3c9b922915d43ffb2274e5ab36af/tumblr_inline_pa61jvv4j21qemyzq_1280.png" alt="" /></p>
+
+<p>En esta categoría destacan los mediocentros defensivos y laterales, liderados por Saúl Ñíguez y Luisinho.</p>
+
+<hr />
+
+<h2 id="faltas-recibidas"><strong>Faltas recibidas</strong></h2>
+
+<p><img src="https://78.media.tumblr.com/9787e79243ccab874738050e12490756/tumblr_inline_pa61obdKRx1qemyzq_1280.png" alt="" /></p>
+
+<p>Entre los jugadores con más técnica y regate sorprende la presencia de Casemiro y Manu García, dos centrocampistas de corte defensivo que saben esconder muy bien el balón.</p>
+
+<hr />
+
+<h2 id="faltas-cometidas"><strong>Faltas cometidas</strong></h2>
+
+<p><img src="https://78.media.tumblr.com/aea60bd305e1ae5cab7b9bc5854cdafe/tumblr_inline_pa61oetR9v1qemyzq_1280.png" alt="" /></p>
+
+<p>Entre los más faltones de la Liga se alternan atacantes y defensores, sorprendiendo especialmente el contraste de edades: Rodri y Adrián Diéguez nacieron en 1996, y Peñaranda en 1997, mientras que cinco jugadores del top 10 son ya treintañeros: Iturra (33), Stuani (31), Rául García (31), Víctor Sánchez (30), Pina (30).</p>
+
+<hr />
+
+<h2 id="centros-precisos"><strong>Centros precisos</strong></h2>
+
+<p><img src="https://78.media.tumblr.com/21524e24a963a6ed8170f13381eed77f/tumblr_inline_pa61oqo7Xo1qemyzq_1280.png" alt="" /></p>
+
+<p>Un centro preciso se define como aquel que llega dentro del área a un compañero. Los jugadores destacados en esta categoría son especialistas a balón parado que, además, no tienen mucha competencia en sus equipos: Granell, Parejo, Kroos, Lucas Pérez…</p>
+
+<hr />
+
+<h2 id="tiros-bloqueados"><strong>Tiros bloqueados</strong></h2>
+
+<p><img src="https://78.media.tumblr.com/98483d5912888450cf49ff593679630d/tumblr_inline_pa61ovULKI1qemyzq_1280.png" alt="" /></p>
+
+<p>Acabamos esta sección con tiros bloqueados, protagonizada por valerosos defensas centrales que se interponen entre su portería y un delantero.</p>
+
+<hr />
+
+</div>
+            <div class="footer">
+                <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+<script type="text/javascript">
+    hljs.configure({languages: []});
+    hljs.initHighlightingOnLoad();
+</script>
+
+    
+
+            </div>
+        </div>
+        
+        
+    </body>
+</html>

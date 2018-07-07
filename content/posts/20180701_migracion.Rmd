@@ -1,0 +1,48 @@
+---
+date: 2018-07-01
+title: "Migración Tumblr - blogdown y Hugo"
+---
+
+Como podéis observar, **me he mudado de Tumblr**. Mi nueva web está hecha con *blogdown*, *Hugo* y *Netlify*, así que ahora **dirijo mi página sin salir de RStudio**, lo que es un placer inmenso. Ha sido un proceso largo, pero en el que he aprendido mucho.
+
+## Motivos de la migración
+
+Este cambio se ha producido, principalmente, porque **quería tener el control absoluto de mi contenido**. En concreto, estaba frustrado con la inexplicable redimensión de imágenes que hace Tumblr.
+
+Al subir una imagen, Tumblr la redimensiona con dos tamaños de ancho: 500px y 1280px. Por defecto, Tumblr usa en tu blog la imagen de menor calidad (500px de ancho):
+
+![](https://78.media.tumblr.com/ef550b8cdb1c0f51d2d423ebe7c128c6/tumblr_inline_pah2bmJEZg1qemyzq_500.png)
+
+Pero si entras en la publicación y cambias la URL de la imagen, puedes enlazar la imagen con buena calidad (1280px):
+
+![](https://78.media.tumblr.com/ef550b8cdb1c0f51d2d423ebe7c128c6/tumblr_inline_pah2bmJEZg1qemyzq_1280.png)
+
+Lo curioso es que, cuando pasa un tiempo (pueden ser días, o semanas), Tumblr vuelve a bajar la calidad de tus imágenes. Durante un tiempo estuve cambiando manualmente los enlaces, pero era algo insostenible a largo plazo.
+
+## Proceso de migración
+
+Una vez tomada la decisión de migrar a Hugo, había que elegir un *theme*. [El catálogo de temas es muy amplio](https://themes.gohugo.io) y me acabé decidiendo por *[hyde-hyde](https://themes.gohugo.io/hyde-hyde/)*.
+
+**Además del diseño, me ha gustado especialmente que no redimensiona imágenes, y la manera en la que muestra cualquier tipo de código**.
+
+``` {r eval = TRUE, warning = FALSE, message = FALSE}
+library(plotly)
+plot_ly(data = iris, x = ~Sepal.Length, y = ~Petal.Length)
+```  
+
+También puedo incluir *emojis*: 🎉🎉🎉🎉🎉
+
+Con algo de HTML y sin demasiado esfuerzo, he editado la plantilla web (dentro de la carpeta *layouts*) para conseguir dos cambios que eran importantes para mí:
+
++ En la página inicial sólo se muestran 5 publicaciones (¡¡¡en lugar de infinitas, que es el parámetro por defecto!!!).
++ Las publicaciones están ordenadas por fecha de publicación.
+
+La parte más sencilla ha sido **mudar las publicaciones, gracias a la integración de Markdown dentro de Tumblr** (dentro de una publicación -> Editar -> Configuración -> Text editor: Markdown).
+
+![](/posts/20180701_migracion/ejemplo.png)
+
+Después de migrar todos los posts, sólo hay que corregir los enlaces internos, y maquillar un poco el contenido.
+
+Para acabar, **la web está en un repositorio de GitHub que engancha con Netlify**.
+
+[Aquí podéis ver un ejemplo de publicación](/posts/20180524_vis_laliga/).

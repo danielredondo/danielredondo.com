@@ -1,0 +1,114 @@
+---
+date: 2018-05-24
+title: Visualizando... la Liga (o cómo añadir imágenes a un ggplot)
+tags: ["futbol", "visualizando"]
+weight: 10
+---
+
+<p>Ahora que ha terminado la Liga, es buen momento para echar la vista atrás y
+ visualizar algunas de las estadísticas que nos deja. En concreto, vamos a analizar la relación “Goles a favor” - “Puntos conseguidos”.
+
+Las estadísticas están sacadas de [la web de La Liga](http://www.laliga.es/laliga-santander), y los gráficos se harán usando `R`.  
+
+![](https://78.media.tumblr.com/cc0203b842d7ee58795418324bac8df5/tumblr_inline_pah2blXhWX1qemyzq_1280.png)
+
+En una primera representación con `ggplot`, las etiquetas no se verían correctamente:
+
+```{r eval = FALSE}
+ggplot(data = estadisticas, aes(GF, Pt, label = equipo)) +
+    geom_point() + 
+    geom_smooth(method = "lm", se = FALSE) +
+    geom_text() + 
+    xlab("Goles a favor") +
+    ylab("Puntos") + 
+    theme_classic()
+```
+
+![](\posts\20180524_vis_laliga\GF_Pt_ggplot.svg)
+
+El gráfico mejora notablemente usando el paquete `ggrepel` para que las etiquetas se muestren correctamente:
+
+```{r eval = FALSE}
+ggplot(data = estadisticas, aes(GF, Pt, label = equipo)) +
+    geom_point() +  
+    geom_smooth(method = "lm", se = FALSE) + 
+    geom_text_repel() + 
+    xlab("Goles a favor") +
+    ylab("Puntos") + 
+    theme_classic()
+```
+
+![](\posts\20180524_vis_laliga\GF_Pt_ggrepel.svg)
+
+Por último, vamos a hacer el mismo gráfico usando los escudos de los equipos.
+
+Para añadir una imagen a un gráfico, usaremos los paquetes `ggplot2`, `png`, `dplyr`, y `grid`.
+
+Leemos el escudo:
+```{r eval = FALSE}
+escudo1 <- readPNG("escudos/barcelona.png")
+```
+
+Representamos el gráfico:
+
+```{r eval = FALSE}
+ggplot(estadisticas, aes(GF, Pt, label = equipo)) +
+   geom_point() +  
+   geom_smooth(method = "lm", se = FALSE) +
+   xlab("Goles a favor") +
+   ylab("Puntos") +
+   theme_classic() +
+   annotation_custom(rasterGrob(escudo1),
+                     xmin = estadisticas$GF[1] - 4,
+                     xmax = estadisticas$GF[1] + 4,
+                     ymin = estadisticas$Pt[1] - 4,
+                     ymax = estadisticas$Pt[1] + 4)
+```
+ 
+
+![](\posts\20180524_vis_laliga\GF_Pt_solo_un_escudo.svg)
+
+Y para hacerlo con todos los escudos, usaremos un bucle y una función propia:
+
+```{r eval = FALSE}
+# Leemos los escudos 
+
+for(i in 1:20){
+    assign(paste0("escudo", i), readPNG(paste0("Escudos/", estadisticas$equipo[i], ".png")))
+}
+
+# Función propia
+
+etiqueta_escudo <- function(n_equipo, puntox, puntoy, altura = 4) {
+    nombre <- paste0("escudo", n_equipo) %&gt;% as.name %&gt;% eval
+    return(annotation_custom(rasterGrob(nombre, interpolate = FALSE),
+                    xmin = puntox[i] - altura,
+                    xmax = puntox[i] + altura,
+                    ymin = puntoy[i] - altura,
+                    ymax = puntoy[i] + altura))
+}
+```
+Después, partimos de un gráfico base:
+
+```{r eval = FALSE}
+grafico <- ggplot(estadisticas, aes(GF, Pt, label = equipo)) + 
+    geom_point() +  
+    geom_smooth(method = "lm", se = FALSE) + 
+    xlab("Goles a favor") + 
+    ylab("Puntos") + 
+    theme_classic()
+```
+
+y añadimos un simple:
+
+```{r eval = FALSE}
+for (i in 20:1) {
+  grafico <- grafico + etiqueta_escudo(i, estadisticas$GF, estadisticas$Pt)
+}
+```
+
+(El ciclo for va de 20 a 1 para que, en caso de superposición, los equipos con más puntos se muestren “encima” de los equipos con menos puntos)
+
+Obtenemos así el siguiente gráfico:  
+
+![](\posts\20180524_vis_laliga\GF_Pt.svg)

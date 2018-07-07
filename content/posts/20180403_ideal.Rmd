@@ -1,0 +1,60 @@
+---
+date: 2018-04-03
+title: "Leyendo el periódico en R"
+tags: ["web scraping"]
+---
+
+Este post continúa en: **[iDEAL, la web para visualizar noticias del periódico IDEAL](/posts/20180418_ideal_shiny/)**.
+
+El periódico **[Ideal ](http://www.ideal.es/)** es el más leído en la provincia de Granada, con una penetración sobre el total de lectores de diarios (sea lo que sea eso) **[del 89%](http://www.cmvocento.com/ideal/)**.
+
+A principios de año, este diario adoptaba en su versión digital una medida llena de controversia: limitar el acceso a sus artículos, estableciendo un límite mensual de noticias. Al superar este límite, esto es todo lo que podemos ver en su página web:  
+
+![](https://78.media.tumblr.com/3fef1ae9ffa76c37679cecdb2ba7a1e6/tumblr_inline_pah2bmnaBj1qemyzq_1280.png)
+
+Esta decisión ha encajado muy bien en la sociedad granadina, que tiene claro que debe pagar para acceder a contenidos actuales de calidad.  
+
+![](https://78.media.tumblr.com/c9affe0bf01c01fdfe42c1991561e282/tumblr_inline_pah2bmACgE1qemyzq_1280.png)![](https://78.media.tumblr.com/c3c362f73ebec52d6f9b91424b7d3d6d/tumblr_inline_pah2bm80Q81qemyzq_1280.png)![](https://78.media.tumblr.com/5c08079e08c649210cc95b06c0253252/tumblr_inline_pah2bnOhlu1qemyzq_1280.png)
+
+En fin, cambiando totalmente de tema, me estoy iniciando en esto del **[web scraping](https://es.wikipedia.org/wiki/Web_scraping)**, una técnica tan potente que pensé que estaba reservada sólo para unos pocos. Animado por **[este artículo](https://datacritics.com/2018/03/20/scrape-it-yourself-spotify-charts)**, y siguiendo sus directrices, me he lanzado a la piscina con un pequeño script en R.
+
+### El código se alimenta del enlace de cualquier artículo de tu periódico granadino de referencia, y genera la noticia como salida, sin importar límites ni restricciones.
+
+Aquí el código:
+```{r eval = FALSE}
+library(tidyverse)
+library(xml2)
+library(rvest)
+
+url <- "http://www.ideal.es/granada/vota-granada-semifinal-20180328160038-nt.html"
+
+titulo <- url %>% read_html() %>% html_nodes('h1') %>% html_text() %>% as.data.frame() %>% pull(1) %>% levels()
+subtitulo_y_categoria <- url %>% read_html() %>% html_nodes('h2') %>% html_text() %>% as.data.frame() %>% pull(1) %>% levels()
+   subtitulo <- subtitulo_y_categoria[1]
+   categoria <- subtitulo_y_categoria[2]
+cuerpo_original <- url %>% read_html() %>% html_nodes('p') %>% html_text()
+
+# Ordenamos el cuerpo
+cuerpo_recortado <- cuerpo_original[25:(length(cuerpo_original) - 1)]
+cuerpo <- cuerpo_recortado[1]
+for (i in 2:length(cuerpo_recortado)){
+  gsub("  ", "", cuerpo_recortado[i])
+  if(cuerpo_recortado[i]!="") cuerpo <- rbind(cuerpo, cuerpo_recortado[i])
+}
+
+imprimir_noticia <- function(n_titulo, n_subtitulo, n_categoria, n_cuerpo){ 
+  guiones <- replicate(50, "-") %>% paste(collapse = "")
+  cat(paste(c(guiones, "Título: ", n_titulo, guiones), collapse = "\n"))
+  cat(paste(c(guiones, "Subtítulo: ", n_subtitulo, guiones), collapse = "\n"))
+  cat(paste(c(guiones, "Categoría: ", n_categoria, guiones), collapse = "\n"))
+  cat(paste(c(guiones, "Cuerpo: ", n_cuerpo, guiones), collapse = "\n"))
+}
+
+imprimir_noticia(titulo, subtitulo, categoria, cuerpo)
+```
+
+Y aquí la salida:  
+
+![](https://78.media.tumblr.com/ee7cfd621699e23141d25a1891f4957c/tumblr_inline_pah2bndVwh1qemyzq_1280.png)
+
+Este post continúa en: **[iDEAL, la web para visualizar noticias del periódico IDEAL](/posts/20180418_ideal_shiny/)**.
