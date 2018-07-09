@@ -1,5 +1,5 @@
 ---
-date: 2018-07-01
+date: 2018-07-08
 title: "Migración Tumblr - blogdown y Hugo"
 ---
 
