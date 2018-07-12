@@ -24,6 +24,16 @@ ggplot(data = estadisticas, aes(GF, Pt, label = equipo)) +geom_point() + geom_s
     </item>
     
     <item>
+      <title>Mapa animado: haciendo un gif con R y leaflet</title>
+      <link>/posts/20180713_cifc_gif/</link>
+      <pubDate>Thu, 12 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/20180713_cifc_gif/</guid>
+      <description>Desde hace un tiempo estoy muy interesado en los Sistemas de Información Geográfica (SIG/GIS), fascinado por leaflet y su interactividad. En esta publicación mostraré un mapa animado realizado con R.
+El objetivo será visualizar la evolución a lo largo del tiempo de los Registros de Cáncer de Población españoles que han publicado sus datos en las sucesivas ediciones de Cancer Incidence in Five Continents. Cancer Incidence in Five Continents es una publicación periódica realizada por la IARC (International Agency for Research on Cancer) y la IACR (International Association of Cancer Registries).</description>
+    </item>
+    
+    <item>
       <title>Migración Tumblr - blogdown y Hugo</title>
       <link>/posts/20180701_migracion/</link>
       <pubDate>Sun, 08 Jul 2018 00:00:00 +0000</pubDate>

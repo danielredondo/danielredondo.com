@@ -9,9 +9,10 @@
     
     
     <meta name="generator" content="Hugo 0.42.1" />
-    <title>Daniel Redondo</title>
-    <meta content="Daniel Redondo" property="og:title">
-    <meta content="" property="og:description">
+    
+    <title>Mapa animado: haciendo un gif con R y leaflet &middot; Daniel Redondo</title>
+    <meta content="Mapa animado: haciendo un gif con R y leaflet - Daniel Redondo" property="og:title">
+    <meta content=" - " property="og:description">
     <!-- CSS -->
     <link href="https://fonts.googleapis.com/css?family=Fira+Sans:300,300i,400,400i|Roboto+Mono:300,300i,400,400i" rel="stylesheet">
     <link rel="stylesheet" href="/css/print.css" media="print">
@@ -31,9 +32,7 @@
     <!-- Icons -->
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
     <link rel="shortcut icon" href="/img/favicon.png">
-    <!-- RSS -->
-    <link href="/index.xml" rel="alternate" type="application/rss+xml" title="Daniel Redondo" />
-    <link href="/index.xml" rel="feed" type="application/rss+xml" title="Daniel Redondo" />
+    
 
 	</head>
     <body class="theme-custom-drs ">
@@ -99,55 +98,56 @@
 </div>
 
         <div class="content container">
-            <div class="posts">
+            <div class="post">
+  <h1>Mapa animado: haciendo un gif con R y leaflet</h1>
+  
+  <div class="col-sm-12 col-md-12">
+    <span class="text-left post-date meta">
+            
+       
+        <i class="fas fa-calendar-alt"></i> Jul 12, 2018
+      
+      
+      
+      
+      <br/>
+      <i class="fas fa-clock"></i> 2 min read 
+      </span>  
+  </div>    
   
   
-    
-      <div class="post">
-        <h1 class="post-title"><a href="/posts/20180418_ideal_shiny/">iDEAL, la web para visualizar noticias del IDEAL</a></h1>
-        <span class="post-date">Apr 18, 2018</span>
-        Hace unos días, con una treintena de líneas de código, conseguí leer noticias del periódico IDEAL sin salir de R, ese software libre de enfoque estadístico todoterreno.
-Lo que hace unos días era un pequeño script en R ha madurado ahora en una web, más accesible y amigable:
-http://bitly.com/iDEALgranada El manual de empleo es simple: pegas la URL del artículo que quieres leer, y la noticia aparece a la derecha, con un diseño mejorable, pero que cumple.
-        
-        <div class="read-more-link">
-            <a href="/posts/20180418_ideal_shiny/">Leer más...</a>
-            
-        </div>
-        
 
-        </div>
-      <div class="post">
-        <h1 class="post-title"><a href="/posts/20180403_ideal/">Leyendo el periódico en R</a></h1>
-        <span class="post-date">Apr 3, 2018</span>
-        Este post continúa en: iDEAL, la web para visualizar noticias del periódico IDEAL.
-El periódico Ideal es el más leído en la provincia de Granada, con una penetración sobre el total de lectores de diarios (sea lo que sea eso) del 89%.
-A principios de año, este diario adoptaba en su versión digital una medida llena de controversia: limitar el acceso a sus artículos, estableciendo un límite mensual de noticias. Al superar este límite, esto es todo lo que podemos ver en su página web:
-        
-        <div class="read-more-link">
-            <a href="/posts/20180403_ideal/">Leer más...</a>
-            
-        </div>
-        
+<p>Desde hace un tiempo estoy muy interesado en los <strong>Sistemas de Información Geográfica</strong> (SIG/GIS), fascinado por <code>leaflet</code> y su interactividad. En esta publicación mostraré un mapa animado realizado con R.</p>
 
-        </div>
-      <div class="post">
-        <h1 class="post-title"><a href="/posts/20180215_vis_navidad/">Visualizando... la lotería de Navidad</a></h1>
-        <span class="post-date">Feb 15, 2018</span>
-        Bienvenidos a la primera publicación de este blog. En la sección “Visualizando&hellip; ”, analizaremos gráficamente algún contenido interesante, buscando comunicar de forma clara y concisa. Comenzaremos esta sección con una interpretación de la lotería de Navidad de 2017.
-Fuente de los datos: Para empezar, obtener los datos de números premiados suponía un pequeño reto, ya que el listado oficial deja mucho que desear desde el punto de vista analítico. Tras una búsqueda por la web, esta lista de pedreas parecía ser la más útil para el proyecto.
-        
-        <div class="read-more-link">
-            <a href="/posts/20180215_vis_navidad/">Leer más...</a>
-            
-        </div>
-        
+<h3 id="el-objetivo-será-visualizar-la-evolución-a-lo-largo-del-tiempo-de-los-registros-de-cáncer-de-población-españoles-que-han-publicado-sus-datos-en-las-sucesivas-ediciones-de-cancer-incidence-in-five-continents">El objetivo será visualizar la evolución a lo largo del tiempo de los <strong>Registros de Cáncer de Población españoles</strong> que han publicado sus datos en las sucesivas ediciones de <strong>Cancer Incidence in Five Continents</strong>.</h3>
 
-        </div>
-                  <a href="\posts">Archivo de publicaciones</a>
-  </div>
+<p>Cancer Incidence in Five Continents es una publicación periódica realizada por la IARC (International Agency for Research on Cancer) y la IACR (International Association of Cancer Registries). En su último volumen incluye <strong>información comparable durante el periodo 2008-2012 de 343 Registros de Cáncer de 65 países de todo el mundo</strong>. En España, el primer Registro de Cáncer Poblacional en incluir sus datos en esta publicación es el de <strong>Zaragoza</strong> (volumen III). En el volumen XI ya son 14 los registros españoles: <strong>Albacete, Asturias, País Vasco, Islas Canarias, Castellón, Ciudad Real, Cuenca, Girona, Granada, La Rioja, Mallorca, Murcia, Navarra y Tarragona</strong>.</p>
+
+<p>Las claves para hacer la animación han sido los paquetes <code>leaflet</code> para los mapas, <code>mapshot</code> (también se puede usar su alternativa lenta <code>htmlwidgets</code> + <code>webshot</code>) para obtener capturas de los mapas de forma automática, y <code>magick</code> para montar el gif a partir de las imágenes. Uno de los principales desafíos del proyecto fue tener que separar Mallorca de las Islas Baleares, resuelto ordenando la variable <code>mallorca@polygons[[1]]@Polygons[[i]]@area</code>.</p>
+
+<p><strong>El resultado es el siguiente:</strong></p>
+
+<p><img src="https://i.imgur.com/pveTBiV.gif" alt="" /></p>
+
+<h3 id="gif-en-hd-https-i-imgur-com-pvetbiv-gif"><strong><a href="https://i.imgur.com/pveTBiV.gif">Gif en HD</a></strong></h3>
+
+<p><strong>Y, con otro estilo más artístico (<code>Stamen.Watercolor</code> en vez de <code>Hydda.Base</code>):</strong></p>
+
+<p><img src="https://i.imgur.com/xv6MVhw.gif" alt="" /></p>
+
+<h3 id="gif-en-hd-https-i-imgur-com-xv6mvhw-gif"><strong><a href="https://i.imgur.com/xv6MVhw.gif">Gif en HD</a></strong></h3>
+
+</div>
             <div class="footer">
-                
+                <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+<script type="text/javascript">
+    hljs.configure({languages: []});
+    hljs.initHighlightingOnLoad();
+</script>
+
+    
+
             </div>
         </div>
         
