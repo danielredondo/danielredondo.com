@@ -51,7 +51,7 @@ paginatepath = "page"
 [[menu.main]]
     name = "APLICACIONES"
     weight = 120
-    identifier = "apps"
+    identifier = "aplicaciones"
     url = "/aplicaciones/"
 [[menu.main]]
     name = "SOBRE MÍ"
