@@ -1,7 +1,7 @@
 ---
 date: 2018-07-23
 title: "Mapa de Granada con logos hexagonales de paquetes de R"
-tags: ["mapa"]
+tags: ["mapas"]
 ---
 
 Hace unos días tuvo lugar la reunión sobre R de carácter anual **useR!**, celebrada este año en Brisbane, Australia. Para la ocasión, crearon un mapa del país compuesto por logos de paquetes de R, que son de forma hexagonal.
