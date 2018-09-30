@@ -11,7 +11,7 @@ BMC Medical Research Methodology. [(Link - Open Access).](https://bmcmedresmetho
 
 * **Thyroid Cancer Epidemiology in South Spain: a population-based time trend study.**  
 *Elena Salamanca-Fernández, Miguel Rodríguez-Barranco, Yoe-Ling Chang-Chan, Daniel Redondo-Sánchez et al.*  
-Endocrine. [(Link).](https://link.springer.com/article/10.1007%2Fs12020-018-1681-6)
+Endocrine. [(Link).](https://link.springer.com/article/10.1007/s12020-018-1681-6)
 
 * **Pre-diagnostic metabolite concentrations and prostate cancer risk in 1077 cases and 1077 matched controls in the European Prospective Investigation into Cancer and Nutrition.**
 *Julie A. Schmidt, Georgina K. Fensom, Sabina Rinaldi, Augustin Scalbert et al.*  
