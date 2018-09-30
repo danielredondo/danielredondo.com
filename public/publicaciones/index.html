@@ -10,8 +10,8 @@
     
     <meta name="generator" content="Hugo 0.42.1" />
     
-    <title>Mapa animado: haciendo un gif con R y leaflet &middot; Daniel Redondo</title>
-    <meta content="Mapa animado: haciendo un gif con R y leaflet - Daniel Redondo" property="og:title">
+    <title>Publicaciones &middot; Daniel Redondo</title>
+    <meta content="Publicaciones - Daniel Redondo" property="og:title">
     <meta content=" - " property="og:description">
     <!-- CSS -->
     <link href="https://fonts.googleapis.com/css?family=Fira+Sans:300,300i,400,400i|Roboto+Mono:300,300i,400,400i" rel="stylesheet">
@@ -54,10 +54,13 @@
 					<a href="/posts/"> <span>POSTS</span></a>
 				</li>
 				<li>
-					<a href="/papers/"> <span>PAPERS</span></a>
+					<a href="/tags/visualizando"> <span>VISUALIZANDO</span></a>
 				</li>
 				<li>
 					<a href="/aplicaciones/"> <span>APLICACIONES WEB</span></a>
+				</li>
+				<li>
+					<a href="/papers/"> <span>PAPERS</span></a>
 				</li>
 				<li>
 					<a href="/about/"> <span>SOBRE MÍ</span></a>
@@ -99,52 +102,45 @@
 
         <div class="content container">
             <div class="post">
-  <h1>Mapa animado: haciendo un gif con R y leaflet</h1>
+  <h1>Publicaciones</h1>
   
   <div class="col-sm-12 col-md-12">
     <span class="text-left post-date meta">
             
-       
-        <i class="fas fa-calendar-alt"></i> Jul 12, 2018
       
       
       
-      
-        
-        
-            <br/>
-             <i class="fas fa-tags"></i>
-            
-            <a class="meta" href="/tags/mapas">mapas</a>
-        
       
       
       <br/>
-      <i class="fas fa-clock"></i> 2 min read 
+      <i class="fas fa-clock"></i> 1 min read 
       </span>  
   </div>    
   
-  
+  <ul>
+<li><p><strong>Standardizing effect size from linear regression models with log-transformed variables for meta-analysis.</strong><br />
+<em>Miguel Rodríguez-Barranco, Aurelio Tobías, Daniel Redondo, Elena Molina-Portillo et al.</em><br />
+BMC Medical Research Methodology. <a href="https://bmcmedresmethodol.biomedcentral.com/articles/10.1186/s12874-017-0322-8">(Link - Open Access).</a></p></li>
 
-<p>Desde hace un tiempo estoy muy interesado en los <strong>Sistemas de Información Geográfica</strong> (SIG/GIS), fascinado por <code>leaflet</code> y su interactividad. En esta publicación mostraré un mapa animado realizado con R.</p>
+<li><p><strong>Thyroid Cancer Epidemiology in South Spain: a population-based time trend study.</strong><br />
+<em>Elena Salamanca-Fernández, Miguel Rodríguez-Barranco, Yoe-Ling Chang-Chan, Daniel Redondo-Sánchez et al.</em><br />
+Endocrine. <a href="https://link.springer.com/article/10.1007%2Fs12020-018-1681-6">(Link).</a></p></li>
 
-<h3 id="el-objetivo-será-visualizar-la-evolución-a-lo-largo-del-tiempo-de-los-registros-de-cáncer-de-población-españoles-que-han-publicado-sus-datos-en-las-sucesivas-ediciones-de-cancer-incidence-in-five-continents">El objetivo será visualizar la evolución a lo largo del tiempo de los <strong>Registros de Cáncer de Población españoles</strong> que han publicado sus datos en las sucesivas ediciones de <strong>Cancer Incidence in Five Continents</strong>.</h3>
+<li><p><strong>Pre-diagnostic metabolite concentrations and prostate cancer risk in 1077 cases and 1077 matched controls in the European Prospective Investigation into Cancer and Nutrition.</strong>
+<em>Julie A. Schmidt, Georgina K. Fensom, Sabina Rinaldi, Augustin Scalbert et al.</em><br />
+BMC Medicine. <a href="https://bmcmedicine.biomedcentral.com/articles/10.1186/s12916-017-0885-6">(Link - Open Access).</a></p></li>
 
-<p>Cancer Incidence in Five Continents es una publicación periódica realizada por la IARC (International Agency for Research on Cancer) y la IACR (International Association of Cancer Registries). En su último volumen incluye <strong>información comparable durante el periodo 2008-2012 de 343 Registros de Cáncer de 65 países de todo el mundo</strong>. En España, el primer Registro de Cáncer Poblacional en incluir sus datos en esta publicación es el de <strong>Zaragoza</strong> (volumen III). En el volumen XI ya son 14 los registros españoles: <strong>Albacete, Asturias, País Vasco, Islas Canarias, Castellón, Ciudad Real, Cuenca, Girona, Granada, La Rioja, Mallorca, Murcia, Navarra y Tarragona</strong>.</p>
+<li><p><strong>Nut intake and 5-year changes in body weight and obesity risk in adults: results from the EPIC-PANACEA study.</strong>
+<em>Heinz Freisling, Hwayoung Noh, Nadia Slimani, Véronique Chajes et al.</em><br />
+European Journal of Nutrition.  <a href="https://link.springer.com/article/10.1007%2Fs00394-017-1513-0">(Link).</a></p></li>
 
-<p>Las claves para hacer la animación han sido los paquetes <code>leaflet</code> para los mapas, <code>mapshot</code> (también se puede usar su alternativa lenta <code>htmlwidgets</code> + <code>webshot</code>) para obtener capturas de los mapas de forma automática, y <code>magick</code> para montar el gif a partir de las imágenes. Uno de los principales desafíos del proyecto fue tener que separar Mallorca de las Islas Baleares, resuelto ordenando la variable <code>mallorca@polygons[[1]]@Polygons[[i]]@area</code>.</p>
+<li><p><strong>A prospective evaluation of plasma phospholipid fatty acids and breast cancer risk in the EPIC study.</strong> <em>Veronique Chajes, Nada Assi, Carine Biessy, Pietro Ferrari et al.</em><br />
+Annals of Oncology. <a href="https://academic.oup.com/annonc/article-abstract/28/11/2836/4161471">(Link).</a></p></li>
 
-<p><strong>El resultado es el siguiente:</strong></p>
-
-<p><img src="https://i.imgur.com/pveTBiV.gif" alt="" /></p>
-
-<h3 id="gif-en-hd-https-i-imgur-com-pvetbiv-gif"><strong><a href="https://i.imgur.com/pveTBiV.gif">Gif en HD</a></strong></h3>
-
-<p><strong>Y, con otro estilo más artístico (<code>Stamen.Watercolor</code> en vez de <code>Hydda.Base</code>):</strong></p>
-
-<p><img src="https://i.imgur.com/xv6MVhw.gif" alt="" /></p>
-
-<h3 id="gif-en-hd-https-i-imgur-com-xv6mvhw-gif"><strong><a href="https://i.imgur.com/xv6MVhw.gif">Gif en HD</a></strong></h3>
+<li><p><strong>Helicobacter pylori infection, chronic corpus atrophic gastritis and pancreatic cancer risk in the European Prospective Investigation into Cancer and Nutrition (EPIC) cohort: a nested case-control study.</strong><br />
+<em>Jiaqi Huang, Ulrika Zagai, Göran Hallmans, Olof Nyrén et al.</em><br />
+International Journal of Cancer. <a href="https://onlinelibrary.wiley.com/doi/abs/10.1002/ijc.30590">(Link - Open Access).</a></p></li>
+</ul>
 
 </div>
             <div class="footer">

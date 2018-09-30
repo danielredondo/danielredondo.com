@@ -39,18 +39,23 @@ paginatepath = "page"
 
 ## Main Menu
 [[menu.main]]
-    name = "PUBLICACIONES"
+    name = "POSTS"
     weight = 100
     identifier = "posts"
     url = "/posts/"
 [[menu.main]]
-    name = "VISUALIZANDO..."
+    name = "PAPERS"
     weight = 110
-    identifier = "visualizando"
-    url = "/tags/visualizando"
+    identifier = "papers"
+    url = "/papers/"
+#[[menu.main]]
+#    name = "VISUALIZANDO"
+#    weight = 120
+#    identifier = "visualizando"
+#    url = "/tags/visualizando"
 [[menu.main]]
-    name = "APLICACIONES"
-    weight = 120
+    name = "APLICACIONES WEB"
+    weight = 130
     identifier = "aplicaciones"
     url = "/aplicaciones/"
 [[menu.main]]

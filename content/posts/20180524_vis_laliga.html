@@ -26,7 +26,7 @@ weight: 10
 <img src="\posts\20180524_vis_laliga\GF_Pt_ggplot.svg" />
 
 </div>
-<p>El gráfico mejora notablemente usando el paquete <code>ggrepel</code> para que las etiquetas se muestren correctamente:</p>
+<p>El gráfico mejora notablemente usando el paquete <code>ggrepel</code> para que las etiquetas se repelan:</p>
 <pre class="r"><code>ggplot(data = estadisticas, aes(GF, Pt, label = equipo)) +
     geom_point() +  
     geom_smooth(method = &quot;lm&quot;, se = FALSE) + 

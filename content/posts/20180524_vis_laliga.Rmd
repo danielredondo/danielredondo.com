@@ -26,7 +26,7 @@ ggplot(data = estadisticas, aes(GF, Pt, label = equipo)) +
 
 ![](\posts\20180524_vis_laliga\GF_Pt_ggplot.svg)
 
-El gráfico mejora notablemente usando el paquete `ggrepel` para que las etiquetas se muestren correctamente:
+El gráfico mejora notablemente usando el paquete `ggrepel` para que las etiquetas se repelan:
 
 ```{r eval = FALSE}
 ggplot(data = estadisticas, aes(GF, Pt, label = equipo)) +

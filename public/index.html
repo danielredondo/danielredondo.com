@@ -52,13 +52,13 @@
 		
 		
 				<li>
-					<a href="/posts/"> <span>PUBLICACIONES</span></a>
+					<a href="/posts/"> <span>POSTS</span></a>
 				</li>
 				<li>
-					<a href="/tags/visualizando"> <span>VISUALIZANDO...</span></a>
+					<a href="/papers/"> <span>PAPERS</span></a>
 				</li>
 				<li>
-					<a href="/aplicaciones/"> <span>APLICACIONES</span></a>
+					<a href="/aplicaciones/"> <span>APLICACIONES WEB</span></a>
 				</li>
 				<li>
 					<a href="/about/"> <span>SOBRE MÍ</span></a>
@@ -162,7 +162,7 @@ En esta nueva entrega, nos centraremos en las estadísticas individuales de los 
         Ahora que ha terminado la Liga, es buen momento para echar la vista atrás y visualizar algunas de las estadísticas que nos deja. En concreto, vamos a analizar la relación “Goles a favor” - “Puntos conseguidos”.
 Las estadísticas están sacadas de la web de La Liga, y los gráficos se harán usando R.
 En una primera representación con ggplot, las etiquetas no se verían correctamente:
-ggplot(data = estadisticas, aes(GF, Pt, label = equipo)) +geom_point() + geom_smooth(method = &quot;lm&quot;, se = FALSE) +geom_text() + xlab(&quot;Goles a favor&quot;) +ylab(&quot;Puntos&quot;) + theme_classic()El gráfico mejora notablemente usando el paquete ggrepel para que las etiquetas se muestren correctamente:
+ggplot(data = estadisticas, aes(GF, Pt, label = equipo)) +geom_point() + geom_smooth(method = &quot;lm&quot;, se = FALSE) +geom_text() + xlab(&quot;Goles a favor&quot;) +ylab(&quot;Puntos&quot;) + theme_classic()El gráfico mejora notablemente usando el paquete ggrepel para que las etiquetas se repelan:
         
         <div class="read-more-link">
             <a href="/posts/20180524_vis_laliga/">Leer más...</a>

@@ -10,7 +10,7 @@ Las siguientes aplicaciones están desarrolladas con `R` y `shiny`.
 
 ![](/aplicaciones/ideal.png)
 
-También soy co-autor de las siguientes aplicaciones, de contexto científico, que están desarrolladas por [Miguel Ángel Luque-Fernández](https://maluque.netlify.com).
+Desarrollo también aplicaciones de contexto científico, como co-autor junto a [Miguel Ángel Luque-Fernández](https://maluque.netlify.com).
 
 * [Expected date of delivery](http://watzilei.com/shiny/EDL/): Aplicación web que calcula la fecha estimada de un parto y crea un enlace con acontecimientos importantes que ocurrieron ese día.
 
