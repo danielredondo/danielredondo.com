@@ -4,7 +4,7 @@ weight: 10
 type: about
 ---
 
-<img src="/about/logo_about.png" alt="logo" style="width: 50%;"/>
+<img src="/about/logo_about.jpeg" alt="logo" style="width: 75%;"/>
 
 
 Soy **Daniel Redondo Sánchez**, y soy matemático. Trabajo como investigador del cáncer.

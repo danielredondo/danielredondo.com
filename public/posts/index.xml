@@ -24,6 +24,17 @@ ggplot(data = estadisticas, aes(GF, Pt, label = equipo)) +geom_point() + geom_s
     </item>
     
     <item>
+      <title>Importando en R la Encuesta Nacional de Salud de 2017</title>
+      <link>/posts/20181010_ens/</link>
+      <pubDate>Wed, 24 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/20181010_ens/</guid>
+      <description>Hace unos meses se publicaron los resultados de la Encuesta Nacional de Salud (ENS) de 2017.
+Estos datos son abiertos: cualquiera puede descargarlos. Pero… ¿cualquiera puede abrirlos y trabajar con ellos? La información de la ENS para adultos se proporciona como un fichero de ancho fijo, de la siguiente forma:
+ Este archivo puede desmotivar a más de uno, ante la incapacidad de llevarse esta información a un entorno de trabajo en el que se encuentre cómodo.</description>
+    </item>
+    
+    <item>
       <title>Mapa de Granada con logos hexagonales de paquetes de R</title>
       <link>/posts/20180723_granada_hex/</link>
       <pubDate>Mon, 23 Jul 2018 00:00:00 +0000</pubDate>
