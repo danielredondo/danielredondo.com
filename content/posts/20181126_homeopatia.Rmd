@@ -1,0 +1,107 @@
+---
+title: "Desde la homeopatía hasta la ciudadanía informada: análisis rápido de la Encuesta Nacional de Salud de 2017"
+date: "2018-11-26"
+---
+
+*Autores: Jesús Henares-Montiel, Dafina Petrova, Daniel Redondo-Sánchez*
+
+### Hace unos días, durante una consulta en Urgencias, a uno de nosotros le ofrecieron “medicamentos” homeopáticos. Tras la negativa, y la posterior pérdida de confianza en ese médico, llegó la indignación.
+
+Y unos días después, el Gobierno presentaba el **[Plan de Protección de la Salud frente a las pseudoterapias](http://www.lamoncloa.gob.es/serviciosdeprensa/notasprensa/sanidad/Paginas/2018/141118pseudociencia.aspx)**, entre cuyos objetivos se destacan:
+
+*	**Analizar las pseudoterapias** bajo los principios del conocimiento y la evidencia científica (…), y difundir esa evaluación.
+*	**Modificaciones legislativas** para evitar la publicidad engañosa de las pseudoterapias.
+*	**Eliminar de los centros sanitarios las pseudoterapias**.
+
+![](\posts\20181126_homeopatia\wordcloud.png)
+*Nube de palabras del Plan de Protección de la Salud frente a las pseudoterapias.*
+
+Una de las pseudoterapias más utilizadas es la **homeopatía**. Para crear los “medicamentos” homeopáticos, se seleccionan sustancias que en grandes cantidades provocan síntomas parecidos a los que sufre el paciente y se diluyen en alcohol o agua destilada. Después de varios años de investigación, **[no hay evidencia científica](https://consultations.nhmrc.gov.au/files/consultations/drafts/nhmrcdrafthomeopathyinformationpaper140408.pdf)** de que la homeopatía tenga efectos curativos. Pese a ello, **no son pocas las personas convencidas de que la homeopatía funciona**. De hecho, **[la principal empresa de homeopatía, facturó el año pasado en España 17,8 millones de euros](https://elpais.com/economia/2018/10/26/actualidad/1540569452_141835.html)**, vendiendo tratamientos con la misma eficacia que un azucarillo. Un análisis en profundidad, relacionando las pseudoterapias con el efecto placebo, se puede encontrar en **[este artículo](http://www.cienciacognitiva.org/?p=1359)**.
+
+### **[Según la actual ministra de Sanidad](https://www.elconfidencial.com/tecnologia/ciencia/2018-11-14/plan-proteccion-pseudociencias-salud-ciencia_1646918/), María Luisa Carcedo, un 53% de los españoles cree que la homeopatía es efectiva, y un 10% de los españoles visitó la consulta de un homeópata durante 2016.** 
+
+En la presente publicación, un grupo de investigadores nos hemos propuesto realizar un **análisis rápido sobre el consumo de homeopatía en España**, usando para ello la **[Encuesta Nacional de Salud de 2017](https://www.ine.es/dyngs/INEbase/es/operacion.htm?c=Estadistica_C&cid=1254736176783&menu=resultados&secc=1254736195650&idp=1254735573175)**, publicada por el **Instituto Nacional de Estadística**. Esta encuesta utiliza un muestreo representativo de la población, por lo que sus resultados pueden ser extrapolables a toda la población española.
+
+**¿Cuánta homeopatía se consume en España?**
+
+Según la encuesta, 15.863 personas de las 23.089 encuestadas (un 69%) habían tomado algún medicamento en las dos semanas previas de la encuesta. De estas 23.089 personas, **154 (es decir, 0,67% de los encuestados) habían tomado algún medicamento homeopático** (de nuevo, en las últimas dos semanas). Si este número te parece pequeño y poco preocupante, piensa que en España viven más de 46 millones de personas.
+
+## **Extrapolando estos resultados, podemos estimar que más de 300.000 españoles han consumido algún producto homeopático en las dos últimas semanas**.
+
+**¿Cuánta homeopatía se receta en España?**
+
+**Casi la mitad de la que se consume**. De las 154 personas que habían tomado algún medicamento homeopático, 70 (45%) declararon que este les fue prescrito por un médico. Por tanto, lo que nos sucedió en Urgencias ocurre en muchas otras consultas. Sin embargo, no todo el mundo está bien informado y se encuentra en la situación de poder tomar una decisión adecuada.
+
+**¿Cómo es el consumidor de homeopatía?**
+
+Para responder a esta pregunta hemos utilizado los datos de las personas que declararon haber tomado algún medicamento en las últimas dos semanas, evaluando los factores que se relacionan con que este medicamento sea homeopático, mediante un modelo lineal generalizado. **El código del análisis realizado puedes encontrarlo al final de esta publicación.**  
+
+![](\posts\20181126_homeopatia\clase.png)
+
+![](\posts\20181126_homeopatia\sexo.png)
+
+![](\posts\20181126_homeopatia\edad.png)
+
+## **Hallamos que el consumo de estos medicamentos era más común entre los adultos de entre 30 y 64 años, las mujeres y las personas de alto nivel socioeconómico**.  
+
+Estos hallazgos son interesantes, porque **en teoría este es el perfil de personas con más capacidad (e interés) para buscar información veraz y de calidad y tomar decisiones informadas, y sin embargo, parece que son los que más creen en este tipo de pseudociencia**. Hay varias explicaciones posibles a analizar: ¿toman estas personas más medicamentos en general? ¿Es posible que a estas personas se les receten más de estos productos, o los buscan ellos por su cuenta?
+
+Estudiar el perfil y la motivación del consumidor nos ayudaría a enfocar mejor la estrategia para combatir las pseudoterapias. 
+
+Creemos que es imprescindible proporcionar información basada en la evidencia a la ciudadanía y que es más importante aún enseñar a las personas a apreciar la validez de esta evidencia para poder enfrentarse a la información falsa o de poca calidad. **[Como varios autores internacionales han defendido](https://journals.sagepub.com/doi/full/10.1111/j.1539-6053.2008.00033.x?url_ver=Z39.88-2003&rfr_id=ori%3Arid%3Acrossref.org&rfr_dat=cr_pub%3Dpubmed)**, conceptos como la probabilidad y la necesidad de un grupo de control para establecer la eficacia de un tratamiento deberían formar parte del currículo académico ya que la mayoría de las personas tendrán que apreciar cuales son los riesgos y beneficios de tomar algún tratamiento, como en el caso de la homeopatía, a lo largo de sus vidas. 
+
+```{r eval = FALSE}
+# Análisis ENS 2017 homeopatía
+
+# Carga de paquetes
+library(dplyr)
+library(effects)
+
+# Importamos la Encuesta Nacional de Salud de 2017.
+# Información sobre importarla en https://danielredondo.com/posts/20181010_ens/
+load("ens2017.RData")
+
+# Recodificamos la variable de interés:
+tabla$P87_21a <- tabla$P87_21a %>% as.factor %>% droplevels
+tabla$P87_21a[tabla$P87_21a == "8" | tabla$P87_21a == "9"] = NA
+
+# Creamos la variable "consumo de homeopatía en las últimas dos semanas"
+tabla$consum_homeo[tabla$P87_21a == "2"] = 0
+tabla$consum_homeo[tabla$P87_21a == "1"] = 1
+
+# Distribución de la variable en porcentaje
+tabla$consum_homeo %>% table %>% prop.table * 100
+
+# Preparamos las variables para el GLM: nivel socioeconómico, sexo, y edad
+tabla$CLASE_PR[tabla$CLASE_PR == "9"] = NA
+tabla$CLASE_PR <- tabla$CLASE_PR %>% as.factor %>% droplevels %>% factor(labels = c('1 (alto)', '2', '3', '4', '5', '6 (bajo)')) 
+
+tabla$SEXOa <- tabla$SEXOa %>% factor(labels=c("Hombre", "Mujer"))
+
+tabla$Edad_grupos[tabla$EDADa <= 29] = "15-19"
+tabla$Edad_grupos[tabla$EDADa > 29 & tabla$EDADa <= 64] = "30-64"
+tabla$Edad_grupos[tabla$EDADa >= 65] = "65+"
+tabla$Edad_grupos <- tabla$Edad_grupos %>% as.factor()
+
+# Modelo lineal generalizado
+GLM <- glm(consum_homeo ~ CLASE_PR + Edad_grupos + SEXOa, family = binomial(logit), data = tabla)
+GLM %>% summary
+GLM %>% coef %>% exp # ORs
+
+# Gráficos
+plot(Effect("CLASE_PR", GLM), xlab = "Nivel socioeconómico", ylab = "Probabilidad de consumir homeopatía (2 sem. antes)", main = "Efecto del nivel socioeconómico")
+plot(Effect("Edad_grupos", GLM), xlab = "Grupos de edad", ylab="Probabilidad de consumir homeopatía (2 sem. antes)", main = "Efecto de la edad")
+plot(Effect("SEXOa", GLM), xlab = "Sexo", ylab = "Probabilidad de consumir homeopatía (2 sem. antes)", main = "Efecto del sexo")
+
+```
+
+Correos de contacto:
+
+*	**[Jesús Henares-Montiel](mailto:jesus.henares.sspa@juntadeandalucia.es)**
+*	**[Dafina Petrova](mailto:dafina.petrova.ext@juntadeandalucia.es)**
+*	**[Daniel Redondo-Sánchez](mailto:daniel.redondo.easp@juntadeandalucia.es)**
+
+
+
+
+
