@@ -9,7 +9,7 @@ paginatepath = "page"
      
 ## Hugo Built-in Features
 # disqusShortname = "your-disqus-shortname"
-# googleAnalytics = "your-google-analytics-id"
+ googleAnalytics = "UA-129757599-1"
 # enableRobotsTXT = true
 
 ## Site Settings
