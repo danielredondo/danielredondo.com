@@ -1,0 +1,118 @@
+---
+title: "¿Quién votó a VOX en Andalucía? Mapa interactivo por municipios"
+date: "2018-11-26"
+tags: ["mapas", "politica"]
+---
+
+Hace un par de semanas estuve en un taller de **Datos Espaciales en Salud**, impartido en la Escuela Nacional de Sanidad, mostrando alguna de las maravillas que se pueden hacer con **[leaflet](https://leafletjs.com) en R**. Hoy os enseñaré otra aplicación, ilustrada con código reproducible.
+
+El domingo 2 de diciembre tuvieron lugar las elecciones al Parlamento Andaluz, en las que el partido de ultraderecha VOX obtuvo 12 escaños.
+
+### Lejos de entrar en el debate, ya suficientemente cubierto en tertulias televisivas, bares y cafeterías, me propuse a hacer un análisis: ¿Dónde se votó a VOX? Y... ¿dónde no?
+
+Para ello, he usado los datos oficiales de las elecciones, disponibles en **[este enlace de la Junta de Andalucía](https://www.resultadoseleccionesparlamentoandalucia2018.es/Inicio)**.
+
+Usaré también las líneas límite de los municipios andaluces, disponibles en el **[Instituto de Estadística y Cartografía de Andalucía](https://www.juntadeandalucia.es/institutodeestadisticaycartografia)**.
+
+### El mapa interactivo de votos a VOX por municipios se encuentra al final de este artículo. El código para hacerlo en R lo dejo aquí debajo, y es totalmente reproducible.
+
+Para el análisis, he creado una *tasa de voto a VOX*, calculada como número de votos a VOX por cada 1000 personas censadas.
+
+```{r, warning=FALSE, error=FALSE, message=FALSE}
+# Cargamos los paquetes necesarios
+library(openxlsx)
+library(dplyr)
+library(leaflet)
+library(rgdal)
+library(htmltools)
+```
+
+
+```{r}
+provincias <- c("Almería", "Cádiz", "Granada", "Málaga", "Jaén", "Huelva", "Sevilla", "Córdoba")
+cod_pro <- c("04", "11", "18", "29", "23", "21", "41", "14")
+
+# Leemos los archivos y preparamos los datos
+for(provincia in 1:8){
+  if(provincia == 1){
+    longitud_previa <- 0
+    elecciones <- read.xlsx(paste0("20181205_vox/Escrut-Prov-2018-", provincias[[provincia]], ".xlsx"), sheet = "Municipios", colNames = TRUE) %>%
+      select("Codmun", "Municipio", "Censo.Total", "Votos.Totales", "VOX")
+  }
+  else {
+    longitud_previa <- nrow(elecciones)
+    aux <- read.xlsx(paste0("20181205_vox/Escrut-Prov-2018-", provincias[[provincia]], ".xlsx"), sheet = "Municipios", colNames = TRUE) %>%
+                         select("Codmun", "Municipio", "Censo.Total", "Votos.Totales", "VOX")
+    elecciones <- rbind(elecciones, aux)              
+  }
+  elecciones <- subset(elecciones, is.na(elecciones$Codmun) == FALSE)
+  longitud_actual <- nrow(elecciones)
+  
+  # Creamos el código del municipio añadiendo delante el código de la provincia
+  for(j in (longitud_previa + 1):longitud_actual){
+    if(nchar(elecciones$Codmun[[j]]) == 1) elecciones$Codmun[[j]] <- paste0(cod_pro[[provincia]], "00",  elecciones$Codmun[[j]])
+    if(nchar(elecciones$Codmun[[j]]) == 2) elecciones$Codmun[[j]] <- paste0(cod_pro[[provincia]], "0" ,  elecciones$Codmun[[j]])
+    if(nchar(elecciones$Codmun[[j]]) == 3) elecciones$Codmun[[j]] <- paste0(cod_pro[[provincia]],        elecciones$Codmun[[j]])
+  }
+}
+
+names(elecciones) <- c("codmun", "municipio", "censo", "votos", "vox")
+elecciones$tasa <- round(elecciones$vox / elecciones$censo * 1000, 1)
+```
+
+Vemos los 3 municipios con más y menos votos por cada 1000 personas censadas:
+```{r}
+head(elecciones[order(elecciones$tasa), ], 3)
+head(elecciones[order(-elecciones$tasa), ], 3)
+```
+
+### VOX obtuvo al menos un voto en todos los municipios andaluces.
+
+### Los tres municipios con mayor distribución de votos a VOX fueron almerienses: Balanegra, El Ejido y Níjar.
+
+### En Gorafe (Granada) y Castaño del Robledo (Huelva), VOX obtuvo sólo un voto, si bien el censo de ambos municipios es inferior a 350 habitantes.
+
+```{r, echo = T, results = 'hide'}
+# Leemos los municipios
+municipios <- readOGR("20181205_vox/da02_term_munic.shp", encoding = "utf8", use_iconv = TRUE) %>%
+  spTransform(CRS("+init=epsg:4326"))
+```
+
+```{r}
+# Unimos los polígonos con los mapas
+municipios@data <- merge(municipios@data, elecciones, by.x = "COD_MUN", by.y = "codmun")
+
+# Creamos la paleta de color
+bins <- c(0, 10, 20, 30, 40, 50, 75, 100, 150, 200)
+pal <- colorBin("BuGn", domain = municipios@data$tasa, bins = bins)
+
+# El leaflet siguiente está inspirado en:
+# https://rstudio.github.io/leaflet/choropleths.html
+# https://github.com/rstudio/leaflet/blob/master/inst/examples/labels.R
+
+leaflet(municipios) %>%
+  setView(lng = -4.2, lat = 36.7, zoom = 7) %>%
+  addPolygons(fillColor = pal(municipios@data$tasa),
+              popup = paste0("<b>Municipio</b>: ", municipios@data$municipio,
+                             "<br><b>Censo</b>: ", municipios@data$censo,
+                             "<br><b>Votos</b>: ", municipios@data$votos,
+                             "<br><b>Votos a VOX</b>: ", municipios@data$vox,
+                             "<br><b>Votos a VOX por cada 1000 personas censadas</b>: ", municipios@data$tasa),
+              weight = 2,
+              opacity = 0.7,
+              color = "black",
+              dashArray = "3",
+              label = mapply(
+                function(x, y) {
+                  HTML(sprintf("<b>Municipio</b>: %s<br><b>%s</b> votos a VOX por cada 1000 personas censadas<br><em>Haz clic para obtener más información</em>", htmlEscape(x), htmlEscape(y)))
+                },
+                municipios@data$MUNICIPIO, municipios@data$tasa, SIMPLIFY = F),
+              labelOptions = lapply(1:nrow(municipios), function(x) {
+                labelOptions(direction = "auto")
+              }),
+              fillOpacity = 1,
+              highlight = highlightOptions(color = "black", weight = 2, dashArray = 2, fillOpacity = 0.7)) %>%
+  addLegend(pal = pal, values = municipios@data$tasa, opacity = 0.7, title = "Votos a VOX por cada <br>1.000 personas censadas", position = "bottomright")
+```
+
+### **Puedes moverte por el mapa y hacer zoom, y al pasar por los distintos municipios aparece la información sobre los votos. Si haces clic en un municipio, obtendrás información más detallada sobre el censo y los votos totales.**

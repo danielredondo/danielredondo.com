@@ -25,6 +25,11 @@
   </url>
   
   <url>
+    <loc>/posts/20181205_vox/</loc>
+    <lastmod>2018-11-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/posts/20181010_ens/</loc>
     <lastmod>2018-10-24T00:00:00+00:00</lastmod>
   </url>
@@ -88,7 +93,13 @@
   
   <url>
     <loc>/tags/mapas/</loc>
-    <lastmod>2018-07-23T00:00:00+00:00</lastmod>
+    <lastmod>2018-11-26T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/politica/</loc>
+    <lastmod>2018-11-26T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

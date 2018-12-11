@@ -6,10 +6,20 @@
     <description>Recent content in Mapas on Daniel Redondo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 23 Jul 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 26 Nov 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/mapas/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>¿Quién votó a VOX en Andalucía? Mapa interactivo por municipios</title>
+      <link>/posts/20181205_vox/</link>
+      <pubDate>Mon, 26 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/20181205_vox/</guid>
+      <description>Hace un par de semanas estuve en un taller de Datos Espaciales en Salud, impartido en la Escuela Nacional de Sanidad, mostrando alguna de las maravillas que se pueden hacer con leaflet en R. Hoy os enseñaré otra aplicación, ilustrada con código reproducible.
+El domingo 2 de diciembre tuvieron lugar las elecciones al Parlamento Andaluz, en las que el partido de ultraderecha VOX obtuvo 12 escaños.</description>
+    </item>
     
     <item>
       <title>Mapa de Granada con logos hexagonales de paquetes de R</title>

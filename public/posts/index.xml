@@ -35,6 +35,16 @@ Hace unos días, durante una consulta en Urgencias, a uno de nosotros le ofrecie
     </item>
     
     <item>
+      <title>¿Quién votó a VOX en Andalucía? Mapa interactivo por municipios</title>
+      <link>/posts/20181205_vox/</link>
+      <pubDate>Mon, 26 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/20181205_vox/</guid>
+      <description>Hace un par de semanas estuve en un taller de Datos Espaciales en Salud, impartido en la Escuela Nacional de Sanidad, mostrando alguna de las maravillas que se pueden hacer con leaflet en R. Hoy os enseñaré otra aplicación, ilustrada con código reproducible.
+El domingo 2 de diciembre tuvieron lugar las elecciones al Parlamento Andaluz, en las que el partido de ultraderecha VOX obtuvo 12 escaños.</description>
+    </item>
+    
+    <item>
       <title>Importando en R la Encuesta Nacional de Salud de 2017</title>
       <link>/posts/20181010_ens/</link>
       <pubDate>Wed, 24 Oct 2018 00:00:00 +0000</pubDate>
