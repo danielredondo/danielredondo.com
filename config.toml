@@ -6,6 +6,7 @@ ignoreFiles     = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
 title = "Daniel Redondo"
 paginate = 5
 paginatepath = "page"
+
      
 ## Hugo Built-in Features
 # disqusShortname = "your-disqus-shortname"
@@ -18,9 +19,10 @@ paginatepath = "page"
     description = "danielredondo.com"
     authorimage = "/img/piramide.png"
     dateformat = "Jan 2, 2006"
-    highlightjs = true
     themeColor = "theme-custom-drs"
-    #highlightjsstyle = "github"
+    highlightjs = true
+    highlightjsstyle = "github"
+    highlightjslanguages = ["r"]
     # please choose either GraphComment or Disqus
     # GraphCommentId = "your-graph-comment-id"
     # layoutReverse = true
@@ -48,11 +50,6 @@ paginatepath = "page"
     weight = 110
     identifier = "papers"
     url = "/papers/"
-#[[menu.main]]
-#    name = "VISUALIZANDO"
-#    weight = 120
-#    identifier = "visualizando"
-#    url = "/tags/visualizando"
 [[menu.main]]
     name = "APLICACIONES WEB"
     weight = 130
