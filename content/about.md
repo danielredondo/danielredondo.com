@@ -17,6 +17,6 @@ Trabajo con `R`**\*** (`shiny`, `ggplot`, `leaflet`, ...), `Microsoft Access` (`
 
 ## Puedes encontrarme en:
 
-* Twitter: [@dredondosanchez](twitter.com/dredondosanchez)  
+* Twitter: [@dredondosanchez](https://twitter.com/dredondosanchez)  
 * Github: [danielredondo](https://github.com/danielredondo)
 * Correo: danielredondosanchez [at] hotmail.com.
