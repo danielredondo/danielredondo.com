@@ -40,13 +40,10 @@ ggplot(data = estadisticas, aes(GF, Pt, label = equipo)) +geom_point() + geom_s
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/papers/</guid>
-      <description>Standardizing effect size from linear regression models with log-transformed variables for meta-analysis.
+      <description>Educational Note: Paradoxical Collider Effect in the Analysis of Non-Communicable Disease Epidemiological Data: a reproducible illustration and web application. Miguel Angel Luque-Fernandez, Michael Schomaker, Daniel Redondo-Sánchez, Maria Jose Sanchez Perez, Anand Vaidya, Mireille E Schnitzer International Journal of Epidemiology (Link - Open Access)
+ Standardizing effect size from linear regression models with log-transformed variables for meta-analysis.
 Miguel Rodríguez-Barranco, Aurelio Tobías, Daniel Redondo, Elena Molina-Portillo et al.
-BMC Medical Research Methodology. (Link - Open Access).
- Thyroid Cancer Epidemiology in South Spain: a population-based time trend study.
-Elena Salamanca-Fernández, Miguel Rodríguez-Barranco, Yoe-Ling Chang-Chan, Daniel Redondo-Sánchez et al.
-Endocrine. (Link).
- Pre-diagnostic metabolite concentrations and prostate cancer risk in 1077 cases and 1077 matched controls in the European Prospective Investigation into Cancer and Nutrition.</description>
+BMC Medical Research Methodology.</description>
     </item>
     
     <item>
