@@ -1,6 +1,6 @@
 ---
 title: "¿Quién votó a VOX en Andalucía? Mapa interactivo por municipios"
-date: "2018-11-26"
+date: "2018-12-11"
 tags: ["mapas", "politica"]
 ---
 

@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en" class="wf-firasans-n4-active wf-active">
+	<head>
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Enable responsiveness on mobile devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    
+    
+    <meta name="generator" content="Hugo 0.53" />
+    
+    <title>Coloreando atractores &middot; Daniel Redondo</title>
+    <meta content="Coloreando atractores - Daniel Redondo" property="og:title">
+    <meta content=" - " property="og:description">
+    <!-- CSS -->
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans:300,300i,400,400i|Roboto+Mono:300,300i,400,400i" rel="stylesheet">
+    <link rel="stylesheet" href="/css/print.css" media="print">
+    <link rel="stylesheet" href="/css/poole.css">
+    <link rel="stylesheet" href="/css/hyde.css">
+    <!-- Font-Awesome -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js" integrity="sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe" crossorigin="anonymous"></script>
+    <!-- highlight.js-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+    <!-- Customised CSS -->
+    <link rel="stylesheet" href="/css/custom.css">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+    <link rel="shortcut icon" href="/img/favicon.png">
+    
+
+	</head>
+    <body class="theme-custom-drs ">
+        <div class="sidebar">
+  <div class="container text-center ">
+    <div class="sidebar-about text-center">
+      <a href="/"><h1 class="brand">Daniel Redondo</h1></a>
+       <img src="/img/piramide.png" alt="Author Image" class="img-circle headshot center"> 
+      <p class="lead">
+         danielredondo.com 
+      </p>
+    </div>
+    
+<div>
+	<ul class="sidebar-nav">
+		
+		
+				<li>
+					<a href="/posts/"> <span>POSTS</span></a>
+				</li>
+				<li>
+					<a href="/papers/"> <span>PAPERS</span></a>
+				</li>
+				<li>
+					<a href="/aplicaciones/"> <span>APLICACIONES WEB</span></a>
+				</li>
+				<li>
+					<a href="/about/"> <span>SOBRE MÍ</span></a>
+				</li>
+		</li>
+	</ul>
+</div>
+
+    <p>
+      <section class="row text-center">
+	
+	<a href="https://twitter.com/dredondosanchez"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	&nbsp;<a href="https://github.com/danielredondo"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	&nbsp;<a href="mailto:danielredondosanchez@hotmail.com"><i class="fas fa-at fa-lg" aria-hidden="true"></i></a>
+	
+</section>
+
+    </p>
+    <p class="copyright">&copy; 2019 Daniel Redondo.
+      <a href="https://creativecommons.org/licenses/by/4.0"><br/>Some Rights Reserved</a>.<br/>Built with <a href="https://github.com/rstudio/blogdown">blogdown</a>, <a href="https://gohugo.io/">Hugo</a> &amp; <a href="https://github.com/htr3n/hyde-hyde">hyde-hyde</a>.
+    </p>
+  </div>
+  <div>
+  </div>
+</div>
+
+        <div class="content container">
+            <div class="post">
+  <h1>Coloreando atractores</h1>
+  
+  <div class="col-sm-12 col-md-12">
+    <span class="text-left post-date meta">
+            
+       
+        <i class="fas fa-calendar-alt"></i> Jan 29, 2019
+      
+      
+      
+      
+      <br/>
+      <i class="fas fa-clock"></i> 4 min read 
+      </span>  
+  </div>    
+  
+  
+
+
+<pre class="r"><code># Sólo para Mac:
+system(&quot;say -v Jorge He acabado el primer gráfico&quot;)
+
+library(Rcpp)
+library(tidyverse)
+library(wesanderson)
+library(colorspace)
+
+opt &lt;-  theme(legend.position  = &quot;none&quot;,
+              panel.background = element_rect(fill = &quot;white&quot;),
+              plot.background  = element_rect(fill = &quot;white&quot;),
+              axis.ticks       = element_blank(),
+              panel.grid       = element_blank(),
+              axis.title       = element_blank(),
+              axis.text        = element_blank())
+
+cppFunction(&#39;DataFrame createTrajectory(int n, double x0, double y0, 
+            double a1,  double a2,  double a3,  double a4,  double a5,  double a6,  double a7,
+            double a8,  double a9,  double a10, double a11, double a12, double a13, double a14) {
+            // create the columns
+            NumericVector x(n);
+            NumericVector y(n);
+            x[0] = x0;
+            y[0] = y0;
+            for(int i = 1; i &lt; n; ++i) {
+            x[i] = a1 + a2 * x[i-1] + a3  * y[i-1] + a4  * pow(fabs(x[i-1]), a5)  + a6  * pow(fabs(y[i-1]), a7 );
+            y[i] = a8 + a9 * x[i-1] + a10 * y[i-1] + a11 * pow(fabs(x[i-1]), a12) + a13 * pow(fabs(y[i-1]), a14);
+            }
+            // return a new data frame
+            return DataFrame::create(_[&quot;x&quot;]= x, _[&quot;y&quot;]= y);
+            }
+            &#39;)
+
+a1 &lt;- -0.8
+a2 &lt;- 0.4
+a3 &lt;- -1.1
+a4 &lt;- 0.5
+a5 &lt;- -0.6
+a6 &lt;- -0.1
+a7 &lt;- -0.5
+a8 &lt;- 0.8
+a9 &lt;- 1.0
+a10 &lt;- -0.3
+a11 &lt;- -0.6
+a12 &lt;- -0.3
+a13 &lt;- -1.2
+a14 &lt;- -0.3
+
+df &lt;- createTrajectory(10000000, 1, 1, a1, a2, a3, a4, a5, a6, 
+                       a7, a8, a9, a10, a11, a12, a13, a14)
+
+mx &lt;- quantile(df$x, probs = 0.01)
+Mx &lt;- quantile(df$x, probs = 0.99)
+my &lt;- quantile(df$y, probs = 0.05)
+My &lt;- quantile(df$y, probs = 0.95)
+
+df %&gt;% filter(x &gt; mx, x &lt; Mx, y &gt; my, y &lt; My) -&gt; df
+
+# GRAFICO ORIGINAL
+plot &lt;- ggplot(df) +
+  geom_point(aes(x, y), shape = 46, alpha = 0.01, size = 0, color = &quot;black&quot;) +
+  scale_x_continuous(expand = c(0,0))+
+  scale_y_continuous(expand = c(0,0))+
+  coord_fixed() + 
+  opt
+
+ggsave(&quot;original.png&quot;, plot, height = 4, width = 8, units = &#39;in&#39;, dpi = 1200)</code></pre>
+<div class="figure">
+<img src="https://i.imgur.com/kDhBiiU.jpg" />
+
+</div>
+<pre class="r"><code># EJEMPLO 1
+df$s &lt;- (df$x - mean(df$x))^2 + (df$y-mean(df$y))^2 + 4*rnorm(nrow(df))
+df &lt;- df[order(df$s), ]
+
+plot &lt;- ggplot(df) +
+  geom_point(aes(x, y), shape = 46, alpha = 0.01, size = 0, color = rainbow(nrow(df))) +
+  scale_x_continuous(expand = c(0,0))+
+  scale_y_continuous(expand = c(0,0))+
+  coord_fixed() + 
+  opt
+
+ggsave(&quot;rainbow.png&quot;, plot, height = 4, width = 8, units = &#39;in&#39;, dpi = 1200)</code></pre>
+<div class="figure">
+<img src="https://i.imgur.com/tmLflBp.jpg" />
+
+</div>
+<pre class="r"><code># EJEMPLO 2
+a1 &lt;- -0.8
+a2 &lt;- 0.5
+a3 &lt;- -0.9
+a4 &lt;- 0.4
+a5 &lt;- -0.6
+a6 &lt;- -0.5
+a7 &lt;- -0.2
+a8 &lt;- 0.8
+a9 &lt;- 1.0
+a10 &lt;- -0.3
+a11 &lt;- -0.4
+a12 &lt;- -0.2
+a13 &lt;- -1.2
+a14 &lt;- -0.3
+
+df &lt;- createTrajectory(10000000, 1, 1, a1, a2, a3, a4, a5, a6, 
+                       a7, a8, a9, a10, a11, a12, a13, a14)
+
+mx &lt;- quantile(df$x, probs = 0.01)
+Mx &lt;- quantile(df$x, probs = 0.99)
+my &lt;- quantile(df$y, probs = 0.05)
+My &lt;- quantile(df$y, probs = 0.95)
+
+df %&gt;% filter(x &gt; mx, x &lt; Mx, y &gt; my, y &lt; My) -&gt; df
+
+df$s &lt;- df$y + 4 * rnorm(nrow(df))
+df &lt;- df[order(df$s), ]
+
+pal &lt;- diverging_hcl(nrow(df), &quot;Blue-Red 2&quot;)
+
+plot &lt;- ggplot(df) +
+  geom_point(aes(x, y), shape = 46, alpha = 0.01, size = 0, color = pal) +
+  scale_x_continuous(expand = c(0,0))+
+  scale_y_continuous(expand = c(0,0))+
+  coord_fixed() + 
+  opt
+
+ggsave(&quot;hcl.png&quot;, plot, height = 4, width = 8, units = &#39;in&#39;, dpi = 1200)</code></pre>
+<div class="figure">
+<img src="https://i.imgur.com/QmeLheS.jpg" />
+
+</div>
+<pre class="r"><code># EJEMPLO 3
+a1 &lt;- -1.0
+a2 &lt;- 0.4
+a3 &lt;- -1.1
+a4 &lt;- 0.5
+a5 &lt;- -0.6
+a6 &lt;- -0.1
+a7 &lt;- -0.5
+a8 &lt;- 0.8
+a9 &lt;- 1.0
+a10 &lt;- -0.3
+a11 &lt;- -0.6
+a12 &lt;- -0.3
+a13 &lt;- -1.2
+a14 &lt;- -0.3
+
+df &lt;- createTrajectory(10000000, 1, 1, a1, a2, a3, a4, a5, a6, 
+                       a7, a8, a9, a10, a11, a12, a13, a14)
+
+mx &lt;- quantile(df$x, probs = 0.01)
+Mx &lt;- quantile(df$x, probs = 0.99)
+my &lt;- quantile(df$y, probs = 0.05)
+My &lt;- quantile(df$y, probs = 0.95)
+
+df %&gt;% filter(x &gt; mx, x &lt; Mx, y &gt; my, y &lt; My) -&gt; df
+
+df$s &lt;- df$y + rnorm(nrow(df))/5
+
+df &lt;- df[order(df$s), ]
+
+pal &lt;- wes_palette(nrow(df), name = &quot;GrandBudapest1&quot;, type = &quot;continuous&quot;)
+
+plot &lt;- ggplot(df) +
+  geom_point(aes(x, y), shape = 46, alpha = 0.01, size = 0, color = pal) +
+  scale_x_continuous(expand = c(0,0))+
+  scale_y_continuous(expand = c(0,0))+
+  coord_fixed() + 
+  opt
+
+ggsave(&quot;wes.png&quot;, plot, height = 4, width = 8, units = &#39;in&#39;, dpi = 1200)</code></pre>
+<div class="figure">
+<img src="https://i.imgur.com/bZVbB3s.jpg" />
+
+</div>
+
+</div>
+            <div class="footer">
+                <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+
+<script type="text/javascript">
+    hljs.configure({languages: []});
+    hljs.initHighlightingOnLoad();
+</script>
+
+    
+
+            </div>
+        </div>
+        
+        
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-129757599-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+    </body>
+</html>
