@@ -6,7 +6,7 @@ type: about
 
 Las siguientes aplicaciones están desarrolladas con `R` y `shiny`.
 
-* [iDEAL Granada](http://bit.ly/iDEALgranada): Aplicación basada en web-scraping para visualizar noticias del periódico IDEAL, creada con sólo [54 líneas de código](https://github.com/danielredondo/iDEAL-Granada/blob/master/app.R).
+* [iDEAL Granada](http://bit.ly/iDEALgranada): Aplicación basada en web-scraping para visualizar noticias del periódico IDEAL, con [código abierto, y menos de 60 líneas](https://github.com/danielredondo/iDEAL-Granada/blob/master/app.R).
 
 ![](/aplicaciones/ideal.png)
 

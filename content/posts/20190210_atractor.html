@@ -1,0 +1,191 @@
+---
+title: "Coloreando atractores"
+draft: no
+date: '2019-02-10'
+---
+
+
+
+<p>Hace unas semanas, Antonio Sánchez Chinchón escribía <strong><a href="https://fronkonstin.com/2019/01/10/rcpp-camaron-de-la-isla-and-the-beauty-of-maths/">en su muy recomendable blog</a></strong> sobre las gráficas que forman algunas ecuaciones imposibles de resolver, los atractores que se ven en ellas, y la belleza de las matemáticas.</p>
+<p>Todo ello, ilustrado con imágenes tan artísticas como:</p>
+<div class="figure">
+<img src="\posts\20190210_atractor\imagen.png" />
+
+</div>
+<p>Las gráficas me gustaron tanto que quise usarlas de fondo de pantalla. Y aprovechando que Antonio <a href="https://github.com/aschinchon/general-2D-map">dejó el código en su GitHub</a>, pensé en <strong>darles un toque de color, sin salir de R</strong>.</p>
+<p>En primer lugar, eliminamos el borde de la imagen, y cambiamos algunas opciones para que la imagen final no salga cuadrada, sino apaisada.</p>
+<p>Un ejemplo “en blanco y negro” es el siguiente:</p>
+<pre class="r"><code>library(Rcpp)
+library(tidyverse)
+library(wesanderson)
+library(colorspace)
+
+opt &lt;-  theme(legend.position  = &quot;none&quot;,
+              panel.background = element_rect(fill = &quot;white&quot;),
+              plot.background  = element_rect(fill = &quot;white&quot;),
+              axis.ticks       = element_blank(),
+              panel.grid       = element_blank(),
+              axis.title       = element_blank(),
+              axis.text        = element_blank())
+
+cppFunction(&#39;DataFrame createTrajectory(int n, double x0, double y0, 
+            double a1,  double a2,  double a3,  double a4,  double a5,  double a6,  double a7,
+            double a8,  double a9,  double a10, double a11, double a12, double a13, double a14) {
+            // create the columns
+            NumericVector x(n);
+            NumericVector y(n);
+            x[0] = x0;
+            y[0] = y0;
+            for(int i = 1; i &lt; n; ++i) {
+            x[i] = a1 + a2 * x[i-1] + a3  * y[i-1] + a4  * pow(fabs(x[i-1]), a5)  + a6  * pow(fabs(y[i-1]), a7 );
+            y[i] = a8 + a9 * x[i-1] + a10 * y[i-1] + a11 * pow(fabs(x[i-1]), a12) + a13 * pow(fabs(y[i-1]), a14);
+            }
+            // return a new data frame
+            return DataFrame::create(_[&quot;x&quot;]= x, _[&quot;y&quot;]= y);
+            }
+            &#39;)
+
+a1 &lt;- -0.8
+a2 &lt;- 0.4
+a3 &lt;- -1.1
+a4 &lt;- 0.5
+a5 &lt;- -0.6
+a6 &lt;- -0.1
+a7 &lt;- -0.5
+a8 &lt;- 0.8
+a9 &lt;- 1.0
+a10 &lt;- -0.3
+a11 &lt;- -0.6
+a12 &lt;- -0.3
+a13 &lt;- -1.2
+a14 &lt;- -0.3
+
+df &lt;- createTrajectory(10000000, 1, 1, a1, a2, a3, a4, a5, a6, 
+                       a7, a8, a9, a10, a11, a12, a13, a14)
+
+mx &lt;- quantile(df$x, probs = 0.01)
+Mx &lt;- quantile(df$x, probs = 0.99)
+my &lt;- quantile(df$y, probs = 0.05)
+My &lt;- quantile(df$y, probs = 0.95)
+
+df %&gt;% filter(x &gt; mx, x &lt; Mx, y &gt; my, y &lt; My) -&gt; df
+
+# GRAFICO ORIGINAL
+plot &lt;- ggplot(df) +
+  geom_point(aes(x, y), shape = 46, alpha = 0.01, size = 0, color = &quot;black&quot;) +
+  scale_x_continuous(expand = c(0,0))+
+  scale_y_continuous(expand = c(0,0))+
+  coord_fixed() + 
+  opt
+
+# Al pintar 10.000.000 de puntos, puede tardar un par de minutos.
+ggsave(&quot;original.png&quot;, plot, height = 4, width = 8, units = &#39;in&#39;, dpi = 1200)</code></pre>
+<div class="figure">
+<img src="https://i.imgur.com/kDhBiiU.jpg" />
+
+</div>
+<p>Procedemos ahora a colorear el mismo ejemplo, usando la famosa paleta de colores <code>rainbow</code>, y coloreando de forma circular, añadiendo algo de ruido para quitar uniformidad.</p>
+<pre class="r"><code>df$s &lt;- (df$x - mean(df$x))^2 + (df$y-mean(df$y))^2 + 4*rnorm(nrow(df))
+df &lt;- df[order(df$s), ]
+
+plot &lt;- ggplot(df) +
+  geom_point(aes(x, y), shape = 46, alpha = 0.01, size = 0, color = rainbow(nrow(df))) +
+  scale_x_continuous(expand = c(0,0))+
+  scale_y_continuous(expand = c(0,0))+
+  coord_fixed() + 
+  opt
+
+ggsave(&quot;rainbow.png&quot;, plot, height = 4, width = 8, units = &#39;in&#39;, dpi = 1200)</code></pre>
+<div class="figure">
+<img src="https://i.imgur.com/tmLflBp.jpg" />
+
+</div>
+<p>También podemos usar el paquete <code>wesanderson</code>, que <a href="https://github.com/karthik/wesanderson">genera paletas de color basándose en las películas de Wes Anderson</a>. La usada en este ejemplo está basada en “El Gran Hotel Budapest”, y la imagen se colorea desde arriba hacia abajo, añadiendo también ruido. He cambiado los parámetros de la función para que la gráfica sea diferente.</p>
+<pre class="r"><code>a1 &lt;- -1.0
+a2 &lt;- 0.4
+a3 &lt;- -1.1
+a4 &lt;- 0.5
+a5 &lt;- -0.6
+a6 &lt;- -0.1
+a7 &lt;- -0.5
+a8 &lt;- 0.8
+a9 &lt;- 1.0
+a10 &lt;- -0.3
+a11 &lt;- -0.6
+a12 &lt;- -0.3
+a13 &lt;- -1.2
+a14 &lt;- -0.3
+
+df &lt;- createTrajectory(10000000, 1, 1, a1, a2, a3, a4, a5, a6, 
+                       a7, a8, a9, a10, a11, a12, a13, a14)
+
+mx &lt;- quantile(df$x, probs = 0.01)
+Mx &lt;- quantile(df$x, probs = 0.99)
+my &lt;- quantile(df$y, probs = 0.05)
+My &lt;- quantile(df$y, probs = 0.95)
+
+df %&gt;% filter(x &gt; mx, x &lt; Mx, y &gt; my, y &lt; My) -&gt; df
+
+df$s &lt;- df$y + rnorm(nrow(df))/5
+
+df &lt;- df[order(df$s), ]
+
+pal &lt;- wes_palette(nrow(df), name = &quot;GrandBudapest1&quot;, type = &quot;continuous&quot;)
+
+plot &lt;- ggplot(df) +
+  geom_point(aes(x, y), shape = 46, alpha = 0.01, size = 0, color = pal) +
+  scale_x_continuous(expand = c(0,0))+
+  scale_y_continuous(expand = c(0,0))+
+  coord_fixed() + 
+  opt
+
+ggsave(&quot;wes.png&quot;, plot, height = 4, width = 8, units = &#39;in&#39;, dpi = 1200)</code></pre>
+<div class="figure">
+<img src="https://i.imgur.com/bZVbB3s.jpg" />
+
+</div>
+<p>Y para acabar, podemos usar también las paletas del paquete <code>colorspace</code>. Cambiamos los parámetros del dibujo, y la imagen se colorea en diagonal.</p>
+<pre class="r"><code>a1 &lt;- -0.8
+a2 &lt;- 0.5
+a3 &lt;- -0.9
+a4 &lt;- 0.4
+a5 &lt;- -0.6
+a6 &lt;- -0.5
+a7 &lt;- -0.2
+a8 &lt;- 0.8
+a9 &lt;- 1.0
+a10 &lt;- -0.3
+a11 &lt;- -0.4
+a12 &lt;- -0.2
+a13 &lt;- -1.2
+a14 &lt;- -0.3
+
+df &lt;- createTrajectory(10000000, 1, 1, a1, a2, a3, a4, a5, a6, 
+                       a7, a8, a9, a10, a11, a12, a13, a14)
+
+mx &lt;- quantile(df$x, probs = 0.01)
+Mx &lt;- quantile(df$x, probs = 0.99)
+my &lt;- quantile(df$y, probs = 0.05)
+My &lt;- quantile(df$y, probs = 0.95)
+
+df %&gt;% filter(x &gt; mx, x &lt; Mx, y &gt; my, y &lt; My) -&gt; df
+
+df$s &lt;- df$x +  df$y + 4 * rnorm(nrow(df))
+df &lt;- df[order(df$s), ]
+
+pal &lt;- sequential_hcl(nrow(df), &quot;Red-Blue&quot;)
+
+plot &lt;- ggplot(df) +
+  geom_point(aes(x, y), shape = 46, alpha = 0.01, size = 0, color = pal) +
+  scale_x_continuous(expand = c(0,0))+
+  scale_y_continuous(expand = c(0,0))+
+  coord_fixed() + 
+  opt
+
+ggsave(&quot;hcl.png&quot;, plot, height = 4, width = 8, units = &#39;in&#39;, dpi = 1200)</code></pre>
+<div class="figure">
+<img src="https://i.imgur.com/2F27JHh.jpg" />
+
+</div>
+<p>Como suele tardar un poco en guardar el gráfico, he encontrado muy útil esta línea de código, que añadida después del <code>ggsave</code> te avisa con un mensaje de voz cuando ha terminado el proceso. Eso sí, sólo para Mac, ya que usa su terminal (quizá escriba pronto un post con otras opciones para Windows, o multiplataforma).</p>
+<pre class="r"><code>system(&quot;say -v Jorge Hola, soy R, y he acabado el gráfico.&quot;)</code></pre>

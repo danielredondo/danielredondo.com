@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
     
     
-    <meta name="generator" content="Hugo 0.53" />
+    <meta name="generator" content="Hugo 0.42.1" />
     <title>Daniel Redondo</title>
     <meta content="Daniel Redondo" property="og:title">
     <meta content="" property="og:description">
@@ -104,12 +104,14 @@
   
     
       <div class="post">
-        <h1 class="post-title"><a href="/posts/20190205_atractor/">Coloreando atractores</a><sup><i class="fas fa-pen-square fa-xs"></i></sup></h1>
-        <span class="post-date">Jan 29, 2019</span>
-        # Sólo para Mac: system(&quot;say -v Jorge He acabado el primer gráfico&quot;) library(Rcpp) library(tidyverse) library(wesanderson) library(colorspace) opt &lt;- theme(legend.position = &quot;none&quot;, panel.background = element_rect(fill = &quot;white&quot;), plot.background = element_rect(fill = &quot;white&quot;), axis.ticks = element_blank(), panel.grid = element_blank(), axis.title = element_blank(), axis.text = element_blank()) cppFunction(&#39;DataFrame createTrajectory(int n, double x0, double y0, double a1, double a2, double a3, double a4, double a5, double a6, double a7, double a8, double a9, double a10, double a11, double a12, double a13, double a14) { // create the columns NumericVector x(n); NumericVector y(n); x[0] = x0; y[0] = y0; for(int i = 1; i &lt; n; ++i) { x[i] = a1 + a2 * x[i-1] + a3 * y[i-1] + a4 * pow(fabs(x[i-1]), a5) + a6 * pow(fabs(y[i-1]), a7 ); y[i] = a8 + a9 * x[i-1] + a10 * y[i-1] + a11 * pow(fabs(x[i-1]), a12) + a13 * pow(fabs(y[i-1]), a14); } // return a new data frame return DataFrame::create(_[&quot;x&quot;]= x, _[&quot;y&quot;]= y); } &#39;) a1 &lt;- -0.
+        <h1 class="post-title"><a href="/posts/20190210_atractor/">Coloreando atractores</a></h1>
+        <span class="post-date">Feb 10, 2019</span>
+        Hace unas semanas, Antonio Sánchez Chinchón escribía en su muy recomendable blog sobre las gráficas que forman algunas ecuaciones imposibles de resolver, los atractores que se ven en ellas, y la belleza de las matemáticas.
+Todo ello, ilustrado con imágenes tan artísticas como:
+ Las gráficas me gustaron tanto que quise usarlas de fondo de pantalla. Y aprovechando que Antonio dejó el código en su GitHub, pensé en darles un toque de color, sin salir de R.
         
         <div class="read-more-link">
-            <a href="/posts/20190205_atractor/">Leer más...</a>
+            <a href="/posts/20190210_atractor/">Leer más...</a>
             
         </div>
         
@@ -179,7 +181,7 @@ ggplot(data = estadisticas, aes(GF, Pt, label = equipo)) +geom_point() + geom_s
         </div>
         
         
-<script type="application/javascript">
+<script>
 var doNotTrack = false;
 if (!doNotTrack) {
 	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;

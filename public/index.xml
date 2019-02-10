@@ -30,7 +30,7 @@ ggplot(data = estadisticas, aes(GF, Pt, label = equipo)) +geom_point() + geom_s
       
       <guid>/aplicaciones/</guid>
       <description>Las siguientes aplicaciones están desarrolladas con R y shiny.
- iDEAL Granada: Aplicación basada en web-scraping para visualizar noticias del periódico IDEAL, creada con sólo 54 líneas de código.  Desarrollo también aplicaciones de contexto científico, como co-autor junto a Miguel Ángel Luque-Fernández.
+ iDEAL Granada: Aplicación basada en web-scraping para visualizar noticias del periódico IDEAL, con código abierto, y menos de 60 líneas.  Desarrollo también aplicaciones de contexto científico, como co-autor junto a Miguel Ángel Luque-Fernández.
  Expected date of delivery: Aplicación web que calcula la fecha estimada de un parto y crea un enlace con acontecimientos importantes que ocurrieron ese día.   Parametric Survival Distributions: Aplicación web para visualizar distintas características (riesgo, riesgo acumulado y función de supervivencia) de las distribuciones paramétricas más populares para modelar datos de tiempo hasta un evento.</description>
     </item>
     
@@ -62,11 +62,13 @@ Puedes encontrarme en:  Twitter: @dredondosanchez
     
     <item>
       <title>Coloreando atractores</title>
-      <link>/posts/20190205_atractor/</link>
-      <pubDate>Tue, 29 Jan 2019 00:00:00 +0000</pubDate>
+      <link>/posts/20190210_atractor/</link>
+      <pubDate>Sun, 10 Feb 2019 00:00:00 +0000</pubDate>
       
-      <guid>/posts/20190205_atractor/</guid>
-      <description># Sólo para Mac: system(&amp;quot;say -v Jorge He acabado el primer gráfico&amp;quot;) library(Rcpp) library(tidyverse) library(wesanderson) library(colorspace) opt &amp;lt;- theme(legend.position = &amp;quot;none&amp;quot;, panel.background = element_rect(fill = &amp;quot;white&amp;quot;), plot.background = element_rect(fill = &amp;quot;white&amp;quot;), axis.ticks = element_blank(), panel.grid = element_blank(), axis.title = element_blank(), axis.text = element_blank()) cppFunction(&amp;#39;DataFrame createTrajectory(int n, double x0, double y0, double a1, double a2, double a3, double a4, double a5, double a6, double a7, double a8, double a9, double a10, double a11, double a12, double a13, double a14) { // create the columns NumericVector x(n); NumericVector y(n); x[0] = x0; y[0] = y0; for(int i = 1; i &amp;lt; n; ++i) { x[i] = a1 + a2 * x[i-1] + a3 * y[i-1] + a4 * pow(fabs(x[i-1]), a5) + a6 * pow(fabs(y[i-1]), a7 ); y[i] = a8 + a9 * x[i-1] + a10 * y[i-1] + a11 * pow(fabs(x[i-1]), a12) + a13 * pow(fabs(y[i-1]), a14); } // return a new data frame return DataFrame::create(_[&amp;quot;x&amp;quot;]= x, _[&amp;quot;y&amp;quot;]= y); } &amp;#39;) a1 &amp;lt;- -0.</description>
+      <guid>/posts/20190210_atractor/</guid>
+      <description>Hace unas semanas, Antonio Sánchez Chinchón escribía en su muy recomendable blog sobre las gráficas que forman algunas ecuaciones imposibles de resolver, los atractores que se ven en ellas, y la belleza de las matemáticas.
+Todo ello, ilustrado con imágenes tan artísticas como:
+ Las gráficas me gustaron tanto que quise usarlas de fondo de pantalla. Y aprovechando que Antonio dejó el código en su GitHub, pensé en darles un toque de color, sin salir de R.</description>
     </item>
     
     <item>
@@ -171,7 +173,7 @@ http://bitly.com/iDEALgranada El manual de empleo es simple: pegas la URL del ar
       <guid>/posts/20180403_ideal/</guid>
       <description>Este post continúa en: iDEAL, la web para visualizar noticias del periódico IDEAL.
 El periódico Ideal es el más leído en la provincia de Granada, con una penetración sobre el total de lectores de diarios (sea lo que sea eso) del 89%.
-A principios de año, este diario adoptaba en su versión digital una medida llena de controversia: limitar el acceso a sus artículos, estableciendo un límite mensual de noticias.</description>
+A principios de año, este diario adoptaba en su versión digital una medida llena de controversia: limitar el acceso a sus artículos, estableciendo un límite mensual de noticias. Al superar este límite, esto es todo lo que podemos ver en su página web:</description>
     </item>
     
     <item>
