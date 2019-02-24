@@ -12,11 +12,16 @@
   </url>
   
   <url>
-    <loc>/papers/</loc>
+    <loc>/publicaciones/</loc>
   </url>
   
   <url>
     <loc>/about/</loc>
+  </url>
+  
+  <url>
+    <loc>/posts/20190224_botwikipedia/</loc>
+    <lastmod>2019-02-24T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -117,6 +122,12 @@
   <url>
     <loc>/tags/</loc>
     <lastmod>2018-05-24T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/twitter/</loc>
+    <lastmod>2019-02-24T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

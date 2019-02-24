@@ -1,0 +1,111 @@
+---
+title: 'Creando un bot de Twitter usando R: @BotWikipedia'
+author: ''
+date: '2019-02-24'
+tags:
+  - twitter
+draft: no
+---
+
+Un bot, [según la Wikipedia](https://es.wikipedia.org/wiki/Bot), es un programa informático que efectúa automáticamente tareas repetitivas a través de Internet, cuya realización por parte de una persona sería imposible o muy tediosa.
+
+En esta publicación encontrarás un tutorial sobre cómo hacer un bot que tuiteará automáticamente usando el programa todoterreno R.  
+
+## Este tutorial está basado en mi propia experiencia creando **[\@BotWikipedia](https://twitter.com/BotWikipedia)**, una cuenta que tuitea diariamente sobre lo más leído de la Wikipedia en español.  
+
+![](\posts\20190224_botwikipedia\tweet.png)
+*Tuit con lo más leído el Día de San Valentín*
+
+### Paso 1. Instala R, RStudio, y el paquete `rtweet`.
+
+Aunque hace unos meses el principal paquete para trabajar con Twitter desde R era `twitteR` (en [GitHub](https://github.com/geoffjentry/twitteR)), está empezando a estar obsoleto en favor de `rtweet` (en [GitHub](https://github.com/mkearney/rtweet)). Entre las limitaciones de `twitteR` he encontrado dos muy molestas: tiene problemas con las tildes, y no permite tuitear más de 140 caracteres.
+
+![](\posts\20190224_botwikipedia\rtweet.png)
+
+### Paso 2. La burocracia de Twitter.
+
+Necesitarás una cuenta de usuario en Twitter. Cuando la tengas, dirígete a [https://developer.twitter.com/en/apply/user](https://developer.twitter.com/en/apply/user) y solicita una cuenta de desarrollador. Te la asignarán automáticamente, pero tendrás que dar una descripción detallada del uso que darás a la aplicación, y deberás asociar a tu cuenta un número de teléfono, si no lo has hecho ya.
+
+![](\posts\20190224_botwikipedia\twitterapp.PNG)
+
+Una vez completado el proceso, podrás acceder a tu aplicación en [https://developer.twitter.com/en/apps/](https://developer.twitter.com/en/apps/). En el apartado "Keys and tokens" tendrás todo lo necesario para conectar con R en el siguiente paso.
+
+![](\posts\20190224_botwikipedia\tokens.PNG)
+
+### Paso 3. Crea el script que quieras automatizar.
+
+Crearemos un script normal de R (un archivo .R) que contenga el proceso que queremos automatizar, conectaremos con Twitter usando las claves obtenidas en el paso anterior, y finalizaremos tuiteando con `rtweet::post_tweet`.
+
+Por ejemplo, para [\@BotWikipedia](https://twitter.com/BotWikipedia), he escrito un script que usa el paquete `pageviews` ([manual en PDF](https://cran.r-project.org/web/packages/pageviews/pageviews.pdf)), para extraer los artículos más leídos diariamente de Wikipedia en español. Este paquete de R interactúa con la API de Wikimedia para extraer datos de tráfico de sus diferentes proyectos.
+
+```{r eval = FALSE}
+# Cargamos paquetes
+library(pageviews)
+library(dplyr)
+
+# Número de artículos a extraer
+n <- 7
+
+# Extraemos datos de ayer, excluimos páginas especiales
+top <- top_articles(project = "es.wikipedia", start = Sys.Date() - 1) %>%
+       filter(!grepl(":", article)) %>%
+       head(n)
+
+# Se construye el tuit
+top$article <- gsub("_", " ", top$article)
+tuit <- paste0("Top ", n, " Wikipedia de ayer [visitas]: ",
+               top$article[1], " [", top$views[1], "]")
+for(i in 2:n) tuit <- paste0(tuit, ", ", top$article[i], " [", top$views[i], "]")
+tuit <- paste0(tuit, ".")
+
+# Conectamos con twitter, usando las claves obtenidas en el paso 2.
+library("rtweet")
+token <- create_token(
+  app = "nombre de la aplicación",
+  consumer_key = "XXX",
+  consumer_secret = "XXX",
+  access_token = "XXX",
+  access_secret = "XXX")
+
+# Tuiteamos:
+post_tweet(tuit)
+
+# Por último, y depende de lo que hayamos programado, puede ser de
+# utilidad guardar un archivo de todo lo publicado.
+write(tuit, paste0("RUTA/Archive/tuit_", Sys.Date() - 1, ".csv"))
+```
+
+Antes de avanzar hasta el siguiente paso, debes comprobar que tu script funciona perfectamente. Para ello, puedes publicar algunos tuits de prueba. Un error común que puedes encontrar en este paso es que tu tuit supere los 280 caracteres. Si es el caso, replantea tu código para acortar el texto, o puedes pedirle a R que sólo tuitee cuando la longitud es correcta, con algo como:
+
+```{r eval = FALSE}
+if(nchar(tuit) <= 280) post_tweet(tuit)
+```
+
+### Paso 4. Programa el script para que se repita.
+
+En este último paso, intentaremos automatizar el proceso, para no tener que ejecutar el script manualmente cada vez que queremos publicar un tuit. El proceso a seguir dependerá del Sistema Operativo de tu ordenador.
+
+#### **Windows**
+
+En Windows, usa el "Programador de Tareas", una herramienta de Windows que viene instalada con el sistema operativo. Pero no tienes que abrirlo: descarga el paquete `taskscheduleR` (en [GitHub](https://github.com/bnosac/taskscheduleR)), que añade a RStudio un add-in que facilita el diálogo con el Programador de Tareas. Desde ahí, podrás añadir o borrar tareas.
+
+Para añadir la tarea: selecciona tu script, el periodo de repetición, y el momento de inicio.
+
+![](https://raw.githubusercontent.com/bnosac/taskscheduleR/master/vignettes/taskscheduleR-rstudioaddin.png)
+
+Si quieres modificar algo del script tras haber creado la tarea tendrás que borrar la tarea anterior y crear una nueva con el script modificado, porque `taskscheduleR` crea una copia de tu .R cada vez que creas una tarea nueva.
+
+Y si quieres opciones más específicas tendrás que abrir el Programador de Tareas de Windows, donde verás la tarea que ha sido creada desde RStudio. Para favorecer el automatismo, en botón derecho ➡️ Propiedades, recomiendo marcar las casillas "Activar equipo para ejecutar" y "Ejecutar tanto si el usuario inició sesión como si no".
+
+De esta forma, el tuit se publicará salvo que el ordenador esté apagado o sin conexión a Internet.
+
+#### **Mac/Linux**
+
+Los usuarios de Mac deberéis usar [Automator](https://support.apple.com/en-gb/guide/automator/welcome/mac), el equivalente al programador de tareas de Windows. Podéis seguir [este mini-tutorial](https://www.r-bloggers.com/how-to-source-an-r-script-automatically-on-a-mac-using-automator-and-ical/) sobre cómo usarlo con R.
+
+Los usuarios de Linux podéis usar el paquete `cronR` (en (GitHub)(https://github.com/bnosac/cronR), de los mismos desarrolladores de `taskscheduleR` y que incluye un add-in para RStudio similar al visto anteriormente. Esta opción quizá también funcione para Mac, hacédmelo saber si lo probáis.
+
+Como último consejo, te recomiendo que sigas tu cuenta bot recién creada desde otra cuenta de Twitter, para estar al tanto de las nuevas publicaciones activando las notificaciones de todos sus tuits.
+ 
+### ¡Y hasta aquí el tutorial! Espero que te haya sido de utilidad, y te recomiendo seguir la cuenta de **[\@BotWikipedia](https://twitter.com/BotWikipedia)**. **[Contacta conmigo](/about/)** para enseñarme tu bot, o para consultarme cualquier duda con respecto al tutorial.
+

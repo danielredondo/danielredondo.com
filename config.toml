@@ -46,10 +46,10 @@ paginatepath = "page"
     identifier = "posts"
     url = "/posts/"
 [[menu.main]]
-    name = "PAPERS"
+    name = "PUBLICACIONES"
     weight = 110
-    identifier = "papers"
-    url = "/papers/"
+    identifier = "publicaciones"
+    url = "/publicaciones/"
 [[menu.main]]
     name = "APLICACIONES WEB"
     weight = 130

@@ -35,11 +35,11 @@ ggplot(data = estadisticas, aes(GF, Pt, label = equipo)) +geom_point() + geom_s
     </item>
     
     <item>
-      <title>Papers</title>
-      <link>/papers/</link>
+      <title>Publicaciones</title>
+      <link>/publicaciones/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/papers/</guid>
+      <guid>/publicaciones/</guid>
       <description>Educational Note: Paradoxical Collider Effect in the Analysis of Non-Communicable Disease Epidemiological Data: a reproducible illustration and web application. Miguel Angel Luque-Fernandez, Michael Schomaker, Daniel Redondo-Sánchez, Maria Jose Sanchez Perez, Anand Vaidya, Mireille E Schnitzer International Journal of Epidemiology (Link - Open Access)
  Standardizing effect size from linear regression models with log-transformed variables for meta-analysis.
 Miguel Rodríguez-Barranco, Aurelio Tobías, Daniel Redondo, Elena Molina-Portillo et al.
@@ -58,6 +58,17 @@ Trabajo con R* (shiny, ggplot, leaflet, &amp;hellip;), Microsoft Access (SQL + V
 * (De hecho, esta web está hecha con R y blogdown.)
 Puedes encontrarme en:  Twitter: @dredondosanchez
  Github: danielredondo Correo: danielredondosanchez [at] hotmail.</description>
+    </item>
+    
+    <item>
+      <title>Creando un bot de Twitter usando R: @BotWikipedia</title>
+      <link>/posts/20190224_botwikipedia/</link>
+      <pubDate>Sun, 24 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/20190224_botwikipedia/</guid>
+      <description>Un bot, según la Wikipedia, es un programa informático que efectúa automáticamente tareas repetitivas a través de Internet, cuya realización por parte de una persona sería imposible o muy tediosa.
+En esta publicación encontrarás un tutorial sobre cómo hacer un bot que tuiteará automáticamente usando el programa todoterreno R.
+Este tutorial está basado en mi propia experiencia creando @BotWikipedia, una cuenta que tuitea diariamente sobre lo más leído de la Wikipedia en español.</description>
     </item>
     
     <item>
