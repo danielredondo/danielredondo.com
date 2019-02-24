@@ -11,10 +11,7 @@ Un bot, [según la Wikipedia](https://es.wikipedia.org/wiki/Bot), es un programa
 
 En esta publicación encontrarás un tutorial sobre cómo hacer un bot que tuiteará automáticamente usando el programa todoterreno R.  
 
-## Este tutorial está basado en mi propia experiencia creando **[\@BotWikipedia](https://twitter.com/BotWikipedia)**, una cuenta que tuitea diariamente sobre lo más leído de la Wikipedia en español.  
-
-![](\posts\20190224_botwikipedia\tweet.png)
-*Tuit con lo más leído el Día de San Valentín*
+## Este tutorial está basado en mi propia experiencia creando **[\@BotWikipedia](https://twitter.com/BotWikipedia)**, una cuenta que tuitea diariamente sobre lo más leído de la Wikipedia en español.   
 
 ### Paso 1. Instala R, RStudio, y el paquete `rtweet`.
 
