@@ -13,6 +13,9 @@ En esta publicación encontrarás un tutorial sobre cómo hacer un bot que tuite
 
 ## Este tutorial está basado en mi propia experiencia creando **[\@BotWikipedia](https://twitter.com/BotWikipedia)**, una cuenta que tuitea diariamente sobre lo más leído de la Wikipedia en español.   
 
+![](\posts\20190224_botwikipedia\tweet14f.png)
+*Artículos más leídos del 14 de Febrero*
+
 ### Paso 1. Instala R, RStudio, y el paquete `rtweet`.
 
 Aunque hace unos meses el principal paquete para trabajar con Twitter desde R era `twitteR` (en [GitHub](https://github.com/geoffjentry/twitteR)), está empezando a estar obsoleto en favor de `rtweet` (en [GitHub](https://github.com/mkearney/rtweet)). Entre las limitaciones de `twitteR` he encontrado dos muy molestas: tiene problemas con las tildes, y no permite tuitear más de 140 caracteres.
