@@ -1,6 +1,6 @@
 ---
-date: 2018-04-18
 title: "iDEAL, la web para visualizar noticias del IDEAL"
+date: '2018-04-18'
 tags: ["web scraping"]
 ---
 

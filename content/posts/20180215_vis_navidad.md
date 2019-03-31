@@ -1,9 +1,8 @@
-+++
-title = "Visualizando... la lotería de Navidad"
-description = ""
-tags = ["visualizando"]
-date = "2018-02-15"
-+++
+---
+title: 'Visualizando... la lotería de Navidad'
+tags: ["visualizando"]
+date: "2018-02-15"
+---
 
 Bienvenidos a la primera publicación de este blog. En la sección “Visualizando... ”, analizaremos gráficamente algún contenido interesante, buscando comunicar de forma clara y concisa. Comenzaremos esta sección con una interpretación de la lotería de Navidad de 2017.
 

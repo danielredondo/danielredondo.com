@@ -51,10 +51,10 @@
 		
 		
 				<li>
-					<a href="/posts/"> <span>POSTS</span></a>
+					<a href="/posts/"> <span>BLOG</span></a>
 				</li>
 				<li>
-					<a href="/publicaciones/"> <span>PUBLICACIONES</span></a>
+					<a href="/publicaciones/"> <span>PUBLICACIONES CIENTÍFICAS</span></a>
 				</li>
 				<li>
 					<a href="/aplicaciones/"> <span>APLICACIONES WEB</span></a>
@@ -119,16 +119,10 @@
 <div id="estos-datos-son-abiertos-cualquiera-puede-descargarlos.-pero-cualquiera-puede-abrirlos-y-trabajar-con-ellos" class="section level2">
 <h2>Estos datos son abiertos: cualquiera puede descargarlos. Pero… ¿cualquiera puede abrirlos y trabajar con ellos?</h2>
 <p>La información de la ENS para adultos se proporciona como un fichero de ancho fijo, de la siguiente forma:</p>
-<div class="figure">
-<img src="\posts\20181010_ens\base_datos.png" />
-
-</div>
+<p><img src="\posts\20181010_ens\base_datos.png" /></p>
 <p>Este archivo puede desmotivar a más de uno, ante la incapacidad de llevarse esta información a un entorno de trabajo en el que se encuentre cómodo.</p>
 <p>Para importar esta base de datos a R, nos vamos a ayudar del fichero Excel que adjunta la ENS con el diseño de la encuesta, que consta de las variables “VARIABLE INE”, “LONGITUD”, “POSICIÓN INICIO”, “POSICIÓN FINAL”, y “DESCRIPCIÓN DEL CAMPO”.</p>
-<div class="figure">
-<img src="\posts\20181010_ens\excel.png" />
-
-</div>
+<p><img src="\posts\20181010_ens\excel.png" /></p>
 <p>Con el siguiente código, podemos importar la ENS en R:</p>
 <pre class="r"><code># Cargamos los paquetes necesarios
 library(openxlsx)
@@ -148,10 +142,7 @@ tabla &lt;- read.fwf(&quot;Adultos_2017/MICRODAT.CA.txt&quot;, widths = anchos, 
 # Obtenemos un diccionario de la base de datos
 diccionario &lt;- data.frame(variable = campos$X1, descripcion = campos$X5)</code></pre>
 <p>En <code>tabla</code> tenemos la base de datos de la ENS, y en <code>diccionario</code> una lista con los nombres de las variables y su descripción:</p>
-<div class="figure">
-<img src="\posts\20181010_ens\diccionario.png" />
-
-</div>
+<p><img src="\posts\20181010_ens\diccionario.png" /></p>
 <p>Ya tenemos la ENS importada en R, y podemos comenzar a analizar los datos, como por ejemplo, un simple descriptivo de la altura, con un gráfico.</p>
 <pre class="r"><code># Ejemplo de uso: altura en cm
 diccionario %&gt;% filter(variable == &quot;S109&quot;)
@@ -161,15 +152,9 @@ tabla %&gt;% select(S109) %&gt;% filter(S109 != 998 &amp; S109 != 999) %&gt;% su
 
 # Gráfico (quitando los no sabe / no contesta)
 tabla %&gt;% select(S109) %&gt;% filter(S109 != 998 &amp; S109 != 999) %&gt;% table %&gt;% plot(xlab = &quot;Altura&quot;, ylab = &quot;Frecuencia&quot;)</code></pre>
-<div class="figure">
-<img src="\posts\20181010_ens\altura.png" />
-
-</div>
+<p><img src="\posts\20181010_ens\altura.png" /></p>
 <p>La altura mínima fue de 120cm, mientras que la máxima fue de 204cm, con una media de unos 167 cm.</p>
-<div class="figure">
-<img src="\posts\20181010_ens\grafico.png" />
-
-</div>
+<p><img src="\posts\20181010_ens\grafico.png" /></p>
 <p>Agradezco a mi compañera <a href="https://twitter.com/DafinaPetrova">Dafina</a> su interés en este tema, me dio un rompecabezas muy interesante.</p>
 </div>
 

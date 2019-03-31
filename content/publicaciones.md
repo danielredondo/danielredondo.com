@@ -1,5 +1,5 @@
 ---
-title: "Publicaciones"
+title: "Publicaciones científicas"
 type: about
 weight: 10
 ---

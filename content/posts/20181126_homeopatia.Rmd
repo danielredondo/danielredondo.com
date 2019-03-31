@@ -1,6 +1,6 @@
 ---
 title: "Desde la homeopatía hasta la ciudadanía informada: análisis rápido de la Encuesta Nacional de Salud de 2017"
-date: "2018-11-26"
+date: '2018-11-26'
 ---
 
 *Autores: Jesús Henares-Montiel, Dafina Petrova, Daniel Redondo-Sánchez*
@@ -78,7 +78,7 @@ tabla$CLASE_PR <- tabla$CLASE_PR %>% as.factor %>% droplevels %>% factor(labels 
 
 tabla$SEXOa <- tabla$SEXOa %>% factor(labels=c("Hombre", "Mujer"))
 
-tabla$Edad_grupos[tabla$EDADa <= 29] = "15-19"
+tabla$Edad_grupos[tabla$EDADa <= 29] = "15-29"
 tabla$Edad_grupos[tabla$EDADa > 29 & tabla$EDADa <= 64] = "30-64"
 tabla$Edad_grupos[tabla$EDADa >= 65] = "65+"
 tabla$Edad_grupos <- tabla$Edad_grupos %>% as.factor()

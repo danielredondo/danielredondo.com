@@ -1,5 +1,5 @@
 ---
-date: 2018-05-02
+date: '2018-05-02'
 title: "Desastre gráfico: El Granada CF y su filial"
 tags: ["futbol"]
 ---

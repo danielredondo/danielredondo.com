@@ -1,8 +1,7 @@
 ---
-date: 2018-05-24
 title: Visualizando... la Liga (o cómo añadir imágenes a un ggplot)
 tags: ["futbol", "visualizando"]
-weight: 10
+date: '2018-05-24'
 ---
 
 <p>Ahora que ha terminado la Liga, es buen momento para echar la vista atrás y

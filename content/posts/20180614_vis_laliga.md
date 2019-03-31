@@ -1,5 +1,5 @@
 ---
-date: 2018-06-14
+date: '2018-06-14'
 title: "Visualizando... la Liga (estadísticas individuales)"
 tags: ["futbol", "visualizando"]
 ---

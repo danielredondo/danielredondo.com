@@ -1,6 +1,6 @@
 ---
-date: 2018-07-08
 title: "Migración Tumblr - blogdown y Hugo"
+date: '2018-07-08'
 ---
 
 Como podéis observar, **me he mudado de Tumblr**. Mi nueva web está hecha con *blogdown*, *Hugo* y *Netlify*, así que ahora **dirijo mi página sin salir de RStudio**, lo que es un placer inmenso. Ha sido un proceso largo, pero en el que he aprendido mucho.

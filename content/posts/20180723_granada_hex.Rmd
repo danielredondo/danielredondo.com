@@ -1,5 +1,5 @@
 ---
-date: 2018-07-23
+date: '2018-07-23'
 title: "Mapa de Granada con logos hexagonales de paquetes de R"
 tags: ["mapas"]
 ---

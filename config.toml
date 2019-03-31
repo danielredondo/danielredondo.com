@@ -4,7 +4,7 @@ theme = "hyde-hyde"
 languageCode = "en"
 ignoreFiles     = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
 title = "Daniel Redondo"
-paginate = 5
+paginate = 7
 paginatepath = "page"
 
      
@@ -41,12 +41,12 @@ paginatepath = "page"
 
 ## Main Menu
 [[menu.main]]
-    name = "POSTS"
+    name = "BLOG"
     weight = 100
     identifier = "posts"
     url = "/posts/"
 [[menu.main]]
-    name = "PUBLICACIONES"
+    name = "PUBLICACIONES CIENTÍFICAS"
     weight = 110
     identifier = "publicaciones"
     url = "/publicaciones/"
