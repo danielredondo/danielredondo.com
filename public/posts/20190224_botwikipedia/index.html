@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
     
     
-    <meta name="generator" content="Hugo 0.53" />
+    <meta name="generator" content="Hugo 0.42.1" />
     
     <title>Creando un bot de Twitter usando R: @BotWikipedia &middot; Daniel Redondo</title>
     <meta content="Creando un bot de Twitter usando R: @BotWikipedia - Daniel Redondo" property="og:title">
@@ -124,10 +124,7 @@
       </span>  
   </div>    
   
-  
-
-
-<p>Un bot, <a href="https://es.wikipedia.org/wiki/Bot">según la Wikipedia</a>, es un programa informático que efectúa automáticamente tareas repetitivas a través de Internet, cuya realización por parte de una persona sería imposible o muy tediosa.</p>
+  <p>Un bot, <a href="https://es.wikipedia.org/wiki/Bot">según la Wikipedia</a>, es un programa informático que efectúa automáticamente tareas repetitivas a través de Internet, cuya realización por parte de una persona sería imposible o muy tediosa.</p>
 <p>En esta publicación encontrarás un tutorial sobre cómo hacer un bot que tuiteará automáticamente usando el programa todoterreno R.</p>
 <div id="este-tutorial-esta-basado-en-mi-propia-experiencia-creando-botwikipedia-una-cuenta-que-tuitea-diariamente-sobre-lo-mas-leido-de-la-wikipedia-en-espanol." class="section level2">
 <h2>Este tutorial está basado en mi propia experiencia creando <strong><a href="https://twitter.com/BotWikipedia">@BotWikipedia</a></strong>, una cuenta que tuitea diariamente sobre lo más leído de la Wikipedia en español.</h2>
@@ -157,35 +154,52 @@
 <h3>Paso 3. Crea el script que quieras automatizar.</h3>
 <p>Crearemos un script normal de R (un archivo .R) que contenga el proceso que queremos automatizar, conectaremos con Twitter usando las claves obtenidas en el paso anterior, y finalizaremos tuiteando con <code>rtweet::post_tweet</code>.</p>
 <p>Por ejemplo, para <a href="https://twitter.com/BotWikipedia">@BotWikipedia</a>, he escrito un script que usa el paquete <code>pageviews</code> (<a href="https://cran.r-project.org/web/packages/pageviews/pageviews.pdf">manual en PDF</a>), para extraer los artículos más leídos diariamente de Wikipedia en español. Este paquete de R interactúa con la API de Wikimedia para extraer datos de tráfico de sus diferentes proyectos.</p>
+<p>El script es el siguiente, y se puede encontrar también en <a href="https://github.com/danielredondo/BotWikipedia_with_R/blob/master/botwikipedia_github.R">GitHub</a>.</p>
 <pre class="r"><code># Cargamos paquetes
-library(pageviews)
 library(dplyr)
+library(pageviews)
 
 # Número de artículos a extraer
-n &lt;- 7
+n &lt;- 15
 
 # Extraemos datos de ayer, excluimos páginas especiales
 top &lt;- top_articles(project = &quot;es.wikipedia&quot;, start = Sys.Date() - 1) %&gt;%
-       filter(!grepl(&quot;:&quot;, article)) %&gt;%
-       head(n)
+  filter(!grepl(&quot;:&quot;, article)) %&gt;%
+  head(n)
+top$article &lt;- gsub(&quot;_&quot;, &quot; &quot;, top$article)
 
 # Se construye el tuit
-top$article &lt;- gsub(&quot;_&quot;, &quot; &quot;, top$article)
-tuit &lt;- paste0(&quot;Top &quot;, n, &quot; Wikipedia de ayer [visitas]: &quot;,
-               top$article[1], &quot; [&quot;, top$views[1], &quot;]&quot;)
+tuit &lt;- paste0(&quot;Top &quot;, n, &quot; Wikipedia de ayer [visitas]: &quot;, top$article[1], &quot; [&quot;, top$views[1], &quot;]&quot;)
 for(i in 2:n) tuit &lt;- paste0(tuit, &quot;, &quot;, top$article[i], &quot; [&quot;, top$views[i], &quot;]&quot;)
 tuit &lt;- paste0(tuit, &quot;.&quot;)
+
+while(nchar(tuit) &gt; 280) {
+  # Si el tuit no cabe en 280 caracteres, se reduce n
+  n &lt;- n - 1
+  
+  # Extraemos datos de ayer, excluimos páginas especiales
+  top &lt;- top_articles(project = &quot;es.wikipedia&quot;, start = Sys.Date() - 1) %&gt;%
+    filter(!grepl(&quot;:&quot;, article)) %&gt;%
+    head(n)
+  top$article &lt;- gsub(&quot;_&quot;, &quot; &quot;, top$article)
+  
+  # Se construye el tuit
+  tuit &lt;- paste0(&quot;Top &quot;, n, &quot; Wikipedia de ayer [visitas]: &quot;, top$article[1], &quot; [&quot;, top$views[1], &quot;]&quot;)
+  for(i in 2:n) tuit &lt;- paste0(tuit, &quot;, &quot;, top$article[i], &quot; [&quot;, top$views[i], &quot;]&quot;)
+  tuit &lt;- paste0(tuit, &quot;.&quot;)
+  print(n)
+}
 
 # Conectamos con twitter, usando las claves obtenidas en el paso 2.
 library(&quot;rtweet&quot;)
 token &lt;- create_token(
   app = &quot;nombre de la aplicación&quot;,
-  consumer_key = &quot;XXX&quot;,
-  consumer_secret = &quot;XXX&quot;,
-  access_token = &quot;XXX&quot;,
-  access_secret = &quot;XXX&quot;)
+  consumer_key = &quot;XXXX&quot;,
+  consumer_secret = &quot;XXXXX&quot;,
+  access_token = &quot;XXXXX&quot;,
+  access_secret = &quot;XXXXX&quot;)
 
-# Tuiteamos:
+# Tuiteamos
 post_tweet(tuit)
 
 # Por último, y depende de lo que hayamos programado, puede ser de
@@ -238,7 +252,7 @@ write(tuit, paste0(&quot;RUTA/Archive/tuit_&quot;, Sys.Date() - 1, &quot;.csv&qu
         </div>
         
         
-<script type="application/javascript">
+<script>
 var doNotTrack = false;
 if (!doNotTrack) {
 	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;

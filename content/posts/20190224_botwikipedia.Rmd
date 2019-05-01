@@ -38,36 +38,55 @@ Crearemos un script normal de R (un archivo .R) que contenga el proceso que quer
 
 Por ejemplo, para [\@BotWikipedia](https://twitter.com/BotWikipedia), he escrito un script que usa el paquete `pageviews` ([manual en PDF](https://cran.r-project.org/web/packages/pageviews/pageviews.pdf)), para extraer los artículos más leídos diariamente de Wikipedia en español. Este paquete de R interactúa con la API de Wikimedia para extraer datos de tráfico de sus diferentes proyectos.
 
+El script es el siguiente, y se puede encontrar también en [GitHub](https://github.com/danielredondo/BotWikipedia_with_R/blob/master/botwikipedia_github.R).
+
 ```{r eval = FALSE}
+
 # Cargamos paquetes
-library(pageviews)
 library(dplyr)
+library(pageviews)
 
 # Número de artículos a extraer
-n <- 7
+n <- 15
 
 # Extraemos datos de ayer, excluimos páginas especiales
 top <- top_articles(project = "es.wikipedia", start = Sys.Date() - 1) %>%
-       filter(!grepl(":", article)) %>%
-       head(n)
+  filter(!grepl(":", article)) %>%
+  head(n)
+top$article <- gsub("_", " ", top$article)
 
 # Se construye el tuit
-top$article <- gsub("_", " ", top$article)
-tuit <- paste0("Top ", n, " Wikipedia de ayer [visitas]: ",
-               top$article[1], " [", top$views[1], "]")
+tuit <- paste0("Top ", n, " Wikipedia de ayer [visitas]: ", top$article[1], " [", top$views[1], "]")
 for(i in 2:n) tuit <- paste0(tuit, ", ", top$article[i], " [", top$views[i], "]")
 tuit <- paste0(tuit, ".")
+
+while(nchar(tuit) > 280) {
+  # Si el tuit no cabe en 280 caracteres, se reduce n
+  n <- n - 1
+  
+  # Extraemos datos de ayer, excluimos páginas especiales
+  top <- top_articles(project = "es.wikipedia", start = Sys.Date() - 1) %>%
+    filter(!grepl(":", article)) %>%
+    head(n)
+  top$article <- gsub("_", " ", top$article)
+  
+  # Se construye el tuit
+  tuit <- paste0("Top ", n, " Wikipedia de ayer [visitas]: ", top$article[1], " [", top$views[1], "]")
+  for(i in 2:n) tuit <- paste0(tuit, ", ", top$article[i], " [", top$views[i], "]")
+  tuit <- paste0(tuit, ".")
+  print(n)
+}
 
 # Conectamos con twitter, usando las claves obtenidas en el paso 2.
 library("rtweet")
 token <- create_token(
   app = "nombre de la aplicación",
-  consumer_key = "XXX",
-  consumer_secret = "XXX",
-  access_token = "XXX",
-  access_secret = "XXX")
+  consumer_key = "XXXX",
+  consumer_secret = "XXXXX",
+  access_token = "XXXXX",
+  access_secret = "XXXXX")
 
-# Tuiteamos:
+# Tuiteamos
 post_tweet(tuit)
 
 # Por último, y depende de lo que hayamos programado, puede ser de
