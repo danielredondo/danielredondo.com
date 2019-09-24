@@ -6,16 +6,21 @@ type: about
 
 <img src="/about/logo_about.jpeg" alt="logo" style="width: 75%;"/>
 
+Soy **Daniel Redondo Sánchez**, y entre mi formación destaco:
 
-Soy **Daniel Redondo Sánchez**, y soy matemático. Trabajo como investigador del cáncer.
+- Licenciatura en Matemáticas
+- Máster de Matemáticas
+- Experto en Epidemiología e Investigación Clínica
 
-Aquí encontrarás publicaciones sobre [visualización de datos](/tags/visualizando/), [aplicaciones web](/aplicaciones/) y otros temas que me resultan interesantes y  desarrollo en mi tiempo libre.
+Trabajo como técnico de investigación del cáncer en el Instituto de Investigación Biosanitaria ibs.GRANADA.
 
-Trabajo con `R`**\*** (`shiny`, `ggplot`, `leaflet`, ...), `Microsoft Access` (`SQL` + `VBA`) y `Stata`.
+En esta web encontrarás publicaciones sobre [visualización de datos](/tags/visualizando/), [aplicaciones web](/aplicaciones/) y otros temas que me resultan interesantes y  desarrollo en mi tiempo libre.
+
+Trabajo principalmente con `R`**\*** (`shiny`, `ggplot2`, `leaflet`, ...), `Microsoft Access` (`SQL` + `VBA`) y `Stata`.
 
 **\*** (De hecho, esta web está hecha con `R` y `blogdown`.)
 
-## Puedes encontrarme en:
+## También puedes encontrarme en:
 
 * Twitter: [@dredondosanchez](https://twitter.com/dredondosanchez)  
 * Github: [danielredondo](https://github.com/danielredondo)
