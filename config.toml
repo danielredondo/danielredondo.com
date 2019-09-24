@@ -5,7 +5,7 @@ languageCode = "en"
 ignoreFiles     = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
 title = "Daniel Redondo"
 paginate = 7
-paginatepath = "page"
+# paginatepath = "page"
 
      
 ## Hugo Built-in Features
@@ -18,8 +18,8 @@ paginatepath = "page"
     author = "Daniel Redondo"
     description = "danielredondo.com"
     authorimage = "/img/piramide.png"
-    dateformat = "Jan 2, 2006"
-    themeColor = "theme-custom-drs"
+    dateformat = "2006-01-02"
+    # themeColor = "theme-custom-drs" # Para cambiar colores: \themes\hyde-hyde\assets\scss\hyde-hyde\_variables.scss
     highlightjs = true
     highlightjsstyle = "github"
     highlightjslanguages = ["r"]

@@ -1,29 +1,60 @@
 <!DOCTYPE html>
-<html lang="en" class="wf-firasans-n4-active wf-active">
-	<head>
+<html lang="en">
+    
+    
+
+
+    <head>
     <link href="https://gmpg.org/xfn/11" rel="profile">
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- Enable responsiveness on mobile devices -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Cache-Control" content="public" />
+<!-- Enable responsiveness on mobile devices -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.58.3" />
+
     
     
-    <meta name="generator" content="Hugo 0.42.1" />
     
-    <title>Creando un bot de Twitter usando R: @BotWikipedia &middot; Daniel Redondo</title>
-    <meta content="Creando un bot de Twitter usando R: @BotWikipedia - Daniel Redondo" property="og:title">
-    <meta content=" - " property="og:description">
-    <!-- CSS -->
-    <link href="https://fonts.googleapis.com/css?family=Fira+Sans:300,300i,400,400i|Roboto+Mono:300,300i,400,400i" rel="stylesheet">
-    <link rel="stylesheet" href="/css/print.css" media="print">
-    <link rel="stylesheet" href="/css/poole.css">
-    <link rel="stylesheet" href="/css/hyde.css">
-    <!-- Font-Awesome -->
-    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js" integrity="sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe" crossorigin="anonymous"></script>
-    <!-- highlight.js-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
-    <!-- Customised CSS -->
-    <link rel="stylesheet" href="/css/custom.css">
+
+<title>Creando un bot de Twitter usando R: @BotWikipedia • Daniel Redondo</title>
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Creando un bot de Twitter usando R: @BotWikipedia"/>
+<meta name="twitter:description" content="Un bot, según la Wikipedia, es un programa informático que efectúa automáticamente tareas repetitivas a través de Internet, cuya realización por parte de una persona sería imposible o muy tediosa.
+En esta publicación encontrarás un tutorial sobre cómo hacer un bot que tuiteará automáticamente usando el programa todoterreno R.
+Este tutorial está basado en mi propia experiencia creando @BotWikipedia, una cuenta que tuitea diariamente sobre lo más leído de la Wikipedia en español."/>
+
+<meta property="og:title" content="Creando un bot de Twitter usando R: @BotWikipedia" />
+<meta property="og:description" content="Un bot, según la Wikipedia, es un programa informático que efectúa automáticamente tareas repetitivas a través de Internet, cuya realización por parte de una persona sería imposible o muy tediosa.
+En esta publicación encontrarás un tutorial sobre cómo hacer un bot que tuiteará automáticamente usando el programa todoterreno R.
+Este tutorial está basado en mi propia experiencia creando @BotWikipedia, una cuenta que tuitea diariamente sobre lo más leído de la Wikipedia en español." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/posts/20190224_botwikipedia/" />
+<meta property="article:published_time" content="2019-02-24T00:00:00+00:00" />
+<meta property="article:modified_time" content="2019-02-24T00:00:00+00:00" />
+
+
+    
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/scss/hyde-hyde.9e8ea8827e8c49bc2e0e658d3103a33ada1814e1f04207faccfc5b5b41008ecf.css" integrity="sha256-no6ogn6MSbwuDmWNMQOjOtoYFOHwQgf6zPxbW0EAjs8=">
+
+
+<link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
+
+
+
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -31,50 +62,83 @@
     <![endif]-->
     <!-- Icons -->
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
-    <link rel="shortcut icon" href="/img/favicon.png">
+    <link rel="shortcut icon" href="/favicon.png">
     
+</head>
 
-	</head>
-    <body class="theme-custom-drs ">
-        <div class="sidebar">
-  <div class="container text-center ">
-    <div class="sidebar-about text-center">
-      <a href="/"><h1 class="brand">Daniel Redondo</h1></a>
-       <img src="/img/piramide.png" alt="Author Image" class="img-circle headshot center"> 
-      <p class="lead">
+
+    <body class=" ">
+    
+<div class="sidebar">
+  <div class="container ">
+    <div class="sidebar-about">
+      <span class="site__title">
+        <a href="/">Daniel Redondo</a>
+      </span>
+      
+        
+        
+        
+        <div class="author-image">
+          <img src="/img/piramide.png" alt="Author Image" class="img--circle img--headshot element--center">
+        </div>
+        
+      
+      
+      <p class="site__description">
          danielredondo.com 
       </p>
     </div>
-    
-<div>
+    <div class="collapsible-menu">
+      <input type="checkbox" id="menuToggle">
+      <label for="menuToggle">Daniel Redondo</label>
+      <div class="menu-content">
+        <div>
 	<ul class="sidebar-nav">
+		 
+		 
+			 
+				<li>
+					<a href="/posts/">
+						<span>BLOG</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/publicaciones/">
+						<span>PUBLICACIONES CIENTÍFICAS</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/aplicaciones/">
+						<span>APLICACIONES WEB</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/about/">
+						<span>SOBRE MÍ</span>
+					</a>
+				</li>
+			 
 		
-		
-				<li>
-					<a href="/posts/"> <span>BLOG</span></a>
-				</li>
-				<li>
-					<a href="/publicaciones/"> <span>PUBLICACIONES CIENTÍFICAS</span></a>
-				</li>
-				<li>
-					<a href="/aplicaciones/"> <span>APLICACIONES WEB</span></a>
-				</li>
-				<li>
-					<a href="/about/"> <span>SOBRE MÍ</span></a>
-				</li>
-		</li>
 	</ul>
 </div>
 
-    <p>
-      <section class="row text-center">
+        <section class="social">
 	
-	<a href="https://twitter.com/dredondosanchez"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a>
-	
+	<a href="https://twitter.com/dredondosanchez" rel="me"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a>
 	
 	
-	&nbsp;<a href="https://github.com/danielredondo"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
 	
+	<a href="https://github.com/danielredondo" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
 	
 	
 	
@@ -84,71 +148,79 @@
 	
 	
 	
-	&nbsp;<a href="mailto:danielredondosanchez@hotmail.com"><i class="fas fa-at fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	<a href="mailto:danielredondosanchez@hotmail.com" rel="me"><i class="fas fa-at fa-lg" aria-hidden="true"></i></a>
 	
 </section>
 
-    </p>
-    <p class="copyright">&copy; 2019 Daniel Redondo.
-      <a href="https://creativecommons.org/licenses/by/4.0"><br/>Some Rights Reserved</a>.<br/>Built with <a href="https://github.com/rstudio/blogdown">blogdown</a>, <a href="https://gohugo.io/">Hugo</a> &amp; <a href="https://github.com/htr3n/hyde-hyde">hyde-hyde</a>.
-    </p>
-  </div>
-  <div>
+      </div>
+    </div>
+    
+
+
   </div>
 </div>
 
         <div class="content container">
-            <div class="post">
-  <h1>Creando un bot de Twitter usando R: @BotWikipedia</h1>
-  
-  <div class="col-sm-12 col-md-12">
-    <span class="text-left post-date meta">
             
-       
-        <i class="fas fa-calendar-alt"></i> Feb 24, 2019
+    
+<article>
+  <header>
+    <h1>Creando un bot de Twitter usando R: @BotWikipedia</h1>
+    
+    
+<div class="post__meta">
+    
+    
+      <i class="fas fa-calendar-alt"></i> 2019-02-24
+    
+    
+    
+    
+    
       
       
+          <br/>
+           <i class="fas fa-tags"></i>
+          
+          <a class="badge badge-tag" href="/tags/twitter">twitter</a>
+          
       
-      
-        
-        
-            <br/>
-             <i class="fas fa-tags"></i>
-            
-            <a class="meta" href="/tags/twitter">twitter</a>
-        
-      
-      
-      <br/>
-      <i class="fas fa-clock"></i> 5 min read 
-      </span>  
-  </div>    
+    
+    
+    <br/>
+    <i class="fas fa-clock"></i> 5 min read
+</div>
+
+
+  </header>
   
-  <p>Un bot, <a href="https://es.wikipedia.org/wiki/Bot">según la Wikipedia</a>, es un programa informático que efectúa automáticamente tareas repetitivas a través de Internet, cuya realización por parte de una persona sería imposible o muy tediosa.</p>
+  
+  <div class="post">
+    
+
+
+<p>Un bot, <a href="https://es.wikipedia.org/wiki/Bot">según la Wikipedia</a>, es un programa informático que efectúa automáticamente tareas repetitivas a través de Internet, cuya realización por parte de una persona sería imposible o muy tediosa.</p>
 <p>En esta publicación encontrarás un tutorial sobre cómo hacer un bot que tuiteará automáticamente usando el programa todoterreno R.</p>
 <div id="este-tutorial-esta-basado-en-mi-propia-experiencia-creando-botwikipedia-una-cuenta-que-tuitea-diariamente-sobre-lo-mas-leido-de-la-wikipedia-en-espanol." class="section level2">
-<h2>Este tutorial está basado en mi propia experiencia creando <strong><a href="https://twitter.com/BotWikipedia">@BotWikipedia</a></strong>, una cuenta que tuitea diariamente sobre lo más leído de la Wikipedia en español.</h2>
-<p><img src="\posts\20190224_botwikipedia\tweet14f.png" /> <em>Artículos más leídos del 14 de Febrero</em></p>
+<h2>Este tutorial está basado en mi propia experiencia creando <a href="https://twitter.com/BotWikipedia">@BotWikipedia</a>, una cuenta que tuitea diariamente sobre lo más leído de la Wikipedia en español.</h2>
+<p><img src="\posts\20190224_botwikipedia\tweet14f.png" />
+<em>Artículos más leídos del 14 de Febrero</em></p>
 <div id="paso-1.-instala-r-rstudio-y-el-paquete-rtweet." class="section level3">
 <h3>Paso 1. Instala R, RStudio, y el paquete <code>rtweet</code>.</h3>
 <p>Aunque hace unos meses el principal paquete para trabajar con Twitter desde R era <code>twitteR</code> (en <a href="https://github.com/geoffjentry/twitteR">GitHub</a>), está empezando a estar obsoleto en favor de <code>rtweet</code> (en <a href="https://github.com/mkearney/rtweet">GitHub</a>). Entre las limitaciones de <code>twitteR</code> he encontrado dos muy molestas: tiene problemas con las tildes, y no permite tuitear más de 140 caracteres.</p>
-<div class="figure">
-<img src="\posts\20190224_botwikipedia\rtweet.png" />
-
-</div>
+<p><img src="\posts\20190224_botwikipedia\rtweet.png" /></p>
 </div>
 <div id="paso-2.-la-burocracia-de-twitter." class="section level3">
 <h3>Paso 2. La burocracia de Twitter.</h3>
-<p>Necesitarás una cuenta de usuario en Twitter. Cuando la tengas, dirígete a <a href="https://developer.twitter.com/en/apply/user" class="uri">https://developer.twitter.com/en/apply/user</a> y solicita una cuenta de desarrollador. Te la asignarán automáticamente, pero tendrás que dar una descripción detallada del uso que darás a la aplicación, y deberás asociar a tu cuenta un número de teléfono, si no lo has hecho ya.</p>
-<div class="figure">
-<img src="\posts\20190224_botwikipedia\twitterapp.PNG" />
-
-</div>
-<p>Una vez completado el proceso, podrás acceder a tu aplicación en <a href="https://developer.twitter.com/en/apps/" class="uri">https://developer.twitter.com/en/apps/</a>. En el apartado “Keys and tokens” tendrás todo lo necesario para conectar con R en el siguiente paso.</p>
-<div class="figure">
-<img src="\posts\20190224_botwikipedia\tokens.PNG" />
-
-</div>
+<p>Necesitarás una cuenta de usuario en Twitter. Cuando la tengas, dirígete a <a href="https://developer.twitter.com/en/apply/user">https://developer.twitter.com/en/apply/user</a> y solicita una cuenta de desarrollador. Te la asignarán automáticamente, pero tendrás que dar una descripción detallada del uso que darás a la aplicación, y deberás asociar a tu cuenta un número de teléfono, si no lo has hecho ya.</p>
+<p><img src="\posts\20190224_botwikipedia\twitterapp.PNG" /></p>
+<p>Una vez completado el proceso, podrás acceder a tu aplicación en <a href="https://developer.twitter.com/en/apps/">https://developer.twitter.com/en/apps/</a>. En el apartado “Keys and tokens” tendrás todo lo necesario para conectar con R en el siguiente paso.</p>
+<p><img src="\posts\20190224_botwikipedia\tokens.PNG" /></p>
 </div>
 <div id="paso-3.-crea-el-script-que-quieras-automatizar." class="section level3">
 <h3>Paso 3. Crea el script que quieras automatizar.</h3>
@@ -215,10 +287,7 @@ write(tuit, paste0(&quot;RUTA/Archive/tuit_&quot;, Sys.Date() - 1, &quot;.csv&qu
 <h4><strong>Windows</strong></h4>
 <p>En Windows, usa el “Programador de Tareas”, una herramienta de Windows que viene instalada con el sistema operativo. Pero no tienes que abrirlo: descarga el paquete <code>taskscheduleR</code> (en <a href="https://github.com/bnosac/taskscheduleR">GitHub</a>), que añade a RStudio un add-in que facilita el diálogo con el Programador de Tareas. Desde ahí, podrás añadir o borrar tareas.</p>
 <p>Para añadir la tarea: selecciona tu script, el periodo de repetición, y el momento de inicio.</p>
-<div class="figure">
-<img src="https://raw.githubusercontent.com/bnosac/taskscheduleR/master/vignettes/taskscheduleR-rstudioaddin.png" />
-
-</div>
+<p><img src="https://raw.githubusercontent.com/bnosac/taskscheduleR/master/vignettes/taskscheduleR-rstudioaddin.png" /></p>
 <p>Si quieres modificar algo del script tras haber creado la tarea tendrás que borrar la tarea anterior y crear una nueva con el script modificado, porque <code>taskscheduleR</code> crea una copia de tu .R cada vez que creas una tarea nueva.</p>
 <p>Y si quieres opciones más específicas tendrás que abrir el Programador de Tareas de Windows, donde verás la tarea que ha sido creada desde RStudio. Para favorecer el automatismo, en botón derecho ➡️ Propiedades, recomiendo marcar las casillas “Activar equipo para ejecutar” y “Ejecutar tanto si el usuario inició sesión como si no”.</p>
 <p>De esta forma, el tuit se publicará salvo que el ordenador esté apagado o sin conexión a Internet.</p>
@@ -231,28 +300,40 @@ write(tuit, paste0(&quot;RUTA/Archive/tuit_&quot;, Sys.Date() - 1, &quot;.csv&qu
 </div>
 </div>
 <div id="y-hasta-aqui-el-tutorial-espero-que-te-haya-sido-de-utilidad-y-te-recomiendo-seguir-la-cuenta-de-botwikipedia.-contacta-conmigo-para-ensenarme-tu-bot-o-para-consultarme-cualquier-duda-con-respecto-al-tutorial." class="section level3">
-<h3>¡Y hasta aquí el tutorial! Espero que te haya sido de utilidad, y te recomiendo seguir la cuenta de <strong><a href="https://twitter.com/BotWikipedia">@BotWikipedia</a></strong>. <strong><a href="/about/">Contacta conmigo</a></strong> para enseñarme tu bot, o para consultarme cualquier duda con respecto al tutorial.</h3>
+<h3>¡Y hasta aquí el tutorial! Espero que te haya sido de utilidad, y te recomiendo seguir la cuenta de <a href="https://twitter.com/BotWikipedia">@BotWikipedia</a>. <a href="/about/">Contacta conmigo</a> para enseñarme tu bot, o para consultarme cualquier duda con respecto al tutorial.</h3>
 </div>
 </div>
 
+  </div>
+  
+
+<div class="navigation navigation-single">
+    
+    <a href="/posts/20190210_atractor/" class="navigation-prev">
+      <i aria-hidden="true" class="fa fa-chevron-left"></i>
+      <span class="navigation-tittle">Coloreando atractores</span>
+    </a>
+    
+    
 </div>
-            <div class="footer">
-                <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
 
-<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
 
-<script type="text/javascript">
-    hljs.configure({languages: []});
-    hljs.initHighlightingOnLoad();
-</script>
+  
 
+  
     
 
-            </div>
+
+</article>
+
+
         </div>
         
-        
-<script>
+    
+
+  
+  
+<script type="application/javascript">
 var doNotTrack = false;
 if (!doNotTrack) {
 	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
@@ -262,6 +343,34 @@ if (!doNotTrack) {
 }
 </script>
 <script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+<script defer src="https://use.fontawesome.com/releases/v5.5.0/js/all.js" integrity="sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0" crossorigin="anonymous"></script>
+
+
+    
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+        
+            
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/r.min.js"></script>
+            
+        
+    
+    <script type="text/javascript">
+        
+        hljs.configure({languages: ["r"]});
+        
+        hljs.initHighlightingOnLoad();
+    </script>
+    
+
+
+
+
+    
+
+
 
     </body>
 </html>

@@ -12,6 +12,10 @@ Las siguientes aplicaciones están desarrolladas con `R` y `shiny`.
 
 Desarrollo también aplicaciones de contexto científico, como co-autor junto a [Miguel Ángel Luque-Fernández](https://maluque.netlify.com).
 
+* [Collider](http://watzilei.com/shiny/collider/): Aplicación web que ilustra con fines educacionales un concepto de inferencia causal: el *collider* o colisionador, mediante un ejemplo concreto: la relación edad-consumo diario de sodio-proteinuria-presión arterial sistólica. Publicada como parte de una Educational Note en International Journal of Epidemiology [(Link - Open Access)](https://doi.org/10.1093/ije/dyy275)
+
+![](/aplicaciones/collider.png)
+
 * [Expected date of delivery](http://watzilei.com/shiny/EDL/): Aplicación web que calcula la fecha estimada de un parto y crea un enlace con acontecimientos importantes que ocurrieron ese día.
 
 ![](/aplicaciones/edl.png)
@@ -19,7 +23,3 @@ Desarrollo también aplicaciones de contexto científico, como co-autor junto a 
 * [Parametric Survival Distributions](http://watzilei.com/shiny/Pardist/): Aplicación web para visualizar distintas características (riesgo, riesgo acumulado y función de supervivencia) de las distribuciones paramétricas más populares para modelar datos de tiempo hasta un evento.
 
 ![](pardist.png)
-
-* [Collider](http://watzilei.com/shiny/collider/): Aplicación web que ilustra con fines educacionales un concepto de inferencia causal: el *collider* o colisionador, mediante un ejemplo concreto: la relación edad-consumo diario de sodio-proteinuria-presión arterial sistólica.
-
-![](/aplicaciones/collider.png)

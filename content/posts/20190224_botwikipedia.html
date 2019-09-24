@@ -12,28 +12,20 @@ draft: no
 <p>Un bot, <a href="https://es.wikipedia.org/wiki/Bot">según la Wikipedia</a>, es un programa informático que efectúa automáticamente tareas repetitivas a través de Internet, cuya realización por parte de una persona sería imposible o muy tediosa.</p>
 <p>En esta publicación encontrarás un tutorial sobre cómo hacer un bot que tuiteará automáticamente usando el programa todoterreno R.</p>
 <div id="este-tutorial-esta-basado-en-mi-propia-experiencia-creando-botwikipedia-una-cuenta-que-tuitea-diariamente-sobre-lo-mas-leido-de-la-wikipedia-en-espanol." class="section level2">
-<h2>Este tutorial está basado en mi propia experiencia creando <strong><a href="https://twitter.com/BotWikipedia">@BotWikipedia</a></strong>, una cuenta que tuitea diariamente sobre lo más leído de la Wikipedia en español.</h2>
-<p><img src="\posts\20190224_botwikipedia\tweet14f.png" /> <em>Artículos más leídos del 14 de Febrero</em></p>
+<h2>Este tutorial está basado en mi propia experiencia creando <a href="https://twitter.com/BotWikipedia">@BotWikipedia</a>, una cuenta que tuitea diariamente sobre lo más leído de la Wikipedia en español.</h2>
+<p><img src="\posts\20190224_botwikipedia\tweet14f.png" />
+<em>Artículos más leídos del 14 de Febrero</em></p>
 <div id="paso-1.-instala-r-rstudio-y-el-paquete-rtweet." class="section level3">
 <h3>Paso 1. Instala R, RStudio, y el paquete <code>rtweet</code>.</h3>
 <p>Aunque hace unos meses el principal paquete para trabajar con Twitter desde R era <code>twitteR</code> (en <a href="https://github.com/geoffjentry/twitteR">GitHub</a>), está empezando a estar obsoleto en favor de <code>rtweet</code> (en <a href="https://github.com/mkearney/rtweet">GitHub</a>). Entre las limitaciones de <code>twitteR</code> he encontrado dos muy molestas: tiene problemas con las tildes, y no permite tuitear más de 140 caracteres.</p>
-<div class="figure">
-<img src="\posts\20190224_botwikipedia\rtweet.png" />
-
-</div>
+<p><img src="\posts\20190224_botwikipedia\rtweet.png" /></p>
 </div>
 <div id="paso-2.-la-burocracia-de-twitter." class="section level3">
 <h3>Paso 2. La burocracia de Twitter.</h3>
-<p>Necesitarás una cuenta de usuario en Twitter. Cuando la tengas, dirígete a <a href="https://developer.twitter.com/en/apply/user" class="uri">https://developer.twitter.com/en/apply/user</a> y solicita una cuenta de desarrollador. Te la asignarán automáticamente, pero tendrás que dar una descripción detallada del uso que darás a la aplicación, y deberás asociar a tu cuenta un número de teléfono, si no lo has hecho ya.</p>
-<div class="figure">
-<img src="\posts\20190224_botwikipedia\twitterapp.PNG" />
-
-</div>
-<p>Una vez completado el proceso, podrás acceder a tu aplicación en <a href="https://developer.twitter.com/en/apps/" class="uri">https://developer.twitter.com/en/apps/</a>. En el apartado “Keys and tokens” tendrás todo lo necesario para conectar con R en el siguiente paso.</p>
-<div class="figure">
-<img src="\posts\20190224_botwikipedia\tokens.PNG" />
-
-</div>
+<p>Necesitarás una cuenta de usuario en Twitter. Cuando la tengas, dirígete a <a href="https://developer.twitter.com/en/apply/user">https://developer.twitter.com/en/apply/user</a> y solicita una cuenta de desarrollador. Te la asignarán automáticamente, pero tendrás que dar una descripción detallada del uso que darás a la aplicación, y deberás asociar a tu cuenta un número de teléfono, si no lo has hecho ya.</p>
+<p><img src="\posts\20190224_botwikipedia\twitterapp.PNG" /></p>
+<p>Una vez completado el proceso, podrás acceder a tu aplicación en <a href="https://developer.twitter.com/en/apps/">https://developer.twitter.com/en/apps/</a>. En el apartado “Keys and tokens” tendrás todo lo necesario para conectar con R en el siguiente paso.</p>
+<p><img src="\posts\20190224_botwikipedia\tokens.PNG" /></p>
 </div>
 <div id="paso-3.-crea-el-script-que-quieras-automatizar." class="section level3">
 <h3>Paso 3. Crea el script que quieras automatizar.</h3>
@@ -100,10 +92,7 @@ write(tuit, paste0(&quot;RUTA/Archive/tuit_&quot;, Sys.Date() - 1, &quot;.csv&qu
 <h4><strong>Windows</strong></h4>
 <p>En Windows, usa el “Programador de Tareas”, una herramienta de Windows que viene instalada con el sistema operativo. Pero no tienes que abrirlo: descarga el paquete <code>taskscheduleR</code> (en <a href="https://github.com/bnosac/taskscheduleR">GitHub</a>), que añade a RStudio un add-in que facilita el diálogo con el Programador de Tareas. Desde ahí, podrás añadir o borrar tareas.</p>
 <p>Para añadir la tarea: selecciona tu script, el periodo de repetición, y el momento de inicio.</p>
-<div class="figure">
-<img src="https://raw.githubusercontent.com/bnosac/taskscheduleR/master/vignettes/taskscheduleR-rstudioaddin.png" />
-
-</div>
+<p><img src="https://raw.githubusercontent.com/bnosac/taskscheduleR/master/vignettes/taskscheduleR-rstudioaddin.png" /></p>
 <p>Si quieres modificar algo del script tras haber creado la tarea tendrás que borrar la tarea anterior y crear una nueva con el script modificado, porque <code>taskscheduleR</code> crea una copia de tu .R cada vez que creas una tarea nueva.</p>
 <p>Y si quieres opciones más específicas tendrás que abrir el Programador de Tareas de Windows, donde verás la tarea que ha sido creada desde RStudio. Para favorecer el automatismo, en botón derecho ➡️ Propiedades, recomiendo marcar las casillas “Activar equipo para ejecutar” y “Ejecutar tanto si el usuario inició sesión como si no”.</p>
 <p>De esta forma, el tuit se publicará salvo que el ordenador esté apagado o sin conexión a Internet.</p>
@@ -116,6 +105,6 @@ write(tuit, paste0(&quot;RUTA/Archive/tuit_&quot;, Sys.Date() - 1, &quot;.csv&qu
 </div>
 </div>
 <div id="y-hasta-aqui-el-tutorial-espero-que-te-haya-sido-de-utilidad-y-te-recomiendo-seguir-la-cuenta-de-botwikipedia.-contacta-conmigo-para-ensenarme-tu-bot-o-para-consultarme-cualquier-duda-con-respecto-al-tutorial." class="section level3">
-<h3>¡Y hasta aquí el tutorial! Espero que te haya sido de utilidad, y te recomiendo seguir la cuenta de <strong><a href="https://twitter.com/BotWikipedia">@BotWikipedia</a></strong>. <strong><a href="/about/">Contacta conmigo</a></strong> para enseñarme tu bot, o para consultarme cualquier duda con respecto al tutorial.</h3>
+<h3>¡Y hasta aquí el tutorial! Espero que te haya sido de utilidad, y te recomiendo seguir la cuenta de <a href="https://twitter.com/BotWikipedia">@BotWikipedia</a>. <a href="/about/">Contacta conmigo</a> para enseñarme tu bot, o para consultarme cualquier duda con respecto al tutorial.</h3>
 </div>
 </div>

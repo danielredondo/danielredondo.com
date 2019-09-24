@@ -115,4 +115,4 @@ leaflet(municipios) %>%
   addLegend(pal = pal, values = municipios@data$tasa, opacity = 0.7, title = "Votos a VOX por cada <br>1.000 personas censadas", position = "bottomright")
 ```
 
-### **Puedes moverte por el mapa y hacer zoom, y al pasar por los distintos municipios aparece la información sobre los votos. Si haces clic en un municipio, obtendrás información más detallada sobre el censo y los votos totales.**
+### Puedes moverte por el mapa y hacer zoom, y al pasar por los distintos municipios aparece la información sobre los votos. Si haces clic en un municipio, obtendrás información más detallada sobre el censo y los votos totales.

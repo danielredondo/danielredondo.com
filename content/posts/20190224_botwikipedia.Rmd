@@ -11,7 +11,7 @@ Un bot, [según la Wikipedia](https://es.wikipedia.org/wiki/Bot), es un programa
 
 En esta publicación encontrarás un tutorial sobre cómo hacer un bot que tuiteará automáticamente usando el programa todoterreno R.  
 
-## Este tutorial está basado en mi propia experiencia creando **[\@BotWikipedia](https://twitter.com/BotWikipedia)**, una cuenta que tuitea diariamente sobre lo más leído de la Wikipedia en español.   
+## Este tutorial está basado en mi propia experiencia creando [\@BotWikipedia](https://twitter.com/BotWikipedia), una cuenta que tuitea diariamente sobre lo más leído de la Wikipedia en español.   
 
 ![](\posts\20190224_botwikipedia\tweet14f.png)
 *Artículos más leídos del 14 de Febrero*
@@ -126,5 +126,5 @@ Los usuarios de Linux podéis usar el paquete `cronR` (en (GitHub)(https://githu
 
 Como último consejo, te recomiendo que sigas tu cuenta bot recién creada desde otra cuenta de Twitter, para estar al tanto de las nuevas publicaciones activando las notificaciones de todos sus tuits.
  
-### ¡Y hasta aquí el tutorial! Espero que te haya sido de utilidad, y te recomiendo seguir la cuenta de **[\@BotWikipedia](https://twitter.com/BotWikipedia)**. **[Contacta conmigo](/about/)** para enseñarme tu bot, o para consultarme cualquier duda con respecto al tutorial.
+### ¡Y hasta aquí el tutorial! Espero que te haya sido de utilidad, y te recomiendo seguir la cuenta de [\@BotWikipedia](https://twitter.com/BotWikipedia). [Contacta conmigo](/about/) para enseñarme tu bot, o para consultarme cualquier duda con respecto al tutorial.
 
