@@ -24,6 +24,10 @@ Endocrine [(Link).](https://doi.org/10.1007/s12020-018-1681-6)
 *Sofia Christakoudi, Artemisia Kakourou, Georgios Markozannes, Ioanna Tzoulaki et al.*  
 International Journal of Cancer [(Link)](https://doi.org/10.1002/ijc.32576)
 
+* **Predicted Basal Metabolic Rate and Cancer Risk in the European Prospective Investigation into Cancer and Nutrition (EPIC).**  
+*Nathalie Kliemann, Neil Murphy, Vivian Viallon, Heinz Freisling et al.*  
+International Journal of Cancer [(Link)](https://doi.org/10.1002/ijc.32753)
+
 * **Pre-diagnostic metabolite concentrations and prostate cancer risk in 1077 cases and 1077 matched controls in the European Prospective Investigation into Cancer and Nutrition.**  
 *Julie A. Schmidt, Georgina K. Fensom, Sabina Rinaldi, Augustin Scalbert et al.*  
 BMC Medicine [(Link - Open Access)](https://doi.org/10.1186/s12916-017-0885-6)
