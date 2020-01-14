@@ -19,7 +19,8 @@ paginate = 7
     description = "danielredondo.com"
     authorimage = "/img/piramide.png"
     dateformat = "2006-01-02"
-    # themeColor = "theme-custom-drs" # Para cambiar colores: \themes\hyde-hyde\assets\scss\hyde-hyde\_variables.scss
+    # themeColor = "theme-custom-drs" # Para cambiar colores, ir a:
+                                      # \themes\hyde-hyde\assets\scss\hyde-hyde\_variables.scss
     highlightjs = true
     highlightjsstyle = "github"
     highlightjslanguages = ["r"]

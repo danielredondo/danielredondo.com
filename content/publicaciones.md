@@ -12,6 +12,10 @@ The Stata Journal [(Link)](https://doi.org/10.1177/1536867X19874237)
 *Miguel Angel Luque-Fernandez, Michael Schomaker, Daniel Redondo-Sánchez, Maria Jose Sanchez Perez, Anand Vaidya, Mireille E Schnitzer.*  
 International Journal of Epidemiology [(Link - Open Access)](https://doi.org/10.1093/ije/dyy275)
 
+* **Multimorbidity by Patient and Tumor Factors and Time-to-Surgery Among Colorectal Cancer Patients in Spain: A Population-Based Study.**  
+*Miguel Angel Luque-Fernandez, Daniel Redondo-Sanchez, Shing Fung Lee, Miguel Rodríguez-Barranco, Mª Carmen Carmona-García, Rafael Marcos-Gragera, María José Sánchez.*  
+Clinical Epidemiology [(Link - Open Access)](http://doi.org/10.2147/CLEP.S229935)
+
 * **Standardizing effect size from linear regression models with log-transformed variables for meta-analysis.**  
 *Miguel Rodríguez-Barranco, Aurelio Tobías, Daniel Redondo, Elena Molina-Portillo et al.*  
 BMC Medical Research Methodology [(Link - Open Access)](https://doi.org/10.1186/s12874-017-0322-8)
@@ -23,6 +27,10 @@ Endocrine [(Link).](https://doi.org/10.1007/s12020-018-1681-6)
 * **Blood pressure and risk of cancer in the European Prospective Investigation into Cancer and nutrition.**  
 *Sofia Christakoudi, Artemisia Kakourou, Georgios Markozannes, Ioanna Tzoulaki et al.*  
 International Journal of Cancer [(Link)](https://doi.org/10.1002/ijc.32576)
+
+* **Dietary intake of Advanced Glycation Endproducts (AGEs), changes in body weight and obesity development in European adults.**  
+*Reynalda Cordova, Viktoria Knaze, Vivian Viallon, Petra Rust et al.*  
+European Journal of Nutrition [(Link)](https://doi.org/10.1007/s00394-019-02129-8)
 
 * **Predicted Basal Metabolic Rate and Cancer Risk in the European Prospective Investigation into Cancer and Nutrition (EPIC).**  
 *Nathalie Kliemann, Neil Murphy, Vivian Viallon, Heinz Freisling et al.*  
