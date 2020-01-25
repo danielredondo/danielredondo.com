@@ -8,17 +8,17 @@ type: about
 
 Soy **Daniel Redondo Sánchez**, y entre mi formación destaco:
 
-- Licenciatura en Matemáticas
-- Máster de Matemáticas
-- Experto en Epidemiología e Investigación Clínica
+- Licenciatura en Matemáticas (2009-2014)
+- Experto en Epidemiología e Investigación Clínica (2016)
+- Máster de Matemáticas (2019)
 
 Trabajo como técnico de investigación del cáncer en el Instituto de Investigación Biosanitaria ibs.GRANADA.
 
-En esta web encontrarás publicaciones sobre [visualización de datos](/tags/visualizando/), [aplicaciones web](/aplicaciones/) y otros temas que me resultan interesantes y  desarrollo en mi tiempo libre.
+En esta web encontrarás publicaciones sobre [visualización de datos](/tags/visualizando/), [aplicaciones web](/aplicaciones/), [mapas](/tags/mapas/) y otros temas que me resultan interesantes y  desarrollo en mi tiempo libre.
 
-Trabajo principalmente con `R`**\*** (`shiny`, `ggplot2`, `leaflet`, ...), `Microsoft Access` (`SQL` + `VBA`) y `Stata`.
+Trabajo principalmente con `R` (`shiny`, `ggplot2`, `leaflet`, ...), `Microsoft Access` (`SQL` + `VBA`) y `Stata`.
 
-**\*** (De hecho, esta web está hecha con `R` y `blogdown`.)
+Esta web está hecha con `R` + `blogdown` + Hugo + GitHub + Netlify.
 
 ## También puedes encontrarme en:
 

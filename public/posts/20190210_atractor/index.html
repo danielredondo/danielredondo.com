@@ -24,12 +24,12 @@
 <meta name="twitter:title" content="Coloreando atractores"/>
 <meta name="twitter:description" content="Hace unas semanas, Antonio Sánchez Chinchón escribía en su muy recomendable blog sobre las gráficas que forman algunas ecuaciones imposibles de resolver, los atractores que se ven en ellas, y la belleza de las matemáticas.
 Todo ello, ilustrado con imágenes tan artísticas como:
- Las gráficas me gustaron tanto que quise usarlas de fondo de pantalla. Y aprovechando que Antonio dejó el código en su GitHub, pensé en darles un toque de color, sin salir de R."/>
+Las gráficas me gustaron tanto que quise usarlas de fondo de pantalla. Y aprovechando que Antonio dejó el código en su GitHub, pensé en darles un toque de color, sin salir de R."/>
 
 <meta property="og:title" content="Coloreando atractores" />
 <meta property="og:description" content="Hace unas semanas, Antonio Sánchez Chinchón escribía en su muy recomendable blog sobre las gráficas que forman algunas ecuaciones imposibles de resolver, los atractores que se ven en ellas, y la belleza de las matemáticas.
 Todo ello, ilustrado con imágenes tan artísticas como:
- Las gráficas me gustaron tanto que quise usarlas de fondo de pantalla. Y aprovechando que Antonio dejó el código en su GitHub, pensé en darles un toque de color, sin salir de R." />
+Las gráficas me gustaron tanto que quise usarlas de fondo de pantalla. Y aprovechando que Antonio dejó el código en su GitHub, pensé en darles un toque de color, sin salir de R." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/posts/20190210_atractor/" />
 <meta property="article:published_time" content="2019-02-10T00:00:00+00:00" />
@@ -182,6 +182,16 @@ Todo ello, ilustrado con imágenes tan artísticas como:
     
     
     
+      
+      
+          <br/>
+           <i class="fas fa-tags"></i>
+          
+          <a class="badge badge-tag" href="/tags/visualizando">visualizando</a>
+          
+      
+    
+    
     <br/>
     <i class="fas fa-clock"></i> 5 min read
 </div>
@@ -196,10 +206,7 @@ Todo ello, ilustrado con imágenes tan artísticas como:
 
 <p>Hace unas semanas, Antonio Sánchez Chinchón escribía <strong><a href="https://fronkonstin.com/2019/01/10/rcpp-camaron-de-la-isla-and-the-beauty-of-maths/">en su muy recomendable blog</a></strong> sobre las gráficas que forman algunas ecuaciones imposibles de resolver, los atractores que se ven en ellas, y la belleza de las matemáticas.</p>
 <p>Todo ello, ilustrado con imágenes tan artísticas como:</p>
-<div class="figure">
-<img src="\posts\20190210_atractor\imagen.png" />
-
-</div>
+<p><img src="\posts\20190210_atractor\imagen.png" /></p>
 <p>Las gráficas me gustaron tanto que quise usarlas de fondo de pantalla. Y aprovechando que Antonio <a href="https://github.com/aschinchon/general-2D-map">dejó el código en su GitHub</a>, pensé en <strong>darles un toque de color, sin salir de R</strong>.</p>
 <p>En primer lugar, eliminamos el borde de la imagen, y cambiamos algunas opciones para que la imagen final no salga cuadrada, sino apaisada.</p>
 <p>Un ejemplo “en blanco y negro” es el siguiente:</p>
@@ -268,10 +275,7 @@ plot &lt;- ggplot(df) +
 
 # Al pintar 10.000.000 de puntos, puede tardar un par de minutos.
 ggsave(&quot;original.png&quot;, plot, height = 4, width = 8, units = &#39;in&#39;, dpi = 1200)</code></pre>
-<div class="figure">
-<img src="https://i.imgur.com/kDhBiiU.jpg" />
-
-</div>
+<p><img src="https://i.imgur.com/kDhBiiU.jpg" /></p>
 <p>Procedemos ahora a colorear el mismo ejemplo, usando la famosa paleta de colores <code>rainbow</code>, y coloreando de forma circular, añadiendo algo de ruido para quitar uniformidad.</p>
 <pre class="r"><code>df$s &lt;- (df$x - mean(df$x))^2 + (df$y-mean(df$y))^2 + 4*rnorm(nrow(df))
 df &lt;- df[order(df$s), ]
@@ -284,10 +288,7 @@ plot &lt;- ggplot(df) +
   opt
 
 ggsave(&quot;rainbow.png&quot;, plot, height = 4, width = 8, units = &#39;in&#39;, dpi = 1200)</code></pre>
-<div class="figure">
-<img src="https://i.imgur.com/tmLflBp.jpg" />
-
-</div>
+<p><img src="https://i.imgur.com/tmLflBp.jpg" /></p>
 <p>También podemos usar el paquete <code>wesanderson</code>, que <a href="https://github.com/karthik/wesanderson">genera paletas de color basándose en las películas de Wes Anderson</a>. La usada en este ejemplo está basada en “El Gran Hotel Budapest”, y la imagen se colorea desde arriba hacia abajo, añadiendo también ruido. He cambiado los parámetros de la función para que la gráfica sea diferente.</p>
 <pre class="r"><code>a1 &lt;- -1.0
 a2 &lt;- 0.4
@@ -328,10 +329,7 @@ plot &lt;- ggplot(df) +
   opt
 
 ggsave(&quot;wes.png&quot;, plot, height = 4, width = 8, units = &#39;in&#39;, dpi = 1200)</code></pre>
-<div class="figure">
-<img src="https://i.imgur.com/bZVbB3s.jpg" />
-
-</div>
+<p><img src="https://i.imgur.com/bZVbB3s.jpg" /></p>
 <p>Y para acabar, podemos usar también las paletas del paquete <code>colorspace</code>. Cambiamos los parámetros del dibujo, y la imagen se colorea en diagonal.</p>
 <pre class="r"><code>a1 &lt;- -0.8
 a2 &lt;- 0.5
@@ -371,10 +369,7 @@ plot &lt;- ggplot(df) +
   opt
 
 ggsave(&quot;hcl.png&quot;, plot, height = 4, width = 8, units = &#39;in&#39;, dpi = 1200)</code></pre>
-<div class="figure">
-<img src="https://i.imgur.com/2F27JHh.jpg" />
-
-</div>
+<p><img src="https://i.imgur.com/2F27JHh.jpg" /></p>
 <p>Como suele tardar un poco en guardar el gráfico, he encontrado muy útil esta línea de código, que añadida después del <code>ggsave</code> te avisa con un mensaje de voz cuando ha terminado el proceso. Eso sí, sólo para Mac, ya que usa su terminal (quizá escriba pronto un post con otras opciones para Windows, o multiplataforma).</p>
 <pre class="r"><code>system(&quot;say -v Jorge Hola, soy R, y he acabado el gráfico.&quot;)</code></pre>
 
