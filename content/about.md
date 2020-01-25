@@ -12,7 +12,7 @@ Soy **Daniel Redondo Sánchez**, y entre mi formación destaco:
 - Experto en Epidemiología e Investigación Clínica (2016)
 - Máster de Matemáticas (2019)
 
-Actualmente trabajo como técnico de investigación del cáncer en el Instituto de Investigación Biosanitaria ibs.GRANADA, y curso el Máster en Ciencia de Datos e Ingeniería de Computadores de la Universida de Granada.
+Actualmente trabajo como técnico de investigación del cáncer en el Instituto de Investigación Biosanitaria ibs.GRANADA, y curso el Máster en Ciencia de Datos e Ingeniería de Computadores de la Universidad de Granada.
 
 En esta web encontrarás publicaciones sobre [visualización de datos](/tags/visualizando/), [aplicaciones web](/aplicaciones/), [mapas](/tags/mapas/) y otros temas que me resultan interesantes y  desarrollo en mi tiempo libre.
 
