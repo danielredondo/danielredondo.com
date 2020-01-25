@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Daniel Redondo</title>
@@ -6,7 +6,7 @@
     <description>Recent content on Daniel Redondo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 24 Feb 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 25 Jan 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
@@ -31,7 +31,7 @@
       <description>cvauroc: Command to compute cross-validated area under the curve for ROC analysis after predictive modeling for binary outcomes.
 Miguel Angel Luque-Fernandez, Daniel Redondo-Sánchez, Camille Maringe.
 The Stata Journal (Link)
- Educational Note: Paradoxical Collider Effect in the Analysis of Non-Communicable Disease Epidemiological Data: a reproducible illustration and web application.
+  Educational Note: Paradoxical Collider Effect in the Analysis of Non-Communicable Disease Epidemiological Data: a reproducible illustration and web application.
 Miguel Angel Luque-Fernandez, Michael Schomaker, Daniel Redondo-Sánchez, Maria Jose Sanchez Perez, Anand Vaidya, Mireille E Schnitzer.
 International Journal of Epidemiology (Link - Open Access)</description>
     </item>
@@ -45,7 +45,16 @@ International Journal of Epidemiology (Link - Open Access)</description>
       <description>Soy Daniel Redondo Sánchez, y entre mi formación destaco:
  Licenciatura en Matemáticas Máster de Matemáticas Experto en Epidemiología e Investigación Clínica  Trabajo como técnico de investigación del cáncer en el Instituto de Investigación Biosanitaria ibs.GRANADA.
 En esta web encontrarás publicaciones sobre visualización de datos, aplicaciones web y otros temas que me resultan interesantes y desarrollo en mi tiempo libre.
-Trabajo principalmente con R* (shiny, ggplot2, leaflet, &amp;hellip;), Microsoft Access (SQL + VBA) y Stata.</description>
+Trabajo principalmente con R***** (shiny, ggplot2, leaflet, &amp;hellip;), Microsoft Access (SQL + VBA) y Stata.</description>
+    </item>
+    
+    <item>
+      <title>Mapas estilo Joy Division con QGIS y R</title>
+      <link>/posts/20200125_joy_division/</link>
+      <pubDate>Sat, 25 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/20200125_joy_division/</guid>
+      <description>Hace unos días encontré este tutorial sobre cómo hacer mapas imitando la portada del álbum Unknown Pleasures de Joy Division. En esta publicación resumo el método y lo aplico en la provincia de Granada para hacer un mapa como este:  Herramientas La principal ventaja de este método frente a muchos otros es que utiliza dos herramientas que son gratuitas y tienen un uso muy extendido: QGIS y R.</description>
     </item>
     
     <item>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>mapas on Daniel Redondo</title>
@@ -6,10 +6,19 @@
     <description>Recent content in mapas on Daniel Redondo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 11 Dec 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 25 Jan 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/mapas/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Mapas estilo Joy Division con QGIS y R</title>
+      <link>/posts/20200125_joy_division/</link>
+      <pubDate>Sat, 25 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/20200125_joy_division/</guid>
+      <description>Hace unos días encontré este tutorial sobre cómo hacer mapas imitando la portada del álbum Unknown Pleasures de Joy Division. En esta publicación resumo el método y lo aplico en la provincia de Granada para hacer un mapa como este:  Herramientas La principal ventaja de este método frente a muchos otros es que utiliza dos herramientas que son gratuitas y tienen un uso muy extendido: QGIS y R.</description>
+    </item>
     
     <item>
       <title>¿Quién votó a VOX en Andalucía? Mapa interactivo por municipios</title>

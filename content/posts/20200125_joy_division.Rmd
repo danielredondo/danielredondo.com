@@ -1,0 +1,183 @@
+---
+title: Mapas estilo Joy Division con QGIS y R
+author: ''
+date: '2020-01-25'
+tags:
+  - mapas
+draft: no
+---
+
+#### Hace unos días encontré [este tutorial](https://cartographicperspectives.org/index.php/journal/article/view/1536/1726) sobre cómo hacer mapas imitando la portada del álbum *Unknown Pleasures* de **Joy Division**. En esta publicación resumo el método y lo aplico en la provincia de Granada para hacer un mapa como este:
+
+![](/posts/20200125_joy_division/granada.jpg)
+
+## Herramientas
+
+La principal ventaja de este método frente a muchos otros es que utiliza dos herramientas que son **gratuitas** y tienen un uso muy extendido: `QGIS` y  `R`.
+
+## Fuentes de información
+
+- **Mapa base**. Para España puedes descargar ficheros .SHP del [Instituto Geográfico Nacional](https://www.ign.es/web/ign/portal) (IGN) o del [Instituto Nacional de Estadística](https://ine.es/) (INE). Si descargas más zonas de las que quieres representar finalmente, puedes filtrar los datos espaciales en QGIS fácilmente haciendo clic derecho en la capa, "Filtrar", y escribiendo algo similar a:
+
+```{}
+"NOMBRE_PROVINCIA" = 'GRANADA'
+```
+
+- **Relieve**. El relieve será lo que marque la altitud de las diferentes líneas del mapa. Se descarga en formato GEOTIFF de [esta web](http://dwtkns.com/srtm/) haciendo clic en el cuadrado correspondiente (puedes juntar varios cuadrados si tu área ocupa más de una zona predeterminado).
+
+# Parte 1: QGIS
+
+El procedimiento en QGIS es relativamente sencillo si has trabajado anteriormente con Sistemas de Información Geográfica, y sólo hay que seguir las instrucciones del tutorial. Yo he reestructurado y simplificado ligeramente los pasos, y los dejo aquí abajo por si pueden ser de utilidad, pero recomiendo seguir el [tutorial original](https://cartographicperspectives.org/index.php/journal/article/view/1536/1726) (que viene además con imágenes detalladas).
+
+```{}
+# 1. Obtención de silueta
+# Abrir QGIS -> Nuevo proyecto
+# Cargar archivo sHP
+# Si hace falta filtrar una zona: botón derecho en capa -> Filtrar
+# Caja de herramientas -> Disolver (útil si hay que eliminar subdivisiones)
+
+# 2. Obtención de relieve
+# Descargar el relieve de http://dwtkns.com/srtm/
+# Arrastrar el .TIF a QGIS
+# Comprobar que encaja bien con el mapa base.
+# Si no, cambiar las coordenadas de referencia.
+
+# 3. Crear Cuadrícula horizontal en el mapa
+# Caja de herramientas -> Crear cuadrícula
+#   Tipo de cuadrícula: Línea
+#   Extensión de la cuadrícula: Usar extensión de la capa: Disuelto
+#   Espaciado vertical: 2km, horizontal 100km (aunque el espaciado
+#     horizontal da igual, es importante para que se puedan seleccionar
+#     todas las lineas horizontales en el siguiente paso).
+# Se seleccionan todas las líneas horizontales -> Exportar ->
+#     Guardar objetos seleccionados como... -> Archivo shp
+
+# 4. Intersección + Líneas a puntos
+# Caja de herramientas -> Intersección:
+#   Capa de entrada: cuadrícula horizontal
+#   Capa de superposición: Disuelto
+```
+
+Estado del mapa al final del paso 4.
+![](/posts/20200125_joy_division/granada_qgis.png)
+
+```{}
+# 5. De líneas a puntos
+# Caja de herramientas -> Generar puntos (centroides de píxel)...
+#   Capa ráster: relieve
+#   Capa vectorial: intersección recién creada
+
+# 6. Puntos con relieve + Exportación
+# Hay que descargar el plug-in de github.com/borysiasty/pointsamplingtool
+# Con la capa de relieve visible en QGIS, hay que hacer:
+#   Complementos -> Analyses -> Point Sampling Tool 
+#   Elegir la capa de relieve para coger los valores
+#   Genera un fichero .gpkg
+# Caja de herramientas -> "Add coordinates to points" (en inglés)
+# Exportar capa como csv
+```
+
+El resultado final es un `.csv` con 4 variables: un campo autonumérico, el relieve de un punto en concreto, y las coordenadas x e de ese punto.
+
+Cabecera del fichero exportado por `QGIS`:
+![](/posts/20200125_joy_division/granada_csv2.png)
+
+# Parte 2: R
+
+El código de `R` (ligeramente modificado del tutorial) es el siguiente:
+
+```{r, eval = FALSE}
+# Se cargan los paquetes
+library(ggplot2)
+library(ggridges)
+library(mapproj)
+
+# Se lee el fichero .csv exportado de QGIS
+data <- read.csv(file = "granada.csv", header = TRUE, sep = ",")
+names(data)[2:4] <- c("Elev", "Lon", "Lat")
+
+# Primera aproximación
+ggplot(data, aes(x = Lon, y = Lat, group = Lat, height = Elev)) +
+  geom_density_ridges(stat = "identity", scale = 30)
+```
+
+![](/posts/20200125_joy_division/granada_previo.png)
+
+El parámetro `scale` de `geom_density_ridges` se puede aumentar para acentuar más el relieve.
+
+Al gráfico anterior añadimos un diseño que oculte completamente los ejes y las líneas de división, y ponga un fondo negro.
+
+```{r eval = FALSE}
+# Gráfico completo
+ggplot(data, aes(x = Lon, y = Lat, group = Lat, height = Elev)) +
+  geom_density_ridges(stat = "identity", scale = 30,
+                      fill = "black", color = "white") +
+  scale_x_continuous(name = NULL) +
+  theme(panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        panel.background = element_rect(fill = "black"),
+        axis.line = element_blank(),
+        axis.text.x = element_blank(),
+        plot.background = element_rect(fill = "black"),
+        axis.ticks.x = element_blank(),
+        axis.title.y = element_blank(),
+        axis.text.y = element_blank(),
+        axis.ticks.y = element_blank(),
+        axis.title.x = element_text(colour = "white", size = 18)) +
+    coord_map()
+
+# Se guarda el gráfico
+ggsave("granada.png", dpi = 300)
+```
+
+El resultado final es el siguiente:
+
+![](/posts/20200125_joy_division/granada.jpg)
+
+## Fondo transparente... para hacer camisetas
+
+El diseño me gustó, y me decidí a hacer una camiseta con la imagen. En tiendas de serigrafía, o páginas web te permiten hacer camisetas personalizadas con cualquier imagen (eso sí, es muy recomendable que la imagen tenga fondo transparente).
+
+Para conseguir la imagen con fondo transparente, sólo hay que cambiar el parámetro `fill` de `geom_density_ridges` a `"transparent"`, y cambiar el `theme` a:
+
+```{r eval = FALSE}
+  theme(
+    axis.line = element_blank(),
+    axis.text.x = element_blank(),
+    axis.ticks.x = element_blank(),
+    axis.title.y = element_blank(),
+    axis.text.y = element_blank(),
+    axis.ticks.y = element_blank(),
+    panel.background = element_rect(fill = "transparent"), 
+    plot.background = element_rect(fill = "transparent", color = NA), 
+    panel.grid.major = element_blank(), 
+    panel.grid.minor = element_blank(), 
+    legend.background = element_rect(fill = "transparent"), 
+    legend.box.background = element_rect(fill = "transparent")
+  )
+```
+
+Para acabar, usamos `ggsave` especificando que el fondo es transparente:
+
+```{r eval = FALSE}
+ggsave("granada_tr.png", dpi = 300, bg = "transparent")
+```
+
+En concreto, en [la página que yo usé](https://www.latostadora.com/) permiten diseños de hasta 24x24cm así que he usado:
+
+```{r eval = FALSE}
+ggsave("granada_tr.png",
+       width = 24, height = 24, units = "cm",
+       dpi = 300, bg = "transparent")
+```
+
+La camiseta ha quedado así:
+
+![](/posts/20200125_joy_division/granada_camiseta.jpg)
+
+Para acabar, hice también un diseño con Almería:
+
+![](/posts/20200125_joy_division/almeria.jpg)
+
+![](/posts/20200125_joy_division/granada_almeria_camiseta.jpg)
+
