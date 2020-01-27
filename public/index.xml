@@ -18,7 +18,7 @@
       
       <guid>/aplicaciones/</guid>
       <description>Las siguientes aplicaciones están desarrolladas con R y shiny.
- iDEAL Granada: Aplicación basada en web-scraping para visualizar noticias del periódico IDEAL, con código abierto, y menos de 60 líneas.  Desarrollo también aplicaciones de contexto científico, como co-autor junto a Miguel Ángel Luque-Fernández.
+ iDEAL Granada: Aplicación basada en web-scraping para visualizar noticias del periódico IDEAL, con código abierto, y menos de 60 líneas.  Desarrollo aplicaciones de contexto científico, como co-autor junto a Miguel Ángel Luque-Fernández.
  Collider: Aplicación web que ilustra con fines educacionales un concepto de inferencia causal: el collider o colisionador, mediante un ejemplo concreto: la relación edad-consumo diario de sodio-proteinuria-presión arterial sistólica.</description>
     </item>
     
