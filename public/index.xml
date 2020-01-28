@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Daniel Redondo</title>
@@ -31,7 +31,7 @@
       <description>cvauroc: Command to compute cross-validated area under the curve for ROC analysis after predictive modeling for binary outcomes.
 Miguel Angel Luque-Fernandez, Daniel Redondo-Sánchez, Camille Maringe.
 The Stata Journal (Link)
-  Educational Note: Paradoxical Collider Effect in the Analysis of Non-Communicable Disease Epidemiological Data: a reproducible illustration and web application.
+ Educational Note: Paradoxical Collider Effect in the Analysis of Non-Communicable Disease Epidemiological Data: a reproducible illustration and web application.
 Miguel Angel Luque-Fernandez, Michael Schomaker, Daniel Redondo-Sánchez, Maria Jose Sanchez Perez, Anand Vaidya, Mireille E Schnitzer.
 International Journal of Epidemiology (Link - Open Access)</description>
     </item>

@@ -11,7 +11,7 @@
 <meta http-equiv="Cache-Control" content="public" />
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.63.1" />
+<meta name="generator" content="Hugo 0.58.3" />
 
     
     
@@ -199,16 +199,27 @@ El objetivo será visualizar la evolución a lo largo del tiempo de los Registro
   
   
   <div class="post">
-    <p>Desde hace un tiempo estoy muy interesado en los <strong>Sistemas de Información Geográfica</strong> (SIG/GIS), fascinado por <code>leaflet</code> y su interactividad. En esta publicación mostraré un mapa animado realizado con R.</p>
+    
+
+<p>Desde hace un tiempo estoy muy interesado en los <strong>Sistemas de Información Geográfica</strong> (SIG/GIS), fascinado por <code>leaflet</code> y su interactividad. En esta publicación mostraré un mapa animado realizado con R.</p>
+
 <h3 id="el-objetivo-será-visualizar-la-evolución-a-lo-largo-del-tiempo-de-los-registros-de-cáncer-de-población-españoles-que-han-publicado-sus-datos-en-las-sucesivas-ediciones-de-cancer-incidence-in-five-continents">El objetivo será visualizar la evolución a lo largo del tiempo de los <strong>Registros de Cáncer de Población españoles</strong> que han publicado sus datos en las sucesivas ediciones de <strong>Cancer Incidence in Five Continents</strong>.</h3>
+
 <p>Cancer Incidence in Five Continents es una publicación periódica realizada por la IARC (International Agency for Research on Cancer) y la IACR (International Association of Cancer Registries). En su último volumen incluye <strong>información comparable durante el periodo 2008-2012 de 343 Registros de Cáncer de 65 países de todo el mundo</strong>. En España, el primer Registro de Cáncer Poblacional en incluir sus datos en esta publicación es el de <strong>Zaragoza</strong> (volumen III). En el volumen XI ya son 14 los registros españoles: <strong>Albacete, Asturias, País Vasco, Islas Canarias, Castellón, Ciudad Real, Cuenca, Girona, Granada, La Rioja, Mallorca, Murcia, Navarra y Tarragona</strong>.</p>
+
 <p>Las claves para hacer la animación han sido los paquetes <code>leaflet</code> para los mapas, <code>mapshot</code> (también se puede usar su alternativa lenta <code>htmlwidgets</code> + <code>webshot</code>) para obtener capturas de los mapas de forma automática, y <code>magick</code> para montar el gif a partir de las imágenes. Uno de los principales desafíos del proyecto fue tener que separar Mallorca de las Islas Baleares, resuelto ordenando la variable <code>mallorca@polygons[[1]]@Polygons[[i]]@area</code>.</p>
+
 <p><strong>El resultado es el siguiente:</strong></p>
-<p><img src="https://i.imgur.com/pveTBiV.gif" alt=""></p>
-<h3 id="gif-en-hdhttpsiimgurcompvetbivgif"><strong><a href="https://i.imgur.com/pveTBiV.gif">Gif en HD</a></strong></h3>
+
+<p><img src="https://i.imgur.com/pveTBiV.gif" alt="" /></p>
+
+<h3 id="gif-en-hd-https-i-imgur-com-pvetbiv-gif"><strong><a href="https://i.imgur.com/pveTBiV.gif">Gif en HD</a></strong></h3>
+
 <p><strong>Y, con otro estilo más artístico (<code>Stamen.Watercolor</code> en vez de <code>Hydda.Base</code>):</strong></p>
-<p><img src="https://i.imgur.com/xv6MVhw.gif" alt=""></p>
-<h3 id="gif-en-hdhttpsiimgurcomxv6mvhwgif"><strong><a href="https://i.imgur.com/xv6MVhw.gif">Gif en HD</a></strong></h3>
+
+<p><img src="https://i.imgur.com/xv6MVhw.gif" alt="" /></p>
+
+<h3 id="gif-en-hd-https-i-imgur-com-xv6mvhw-gif"><strong><a href="https://i.imgur.com/xv6MVhw.gif">Gif en HD</a></strong></h3>
 
   </div>
   
