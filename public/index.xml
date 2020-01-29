@@ -19,7 +19,7 @@
       <guid>/aplicaciones/</guid>
       <description>Las siguientes aplicaciones están desarrolladas con R y shiny.
  iDEAL Granada: Aplicación basada en web-scraping para visualizar noticias del periódico IDEAL, con código abierto, y menos de 60 líneas.  Desarrollo aplicaciones de contexto científico, como co-autor junto a Miguel Ángel Luque-Fernández.
- Collider: Aplicación web que ilustra con fines educacionales un concepto de inferencia causal: el collider o colisionador, mediante un ejemplo concreto: la relación edad-consumo diario de sodio-proteinuria-presión arterial sistólica.</description>
+ CoMCoR y TiMSurg: Aplicaciones web con gráficos interactivos asociadas a un artículo científico publicado en Clinical Epidemiology. El artículo describe en pacientes de cáncer colorrectal el patrón de comorbilidad y el impacto de la comorbilidad en el tiempo transcurrido desde el diagnóstico hasta la cirugía (Link - Open Access).</description>
     </item>
     
     <item>
