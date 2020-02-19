@@ -58,7 +58,7 @@ tabla %>% select(S109) %>% filter(S109 != 998 & S109 != 999) %>% table %>% plot(
 
 ![](\posts\20181010_ens\altura.png)
 
-La altura mínima fue de 120cm, mientras que la máxima fue de 204cm, con una media de unos 167 cm.
+La altura mínima fue de 120 cm, mientras que la máxima fue de 204 cm, con una media de unos 167 cm.
 
 ![](\posts\20181010_ens\grafico.png)
 

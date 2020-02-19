@@ -1,0 +1,106 @@
+---
+title: "Calendario laboral con R"
+author: ''
+date: '2020-02-19'
+tags: ["visualizando"]
+editor_options: 
+  chunk_output_type: console
+---
+
+
+
+<p>Esta publicación está inspirada por el post <a href="https://analisisydecision.es/graficos-de-calendarios-con-series-temporales/">“Gráficos de calendarios con series temporales”</a> del blog de Raúl Vaquerizo, uno de los mejores blogs sobre R en español.</p>
+<p>Con código reproducible y personalizable se creará un calendario laboral usando R. El calendario realizado cubrirá todo el año 2020 y el mes de Enero de 2021.</p>
+<p>Se crea un data.frame con 3 variables:</p>
+<ul>
+<li><p><code>date</code>: Días que aparecerán en el calendario. Es importante que esta variable se llame <code>date</code> por la función <code>calendarPlot</code> que se usará más adelante.</p></li>
+<li><p><code>evento</code>: Información sobre los días (día laborable, festivo, …). Se inicializa como evento = 0 (día laborable) y se modificará más adelante en algunos casos.</p></li>
+<li><p><code>dia_semana</code>: Día de la semana (lunes, martes, …). Nótese que esta variable depende del <code>Sys.getlocale()</code> de cada usuario, así que quizá veas los días de la semana en otro idioma y tengas que adaptar algo del código.</p></li>
+</ul>
+<pre class="r"><code># Carga de paquetes
+library(lubridate) # Para trabajar con fechas 
+library(openair)   # Para crear el calendario
+
+calendario &lt;- data.frame(
+  date = seq(ymd(&quot;2020-01-01&quot;), ymd(&quot;2021-01-31&quot;), by = 1),
+  evento = 0 # Valor por defecto (día laborable)
+)
+
+# Se añade al data.frame el día de la semana
+calendario$dia_semana &lt;- weekdays(calendario$date)
+
+head(calendario)</code></pre>
+<pre><code>##         date evento dia_semana
+## 1 2020-01-01      0  miércoles
+## 2 2020-01-02      0     jueves
+## 3 2020-01-03      0    viernes
+## 4 2020-01-04      0     sábado
+## 5 2020-01-05      0    domingo
+## 6 2020-01-06      0      lunes</code></pre>
+<p>Se van añadiendo eventos, como por ejemplo la jornada reducida durante algunas épocas del año (evento = 1).</p>
+<pre class="r"><code># Verano
+verano &lt;- seq(ymd(&quot;2020-07-01&quot;), ymd(&quot;2020-08-31&quot;), by = 1)
+calendario[calendario$date %in% verano, &quot;evento&quot;] &lt;- 1
+
+# Navidad 2019-2020
+festivos &lt;- seq(ymd(&quot;2020-01-01&quot;), ymd(&quot;2020-01-05&quot;), by = 1)
+calendario[calendario$date %in% festivos, &quot;evento&quot;] &lt;- 1
+
+# Navidad 2020-2021
+festivos &lt;- seq(ymd(&quot;2020-12-24&quot;), ymd(&quot;2021-01-05&quot;), by = 1)
+calendario[calendario$date %in% festivos, &quot;evento&quot;] &lt;- 1</code></pre>
+<p>Se añaden algunos días festivos (evento = 2).</p>
+<pre class="r"><code>festivos &lt;- c(ymd(&quot;2020-01-01&quot;), ymd(&quot;2020-04-10&quot;), ymd(&quot;2020-01-06&quot;),
+              ymd(&quot;2020-05-01&quot;), ymd(&quot;2020-10-12&quot;), ymd(&quot;2020-12-08&quot;),
+              ymd(&quot;2020-12-25&quot;), ymd(&quot;2021-01-01&quot;), ymd(&quot;2021-01-06&quot;))
+calendario[calendario$date %in% festivos, &quot;evento&quot;] &lt;- 2 </code></pre>
+<p>No se trabaja sábados ni domingos (evento = 3).</p>
+<pre class="r"><code># Sábados y domingos
+calendario[calendario$dia_semana %in% c(&quot;sábado&quot;, &quot;domingo&quot;), ]$evento &lt;- 3
+
+head(calendario, 12)</code></pre>
+<pre><code>##          date evento dia_semana
+## 1  2020-01-01      2  miércoles
+## 2  2020-01-02      1     jueves
+## 3  2020-01-03      1    viernes
+## 4  2020-01-04      3     sábado
+## 5  2020-01-05      3    domingo
+## 6  2020-01-06      2      lunes
+## 7  2020-01-07      0     martes
+## 8  2020-01-08      0  miércoles
+## 9  2020-01-09      0     jueves
+## 10 2020-01-10      0    viernes
+## 11 2020-01-11      3     sábado
+## 12 2020-01-12      3    domingo</code></pre>
+<p>Se dibuja el calendario con <code>openair::calendarPlot</code>, añadiendo un título, empezando el calendario por lunes y coloreando los días por tipo de evento. Se oculta también una leyenda que se muestra por defecto, y que enseña que <code>evento</code> es en realidad una variable continua aunque sólo tome los valores 0, 1, 2 y 3.</p>
+<pre class="r"><code>calendarPlot(calendario,
+             pollutant = &quot;evento&quot;,
+             # Título
+             main = &quot;Calendario laboral 2020&quot;,
+             # Para que el calendario empiece en lunes
+             w.shift = 2,
+             # Se oculta la leyenda
+             key = FALSE,
+             # El límite superior es el número de eventos
+             limits = c(0, 3),
+             # Colores para los eventos (del 0 al 3)
+             cols = c(&quot;white&quot;, &quot;gray50&quot;, &quot;steelblue1&quot;, &quot;red&quot;))</code></pre>
+<p><img src="/posts/20200201_calendario_laboral_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p>En este calendario se echa de menos una leyenda, que se puede añadir (con algo de paciencia) aprovechando que <code>calendarPlot</code> utiliza <code>lattice</code> para hacer el gráfico.</p>
+<pre class="r"><code>library(lattice)
+calendarPlot(calendario,
+             pollutant = &quot;evento&quot;,
+             main = &quot;Calendario laboral 2020&quot;,
+             w.shift = 2,
+             key = FALSE,
+             limits = c(0, 3),
+             cols = c(&quot;white&quot;, &quot;gray50&quot;, &quot;steelblue1&quot;, &quot;red&quot;))
+
+# Leyenda (ajustar x e y hasta que la leyenda esté donde queremos)
+panel.text(x = 950, y = 1550, labels = &quot;Jornada reducida (de 8h a 15h)&quot;,
+           col = &quot;gray50&quot;, font = &quot;bold&quot;)
+panel.text(x = 950, y = 1600, labels = &quot;Fin de semana&quot;,
+           col = &quot;red&quot;, font = &quot;bold&quot;)
+panel.text(x = 950, y = 1650, labels = &quot;Festivo&quot;,
+           col = &quot;steelblue1&quot;, font = &quot;bold&quot;)</code></pre>
+<p><img src="/posts/20200201_calendario_laboral_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>

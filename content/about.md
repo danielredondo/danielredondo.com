@@ -4,7 +4,7 @@ weight: 10
 type: about
 ---
 
-<img src="/about/logo_about.jpeg" alt="logo" style="width: 75%;"/>
+![](/about/logo_about.jpeg)
 
 Soy **Daniel Redondo Sánchez**, y entre mi formación destaco:
 
@@ -20,7 +20,7 @@ Trabajo principalmente con `R` (`shiny`, `ggplot2`, `leaflet`, ...), `Microsoft 
 
 Esta web está hecha con `R` + `blogdown` + Hugo + GitHub + Netlify.
 
-## También puedes encontrarme en:
+### También puedes encontrarme en:
 
 * Twitter: [@dredondosanchez](https://twitter.com/dredondosanchez)  
 * Github: [danielredondo](https://github.com/danielredondo)

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Daniel Redondo</title>
@@ -6,7 +6,7 @@
     <description>Recent content on Daniel Redondo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 25 Jan 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 19 Feb 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
@@ -31,7 +31,7 @@
       <description>cvauroc: Command to compute cross-validated area under the curve for ROC analysis after predictive modeling for binary outcomes.
 Miguel Angel Luque-Fernandez, Daniel Redondo-Sánchez, Camille Maringe.
 The Stata Journal (Link)
- Educational Note: Paradoxical Collider Effect in the Analysis of Non-Communicable Disease Epidemiological Data: a reproducible illustration and web application.
+  Educational Note: Paradoxical Collider Effect in the Analysis of Non-Communicable Disease Epidemiological Data: a reproducible illustration and web application.
 Miguel Angel Luque-Fernandez, Michael Schomaker, Daniel Redondo-Sánchez, Maria Jose Sanchez Perez, Anand Vaidya, Mireille E Schnitzer.
 International Journal of Epidemiology (Link - Open Access)</description>
     </item>
@@ -45,6 +45,18 @@ International Journal of Epidemiology (Link - Open Access)</description>
       <description>Soy Daniel Redondo Sánchez, y entre mi formación destaco:
  Licenciatura en Matemáticas (2009-2014) Experto en Epidemiología e Investigación Clínica (2016) Máster de Matemáticas (2019)  Actualmente trabajo como técnico de investigación del cáncer en el Instituto de Investigación Biosanitaria ibs.GRANADA, y curso el Máster en Ciencia de Datos e Ingeniería de Computadores de la Universidad de Granada.
 En esta web encontrarás publicaciones sobre visualización de datos, aplicaciones web, mapas y otros temas que me resultan interesantes y desarrollo en mi tiempo libre.</description>
+    </item>
+    
+    <item>
+      <title>Calendario laboral con R</title>
+      <link>/posts/20200201_calendario_laboral/</link>
+      <pubDate>Wed, 19 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/20200201_calendario_laboral/</guid>
+      <description>Esta publicación está inspirada por el post “Gráficos de calendarios con series temporales” del blog de Raúl Vaquerizo, uno de los mejores blogs sobre R en español.
+Con código reproducible y personalizable se creará un calendario laboral usando R. El calendario realizado cubrirá todo el año 2020 y el mes de Enero de 2021.
+Se crea un data.frame con 3 variables:
+date: Días que aparecerán en el calendario. Es importante que esta variable se llame date por la función calendarPlot que se usará más adelante.</description>
     </item>
     
     <item>

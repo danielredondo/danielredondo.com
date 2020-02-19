@@ -1,0 +1,110 @@
+---
+title: "Calendario laboral con R"
+author: ''
+date: '2020-02-19'
+tags: ["visualizando"]
+editor_options: 
+  chunk_output_type: console
+---
+
+Esta publicación está inspirada por el post ["Gráficos de calendarios con series temporales"](https://analisisydecision.es/graficos-de-calendarios-con-series-temporales/) del blog de Raúl Vaquerizo, uno de los mejores blogs sobre R en español.
+
+Con código reproducible y personalizable se creará un calendario laboral usando R. El calendario realizado cubrirá todo el año 2020 y el mes de Enero de 2021.
+
+
+
+Se crea un data.frame con 3 variables:
+
+- `date`: Días que aparecerán en el calendario. Es importante que esta variable se llame `date` por la función `calendarPlot` que se usará más adelante.
+
+- `evento`: Información sobre los días (día laborable, festivo, ...). Se inicializa como evento = 0 (día laborable) y se modificará más adelante en algunos casos.
+
+- `dia_semana`: Día de la semana (lunes, martes, ...). Nótese que esta variable depende del `Sys.getlocale()` de cada usuario, así que quizá veas los días de la semana en otro idioma y tengas que adaptar algo del código.
+
+```{r, warning=FALSE, error=FALSE, message=FALSE}
+# Carga de paquetes
+library(lubridate) # Para trabajar con fechas 
+library(openair)   # Para crear el calendario
+
+calendario <- data.frame(
+  date = seq(ymd("2020-01-01"), ymd("2021-01-31"), by = 1),
+  evento = 0 # Valor por defecto (día laborable)
+)
+
+# Se añade al data.frame el día de la semana
+calendario$dia_semana <- weekdays(calendario$date)
+
+head(calendario)
+```
+
+Se van añadiendo eventos, como por ejemplo la jornada reducida durante algunas épocas del año (evento = 1).
+
+```{r}
+# Verano
+verano <- seq(ymd("2020-07-01"), ymd("2020-08-31"), by = 1)
+calendario[calendario$date %in% verano, "evento"] <- 1
+
+# Navidad 2019-2020
+festivos <- seq(ymd("2020-01-01"), ymd("2020-01-05"), by = 1)
+calendario[calendario$date %in% festivos, "evento"] <- 1
+
+# Navidad 2020-2021
+festivos <- seq(ymd("2020-12-24"), ymd("2021-01-05"), by = 1)
+calendario[calendario$date %in% festivos, "evento"] <- 1
+```
+
+Se añaden algunos días festivos (evento = 2).
+
+```{r}
+festivos <- c(ymd("2020-01-01"), ymd("2020-04-10"), ymd("2020-01-06"),
+              ymd("2020-05-01"), ymd("2020-10-12"), ymd("2020-12-08"),
+              ymd("2020-12-25"), ymd("2021-01-01"), ymd("2021-01-06"))
+calendario[calendario$date %in% festivos, "evento"] <- 2 
+```
+
+No se trabaja sábados ni domingos (evento = 3).
+
+```{r}
+# Sábados y domingos
+calendario[calendario$dia_semana %in% c("sábado", "domingo"), ]$evento <- 3
+
+head(calendario, 12)
+```
+
+Se dibuja el calendario con `openair::calendarPlot`, añadiendo un título, empezando el calendario por lunes y coloreando los días por tipo de evento. Se oculta también una leyenda que se muestra por defecto, y que enseña que `evento` es en realidad una variable continua aunque sólo tome los valores 0, 1, 2 y 3.
+
+```{r, fig.width = 7, fig.height = 10}
+calendarPlot(calendario,
+             pollutant = "evento",
+             # Título
+             main = "Calendario laboral 2020",
+             # Para que el calendario empiece en lunes
+             w.shift = 2,
+             # Se oculta la leyenda
+             key = FALSE,
+             # El límite superior es el número de eventos
+             limits = c(0, 3),
+             # Colores para los eventos (del 0 al 3)
+             cols = c("white", "gray50", "steelblue1", "red"))
+```
+
+En este calendario se echa de menos una leyenda, que se puede añadir (con algo de paciencia) aprovechando que `calendarPlot` utiliza `lattice` para hacer el gráfico.
+
+```{r, fig.width = 7, fig.height = 10}
+library(lattice)
+calendarPlot(calendario,
+             pollutant = "evento",
+             main = "Calendario laboral 2020",
+             w.shift = 2,
+             key = FALSE,
+             limits = c(0, 3),
+             cols = c("white", "gray50", "steelblue1", "red"))
+
+# Leyenda (ajustar x e y hasta que la leyenda esté donde queremos)
+panel.text(x = 950, y = 1550, labels = "Jornada reducida (de 8h a 15h)",
+           col = "gray50", font = "bold")
+panel.text(x = 950, y = 1600, labels = "Fin de semana",
+           col = "red", font = "bold")
+panel.text(x = 950, y = 1650, labels = "Festivo",
+           col = "steelblue1", font = "bold")
+```
