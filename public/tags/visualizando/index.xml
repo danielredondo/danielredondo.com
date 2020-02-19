@@ -13,10 +13,10 @@
     
     <item>
       <title>Calendario laboral con R</title>
-      <link>/posts/20200201_calendario_laboral/</link>
+      <link>/posts/20200219_calendario_laboral/</link>
       <pubDate>Wed, 19 Feb 2020 00:00:00 +0000</pubDate>
       
-      <guid>/posts/20200201_calendario_laboral/</guid>
+      <guid>/posts/20200219_calendario_laboral/</guid>
       <description>Esta publicación está inspirada por el post “Gráficos de calendarios con series temporales” del blog de Raúl Vaquerizo, uno de los mejores blogs sobre R en español.
 Con código reproducible y personalizable se creará un calendario laboral usando R. El calendario realizado cubrirá todo el año 2020 y el mes de Enero de 2021.
 Se crea un data.frame con 3 variables:
