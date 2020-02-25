@@ -97,8 +97,8 @@ plot(Effect("SEXOa", GLM), xlab = "Sexo", ylab = "Probabilidad de consumir homeo
 
 Correos de contacto:
 
-*	**[Jesús Henares-Montiel](mailto:jesus.henares.sspa@juntadeandalucia.es)**
-*	**[Dafina Petrova](mailto:dafina.petrova.ext@juntadeandalucia.es)**
+*	**[Jesús Henares-Montiel](mailto:jesus.henares.easp@juntadeandalucia.es)**
+*	**[Dafina Petrova](mailto:dafina.petrova.easp@juntadeandalucia.es)**
 *	**[Daniel Redondo-Sánchez](mailto:daniel.redondo.easp@juntadeandalucia.es)**
 
 
