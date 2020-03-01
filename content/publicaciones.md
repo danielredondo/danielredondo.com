@@ -12,6 +12,10 @@ The Stata Journal [(Link)](https://doi.org/10.1177/1536867X19874237)
 *Miguel Angel Luque-Fernandez, Michael Schomaker, Daniel Redondo-Sánchez, Maria Jose Sanchez Perez, Anand Vaidya, Mireille E Schnitzer.*  
 International Journal of Epidemiology [(Link - Open Access)](https://doi.org/10.1093/ije/dyy275)
 
+* **Multimorbidity and short-term overall mortality among colorectal cancer patients in Spain: A population-based cohort study.**  
+*Miguel A.Luque-Fernandez, Karen Gonçalves, Elena Salamanca-Fernándeza, Daniel Redondo-Sanchez, Shing F.Lee, Miguel Rodríguez-Barranco, Mª C. Carmona-García, Rafael Marcos-Gragera, María-José Sánchez*   
+European Journal of Cancer [(Link - Open Access)](https://doi.org/10.1016/j.ejca.2020.01.021)
+
 * **Multimorbidity by Patient and Tumor Factors and Time-to-Surgery Among Colorectal Cancer Patients in Spain: A Population-Based Study.**  
 *Miguel Angel Luque-Fernandez, Daniel Redondo-Sanchez, Shing Fung Lee, Miguel Rodríguez-Barranco, Mª Carmen Carmona-García, Rafael Marcos-Gragera, María José Sánchez.*  
 Clinical Epidemiology [(Link - Open Access)](http://doi.org/10.2147/CLEP.S229935)
