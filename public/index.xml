@@ -12,13 +12,13 @@
     
     
     <item>
-      <title>Aplicaciones</title>
+      <title>Aplicaciones web</title>
       <link>/aplicaciones/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/aplicaciones/</guid>
-      <description>Las siguientes aplicaciones están desarrolladas con R y shiny.
- iDEAL Granada: Aplicación basada en web-scraping para visualizar noticias del periódico IDEAL, con código abierto, y menos de 60 líneas.  Desarrollo aplicaciones de contexto científico, como co-autor junto a Miguel Ángel Luque-Fernández.
+      <description>Las siguientes aplicaciones web están desarrolladas con R y shiny.
+ iDEAL Granada: Aplicación basada en web-scraping para visualizar noticias del periódico IDEAL, con código abierto, y menos de 60 líneas.  Desarrollo aplicaciones web de contexto científico, que a menudo acompañan a artículos, como co-autor junto a Miguel Ángel Luque-Fernández.
  CoMCoR y TiMSurg: Aplicaciones web con gráficos interactivos asociadas a un artículo científico publicado en Clinical Epidemiology. El artículo describe en pacientes de cáncer colorrectal el patrón de comorbilidad y el impacto de la comorbilidad en el tiempo transcurrido desde el diagnóstico hasta la cirugía (Link - Open Access).</description>
     </item>
     

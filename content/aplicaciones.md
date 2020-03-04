@@ -1,16 +1,16 @@
 ---
-title: Aplicaciones
+title: Aplicaciones web
 weight: 10
 type: about
 ---
 
-Las siguientes aplicaciones están desarrolladas con `R` y `shiny`.
+Las siguientes aplicaciones web están desarrolladas con `R` y `shiny`.
 
 * [iDEAL Granada](http://bit.ly/iDEALgranada): Aplicación basada en web-scraping para visualizar noticias del periódico IDEAL, con [código abierto, y menos de 60 líneas](https://github.com/danielredondo/iDEAL-Granada/blob/master/app.R).
 
 ![](/aplicaciones/ideal.png)
 
-Desarrollo aplicaciones de contexto científico, como co-autor junto a [Miguel Ángel Luque-Fernández](https://maluque.netlify.com).
+Desarrollo aplicaciones web de contexto científico, que a menudo acompañan a [artículos](/publicaciones), como co-autor junto a [Miguel Ángel Luque-Fernández](https://maluque.netlify.com).
 
 * [CoMCoR](https://watzilei.com/shiny/CoMCoR/) y [TiMSurg](https://watzilei.com/shiny/timsurg/): Aplicaciones web con gráficos interactivos asociadas a un artículo científico publicado en Clinical Epidemiology. El artículo describe en pacientes de cáncer colorrectal el patrón de comorbilidad y el impacto de la comorbilidad en el tiempo transcurrido desde el diagnóstico hasta la cirugía  [(Link - Open Access)](http://doi.org/10.2147/CLEP.S229935).
 
