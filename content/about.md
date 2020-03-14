@@ -23,6 +23,7 @@ Aquí encontrarás publicaciones sobre [visualización de datos](/tags/visualiza
 
 #### También puedes encontrarme en:
 
-* Twitter: [@dredondosanchez](https://twitter.com/dredondosanchez)  
 * Github: [danielredondo](https://github.com/danielredondo)
+* Twitter: [@dredondosanchez](https://twitter.com/dredondosanchez)  
+* Linkedin: [dredondosanchez](https://www.linkedin.com/in/dredondosanchez/)
 * Correo: danielredondosanchez [at] hotmail.com.
