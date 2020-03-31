@@ -85,7 +85,7 @@ head(calendario, 12)</code></pre>
              limits = c(0, 3),
              # Colores para los eventos (del 0 al 3)
              cols = c(&quot;white&quot;, &quot;gray50&quot;, &quot;steelblue1&quot;, &quot;red&quot;))</code></pre>
-<p><img src="/posts/20200201_calendario_laboral_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p><img src="/posts/20200219_calendario_laboral_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 <p>En este calendario se echa de menos una leyenda, que se puede añadir (con algo de paciencia) aprovechando que <code>calendarPlot</code> utiliza <code>lattice</code> para hacer el gráfico.</p>
 <pre class="r"><code>library(lattice)
 calendarPlot(calendario,
@@ -96,11 +96,11 @@ calendarPlot(calendario,
              limits = c(0, 3),
              cols = c(&quot;white&quot;, &quot;gray50&quot;, &quot;steelblue1&quot;, &quot;red&quot;))
 
-# Leyenda (ajustar x e y hasta que la leyenda esté donde queremos)
+# Leyenda (ajustar x e y hasta que esté donde queremos)
 panel.text(x = 950, y = 1550, labels = &quot;Jornada reducida (de 8h a 15h)&quot;,
            col = &quot;gray50&quot;, font = &quot;bold&quot;)
 panel.text(x = 950, y = 1600, labels = &quot;Fin de semana&quot;,
            col = &quot;red&quot;, font = &quot;bold&quot;)
 panel.text(x = 950, y = 1650, labels = &quot;Festivo&quot;,
            col = &quot;steelblue1&quot;, font = &quot;bold&quot;)</code></pre>
-<p><img src="/posts/20200201_calendario_laboral_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p><img src="/posts/20200219_calendario_laboral_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>

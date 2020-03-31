@@ -100,7 +100,7 @@ calendarPlot(calendario,
              limits = c(0, 3),
              cols = c("white", "gray50", "steelblue1", "red"))
 
-# Leyenda (ajustar x e y hasta que la leyenda esté donde queremos)
+# Leyenda (ajustar x e y hasta que esté donde queremos)
 panel.text(x = 950, y = 1550, labels = "Jornada reducida (de 8h a 15h)",
            col = "gray50", font = "bold")
 panel.text(x = 950, y = 1600, labels = "Fin de semana",
