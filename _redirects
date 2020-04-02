@@ -1,2 +1,4 @@
 # Redirect default Netlify subdomain to primary domain
 https://danielredondo.netlify.com/* https://danielredondo.com/:splat 301!
+# From 14 April 2020, Netlify is migrating from .com to .app
+https://danielredondo.netlify.app/* https://danielredondo.com/:splat 301!
