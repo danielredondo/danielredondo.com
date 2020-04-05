@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>fútbol on Daniel Redondo</title>
+    <link>/tags/f%C3%BAtbol/</link>
+    <description>Recent content in fútbol on Daniel Redondo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 05 Apr 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/f%C3%BAtbol/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Reglas de asociación con jugadores de fútbol usando R</title>
+      <link>/posts/20200405_reglas_asociacion/</link>
+      <pubDate>Sun, 05 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/20200405_reglas_asociacion/</guid>
+      <description>1. Carga de paquetesSe utilizarán los paquetes dplyr, arules, arulesViz y RKEEL.
+# Carga de paqueteslibrary(dplyr) # Para usar pipes (%&amp;gt;%), select, filter, ...library(arules) # Para trabajar con reglas de asociaciónlibrary(arulesViz) # Para gráficos con reglas de asociaciónlibrary(RKEEL) # Para usar el método MOPNAR2. Introducción al conjunto de datosFIFA Ultimate Team es un modo de juego online de la serie de videojuegos de fútbol FIFA, al que juegan más de 10 millones de usuarios anualmente.</description>
+    </item>
+    
+  </channel>
+</rss>

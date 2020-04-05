@@ -6,10 +6,20 @@
     <description>Recent content in Posts on Daniel Redondo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 19 Feb 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 05 Apr 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Reglas de asociación (y detección de anomalías) con futbolistas usando R</title>
+      <link>/posts/20200405_reglas_asociacion/</link>
+      <pubDate>Sun, 05 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/20200405_reglas_asociacion/</guid>
+      <description>Aprovecho la cuarentena provocada por la pandemia del coronavirus para adaptar para esta web un trabajo que realicé para la asignatura Minería de datos: Aprendizaje no supervisado y detección de anomalías del Máster de Ciencia de Datos de la Universidad de Granada.
+Las reglas de asociación son una técnica de aprendizaje no supervisado usada para extraer información relevante a partir de grandes conjuntos de datos. Sin entrar mucho en detalle, cada regla de asociación tiene vinculadas distintas medidas numéricas para determinar la relevancia de la regla.</description>
+    </item>
     
     <item>
       <title>Calendario laboral con R</title>

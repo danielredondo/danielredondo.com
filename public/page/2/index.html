@@ -23,7 +23,7 @@
 <meta property="og:description" content="danielredondo.com" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="/" />
-<meta property="og:updated_time" content="2020-02-19T00:00:00+00:00" />
+<meta property="og:updated_time" content="2020-04-05T00:00:00+00:00" />
 
 
     
@@ -162,8 +162,56 @@
         <div class="content container">
             
   <div class="post-list">
+  
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+    
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+            processEscapes: true,
+            processEnvironments: true
+        },
+        // Center justify equations in code and markdown cells. Elsewhere
+        // we use CSS to left justify single line equations in code cells.
+        displayAlign: 'center',
+        "HTML-CSS": {
+            styles: {'.MathJax_Display': {"margin": 0}},
+            linebreaks: { automatic: true }
+        }
+    });
+    </script>
+    
+
+
+
     
     
+      
+        
+      
+      <div class="post-list__item">
+        <span class="item__title--big">
+          <a href="/posts/20181010_ens/" >Importando en R la Encuesta Nacional de Salud de 2017</a>
+        </span>
+        <span class="item__date">
+          2018-10-24
+        </span>
+        <span >
+        
+        Hace unos meses se publicaron los resultados de la Encuesta Nacional de Salud (ENS) de 2017.
+Estos datos son abiertos: cualquiera puede descargarlos. Pero… ¿cualquiera puede abrirlos y trabajar con ellos?La información de la ENS para adultos se proporciona como un fichero de ancho fijo, de la siguiente forma:
+Este archivo puede desmotivar a más de uno, ante la incapacidad de llevarse esta información a un entorno de trabajo en el que se encuentre cómodo.
+        
+        </span>
+        
+          ... <a class="read-more-symbol" href="/posts/20181010_ens/">➦</a>
+        
+        </div>
+        
+     
       
         
       
@@ -295,29 +343,6 @@ ggplot(data = estadisticas, aes(GF, Pt, label = equipo)) +geom_point() + geom_s
         </span>
         
           ... <a class="read-more-symbol" href="/posts/20180502_desastre_granadacf/">➦</a>
-        
-        </div>
-        
-     
-      
-        
-      
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/posts/20180418_ideal_shiny/" >iDEAL, la web para visualizar noticias del IDEAL</a>
-        </span>
-        <span class="item__date">
-          2018-04-18
-        </span>
-        <span >
-        
-        Hace unos días, con una treintena de líneas de código, conseguí leer noticias del periódico IDEAL sin salir de R, ese software libre de enfoque estadístico todoterreno.
-Lo que hace unos días era un pequeño script enR ha madurado ahora en una web, más accesible y amigable:
-http://bitly.com/iDEALgranadaEl manual de empleo es simple: pegas la URL del artículo que quieres leer, y la noticia aparece a la derecha, con un diseño mejorable, pero que cumple.
-        
-        </span>
-        
-          ... <a class="read-more-symbol" href="/posts/20180418_ideal_shiny/">➦</a>
         
         </div>
         
