@@ -316,14 +316,14 @@ Se visualizan ahora las 10 reglas más relevantes encontradas, usando distintos 
 # Tipo grafo
 reglas_seleccionadas %>%
   head(by = "gini", n = 10) %>%
-  plot(method="graph")
+  plot(method = "graph")
 ```
 
 ```{r fig.height=8}
 # Tipo matriz (Antecedente por columnas, consecuente por filas)
 reglas_seleccionadas %>%
   head(by = "gini", n = 10) %>%
-  plot(method="grouped")
+  plot(method = "grouped")
 ```
 
 ```{r}

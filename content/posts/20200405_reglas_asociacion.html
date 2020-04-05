@@ -227,12 +227,12 @@ quality(reglas_seleccionadas) &lt;- cbind(quality(reglas_seleccionadas), mIntere
 <pre class="r"><code># Tipo grafo
 reglas_seleccionadas %&gt;%
   head(by = &quot;gini&quot;, n = 10) %&gt;%
-  plot(method=&quot;graph&quot;)</code></pre>
+  plot(method = &quot;graph&quot;)</code></pre>
 <p><img src="/posts/20200405_reglas_asociacion_files/figure-html/unnamed-chunk-21-1.png" width="576" /></p>
 <pre class="r"><code># Tipo matriz (Antecedente por columnas, consecuente por filas)
 reglas_seleccionadas %&gt;%
   head(by = &quot;gini&quot;, n = 10) %&gt;%
-  plot(method=&quot;grouped&quot;)</code></pre>
+  plot(method = &quot;grouped&quot;)</code></pre>
 <p><img src="/posts/20200405_reglas_asociacion_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
 <pre class="r"><code># Tipo coordenadas paralelas
 reglas_seleccionadas %&gt;%
