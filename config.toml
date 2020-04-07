@@ -38,7 +38,7 @@ paginate = 7
     twitter = "dredondosanchez"
     # facebook = "<username>"
     # stackoverflow = "<username>"
-    email = "danielredondosanchez@hotmail.com"
+    # email = "<username>"
 
 ## Main Menu
 [[menu.main]]
