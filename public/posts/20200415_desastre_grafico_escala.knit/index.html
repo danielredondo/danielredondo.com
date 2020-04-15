@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    
+
+
+    <head>
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Cache-Control" content="public" />
+<!-- Enable responsiveness on mobile devices -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.63.2" />
+
+    
+    
+    
+
+<title>Replicando un gráfico horrible con ggplot2 • Daniel Redondo</title>
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Replicando un gráfico horrible con ggplot2"/>
+<meta name="twitter:description" content="Hace unos días vi en Reddit este gráfico sobre el coronavirus, con las peores divisiones del eje vertical que he visto en mucho tiempo. Echadle un vistazo con calma, porque merece la pena. Al principio, las divisiones son de 30 en 30 (30, 60, 90), para luego pasar a 100, 130, 160, 190, dar un salto hasta 240, 250, y a partir de ahí las divisiones son de 50 en 50 (300, 350, 400)."/>
+
+<meta property="og:title" content="Replicando un gráfico horrible con ggplot2" />
+<meta property="og:description" content="Hace unos días vi en Reddit este gráfico sobre el coronavirus, con las peores divisiones del eje vertical que he visto en mucho tiempo. Echadle un vistazo con calma, porque merece la pena. Al principio, las divisiones son de 30 en 30 (30, 60, 90), para luego pasar a 100, 130, 160, 190, dar un salto hasta 240, 250, y a partir de ahí las divisiones son de 50 en 50 (300, 350, 400)." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/posts/20200415_desastre_grafico_escala.knit/" />
+<meta property="article:published_time" content="2020-04-15T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-04-15T00:00:00+00:00" />
+
+
+    
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/scss/hyde-hyde.9e8ea8827e8c49bc2e0e658d3103a33ada1814e1f04207faccfc5b5b41008ecf.css" integrity="sha256-no6ogn6MSbwuDmWNMQOjOtoYFOHwQgf6zPxbW0EAjs8=">
+
+
+<link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
+
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+    <link rel="shortcut icon" href="/favicon.png">
+    
+</head>
+
+
+    <body class=" ">
+    
+<div class="sidebar">
+  <div class="container ">
+    <div class="sidebar-about">
+      <span class="site__title">
+        <a href="/">Daniel Redondo</a>
+      </span>
+      
+        
+        
+        
+        #YoMeQuedoEnCasa
+        <div class="author-image">
+          <img src="/img/piramide.png" alt="Author Image" class="img--circle img--headshot element--center">
+        </div>
+        
+      
+      
+      <p class="site__description">
+         danielredondo.com 
+      </p>
+    </div>
+    <div class="collapsible-menu">
+      <input type="checkbox" id="menuToggle">
+      <label for="menuToggle">Daniel Redondo</label>
+      <div class="menu-content">
+        <div>
+	<ul class="sidebar-nav">
+		 
+		 
+			 
+				<li>
+					<a href="/posts/">
+						<span>BLOG</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/publicaciones/">
+						<span>PUBLICACIONES CIENTÍFICAS</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/aplicaciones/">
+						<span>APLICACIONES WEB</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/about/">
+						<span>SOBRE MÍ</span>
+					</a>
+				</li>
+			 
+		
+	</ul>
+</div>
+
+        <section class="social">
+	
+	<a href="https://twitter.com/dredondosanchez" rel="me"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	<a href="https://github.com/danielredondo" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	<a href="https://linkedin.com/in/dredondosanchez" rel="me"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	
+</section>
+
+      </div>
+    </div>
+    
+
+
+  </div>
+</div>
+
+        <div class="content container">
+            
+    
+<article>
+  <header>
+    <h1>Replicando un gráfico horrible con ggplot2</h1>
+    
+    
+<div class="post__meta">
+    
+    
+      <i class="fas fa-calendar-alt"></i> 2020-04-15
+    
+    
+    
+    
+    
+      
+      
+          <br/>
+           <i class="fas fa-tags"></i>
+          
+          <a class="badge badge-tag" href="/tags/dataviz">dataviz</a>
+          
+      
+    
+    
+    <br/>
+    <i class="fas fa-clock"></i> 4 min read
+</div>
+
+
+  </header>
+  
+  
+  <div class="post">
+    <p>Hace unos días vi <a href="https://www.reddit.com/r/CrappyDesign/comments/fv0fpz/the_yaxis_on_this_fox_news_graph_of_coronavirus/">en Reddit</a> este gráfico sobre el coronavirus, con <strong>las peores divisiones del eje vertical que he visto en mucho tiempo</strong>. Echadle un vistazo con calma, porque merece la pena. Al principio, las divisiones son de 30 en 30 (30, 60, 90), para luego pasar a 100, 130, 160, 190, dar un salto hasta 240, 250, y a partir de ahí las divisiones son de 50 en 50 (300, 350, 400).</p>
+<p><img src="%5Cposts%5C20200415_desastre_grafico_escala%5Cbad_scale.jpg" alt="">
+<em>El gráfico apareció en la emisora local de Fox en Denver, Colorado</em>.</p>
+<p>Hacer el gráfico con <code>R</code> y el paquete <code>ggplot2</code> usando una <strong>escala sensata</strong> es muy sencillo. Dejo el código reproducible:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># Carga de paquetes</span>
+<span style="color:#a6e22e">library</span>(lubridate)
+<span style="color:#a6e22e">library</span>(dplyr)
+<span style="color:#a6e22e">library</span>(ggplot2)
+
+<span style="color:#75715e"># Valores del gráfico</span>
+valores <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">c</span>(<span style="color:#ae81ff">33</span>, <span style="color:#ae81ff">61</span>, <span style="color:#ae81ff">86</span>, <span style="color:#ae81ff">112</span>, <span style="color:#ae81ff">116</span>, <span style="color:#ae81ff">129</span>, <span style="color:#ae81ff">192</span>, <span style="color:#ae81ff">174</span>,
+             <span style="color:#ae81ff">344</span>, <span style="color:#ae81ff">304</span>, <span style="color:#ae81ff">327</span>, <span style="color:#ae81ff">246</span>, <span style="color:#ae81ff">320</span>, <span style="color:#ae81ff">339</span>, <span style="color:#ae81ff">376</span>)
+dias <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">seq</span>(<span style="color:#a6e22e">ymd</span>(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">2021-03-18&#34;</span>), <span style="color:#a6e22e">ymd</span>(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">2021-04-01&#34;</span>), by <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>)
+
+<span style="color:#75715e"># Construcción del gráfico</span>
+<span style="color:#a6e22e">data.frame</span>(dias, valores) <span style="color:#f92672">%&gt;%</span>
+  <span style="color:#a6e22e">ggplot</span>(<span style="color:#a6e22e">aes</span>(x <span style="color:#f92672">=</span> dias, y <span style="color:#f92672">=</span> valores, label <span style="color:#f92672">=</span> valores)) <span style="color:#f92672">+</span> 
+  <span style="color:#a6e22e">geom_line</span>() <span style="color:#f92672">+</span>
+  <span style="color:#a6e22e">geom_point</span>(size <span style="color:#f92672">=</span> <span style="color:#ae81ff">7</span>) <span style="color:#f92672">+</span>
+  <span style="color:#a6e22e">geom_text</span>(col <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">white&#34;</span>, size <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>, fontface <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">bold&#34;</span>) <span style="color:#f92672">+</span> 
+  <span style="color:#a6e22e">scale_y_continuous</span>(name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Escala bien&#34;</span>,
+                     limits <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span>(<span style="color:#ae81ff">30</span>, <span style="color:#ae81ff">400</span>),
+                     breaks <span style="color:#f92672">=</span> <span style="color:#a6e22e">seq</span>(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">400</span>, <span style="color:#ae81ff">50</span>)) <span style="color:#f92672">+</span> 
+  <span style="color:#a6e22e">scale_x_date</span>(name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Días&#34;</span>,
+               breaks <span style="color:#f92672">=</span> <span style="color:#a6e22e">seq</span>(<span style="color:#a6e22e">ymd</span>(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">2021-03-18&#34;</span>), <span style="color:#a6e22e">ymd</span>(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">2021-04-01&#34;</span>), by <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>)) <span style="color:#f92672">+</span> 
+  <span style="color:#a6e22e">ggtitle</span>(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Gráfico con escala bien&#34;</span>) <span style="color:#f92672">+</span> 
+  <span style="color:#a6e22e">theme_classic</span>() <span style="color:#f92672">+</span> 
+  <span style="color:#a6e22e">theme</span>(plot.title <span style="color:#f92672">=</span> <span style="color:#a6e22e">element_text</span>(hjust <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.5</span>),
+        panel.grid.major.y <span style="color:#f92672">=</span> <span style="color:#a6e22e">element_line</span>())
+</code></pre></div><p><!-- raw HTML omitted --></p>
+<h3 id="el-verdadero-reto-está-en-hacer-el-gráfico-mal-a-propósito-replicando-la-foto-original"><strong>El verdadero reto está en hacer el gráfico mal a propósito, replicando la foto original.</strong></h3>
+<p><strong>Os invito a que probéis a hacerlo antes de seguir leyendo</strong> y dejo aquí mi solución, que puede no ser la más elegante o eficiente.</p>
+<p><!-- raw HTML omitted -->**¡ALERTA! Vienen fórmulas.**<!-- raw HTML omitted --></p>
+<p>Algo de notación para empezar. Tenemos 15 valores a representar: ${x_1 = 33, x_2 = 61, \dots, x_{15} = 376}$ y las divisiones (mal repartidas) en el eje Y que deberíamos seguir: ${a_1 = 30, a_2 = 60, \dots, a_{12} = 400}$.</p>
+<p>La idea es trasladar las divisiones ${a_j}$ a una escala ${j}$, que vaya de $1$ a $12$. Para cada valor $x_i$ del gráfico, buscamos el intervalo $(a_{j-1}, a_j)$ al que pertenece, y consideramos las siguientes transformaciones:</p>
+<p>$$\begin{cases}
+a_{j-1} \rightarrow j-1 \<br>
+x_i \rightarrow v_i \<br>
+a_j \rightarrow j
+\end{cases} $$</p>
+<p>donde ${v_i, i = 1, \dots, 15}$ son los valores que se representarán en la gráfica transformada, y variarán entre 1 y 12.</p>
+<p>Suponiendo linealidad dentro del intervalo $(j-1, j)$, tenemos:</p>
+<p>$$\frac{a_j - a_{j-1}}{j - (j-1)} = \frac{a_j-x_i}{j-v_i}$$</p>
+<p>de donde se despeja el valor de $v_i$ como:</p>
+<p>$$v_i = j - \frac{a_j-x_i}{a_j-a_{j-a}}$$</p>
+<p>Como único escenario que no se ha contemplado, si $x_i = a_j$ para algún $i$ y algún $j$, entonces $v_i = j$.</p>
+<p>Puede parecer complejo, pero por ejemplo el proceso para $i = 1$ es el siguiente:</p>
+<p><img src="%5Cposts%5C20200415_desastre_grafico_escala%5Cejemplo.png" alt=""></p>
+<p>Lo programamos en R: para cada $x_i = \text{valor[i]}$, buscamos el intervalo $(a_{j-1}, a_j) = (\text{i_inf}, \text{i_sup})$ al que pertenece, y calculamos $v_i = \text{valores_mal[i]}$.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">escala_mal <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">c</span>(<span style="color:#ae81ff">30</span>, <span style="color:#ae81ff">60</span>, <span style="color:#ae81ff">90</span>, <span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">130</span>, <span style="color:#ae81ff">160</span>, <span style="color:#ae81ff">190</span>, <span style="color:#ae81ff">240</span>, <span style="color:#ae81ff">250</span>, <span style="color:#ae81ff">300</span>, <span style="color:#ae81ff">350</span>, <span style="color:#ae81ff">400</span>)
+valores_mal <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">c</span>()
+
+<span style="color:#a6e22e">for</span>(i in <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span><span style="color:#a6e22e">length</span>(valores)){
+  <span style="color:#75715e"># Encontramos el intervalo donde pertenece el valor</span>
+  <span style="color:#a6e22e">for</span>(j in <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span><span style="color:#a6e22e">length</span>(escala_mal)){
+    <span style="color:#a6e22e">if</span>(valores[i] <span style="color:#f92672">&lt;</span> escala_mal[j]){
+      <span style="color:#75715e"># Extremos del intervalo transformado</span>
+      i_inf <span style="color:#f92672">&lt;-</span> escala_mal[j <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>]
+      i_sup <span style="color:#f92672">&lt;-</span> escala_mal[j]
+      <span style="color:#75715e"># Calculamos el nuevo valor y lo añadimos al vector</span>
+      valor_i_nuevo <span style="color:#f92672">&lt;-</span> j <span style="color:#f92672">-</span> ((i_sup <span style="color:#f92672">-</span> valores[i]) <span style="color:#f92672">/</span> (i_sup <span style="color:#f92672">-</span> i_inf))
+      valores_mal <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">c</span>(valores_mal, valor_i_nuevo)
+      <span style="color:#a6e22e">break</span>()
+    }
+  }
+}
+
+<span style="color:#a6e22e">print</span>(valores_mal)
+</code></pre></div><pre><code>##  [1]  1.100000  2.033333  2.866667  4.400000  4.533333  4.966667  7.040000
+##  [8]  6.466667 10.880000 10.080000 10.540000  8.600000 10.400000 10.780000
+## [15] 11.520000
+</code></pre><p>Ya sólo falta <strong>representar el gráfico cambiando las etiquetas del eje Y</strong>, que en realidad son los números del 1 al 12, por <code>escala_mal</code>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># Construcción del gráfico</span>
+<span style="color:#a6e22e">data.frame</span>(dias, valores_mal, valores) <span style="color:#f92672">%&gt;%</span>
+  <span style="color:#a6e22e">ggplot</span>(<span style="color:#a6e22e">aes</span>(x <span style="color:#f92672">=</span> dias, y <span style="color:#f92672">=</span> valores_mal, label <span style="color:#f92672">=</span> valores)) <span style="color:#f92672">+</span> 
+  <span style="color:#a6e22e">geom_line</span>() <span style="color:#f92672">+</span>
+  <span style="color:#a6e22e">geom_point</span>(size <span style="color:#f92672">=</span> <span style="color:#ae81ff">7</span>) <span style="color:#f92672">+</span>
+  <span style="color:#a6e22e">geom_text</span>(col <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">white&#34;</span>, size <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>, fontface <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">bold&#34;</span>) <span style="color:#f92672">+</span> 
+  <span style="color:#a6e22e">scale_y_continuous</span>(name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Escala mal&#34;</span>, 
+                     limits <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">12</span>),
+                     breaks <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span><span style="color:#ae81ff">12</span>,
+                     labels <span style="color:#f92672">=</span> escala_mal) <span style="color:#f92672">+</span> 
+  <span style="color:#a6e22e">scale_x_date</span>(name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Días&#34;</span>,
+               breaks <span style="color:#f92672">=</span> <span style="color:#a6e22e">seq</span>(<span style="color:#a6e22e">ymd</span>(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">2021-03-18&#34;</span>), <span style="color:#a6e22e">ymd</span>(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">2021-04-01&#34;</span>), by <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>)) <span style="color:#f92672">+</span> 
+  <span style="color:#a6e22e">ggtitle</span>(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Gráfico con escala mal&#34;</span>) <span style="color:#f92672">+</span> 
+  <span style="color:#a6e22e">theme_classic</span>() <span style="color:#f92672">+</span> 
+  <span style="color:#a6e22e">theme</span>(plot.title <span style="color:#f92672">=</span> <span style="color:#a6e22e">element_text</span>(hjust <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.5</span>),
+        panel.grid.major.y <span style="color:#f92672">=</span> <span style="color:#a6e22e">element_line</span>())
+</code></pre></div><p><!-- raw HTML omitted --></p>
+<p>En el siguiente gif se pueden ver fácilmente las diferencias entre el gráfico correcto y el incorrecto:</p>
+<p><img src="%5Cposts%5C20200415_desastre_grafico_escala%5Cgif.gif" alt=""></p>
+<p>Resumo las conclusiones en dos:</p>
+<ol>
+<li>
+<p><code>R</code> y <code>ggplot2</code> todo lo pueden.</p>
+</li>
+<li>
+<p>Hacer las cosas mal lleva mucho más tiempo que hacerlas bien.</p>
+</li>
+</ol>
+
+  </div>
+  
+
+<div class="navigation navigation-single">
+    
+    <a href="/posts/20200405_reglas_asociacion/" class="navigation-prev">
+      <i aria-hidden="true" class="fa fa-chevron-left"></i>
+      <span class="navigation-tittle">Reglas de asociación (y detección de anomalías) con futbolistas usando R y estadísticas de FIFA</span>
+    </a>
+    
+    
+    <a href="/posts/20200415_desastre_grafico_escala/" class="navigation-next">
+      <span class="navigation-tittle">Replicando un gráfico horrible con ggplot2</span>
+      <i aria-hidden="true" class="fa fa-chevron-right"></i>
+    </a>
+    
+</div>
+
+
+  
+
+  
+    
+
+
+</article>
+
+
+
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+    
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+            processEscapes: true,
+            processEnvironments: true
+        },
+        // Center justify equations in code and markdown cells. Elsewhere
+        // we use CSS to left justify single line equations in code cells.
+        displayAlign: 'center',
+        "HTML-CSS": {
+            styles: {'.MathJax_Display': {"margin": 0}},
+            linebreaks: { automatic: true }
+        }
+    });
+    </script>
+    
+
+
+        </div>
+        
+    
+
+  
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-129757599-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+<script defer src="https://use.fontawesome.com/releases/v5.5.0/js/all.js" integrity="sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0" crossorigin="anonymous"></script>
+
+
+    
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+        
+            
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/r.min.js"></script>
+            
+        
+    
+    <script type="text/javascript">
+        
+        hljs.configure({languages: ["r"]});
+        
+        hljs.initHighlightingOnLoad();
+    </script>
+    
+
+
+
+
+    
+
+
+
+    </body>
+</html>

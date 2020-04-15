@@ -6,7 +6,7 @@
     <description>Recent content on Daniel Redondo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 05 Apr 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 15 Apr 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
@@ -45,6 +45,15 @@ International Journal of Epidemiology (Link - Open Access)</description>
       <description>Soy Daniel Redondo Sánchez, y entre mi formación destaco:
  Licenciatura en Matemáticas (2009-2014) Experto en Epidemiología e Investigación Clínica (2016) Máster de Matemáticas (2019) Máster en Ciencia de Datos e Ingeniería de Computadores, especialidad en Ciencia de Datos y Tecnologías Inteligentes (en curso).  Desde 2018 trabajo como técnico de investigación del cáncer en el Instituto de Investigación Biosanitaria de Granada (ibs.GRANADA).
 Trabajo principalmente con R (shiny, tidyverse, leaflet, &amp;hellip;), Microsoft Access (SQL + VBA) y Stata.</description>
+    </item>
+    
+    <item>
+      <title>Replicando un gráfico horrible con ggplot2</title>
+      <link>/posts/20200415_desastre_grafico_escala/</link>
+      <pubDate>Wed, 15 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/20200415_desastre_grafico_escala/</guid>
+      <description>Hace unos días vi en Reddit este gráfico sobre el coronavirus, con las peores divisiones del eje vertical que he visto en mucho tiempo. Echadle un vistazo con calma porque merece la pena. Al principio, las divisiones son de 30 en 30 (30, 60, 90) para luego pasar a 100 (!!), 130, 160, 190, dar un salto hasta 240 (??), 250, y a partir de ahí las divisiones son de 50 en 50 (300, 350, 400).</description>
     </item>
     
     <item>

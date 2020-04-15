@@ -1,0 +1,132 @@
+---
+title: "Replicando un gráfico horrible con ggplot2"
+draft: no
+date: '2020-04-15'
+tags: ['dataviz']
+---
+
+Hace unos días vi [en Reddit](https://www.reddit.com/r/CrappyDesign/comments/fv0fpz/the_yaxis_on_this_fox_news_graph_of_coronavirus/) este gráfico sobre el coronavirus, con **las peores divisiones del eje vertical que he visto en mucho tiempo**. Echadle un vistazo con calma porque merece la pena. Al principio, las divisiones son de 30 en 30 (30, 60, 90) para luego pasar a 100 (!!), 130, 160, 190, dar un salto hasta 240 (??), 250, y a partir de ahí las divisiones son de 50 en 50 (300, 350, 400).
+
+![](\posts\20200415_desastre_grafico_escala\bad_scale.jpg)
+*El gráfico apareció en la emisora local de Fox en Denver, Colorado*.
+
+Hacer el gráfico con `R` y el paquete `ggplot2` usando una **escala sensata** es muy sencillo. Dejo el código reproducible:
+
+```{r, warning = FALSE, message = FALSE}
+# Carga de paquetes
+library(lubridate)
+library(dplyr)
+library(ggplot2)
+
+# Valores del gráfico
+valores <- c(33, 61, 86, 112, 116, 129, 192, 174,
+             344, 304, 327, 246, 320, 339, 376)
+dias <- seq(ymd("2021-03-18"), ymd("2021-04-01"), by = 1)
+
+# Construcción del gráfico
+data.frame(dias, valores) %>%
+  ggplot(aes(x = dias, y = valores, label = valores)) + 
+  geom_line() +
+  geom_point(size = 7) +
+  geom_text(col = "white", size = 3, fontface = "bold") + 
+  scale_y_continuous(name = "Escala bien",
+                     limits = c(30, 400),
+                     breaks = seq(0, 400, 50)) + 
+  scale_x_date(name = "Días",
+               breaks = seq(ymd("2021-03-18"), ymd("2021-04-01"), by = 2)) + 
+  ggtitle("Gráfico con escala bien") + 
+  theme_classic() + 
+  theme(plot.title = element_text(hjust = 0.5),
+        panel.grid.major.y = element_line())
+```
+
+### **El verdadero reto está en hacer el gráfico mal a propósito, replicando la foto original.**
+
+**Os invito a que probéis a hacerlo antes de seguir leyendo** y dejo aquí mi solución, que puede no ser la más elegante o eficiente.
+
+<font color="red">**¡ALERTA! Vienen fórmulas.**</font>
+
+Algo de notación para empezar. Tenemos 15 valores a representar: $\{x_1 = 33, x_2 = 61, \dots, x_{15} = 376\}$ y las divisiones (mal repartidas) en el eje Y que deberíamos seguir: $\{a_1 = 30, a_2 = 60, \dots, a_{12} = 400\}$.
+
+La idea es trasladar las divisiones $\{a_j\}$ a una escala $\{j\}$, que vaya de $1$ a $12$. Para cada valor $x_i$ del gráfico, buscamos el intervalo $(a_{j-1}, a_j)$ al que pertenece, y consideramos las siguientes transformaciones:
+
+$$\begin{cases}
+a_{j-1} \rightarrow j-1 \\
+x_i \rightarrow v_i \\
+a_j \rightarrow j
+\end{cases} $$
+
+donde $\{v_i, i = 1, \dots, 15\}$ son los valores que se representarán en la gráfica transformada, y variarán entre 1 y 12.
+
+Suponiendo linealidad dentro del intervalo $(j-1, j)$, tenemos:
+
+$$\frac{a_j - a_{j-1}}{j - (j-1)} = \frac{a_j-x_i}{j-v_i}$$  
+
+de donde se despeja el valor de $v_i$ como:
+
+$$v_i = j - \frac{a_j-x_i}{a_j-a_{j-a}}$$
+
+Como único escenario que no se ha contemplado, si $x_i = a_j$ para algún $i$ y algún $j$, entonces $v_i = j$.
+
+Puede parecer complejo, pero por ejemplo el proceso para $i = 1$ es el siguiente:
+
+![](\posts\20200415_desastre_grafico_escala\ejemplo.png)
+
+
+
+Lo programamos en R: para cada $x_i = \text{valor[i]}$, buscamos el intervalo $(a_{j-1}, a_j) = (\text{i_inf}, \text{i_sup})$ al que pertenece, y calculamos $v_i = \text{valores_mal[i]}$.
+
+```{r}
+escala_mal <- c(30, 60, 90, 100, 130, 160, 190, 240, 250, 300, 350, 400)
+valores_mal <- c()
+
+for(i in 1:length(valores)){
+  # Encontramos el intervalo donde pertenece el valor
+  for(j in 1:length(escala_mal)){
+    if(valores[i] < escala_mal[j]){
+      # Extremos del intervalo transformado
+      i_inf <- escala_mal[j - 1]
+      i_sup <- escala_mal[j]
+      # Calculamos el nuevo valor y lo añadimos al vector
+      valor_i_nuevo <- j - ((i_sup - valores[i]) / (i_sup - i_inf))
+      valores_mal <- c(valores_mal, valor_i_nuevo)
+      break()
+    }
+  }
+}
+
+print(valores_mal)
+```
+
+Ya sólo falta **representar el gráfico cambiando las etiquetas del eje Y**, que en realidad son los números del 1 al 12, por `escala_mal`.
+
+```{r}
+# Construcción del gráfico
+data.frame(dias, valores_mal, valores) %>%
+  ggplot(aes(x = dias, y = valores_mal, label = valores)) + 
+  geom_line() +
+  geom_point(size = 7) +
+  geom_text(col = "white", size = 3, fontface = "bold") + 
+  scale_y_continuous(name = "Escala mal", 
+                     limits = c(1, 12),
+                     breaks = 1:12,
+                     labels = escala_mal) + 
+  scale_x_date(name = "Días",
+               breaks = seq(ymd("2021-03-18"), ymd("2021-04-01"), by = 2)) + 
+  ggtitle("Gráfico con escala mal") + 
+  theme_classic() + 
+  theme(plot.title = element_text(hjust = 0.5),
+        panel.grid.major.y = element_line())
+```
+
+
+En el siguiente gif se pueden ver fácilmente las diferencias entre el gráfico correcto y el incorrecto:
+
+![](\posts\20200415_desastre_grafico_escala\gif.gif)
+
+
+Resumo las conclusiones en dos:
+
+1. `R` y `ggplot2` todo lo pueden.
+
+2. Hacer las cosas mal lleva mucho más tiempo que hacerlas bien.

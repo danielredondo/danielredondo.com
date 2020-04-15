@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    
+
+
+    <head>
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Cache-Control" content="public" />
+<!-- Enable responsiveness on mobile devices -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.63.2" />
+
+    
+    
+    
+
+<title>Replicando un gráfico horrible con ggplot2 • Daniel Redondo</title>
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Replicando un gráfico horrible con ggplot2"/>
+<meta name="twitter:description" content="Hace unos días vi en Reddit este gráfico sobre el coronavirus, con las peores divisiones del eje vertical que he visto en mucho tiempo. Echadle un vistazo con calma porque merece la pena. Al principio, las divisiones son de 30 en 30 (30, 60, 90) para luego pasar a 100 (!!), 130, 160, 190, dar un salto hasta 240 (??), 250, y a partir de ahí las divisiones son de 50 en 50 (300, 350, 400)."/>
+
+<meta property="og:title" content="Replicando un gráfico horrible con ggplot2" />
+<meta property="og:description" content="Hace unos días vi en Reddit este gráfico sobre el coronavirus, con las peores divisiones del eje vertical que he visto en mucho tiempo. Echadle un vistazo con calma porque merece la pena. Al principio, las divisiones son de 30 en 30 (30, 60, 90) para luego pasar a 100 (!!), 130, 160, 190, dar un salto hasta 240 (??), 250, y a partir de ahí las divisiones son de 50 en 50 (300, 350, 400)." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/posts/20200415_desastre_grafico_escala/" />
+<meta property="article:published_time" content="2020-04-15T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-04-15T00:00:00+00:00" />
+
+
+    
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/scss/hyde-hyde.9e8ea8827e8c49bc2e0e658d3103a33ada1814e1f04207faccfc5b5b41008ecf.css" integrity="sha256-no6ogn6MSbwuDmWNMQOjOtoYFOHwQgf6zPxbW0EAjs8=">
+
+
+<link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
+
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+    <link rel="shortcut icon" href="/favicon.png">
+    
+</head>
+
+
+    <body class=" ">
+    
+<div class="sidebar">
+  <div class="container ">
+    <div class="sidebar-about">
+      <span class="site__title">
+        <a href="/">Daniel Redondo</a>
+      </span>
+      
+        
+        
+        
+        #YoMeQuedoEnCasa
+        <div class="author-image">
+          <img src="/img/piramide.png" alt="Author Image" class="img--circle img--headshot element--center">
+        </div>
+        
+      
+      
+      <p class="site__description">
+         danielredondo.com 
+      </p>
+    </div>
+    <div class="collapsible-menu">
+      <input type="checkbox" id="menuToggle">
+      <label for="menuToggle">Daniel Redondo</label>
+      <div class="menu-content">
+        <div>
+	<ul class="sidebar-nav">
+		 
+		 
+			 
+				<li>
+					<a href="/posts/">
+						<span>BLOG</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/publicaciones/">
+						<span>PUBLICACIONES CIENTÍFICAS</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/aplicaciones/">
+						<span>APLICACIONES WEB</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/about/">
+						<span>SOBRE MÍ</span>
+					</a>
+				</li>
+			 
+		
+	</ul>
+</div>
+
+        <section class="social">
+	
+	<a href="https://twitter.com/dredondosanchez" rel="me"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	<a href="https://github.com/danielredondo" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	<a href="https://linkedin.com/in/dredondosanchez" rel="me"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	
+</section>
+
+      </div>
+    </div>
+    
+
+
+  </div>
+</div>
+
+        <div class="content container">
+            
+    
+<article>
+  <header>
+    <h1>Replicando un gráfico horrible con ggplot2</h1>
+    
+    
+<div class="post__meta">
+    
+    
+      <i class="fas fa-calendar-alt"></i> 2020-04-15
+    
+    
+    
+    
+    
+      
+      
+          <br/>
+           <i class="fas fa-tags"></i>
+          
+          <a class="badge badge-tag" href="/tags/dataviz">dataviz</a>
+          
+      
+    
+    
+    <br/>
+    <i class="fas fa-clock"></i> 4 min read
+</div>
+
+
+  </header>
+  
+  
+  <div class="post">
+    
+
+
+<p>Hace unos días vi <a href="https://www.reddit.com/r/CrappyDesign/comments/fv0fpz/the_yaxis_on_this_fox_news_graph_of_coronavirus/">en Reddit</a> este gráfico sobre el coronavirus, con <strong>las peores divisiones del eje vertical que he visto en mucho tiempo</strong>. Echadle un vistazo con calma porque merece la pena. Al principio, las divisiones son de 30 en 30 (30, 60, 90) para luego pasar a 100 (!!), 130, 160, 190, dar un salto hasta 240 (??), 250, y a partir de ahí las divisiones son de 50 en 50 (300, 350, 400).</p>
+<p><img src="\posts\20200415_desastre_grafico_escala\bad_scale.jpg" />
+<em>El gráfico apareció en la emisora local de Fox en Denver, Colorado</em>.</p>
+<p>Hacer el gráfico con <code>R</code> y el paquete <code>ggplot2</code> usando una <strong>escala sensata</strong> es muy sencillo. Dejo el código reproducible:</p>
+<pre class="r"><code># Carga de paquetes
+library(lubridate)
+library(dplyr)
+library(ggplot2)
+
+# Valores del gráfico
+valores &lt;- c(33, 61, 86, 112, 116, 129, 192, 174,
+             344, 304, 327, 246, 320, 339, 376)
+dias &lt;- seq(ymd(&quot;2021-03-18&quot;), ymd(&quot;2021-04-01&quot;), by = 1)
+
+# Construcción del gráfico
+data.frame(dias, valores) %&gt;%
+  ggplot(aes(x = dias, y = valores, label = valores)) + 
+  geom_line() +
+  geom_point(size = 7) +
+  geom_text(col = &quot;white&quot;, size = 3, fontface = &quot;bold&quot;) + 
+  scale_y_continuous(name = &quot;Escala bien&quot;,
+                     limits = c(30, 400),
+                     breaks = seq(0, 400, 50)) + 
+  scale_x_date(name = &quot;Días&quot;,
+               breaks = seq(ymd(&quot;2021-03-18&quot;), ymd(&quot;2021-04-01&quot;), by = 2)) + 
+  ggtitle(&quot;Gráfico con escala bien&quot;) + 
+  theme_classic() + 
+  theme(plot.title = element_text(hjust = 0.5),
+        panel.grid.major.y = element_line())</code></pre>
+<p><img src="/posts/20200415_desastre_grafico_escala_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<div id="el-verdadero-reto-está-en-hacer-el-gráfico-mal-a-propósito-replicando-la-foto-original." class="section level3">
+<h3><strong>El verdadero reto está en hacer el gráfico mal a propósito, replicando la foto original.</strong></h3>
+<p><strong>Os invito a que probéis a hacerlo antes de seguir leyendo</strong> y dejo aquí mi solución, que puede no ser la más elegante o eficiente.</p>
+<p><font color="red"><strong>¡ALERTA! Vienen fórmulas.</strong></font></p>
+<p>Algo de notación para empezar. Tenemos 15 valores a representar: <span class="math inline">\(\{x_1 = 33, x_2 = 61, \dots, x_{15} = 376\}\)</span> y las divisiones (mal repartidas) en el eje Y que deberíamos seguir: <span class="math inline">\(\{a_1 = 30, a_2 = 60, \dots, a_{12} = 400\}\)</span>.</p>
+<p>La idea es trasladar las divisiones <span class="math inline">\(\{a_j\}\)</span> a una escala <span class="math inline">\(\{j\}\)</span>, que vaya de <span class="math inline">\(1\)</span> a <span class="math inline">\(12\)</span>. Para cada valor <span class="math inline">\(x_i\)</span> del gráfico, buscamos el intervalo <span class="math inline">\((a_{j-1}, a_j)\)</span> al que pertenece, y consideramos las siguientes transformaciones:</p>
+<p><span class="math display">\[\begin{cases}
+a_{j-1} \rightarrow j-1 \\
+x_i \rightarrow v_i \\
+a_j \rightarrow j
+\end{cases} \]</span></p>
+<p>donde <span class="math inline">\(\{v_i, i = 1, \dots, 15\}\)</span> son los valores que se representarán en la gráfica transformada, y variarán entre 1 y 12.</p>
+<p>Suponiendo linealidad dentro del intervalo <span class="math inline">\((j-1, j)\)</span>, tenemos:</p>
+<p><span class="math display">\[\frac{a_j - a_{j-1}}{j - (j-1)} = \frac{a_j-x_i}{j-v_i}\]</span></p>
+<p>de donde se despeja el valor de <span class="math inline">\(v_i\)</span> como:</p>
+<p><span class="math display">\[v_i = j - \frac{a_j-x_i}{a_j-a_{j-a}}\]</span></p>
+<p>Como único escenario que no se ha contemplado, si <span class="math inline">\(x_i = a_j\)</span> para algún <span class="math inline">\(i\)</span> y algún <span class="math inline">\(j\)</span>, entonces <span class="math inline">\(v_i = j\)</span>.</p>
+<p>Puede parecer complejo, pero por ejemplo el proceso para <span class="math inline">\(i = 1\)</span> es el siguiente:</p>
+<p><img src="\posts\20200415_desastre_grafico_escala\ejemplo.png" /></p>
+<p>Lo programamos en R: para cada <span class="math inline">\(x_i = \text{valor[i]}\)</span>, buscamos el intervalo <span class="math inline">\((a_{j-1}, a_j) = (\text{i_inf}, \text{i_sup})\)</span> al que pertenece, y calculamos <span class="math inline">\(v_i = \text{valores_mal[i]}\)</span>.</p>
+<pre class="r"><code>escala_mal &lt;- c(30, 60, 90, 100, 130, 160, 190, 240, 250, 300, 350, 400)
+valores_mal &lt;- c()
+
+for(i in 1:length(valores)){
+  # Encontramos el intervalo donde pertenece el valor
+  for(j in 1:length(escala_mal)){
+    if(valores[i] &lt; escala_mal[j]){
+      # Extremos del intervalo transformado
+      i_inf &lt;- escala_mal[j - 1]
+      i_sup &lt;- escala_mal[j]
+      # Calculamos el nuevo valor y lo añadimos al vector
+      valor_i_nuevo &lt;- j - ((i_sup - valores[i]) / (i_sup - i_inf))
+      valores_mal &lt;- c(valores_mal, valor_i_nuevo)
+      break()
+    }
+  }
+}
+
+print(valores_mal)</code></pre>
+<pre><code>##  [1]  1.100000  2.033333  2.866667  4.400000  4.533333  4.966667  7.040000
+##  [8]  6.466667 10.880000 10.080000 10.540000  8.600000 10.400000 10.780000
+## [15] 11.520000</code></pre>
+<p>Ya sólo falta <strong>representar el gráfico cambiando las etiquetas del eje Y</strong>, que en realidad son los números del 1 al 12, por <code>escala_mal</code>.</p>
+<pre class="r"><code># Construcción del gráfico
+data.frame(dias, valores_mal, valores) %&gt;%
+  ggplot(aes(x = dias, y = valores_mal, label = valores)) + 
+  geom_line() +
+  geom_point(size = 7) +
+  geom_text(col = &quot;white&quot;, size = 3, fontface = &quot;bold&quot;) + 
+  scale_y_continuous(name = &quot;Escala mal&quot;, 
+                     limits = c(1, 12),
+                     breaks = 1:12,
+                     labels = escala_mal) + 
+  scale_x_date(name = &quot;Días&quot;,
+               breaks = seq(ymd(&quot;2021-03-18&quot;), ymd(&quot;2021-04-01&quot;), by = 2)) + 
+  ggtitle(&quot;Gráfico con escala mal&quot;) + 
+  theme_classic() + 
+  theme(plot.title = element_text(hjust = 0.5),
+        panel.grid.major.y = element_line())</code></pre>
+<p><img src="/posts/20200415_desastre_grafico_escala_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>En el siguiente gif se pueden ver fácilmente las diferencias entre el gráfico correcto y el incorrecto:</p>
+<p><img src="\posts\20200415_desastre_grafico_escala\gif.gif" /></p>
+<p>Resumo las conclusiones en dos:</p>
+<ol style="list-style-type: decimal">
+<li><p><code>R</code> y <code>ggplot2</code> todo lo pueden.</p></li>
+<li><p>Hacer las cosas mal lleva mucho más tiempo que hacerlas bien.</p></li>
+</ol>
+</div>
+
+  </div>
+  
+
+<div class="navigation navigation-single">
+    
+    <a href="/posts/20200405_reglas_asociacion/" class="navigation-prev">
+      <i aria-hidden="true" class="fa fa-chevron-left"></i>
+      <span class="navigation-tittle">Reglas de asociación (y detección de anomalías) con futbolistas usando R y estadísticas de FIFA</span>
+    </a>
+    
+    
+</div>
+
+
+  
+
+  
+    
+
+
+</article>
+
+
+
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+    
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+            processEscapes: true,
+            processEnvironments: true
+        },
+        // Center justify equations in code and markdown cells. Elsewhere
+        // we use CSS to left justify single line equations in code cells.
+        displayAlign: 'center',
+        "HTML-CSS": {
+            styles: {'.MathJax_Display': {"margin": 0}},
+            linebreaks: { automatic: true }
+        }
+    });
+    </script>
+    
+
+
+        </div>
+        
+    
+
+  
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-129757599-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+<script defer src="https://use.fontawesome.com/releases/v5.5.0/js/all.js" integrity="sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0" crossorigin="anonymous"></script>
+
+
+    
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+        
+            
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/r.min.js"></script>
+            
+        
+    
+    <script type="text/javascript">
+        
+        hljs.configure({languages: ["r"]});
+        
+        hljs.initHighlightingOnLoad();
+    </script>
+    
+
+
+
+
+    
+
+
+
+    </body>
+</html>

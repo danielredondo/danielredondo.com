@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Daniel Redondo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 05 Apr 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 15 Apr 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Replicando un gráfico horrible con ggplot2</title>
+      <link>/posts/20200415_desastre_grafico_escala/</link>
+      <pubDate>Wed, 15 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/20200415_desastre_grafico_escala/</guid>
+      <description>Hace unos días vi en Reddit este gráfico sobre el coronavirus, con las peores divisiones del eje vertical que he visto en mucho tiempo. Echadle un vistazo con calma porque merece la pena. Al principio, las divisiones son de 30 en 30 (30, 60, 90) para luego pasar a 100 (!!), 130, 160, 190, dar un salto hasta 240 (??), 250, y a partir de ahí las divisiones son de 50 en 50 (300, 350, 400).</description>
+    </item>
     
     <item>
       <title>Reglas de asociación (y detección de anomalías) con futbolistas usando R y estadísticas de FIFA</title>
