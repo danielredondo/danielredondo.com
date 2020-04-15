@@ -1,634 +1,0 @@
-<!DOCTYPE html>
-<html lang="en">
-    
-    
-
-
-    <head>
-    <link href="https://gmpg.org/xfn/11" rel="profile">
-    <meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta http-equiv="Cache-Control" content="public" />
-<!-- Enable responsiveness on mobile devices -->
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.63.2" />
-
-    
-    
-    
-
-<title>Reglas de asociación (y detección de anomalías) con futbolistas usando R • Daniel Redondo</title>
-
-
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Reglas de asociación (y detección de anomalías) con futbolistas usando R"/>
-<meta name="twitter:description" content="Aprovecho la cuarentena provocada por la pandemia del coronavirus para adaptar para esta web un trabajo que realicé para la asignatura Minería de datos: Aprendizaje no supervisado y detección de anomalías del Máster de Ciencia de Datos de la Universidad de Granada.
-Las reglas de asociación son una técnica de aprendizaje no supervisado usada para extraer información relevante a partir de grandes conjuntos de datos. Sin entrar mucho en detalle, cada regla de asociación tiene vinculadas distintas medidas numéricas para determinar la relevancia de la regla."/>
-
-<meta property="og:title" content="Reglas de asociación (y detección de anomalías) con futbolistas usando R" />
-<meta property="og:description" content="Aprovecho la cuarentena provocada por la pandemia del coronavirus para adaptar para esta web un trabajo que realicé para la asignatura Minería de datos: Aprendizaje no supervisado y detección de anomalías del Máster de Ciencia de Datos de la Universidad de Granada.
-Las reglas de asociación son una técnica de aprendizaje no supervisado usada para extraer información relevante a partir de grandes conjuntos de datos. Sin entrar mucho en detalle, cada regla de asociación tiene vinculadas distintas medidas numéricas para determinar la relevancia de la regla." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="/posts/20200405_reglas_asociacion.knit/" />
-<meta property="article:published_time" content="2020-04-05T00:00:00+00:00" />
-<meta property="article:modified_time" content="2020-04-05T00:00:00+00:00" />
-
-
-    
-
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
-
-
-
-
-
-
-
-
-<link rel="stylesheet" href="/scss/hyde-hyde.9e8ea8827e8c49bc2e0e658d3103a33ada1814e1f04207faccfc5b5b41008ecf.css" integrity="sha256-no6ogn6MSbwuDmWNMQOjOtoYFOHwQgf6zPxbW0EAjs8=">
-
-
-<link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
-
-
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    <!-- Icons -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
-    <link rel="shortcut icon" href="/favicon.png">
-    
-</head>
-
-
-    <body class=" ">
-    
-<div class="sidebar">
-  <div class="container ">
-    <div class="sidebar-about">
-      <span class="site__title">
-        <a href="/">Daniel Redondo</a>
-      </span>
-      
-        
-        
-        
-        #YoMeQuedoEnCasa
-        <div class="author-image">
-          <img src="/img/piramide.png" alt="Author Image" class="img--circle img--headshot element--center">
-        </div>
-        
-      
-      
-      <p class="site__description">
-         danielredondo.com 
-      </p>
-    </div>
-    <div class="collapsible-menu">
-      <input type="checkbox" id="menuToggle">
-      <label for="menuToggle">Daniel Redondo</label>
-      <div class="menu-content">
-        <div>
-	<ul class="sidebar-nav">
-		 
-		 
-			 
-				<li>
-					<a href="/posts/">
-						<span>BLOG</span>
-					</a>
-				</li>
-			 
-		 
-			 
-				<li>
-					<a href="/publicaciones/">
-						<span>PUBLICACIONES CIENTÍFICAS</span>
-					</a>
-				</li>
-			 
-		 
-			 
-				<li>
-					<a href="/aplicaciones/">
-						<span>APLICACIONES WEB</span>
-					</a>
-				</li>
-			 
-		 
-			 
-				<li>
-					<a href="/about/">
-						<span>SOBRE MÍ</span>
-					</a>
-				</li>
-			 
-		
-	</ul>
-</div>
-
-        <section class="social">
-	
-	<a href="https://twitter.com/dredondosanchez" rel="me"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a>
-	
-	
-	
-	<a href="https://github.com/danielredondo" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
-	
-	
-	
-	
-	
-	
-	
-	<a href="https://linkedin.com/in/dredondosanchez" rel="me"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a>
-	
-	
-	
-	
-	
-	
-	
-	
-	<a href="mailto:danielredondosanchez@hotmail.com" rel="me"><i class="fas fa-at fa-lg" aria-hidden="true"></i></a>
-	
-</section>
-
-      </div>
-    </div>
-    
-
-
-  </div>
-</div>
-
-        <div class="content container">
-            
-    
-<article>
-  <header>
-    <h1>Reglas de asociación (y detección de anomalías) con futbolistas usando R</h1>
-    
-    
-<div class="post__meta">
-    
-    
-      <i class="fas fa-calendar-alt"></i> 2020-04-05
-    
-    
-    
-    
-    
-      
-      
-          <br/>
-           <i class="fas fa-tags"></i>
-          
-          <a class="badge badge-tag" href="/tags/futbol">futbol</a>
-          
-      
-    
-    
-    <br/>
-    <i class="fas fa-clock"></i> 12 min read
-</div>
-
-
-  </header>
-  
-  
-  <div class="post">
-    <p>Aprovecho la cuarentena provocada por la pandemia del coronavirus para adaptar para esta web un trabajo que realicé para la asignatura <em>Minería de datos: Aprendizaje no supervisado y detección de anomalías</em> del Máster de Ciencia de Datos de la Universidad de Granada.</p>
-<p>Las reglas de asociación son una técnica de <strong>aprendizaje no supervisado</strong> usada para extraer información relevante a partir de grandes conjuntos de datos. Sin entrar mucho en detalle, cada regla de asociación tiene vinculadas distintas medidas numéricas para determinar la relevancia de la regla. Su punto fuerte es la <strong>interpretabilidad</strong>.</p>
-<p>Un ejemplo de regla de asociación es del tipo $A \Rightarrow B$, donde $A$ y $B$ son conjuntos de items (itemsets) disjuntos. $A$ y $B$ son llamados, respectivamente, el <em>antecedente</em> y el <em>consecuente</em> de la regla.</p>
-<p>Un ejemplo aplicado al mundo del fútbol podría ser:</p>
-<p>$$ \text{Si un jugador es defensa} \Rightarrow \text{Su tiro es malo} $$
-Esto no quiere decir que TODOS los defensas tiren mal, sino que en general cuando un jugador es defensa su tiro es malo.</p>
-<h2 id="1-introducción-al-conjunto-de-datos">1. Introducción al conjunto de datos</h2>
-<p><strong>FIFA Ultimate Team</strong> es un modo de juego online de la serie de videojuegos de fútbol FIFA, al que juegan más de 10 millones de usuarios anualmente. En este modo de juego, los jugadores reales de fútbol se representan como cartas (o cromos), que pueden ser vendidos o comprados a cambio de dinero virtual. Las cartas virtuales de los jugadores tienen estadísticas asociadas (velocidad, pase, defensa, &hellip;) para hacer que sean parecidas a los jugadores reales.</p>
-<p><img src="%5Cposts%5C20200405_reglas_asociacion%5Cfifa.png" alt="">
-<em>Ejemplo de equipo de FIFA Ultimate Team.</em></p>
-<p><a href="https://www.futbin.com">Futbin</a> es una página web que permite conocer las estadísticas de los jugadores, así como el precio actual de los jugadores.</p>
-<p><img src="%5Cposts%5C20200405_reglas_asociacion%5Csoldado.png" alt="">
-<em>Precios de Soldado en Futbin.</em></p>
-<p>El conjunto de datos que se analiza a continuación está obtenido mediante web scraping en  Futbin y contiene todos los jugadores que tienen precio distinto de cero, no son porteros y tienen una puntuación media mayor o igual a 75. El web scraping se realizó el 20 de enero de 2020.</p>
-<p>Tanto el conjunto de datos como el preprocesamiento realizado se va a omitir en esta publicación, aunque está disponible en <a href="https://github.com/danielredondo/danielredondo.com/tree/master/content/posts">GitHub</a>.</p>
-<h2 id="2-carga-de-paquetes">2. Carga de paquetes</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># Carga de paquetes</span>
-<span style="color:#a6e22e">library</span>(dplyr)      <span style="color:#75715e"># Para usar pipes (%&gt;%), select, filter, ...</span>
-<span style="color:#a6e22e">library</span>(arules)     <span style="color:#75715e"># Para trabajar con reglas de asociación</span>
-<span style="color:#a6e22e">library</span>(arulesViz)  <span style="color:#75715e"># Para visualizar reglas de asociación</span>
-</code></pre></div><h2 id="3-descripción-del-conjunto-de-datos">3. Descripción del conjunto de datos</h2>
-<p>El conjunto de datos contiene información sobre 1841 jugadores de fútbol, en 16 variables. No hay datos faltantes.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># Número de filas y columnas</span>
-<span style="color:#a6e22e">dim</span>(futbin)
-<span style="color:#75715e">## [1] 1841   16</span>
-
-<span style="color:#75715e"># Comprobación de datos faltantes</span>
-<span style="color:#a6e22e">sum</span>(<span style="color:#a6e22e">is.na</span>(futbin))
-<span style="color:#75715e">## [1] 0</span>
-</code></pre></div><p>Se describe a continuación el significado de cada variable:</p>
-<ul>
-<li>
-<p><em>name</em>: Nombre del jugador.</p>
-</li>
-<li>
-<p><em>rating</em>: Puntuación global del jugador (de 75 a 99).</p>
-</li>
-<li>
-<p><em>skills</em>: Número de filigranas (de 1 a 5). Cuanto mayor es este número, más filigranas podrá hacer el jugador.</p>
-</li>
-<li>
-<p><em>weak_foot</em>: Número de pie malo (de 1 a 5). Cuanto mayor es este número, mejor jugará el jugador con su pie malo.</p>
-</li>
-<li>
-<p><em>pac</em>, <em>sho</em>, <em>pas</em>, <em>dri</em>, <em>def</em>, <em>phy</em>: Estadísticas de velocidad, disparo, pase, regate, defensa y físico del jugador (de 1 a 99).</p>
-</li>
-<li>
-<p><em>hei</em>: Altura del jugador, en centímetros.</p>
-</li>
-<li>
-<p><em>popularity</em>: Popularidad del jugador, según el voto (positivo o negativo) realizado por la comunidad de Futbin.</p>
-</li>
-<li>
-<p><em>ps</em>: Precio del jugador en la plataforma de PlayStation 4.</p>
-</li>
-<li>
-<p><em>atacante</em>, <em>mediocentro</em>, <em>defensa</em>: Indican la posición del jugador. Toman los valores &ldquo;si&rdquo; o &ldquo;no&rdquo;.</p>
-</li>
-</ul>
-<p>Se muestra la cabecera del conjunto de datos.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">head</span>(futbin)
-<span style="color:#75715e">##                name rating skills weak_foot pac sho pas dri def phy hei</span>
-<span style="color:#75715e">## 1      Lionel Messi     94      4         4  87  92  92  96  39  66 170</span>
-<span style="color:#75715e">## 2 Cristiano Ronaldo     93      5         4  90  93  82  89  35  78 187</span>
-<span style="color:#75715e">## 3         Neymar Jr     92      5         5  91  85  87  95  32  58 175</span>
-<span style="color:#75715e">## 4   Kevin De Bruyne     91      4         5  76  86  92  87  61  78 181</span>
-<span style="color:#75715e">## 5       Eden Hazard     91      4         4  91  83  86  94  35  66 175</span>
-<span style="color:#75715e">## 6     Mohamed Salah     90      4         3  93  86  81  89  45  74 175</span>
-<span style="color:#75715e">##   popularity     ps atacante mediocentro defensa</span>
-<span style="color:#75715e">## 1       5267 958000       si          no      no</span>
-<span style="color:#75715e">## 2       3393 920000       si          no      no</span>
-<span style="color:#75715e">## 3       4662 762000       si          no      no</span>
-<span style="color:#75715e">## 4       2493 189000       no          si      no</span>
-<span style="color:#75715e">## 5       2164 199000       si          no      no</span>
-<span style="color:#75715e">## 6       2909 150000       si          no      no</span>
-</code></pre></div><p>Eliminamos del conjunto el nombre de los jugadores, guardándolo previamente en una variable.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">nombres_jugadores <span style="color:#f92672">&lt;-</span> futbin<span style="color:#f92672">$</span>name
-futbin <span style="color:#f92672">&lt;-</span> futbin <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">select</span>(<span style="color:#f92672">-</span>name)
-</code></pre></div><h2 id="4-reglas-de-asociación">4. Reglas de asociación</h2>
-<h3 id="41-preparación">4.1. Preparación</h3>
-<p>Como vamos a usar el método a priori, las variables continuas deben convertirse a categóricas (factores) especificando los valores de corte. Otros métodos como <a href="https://www.researchgate.net/publication/272089330_MOPNAR_Algoritmo_Evolutivo_Multi-Objetivo_para_Extraer_Reglas_de_Asociacion_Cuantitativas_Positivas_y_Negativas">MOPNAR</a> realizan de manera autónoma los cortes que considera más adecuados en las variables numéricas.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># Puntuación global</span>
-futbin<span style="color:#f92672">$</span>rating <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">ordered</span>(<span style="color:#a6e22e">cut</span>(futbin<span style="color:#f92672">$</span>rating,
-                            <span style="color:#a6e22e">unique</span>(<span style="color:#a6e22e">quantile</span>(futbin<span style="color:#f92672">$</span>rating)),
-                            include.lowest <span style="color:#f92672">=</span> <span style="color:#66d9ef">TRUE</span>))
-<span style="color:#75715e"># Velocidad (análogo para disparo, pase, regate, defensa y físico)</span>
-futbin<span style="color:#f92672">$</span>pac <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">ordered</span>(<span style="color:#a6e22e">cut</span>(futbin<span style="color:#f92672">$</span>pac,
-                          <span style="color:#a6e22e">c</span>(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">65</span>, <span style="color:#ae81ff">75</span>, <span style="color:#ae81ff">80</span>, <span style="color:#ae81ff">100</span>), 
-                          labels <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Muy bajo&#34;</span>, <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Bajo&#34;</span>, <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Alto&#34;</span>, <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Muy alto&#34;</span>),
-                          include.lowest <span style="color:#f92672">=</span> <span style="color:#66d9ef">TRUE</span>))
-<span style="color:#75715e"># Altura</span>
-futbin<span style="color:#f92672">$</span>hei <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">ordered</span>(<span style="color:#a6e22e">cut</span>(futbin<span style="color:#f92672">$</span>hei, <span style="color:#a6e22e">c</span>(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">177</span>, <span style="color:#ae81ff">185</span>, <span style="color:#ae81ff">205</span>),
-                          labels <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Bajo&#34;</span>, <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Alto&#34;</span>, <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Muy alto&#34;</span>),
-                          include.lowest <span style="color:#f92672">=</span> <span style="color:#66d9ef">TRUE</span>))
-<span style="color:#75715e"># Popularidad</span>
-futbin<span style="color:#f92672">$</span>popularity <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">ordered</span>(<span style="color:#a6e22e">cut</span>(futbin<span style="color:#f92672">$</span>popularity,
-                                 <span style="color:#a6e22e">quantile</span>(futbin<span style="color:#f92672">$</span>popularity),
-                                 include.lowest <span style="color:#f92672">=</span> <span style="color:#66d9ef">TRUE</span>))
-<span style="color:#75715e"># Precio</span>
-futbin<span style="color:#f92672">$</span>ps <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">ordered</span>(<span style="color:#a6e22e">cut</span>(futbin<span style="color:#f92672">$</span>ps,
-                         <span style="color:#a6e22e">quantile</span>(futbin<span style="color:#f92672">$</span>ps),
-                         include.lowest <span style="color:#f92672">=</span> <span style="color:#66d9ef">TRUE</span>))
-<span style="color:#75715e"># Pie malo</span>
-futbin<span style="color:#f92672">$</span>weak_foot <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">factor</span>(futbin<span style="color:#f92672">$</span>weak_foot,
-                          levels <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">1&#34;</span>, <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">2&#34;</span>, <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">3&#34;</span>, <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">4&#34;</span>, <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">5&#34;</span>),
-                          ordered <span style="color:#f92672">=</span> <span style="color:#66d9ef">TRUE</span>)
-<span style="color:#75715e"># Filigranas</span>
-futbin<span style="color:#f92672">$</span>skills    <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">factor</span>(futbin<span style="color:#f92672">$</span>skills,
-                          levels <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">1&#34;</span>, <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">2&#34;</span>, <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">3&#34;</span>, <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">4&#34;</span>, <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">5&#34;</span>),
-                          ordered <span style="color:#f92672">=</span> <span style="color:#66d9ef">TRUE</span>)
-</code></pre></div><p>Se convierte el conjunto de datos a tipo transacciones.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">futbin_transacciones <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">as</span>(futbin, <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">transactions&#34;</span>)
-</code></pre></div><p>Se muestran gráficamente los items frecuentes (itemsets sólo de tamaño 1) con soporte mayor o igual del 30%.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">itemFrequencyPlot</span>(futbin_transacciones, support <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.3</span>, cex.names <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.8</span>)
-</code></pre></div><p><!-- raw HTML omitted --></p>
-<h3 id="42-extracción-de-reglas-con-método-a-priori">4.2. Extracción de reglas con método a priori</h3>
-<p>Se realiza el método a priori de reglas de asociación, con 0.1 como mínimo de soporte de un itemset.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">ifutbin_transacciones <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">apriori</span>(futbin_transacciones,
-                                parameter <span style="color:#f92672">=</span> <span style="color:#a6e22e">list</span>(support <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.1</span>,
-                                                 target <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">frequent&#34;</span>),
-                                control <span style="color:#f92672">=</span> <span style="color:#a6e22e">list</span>(verbose <span style="color:#f92672">=</span> <span style="color:#66d9ef">FALSE</span>))
-
-<span style="color:#75715e"># Se ordenan las reglas por el valor del soporte</span>
-ifutbin_transacciones <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">sort</span>(ifutbin_transacciones, by <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">support&#34;</span>) 
-
-<span style="color:#75715e"># Itemsets frecuentes</span>
-<span style="color:#a6e22e">barplot</span>(<span style="color:#a6e22e">table</span>(<span style="color:#a6e22e">size</span>(ifutbin_transacciones)),
-        xlab <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Tamaño de itemset&#34;</span>, ylab <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Frecuencia&#34;</span>,
-        main <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Tamaños de itemsets en los itemsets frecuentes&#34;</span>)
-</code></pre></div><p><!-- raw HTML omitted --></p>
-<p>Se calculan los itemsets frecuentes, maximales y cerrados:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># Itemsets maximales</span>
-imaxfutbin_transacciones <span style="color:#f92672">&lt;-</span> ifutbin_transacciones<span style="color:#a6e22e">[is.maximal</span>(ifutbin_transacciones)]
-
-<span style="color:#75715e"># Itemsets cerrados</span>
-iclofutbin_transacciones <span style="color:#f92672">&lt;-</span> ifutbin_transacciones<span style="color:#a6e22e">[is.closed</span>(ifutbin_transacciones)]
-</code></pre></div><p>Se muestran en un gráfico el número de itemsets frecuentes, cerrados y maximales:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">barplot</span>(<span style="color:#a6e22e">c</span>(Frecuentes <span style="color:#f92672">=</span> <span style="color:#a6e22e">length</span>(ifutbin_transacciones),
-          Cerrados <span style="color:#f92672">=</span> <span style="color:#a6e22e">length</span>(iclofutbin_transacciones),
-          Maximales <span style="color:#f92672">=</span> <span style="color:#a6e22e">length</span>(imaxfutbin_transacciones)),
-        ylab <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Frecuencia&#34;</span>, xlab <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Tipo de itemsets&#34;</span>)
-</code></pre></div><p><!-- raw HTML omitted --></p>
-<p>Extracción de reglas: se exigen al menos dos elementos de la regla (antecedente y consecuente), un soporte mínimo del 10% y una confianza del 80%.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># Extracción de reglas</span>
-rules <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">apriori</span>(futbin_transacciones,
-                 parameter <span style="color:#f92672">=</span> <span style="color:#a6e22e">list</span>(support <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.1</span>, confidence <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.8</span>, minlen <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>),
-                 control <span style="color:#f92672">=</span> <span style="color:#a6e22e">list</span>(verbose <span style="color:#f92672">=</span> <span style="color:#66d9ef">FALSE</span>))
-
-<span style="color:#75715e"># Se ordenan las reglas por confianza</span>
-rulesSorted <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">sort</span>(rules, by <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">confidence&#34;</span>)
-</code></pre></div><p>Se eliminan las reglas que son redundantes, esto es, reglas que están incluidas dentro de otras (antecedente de una regla incluida en el antecedente de otra regla).</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># Matriz con todas las reglas como nombres de filas y columnas.</span>
-<span style="color:#75715e"># is.subset comprueba para cada regla qué elementos son subconjuntos</span>
-<span style="color:#75715e"># de todas las reglas una a una</span>
-subsetMatrix <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">is.subset</span>(rulesSorted, rulesSorted)
-
-<span style="color:#75715e"># Se filtran ahora los que han salido contenidas en 2 o más reglas</span>
-<span style="color:#75715e"># porque como mínimo, cada regla es un subconjunto de sí misma</span>
-redundant <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">colSums</span>(subsetMatrix, na.rm <span style="color:#f92672">=</span> <span style="color:#66d9ef">TRUE</span>) <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">2</span> 
-
-<span style="color:#75715e"># Se eliminan las reglas redundantes</span>
-rulesPruned <span style="color:#f92672">&lt;-</span> rulesSorted[<span style="color:#f92672">!</span>redundant] 
-</code></pre></div><p>Se eliminan ahora las reglas con confianza 1, que son fruto de que las variables <code>atacante</code>, <code>mediocentro</code> y <code>defensa</code> sean excluyentes.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># Se muestran las reglas con confianza 1 para comprobar que</span>
-<span style="color:#75715e"># no se borra ninguna regla relevante</span>
-<span style="color:#a6e22e">subset</span>(rulesPruned, subset <span style="color:#f92672">=</span> confidence <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">%&gt;%</span> inspect
-<span style="color:#75715e">##     lhs                 rhs              support   confidence lift     count</span>
-<span style="color:#75715e">## [1] {atacante=si}    =&gt; {mediocentro=no} 0.2368278 1          1.830020 436  </span>
-<span style="color:#75715e">## [2] {atacante=si}    =&gt; {defensa=no}     0.2368278 1          1.448466 436  </span>
-<span style="color:#75715e">## [3] {defensa=si}     =&gt; {mediocentro=no} 0.3096143 1          1.830020 570  </span>
-<span style="color:#75715e">## [4] {defensa=si}     =&gt; {atacante=no}    0.3096143 1          1.310320 570  </span>
-<span style="color:#75715e">## [5] {mediocentro=si} =&gt; {defensa=no}     0.4535578 1          1.448466 835  </span>
-<span style="color:#75715e">## [6] {mediocentro=si} =&gt; {atacante=no}    0.4535578 1          1.310320 835</span>
-
-<span style="color:#75715e"># Se eliminan las reglas</span>
-reglas_seleccionadas <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">subset</span>(rulesPruned, subset <span style="color:#f92672">=</span> confidence <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">1</span>)
-</code></pre></div><p>Se seleccionan sólo aquellas reglas que tienen lift &gt; 1, lo que implica una dependencia positiva entre antecedente y consecuente.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">reglas_seleccionadas <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">subset</span>(reglas_seleccionadas, subset <span style="color:#f92672">=</span> lift <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">1</span>)
-</code></pre></div><p>Se pueden examinar, por ejemplo, aquellas reglas en las que la altura de los jugadores aparece como antecedente.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">reglas_altura <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">subset</span>(reglas_seleccionadas, subset <span style="color:#f92672">=</span> lhs <span style="color:#f92672">%pin%</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">hei&#34;</span>)
-
-<span style="color:#75715e"># Se muestra la regla con mayor confianza</span>
-<span style="color:#a6e22e">inspect</span>(<span style="color:#a6e22e">head</span>(reglas_altura, <span style="color:#ae81ff">1</span>)) 
-<span style="color:#75715e">##     lhs           rhs          support   confidence lift     count</span>
-<span style="color:#75715e">## [1] {hei=Bajo} =&gt; {defensa=no} 0.2466051 0.8239564  1.193473 454</span>
-</code></pre></div><p>Se podría concluir que los jugadores bajos no suelen ser defensas.</p>
-<h3 id="43-selección-de-reglas-relevantes">4.3. Selección de reglas relevantes</h3>
-<p>Se seleccionará un conjunto pequeño de reglas que puedan ser relevantes, en el sentido de que aporten información que no es obvia.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># Añadimos a las reglas varias medidas de interés:</span>
-mInteres <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">interestMeasure</span>(reglas_seleccionadas,
-                            measure <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">gini&#34;</span>, <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">chiSquared&#34;</span>),
-                            transactions<span style="color:#f92672">=</span>futbin_transacciones)
-<span style="color:#a6e22e">quality</span>(reglas_seleccionadas) <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">cbind</span>(<span style="color:#a6e22e">quality</span>(reglas_seleccionadas), mInteres)
-</code></pre></div><p>Se buscan reglas con valores de soporte comprendidos entre 0.2 y 0.4 aproximadamente. Esto hará que se encuentren reglas que no son muy generales, y son lo suficientemente poco frecuentes como para que sean relevantes. Se seleccionan las 5 reglas de asociación que tienen mejor medida de interés gini.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">subset</span>(reglas_seleccionadas, subset <span style="color:#f92672">=</span> support <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">.2</span> <span style="color:#f92672">&amp;</span> support <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">.4</span>) <span style="color:#f92672">%&gt;%</span>
-  <span style="color:#a6e22e">head</span>(by <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">gini&#34;</span>, n <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>) <span style="color:#f92672">%&gt;%</span>
-  inspect
-<span style="color:#75715e">##     lhs               rhs              support   confidence lift     count</span>
-<span style="color:#75715e">## [1] {defensa=si}   =&gt; {sho=Muy bajo}   0.2819120 0.9105263  2.253063 519  </span>
-<span style="color:#75715e">## [2] {atacante=si}  =&gt; {def=Muy bajo}   0.2357414 0.9954128  2.184213 434  </span>
-<span style="color:#75715e">## [3] {pas=Muy bajo} =&gt; {mediocentro=no} 0.2346551 0.9250535  1.692866 432  </span>
-<span style="color:#75715e">## [4] {sho=Bajo}     =&gt; {defensa=no}     0.3623031 0.9315642  1.349339 667  </span>
-<span style="color:#75715e">## [5] {skills=4}     =&gt; {defensa=no}     0.2819120 0.9351351  1.354511 519  </span>
-<span style="color:#75715e">##     gini       chiSquared</span>
-<span style="color:#75715e">## [1] 0.23000828 879.2154  </span>
-<span style="color:#75715e">## [2] 0.18076588 670.8387  </span>
-<span style="color:#75715e">## [3] 0.09744229 361.9048  </span>
-<span style="color:#75715e">## [4] 0.07404027 318.8445  </span>
-<span style="color:#75715e">## [5] 0.05170417 222.6571</span>
-</code></pre></div><p>Por interpretar algunas reglas, se podría concluir que los defensas tienen disparo muy bajo (regla 1), los atacantes defienden muy mal (regla 2), y los jugadores con pase muy bajo no suelen ser centrocampistas (regla 3).</p>
-<h2 id="44-visualización-de-las-reglas-de-asociación">4.4. Visualización de las reglas de asociación</h2>
-<p>Se visualizan ahora las 10 reglas más relevantes encontradas, usando distintos métodos de visualización del paquete <code>arulesViz</code>.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># Tipo grafo</span>
-reglas_seleccionadas <span style="color:#f92672">%&gt;%</span>
-  <span style="color:#a6e22e">head</span>(by <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">gini&#34;</span>, n <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>) <span style="color:#f92672">%&gt;%</span>
-  <span style="color:#a6e22e">plot</span>(method<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">graph&#34;</span>)
-</code></pre></div><p><!-- raw HTML omitted --></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># Tipo matriz (Antecedente por columnas, consecuente por filas)</span>
-reglas_seleccionadas <span style="color:#f92672">%&gt;%</span>
-  <span style="color:#a6e22e">head</span>(by <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">gini&#34;</span>, n <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>) <span style="color:#f92672">%&gt;%</span>
-  <span style="color:#a6e22e">plot</span>(method<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">grouped&#34;</span>)
-</code></pre></div><p><!-- raw HTML omitted --></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># Tipo coordenadas paralelas</span>
-reglas_seleccionadas <span style="color:#f92672">%&gt;%</span>
-  <span style="color:#a6e22e">head</span>(by <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">gini&#34;</span>, n <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>) <span style="color:#f92672">%&gt;%</span>
-  <span style="color:#a6e22e">plot</span>(method <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">paracoord&#34;</span>, reorder <span style="color:#f92672">=</span> <span style="color:#66d9ef">TRUE</span>)
-</code></pre></div><p><!-- raw HTML omitted --></p>
-<h2 id="45-detección-de-anomalías">4.5. Detección de anomalías</h2>
-<p>Se mostrarán las 8 reglas con mayor confianza para luego examinar los jugadores que no las cumplen, que podrían ser considerados excepciones o anomalías.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">subset</span>(reglas_seleccionadas, subset <span style="color:#f92672">=</span> support <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">.15</span> <span style="color:#f92672">&amp;</span> support <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">.4</span>) <span style="color:#f92672">%&gt;%</span>
-  <span style="color:#a6e22e">head</span>(by <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">confidence&#34;</span>, n <span style="color:#f92672">=</span> <span style="color:#ae81ff">8</span>) <span style="color:#f92672">%&gt;%</span>
-  inspect
-<span style="color:#75715e">##     lhs               rhs            support   confidence lift     count</span>
-<span style="color:#75715e">## [1] {def=Bajo}     =&gt; {atacante=no}  0.2721347 0.9980080  1.307710 501  </span>
-<span style="color:#75715e">## [2] {def=Alto}     =&gt; {atacante=no}  0.2069527 0.9973822  1.306890 381  </span>
-<span style="color:#75715e">## [3] {atacante=si}  =&gt; {def=Muy bajo} 0.2357414 0.9954128  2.184213 434  </span>
-<span style="color:#75715e">## [4] {sho=Alto}     =&gt; {defensa=no}   0.1553504 0.9930556  1.438407 286  </span>
-<span style="color:#75715e">## [5] {skills=2}     =&gt; {atacante=no}  0.2015209 0.9686684  1.269266 371  </span>
-<span style="color:#75715e">## [6] {phy=Muy bajo} =&gt; {defensa=no}   0.1933732 0.9621622  1.393659 356  </span>
-<span style="color:#75715e">## [7] {dri=Muy alto} =&gt; {defensa=no}   0.1591526 0.9482201  1.373464 293  </span>
-<span style="color:#75715e">## [8] {skills=2}     =&gt; {sho=Muy bajo} 0.1950027 0.9373368  2.319405 359  </span>
-<span style="color:#75715e">##     gini       chiSquared</span>
-<span style="color:#75715e">## [1] 0.04135059 210.5961  </span>
-<span style="color:#75715e">## [2] 0.02872427 146.2910  </span>
-<span style="color:#75715e">## [3] 0.18076588 670.8387  </span>
-<span style="color:#75715e">## [4] 0.03397735 146.3189  </span>
-<span style="color:#75715e">## [5] 0.02218600 112.9919  </span>
-<span style="color:#75715e">## [6] 0.03715719 160.0125  </span>
-<span style="color:#75715e">## [7] 0.02681708 115.4842  </span>
-<span style="color:#75715e">## [8] 0.14937075 570.9754</span>
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># Se recuperan los nombres de los jugadores</span>
-futbin_w_names <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">cbind</span>(name <span style="color:#f92672">=</span> nombres_jugadores, futbin)
-</code></pre></div><p><strong>Reglas 1, 2 y 3</strong>. ¿Hay atacantes que saben defender?</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">futbin_w_names <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">filter</span>(def <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Bajo&#34;</span> <span style="color:#f92672">&amp;</span> atacante <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">no&#34;</span>) <span style="color:#f92672">%&gt;%</span>
-  <span style="color:#a6e22e">select</span>(name)
-<span style="color:#75715e">##                   name</span>
-<span style="color:#75715e">## 1 Kevin-Prince Boateng</span>
-futbin_w_names <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">filter</span>(def <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Alto&#34;</span> <span style="color:#f92672">&amp;</span> atacante <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">no&#34;</span>) <span style="color:#f92672">%&gt;%</span>
-  <span style="color:#a6e22e">select</span>(name)
-<span style="color:#75715e">##           name</span>
-<span style="color:#75715e">## 1 Marcos Acuña</span>
-futbin_w_names <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">filter</span>(atacante <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">si&#34;</span> <span style="color:#f92672">&amp;</span> def <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Muy bajo&#34;</span>) <span style="color:#f92672">%&gt;%</span>
-  <span style="color:#a6e22e">select</span>(name)
-<span style="color:#75715e">##                   name</span>
-<span style="color:#75715e">## 1         Marcos Acuña</span>
-<span style="color:#75715e">## 2 Kevin-Prince Boateng</span>
-</code></pre></div><p>Hay dos excepciones, Boateng y Acuña, dos atacantes que tienen buenas estadísticas defensivas.</p>
-<p><strong>Regla 4</strong>. ¿Hay defensas con buen disparo?</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">futbin_w_names <span style="color:#f92672">%&gt;%</span>
-  <span style="color:#a6e22e">filter</span>(defensa <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">si&#34;</span> <span style="color:#f92672">&amp;</span> sho <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Alto&#34;</span>) <span style="color:#f92672">%&gt;%</span>
-  <span style="color:#a6e22e">select</span>(name) 
-<span style="color:#75715e">##                  name</span>
-<span style="color:#75715e">## 1 Alessandro Florenzi</span>
-<span style="color:#75715e">## 2           Vieirinha</span>
-</code></pre></div><p>Florenzi (70 goles en 391 partidos) y Vierinha (51 goles en 413 partidos) son los dos defensas con mejor tiro en el videojuego, y sus estadísticas reales de goles son excelentes para tratarse de defensas.</p>
-<p><strong>Regla 5</strong>. ¿Hay delanteros con pocas filigranas?</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">futbin_w_names <span style="color:#f92672">%&gt;%</span>
-  <span style="color:#a6e22e">filter</span>(atacante <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">si&#34;</span> <span style="color:#f92672">&amp;</span> skills <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">2&#34;</span>) <span style="color:#f92672">%&gt;%</span>
-  <span style="color:#a6e22e">select</span>(name, hei, pac) 
-<span style="color:#75715e">##                   name      hei      pac</span>
-<span style="color:#75715e">## 1           Edin Džeko Muy alto Muy bajo</span>
-<span style="color:#75715e">## 2          Diego Costa Muy alto     Bajo</span>
-<span style="color:#75715e">## 3         Luuk de Jong Muy alto Muy bajo</span>
-<span style="color:#75715e">## 4             Bas Dost Muy alto Muy bajo</span>
-<span style="color:#75715e">## 5          Troy Deeney     Alto Muy bajo</span>
-<span style="color:#75715e">## 6         Glenn Murray     Alto Muy bajo</span>
-<span style="color:#75715e">## 7           Chris Wood Muy alto     Bajo</span>
-<span style="color:#75715e">## 8  Klaas-Jan Huntelaar Muy alto Muy bajo</span>
-<span style="color:#75715e">## 9    Christian Benteke Muy alto Muy bajo</span>
-<span style="color:#75715e">## 10      Charlie Austin Muy alto Muy bajo</span>
-<span style="color:#75715e">## 11        Andy Carroll Muy alto Muy bajo</span>
-<span style="color:#75715e">## 12       Stefano Okaka Muy alto Muy bajo</span>
-</code></pre></div><p>Son delanteros rematadores, con poca velocidad, y en su mayoría altos.</p>
-<p><strong>Regla 6</strong>. ¿Hay jugadores con físico muy bajo que sean defensas?</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">futbin_w_names <span style="color:#f92672">%&gt;%</span>
-  <span style="color:#a6e22e">filter</span>(phy <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Muy bajo&#34;</span> <span style="color:#f92672">&amp;</span> defensa <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">si&#34;</span>) <span style="color:#f92672">%&gt;%</span>
-  <span style="color:#a6e22e">select</span>(name) <span style="color:#f92672">%&gt;%</span>
-  t <span style="color:#f92672">%&gt;%</span>
-  as.vector
-<span style="color:#75715e">##  [1] &#34;Aarón Martín&#34;    &#34;Emerson&#34;         &#34;Danilo&#34;          &#34;Vieirinha&#34;      </span>
-<span style="color:#75715e">##  [5] &#34;Júnior Caiçara&#34;  &#34;Phil Jagielka&#34;   &#34;Diogo Viana&#34;     &#34;Raúl Navas&#34;     </span>
-<span style="color:#75715e">##  [9] &#34;Leighton Baines&#34; &#34;Álex Moreno&#34;     &#34;Scott Dann&#34;      &#34;Yuto Nagatomo&#34;  </span>
-<span style="color:#75715e">## [13] &#34;Zaldúa&#34;          &#34;Martín&#34;</span>
-</code></pre></div><p>Son jugadores en su mayor parte laterales, que no necesitan corpulencia para defender.</p>
-<p><strong>Regla 7</strong>. ¿Hay defensas que regatean muy bien?</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">futbin_w_names <span style="color:#f92672">%&gt;%</span>
-  <span style="color:#a6e22e">filter</span>(dri <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Muy alto&#34;</span> <span style="color:#f92672">&amp;</span> defensa <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">si&#34;</span>) <span style="color:#f92672">%&gt;%</span>
-  <span style="color:#a6e22e">select</span>(name) <span style="color:#f92672">%&gt;%</span>
-  t <span style="color:#f92672">%&gt;%</span>
-  as.vector
-<span style="color:#75715e">##  [1] &#34;Jordi Alba&#34;      &#34;Joshua Kimmich&#34;  &#34;Marcelo&#34;         &#34;Carvajal&#34;       </span>
-<span style="color:#75715e">##  [5] &#34;João Cancelo&#34;    &#34;Alex Telles&#34;     &#34;Grimaldo&#34;        &#34;Ricardo Pereira&#34;</span>
-<span style="color:#75715e">##  [9] &#34;Nélson Semedo&#34;   &#34;Ismaily&#34;         &#34;Bernat&#34;          &#34;Kwadwo Asamoah&#34; </span>
-<span style="color:#75715e">## [13] &#34;Rubén Peña&#34;      &#34;Mitchell Weiser&#34; &#34;Youcef Atal&#34;     &#34;Vieirinha&#34;</span>
-</code></pre></div><p>Son en su gran mayoría laterales de primer nivel mundial.</p>
-<p><strong>Regla 8</strong>. ¿Hay jugadores con pocas filigranas que no tiren muy mal?</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">futbin_w_names <span style="color:#f92672">%&gt;%</span>
-  <span style="color:#a6e22e">filter</span>(skills <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">2&#34;</span> <span style="color:#f92672">&amp;</span> sho <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Muy bajo&#34;</span>) <span style="color:#f92672">%&gt;%</span>
-  <span style="color:#a6e22e">select</span>(name) <span style="color:#f92672">%&gt;%</span>
-  t <span style="color:#f92672">%&gt;%</span>
-  as.vector
-<span style="color:#75715e">##  [1] &#34;Casemiro&#34;            &#34;Blaise Matuidi&#34;      &#34;Edin Džeko&#34;         </span>
-<span style="color:#75715e">##  [4] &#34;Sami Khedira&#34;        &#34;Diego Costa&#34;         &#34;Luuk de Jong&#34;       </span>
-<span style="color:#75715e">##  [7] &#34;Bas Dost&#34;            &#34;Lukasz Piszczek&#34;     &#34;Luka Milivojevic&#34;   </span>
-<span style="color:#75715e">## [10] &#34;Fabian Schär&#34;        &#34;Andreas Samaris&#34;     &#34;Leander Dendoncker&#34; </span>
-<span style="color:#75715e">## [13] &#34;Manu García&#34;         &#34;Troy Deeney&#34;         &#34;Mikel San José&#34;     </span>
-<span style="color:#75715e">## [16] &#34;Glenn Murray&#34;        &#34;Chris Wood&#34;          &#34;Klaas-Jan Huntelaar&#34;</span>
-<span style="color:#75715e">## [19] &#34;Marco Höger&#34;         &#34;Oliver Norwood&#34;      &#34;Christian Benteke&#34;  </span>
-<span style="color:#75715e">## [22] &#34;Charlie Austin&#34;      &#34;Andy Carroll&#34;        &#34;Stefano Okaka&#34;</span>
-</code></pre></div><p>Son jugadores torpes con el balón pero con buen tiro, algunos por ser delanteros rematadores (Diego Costa, Andy Carroll) y otros por ser centrocampistas o defensas con llegada desde fuera del área (Casemiro, Khedira, San José).</p>
-
-  </div>
-  
-
-<div class="navigation navigation-single">
-    
-    <a href="/posts/20200219_calendario_laboral/" class="navigation-prev">
-      <i aria-hidden="true" class="fa fa-chevron-left"></i>
-      <span class="navigation-tittle">Calendario laboral con R</span>
-    </a>
-    
-    
-    <a href="/posts/20200405_reglas_asociacion/" class="navigation-next">
-      <span class="navigation-tittle">Reglas de asociación (y detección de anomalías) con futbolistas usando R</span>
-      <i aria-hidden="true" class="fa fa-chevron-right"></i>
-    </a>
-    
-</div>
-
-
-  
-
-  
-    
-
-
-</article>
-
-
-
-
-    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
-    
-    <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-            displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
-            processEscapes: true,
-            processEnvironments: true
-        },
-        // Center justify equations in code and markdown cells. Elsewhere
-        // we use CSS to left justify single line equations in code cells.
-        displayAlign: 'center',
-        "HTML-CSS": {
-            styles: {'.MathJax_Display': {"margin": 0}},
-            linebreaks: { automatic: true }
-        }
-    });
-    </script>
-    
-
-
-        </div>
-        
-    
-
-  
-  
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-129757599-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
-
-
-<script defer src="https://use.fontawesome.com/releases/v5.5.0/js/all.js" integrity="sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0" crossorigin="anonymous"></script>
-
-
-    
-    
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
-        
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/r.min.js"></script>
-            
-        
-    
-    <script type="text/javascript">
-        
-        hljs.configure({languages: ["r"]});
-        
-        hljs.initHighlightingOnLoad();
-    </script>
-    
-
-
-
-
-    
-
-
-
-    </body>
-</html>

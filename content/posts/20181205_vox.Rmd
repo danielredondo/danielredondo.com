@@ -1,7 +1,7 @@
 ---
 title: "¿Quién votó a VOX en Andalucía? Mapa interactivo por municipios"
 date: '2018-12-11'
-tags: ["mapas", "visualizando"]
+tags: ["mapas", "dataviz"]
 ---
 
 Hace un par de semanas estuve en un taller de **Datos Espaciales en Salud**, impartido en la Escuela Nacional de Sanidad, mostrando alguna de las maravillas que se pueden hacer con **[leaflet](https://leafletjs.com) en R**. Hoy os enseñaré otra aplicación, ilustrada con código reproducible.

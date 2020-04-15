@@ -2,7 +2,7 @@
 title: "Calendario laboral con R"
 author: ''
 date: '2020-02-19'
-tags: ["visualizando"]
+tags: ["dataviz"]
 editor_options: 
   chunk_output_type: console
 ---

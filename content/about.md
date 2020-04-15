@@ -19,7 +19,7 @@ Trabajo principalmente con `R` (`shiny`, `tidyverse`, `leaflet`, ...), `Microsof
 
 Esta web está hecha con `R` + `blogdown` + Hugo + GitHub + Netlify.
 
-Aquí encontrarás publicaciones sobre [visualización de datos](/tags/visualizando/), [aplicaciones web](/aplicaciones/), [mapas](/tags/mapas/) y otros temas que me resultan interesantes.
+Aquí encontrarás publicaciones sobre [visualización de datos](/tags/dataviz/), [fútbol](/tags/futbol/), [aplicaciones web](/aplicaciones/), [mapas](/tags/mapas/) y otros temas que me resultan interesantes.
 
 #### También puedes encontrarme en:
 

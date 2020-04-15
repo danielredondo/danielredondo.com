@@ -1,6 +1,6 @@
 ---
 title: 'Visualizando... la lotería de Navidad'
-tags: ["visualizando"]
+tags: ["dataviz"]
 date: "2018-02-15"
 ---
 

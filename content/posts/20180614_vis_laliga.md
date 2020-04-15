@@ -1,7 +1,7 @@
 ---
 date: '2018-06-14'
 title: "Visualizando... la Liga (estadísticas individuales)"
-tags: ["futbol", "visualizando"]
+tags: ["futbol", "dataviz"]
 ---
 
 Recordemos que **[en la primera parte de "Visualizando… la Liga"](/posts/20180524_vis_laliga)** mostrábamos por equipos la relación partidos-goles a favor, aprovechando el ejemplo para insertar imágenes en un gráfico de R.  
