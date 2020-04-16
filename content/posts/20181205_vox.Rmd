@@ -8,15 +8,15 @@ Hace un par de semanas estuve en un taller de **Datos Espaciales en Salud**, imp
 
 El domingo 2 de diciembre tuvieron lugar las elecciones al Parlamento Andaluz, en las que el partido de ultraderecha VOX obtuvo 12 escaños.
 
-### Lejos de entrar en el debate, ya suficientemente cubierto en tertulias televisivas, bares y cafeterías, me propuse a hacer un análisis: ¿Dónde se votó a VOX? Y... ¿dónde no?
+### ¿Dónde se votó a VOX? Y... ¿dónde no?
 
-Para ello, he usado los datos oficiales de las elecciones, disponibles en **[este enlace de la Junta de Andalucía](https://www.resultadoseleccionesparlamentoandalucia2018.es/Inicio)**.
+He usado los datos oficiales de las elecciones, disponibles en **[este enlace de la Junta de Andalucía](https://www.resultadoseleccionesparlamentoandalucia2018.es/Inicio)**.
 
-Usaré también las líneas límite de los municipios andaluces, disponibles en el **[Instituto de Estadística y Cartografía de Andalucía](https://www.juntadeandalucia.es/institutodeestadisticaycartografia)**.
+Uso también las líneas límite de los municipios andaluces, disponibles en el **[Instituto de Estadística y Cartografía de Andalucía](https://www.juntadeandalucia.es/institutodeestadisticaycartografia)**.
 
-### El mapa interactivo de votos a VOX por municipios se encuentra al final de este artículo. El código para hacerlo en R lo dejo aquí debajo, y es totalmente reproducible.
+### El mapa interactivo de votos a VOX por municipios se encuentra al final de este artículo. El código para hacerlo en R lo dejo aquí, y es totalmente reproducible.
 
-Para el análisis, he creado una *tasa de voto a VOX*, calculada como número de votos a VOX por cada 1000 personas censadas.
+Para el análisis, he creado la *tasa de voto a VOX*, calculada como número de votos a VOX por cada 1000 personas censadas.
 
 ```{r, warning=FALSE, error=FALSE, message=FALSE}
 # Cargamos los paquetes necesarios
@@ -36,12 +36,12 @@ cod_pro <- c("04", "11", "18", "29", "23", "21", "41", "14")
 for(provincia in 1:8){
   if(provincia == 1){
     longitud_previa <- 0
-    elecciones <- read.xlsx(paste0("20181205_vox/Escrut-Prov-2018-", provincias[[provincia]], ".xlsx"), sheet = "Municipios", colNames = TRUE) %>%
+    elecciones <- read.xlsx(paste0("maps/Escrut-Prov-2018-", provincias[[provincia]], ".xlsx"), sheet = "Municipios", colNames = TRUE) %>%
       select("Codmun", "Municipio", "Censo.Total", "Votos.Totales", "VOX")
   }
   else {
     longitud_previa <- nrow(elecciones)
-    aux <- read.xlsx(paste0("20181205_vox/Escrut-Prov-2018-", provincias[[provincia]], ".xlsx"), sheet = "Municipios", colNames = TRUE) %>%
+    aux <- read.xlsx(paste0("maps/Escrut-Prov-2018-", provincias[[provincia]], ".xlsx"), sheet = "Municipios", colNames = TRUE) %>%
                          select("Codmun", "Municipio", "Censo.Total", "Votos.Totales", "VOX")
     elecciones <- rbind(elecciones, aux)              
   }
@@ -70,11 +70,11 @@ head(elecciones[order(-elecciones$tasa), ], 3)
 
 ### Los tres municipios con mayor distribución de votos a VOX fueron almerienses: Balanegra, El Ejido y Níjar.
 
-### En Gorafe (Granada) y Castaño del Robledo (Huelva), VOX obtuvo sólo un voto, si bien el censo de ambos municipios es inferior a 350 habitantes.
+### En Gorafe (Granada) y Castaño del Robledo (Huelva) VOX obtuvo sólo un voto, si bien el censo de ambos municipios es inferior a 350 habitantes.
 
 ```{r, echo = T, results = 'hide'}
 # Leemos los municipios
-municipios <- readOGR("20181205_vox/da02_term_munic.shp", encoding = "utf8", use_iconv = TRUE) %>%
+municipios <- readOGR("maps/da02_term_munic.shp", encoding = "utf8", use_iconv = TRUE) %>%
   spTransform(CRS("+init=epsg:4326"))
 ```
 
@@ -98,10 +98,10 @@ leaflet(municipios) %>%
                              "<br><b>Votos</b>: ", municipios@data$votos,
                              "<br><b>Votos a VOX</b>: ", municipios@data$vox,
                              "<br><b>Votos a VOX por cada 1000 personas censadas</b>: ", municipios@data$tasa),
-              weight = 2,
+              weight = 1.5,
               opacity = 0.7,
               color = "black",
-              dashArray = "3",
+              dashArray = "1",
               label = mapply(
                 function(x, y) {
                   HTML(sprintf("<b>Municipio</b>: %s<br><b>%s</b> votos a VOX por cada 1000 personas censadas<br><em>Haz clic para obtener más información</em>", htmlEscape(x), htmlEscape(y)))

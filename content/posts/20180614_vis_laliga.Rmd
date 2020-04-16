@@ -1,0 +1,91 @@
+---
+date: '2018-06-14'
+title: "Visualizando... la Liga (estadísticas individuales)"
+tags: ["futbol", "dataviz"]
+---
+
+Recordemos que **[en la primera parte de "Visualizando… la Liga"](/posts/20180524_vis_laliga)** mostrábamos por equipos la relación partidos-goles a favor, aprovechando el ejemplo para insertar imágenes en un gráfico de R.  
+
+![](\posts\images\2018\20180614_vis_laliga\GF_Pt.svg)
+
+## En esta nueva entrega, nos centraremos en las estadísticas individuales de los jugadores.  
+
+Para la visualización, se usará R y los paquetes `ggplot2`, y `ggrepel`. Además de representar la nube de puntos, se mostrarán
+los nombres de los 10 jugadores (alguno más en caso de empate) con mejor relación
+entre la estadística seleccionada y el número de partidos jugados, y que además
+hayan disputado un mínimo de 5 partidos.
+
+## **Goles**
+
+![](\posts\images\2018\20180614_vis_laliga\01.svg)
+
+Messi destaca claramente como pichichi de la competición, seguido por Cristiano Ronaldo y Luis Suárez.
+
+Entre los jugadores con muchos goles y pocos partidos, destacan Bakambu (que salió del Villarreal en el mercado invernal con destino a China) y Sanabria (lesionado entre las jornadas 14 y 31).
+
+-------
+
+## **Asistencias**
+
+![](\posts\images\2018\20180614_vis_laliga\02.svg)
+
+El triple empate a asistencias se produce entre los barcelonistas Luis Suárez y Messi y el jugador del Villarreal Pablo Fornals. Entre los más asistentes destaca la presencia de un defensa: José Ángel, lateral del Eibar.
+
+-------
+
+## **Tiros**
+
+![](\posts\images\2018\20180614_vis_laliga\03.svg)
+
+Los más tiradores de la Liga son, en su mayoría, delanteros centro con gran instinto goleador.
+
+-------
+
+## **Tiros a puerta**
+
+![](\posts\images\2018\20180614_vis_laliga\04.svg)
+
+Pero si analizamos la efectividad de los tiros, vemos que desaparecen del top 10 jugadores como Calleri, Rodrigo, Willian José y Raúl García para dar entrada a Griezmann, Stuani, Ben Yedder y Coutinho.
+
+-------
+
+## **Balones robados**
+
+![](\posts\images\2018\20180614_vis_laliga\05.svg)
+
+
+En esta categoría destacan los mediocentros defensivos y laterales, liderados por Saúl Ñíguez y Luisinho.
+
+-------
+
+## **Faltas recibidas**
+
+![](\posts\images\2018\20180614_vis_laliga\07.svg)
+
+Entre los jugadores con más técnica y regate sorprende la presencia de Casemiro y Manu García, dos centrocampistas de corte defensivo que saben esconder muy bien el balón.
+
+-------
+
+## **Faltas cometidas**
+
+![](\posts\images\2018\20180614_vis_laliga\08.svg)
+
+Entre los más faltones de la Liga se alternan atacantes y defensores, sorprendiendo especialmente el contraste de edades: Rodri y Adrián Diéguez nacieron en 1996, y Peñaranda en 1997, mientras que cinco jugadores del top 10 son ya treintañeros: Iturra (33), Stuani (31), Rául García (31), Víctor Sánchez (30), Pina (30).
+
+-------
+
+## **Centros precisos**
+
+![](\posts\images\2018\20180614_vis_laliga\10.svg)
+
+Un centro preciso se define como aquel que llega dentro del área a un compañero. Los jugadores destacados en esta categoría son especialistas a balón parado que, además, no tienen mucha competencia en sus equipos: Granell, Parejo, Kroos, Lucas Pérez…
+
+------- 
+
+## **Tiros bloqueados**
+
+![](\posts\images\2018\20180614_vis_laliga\12.svg)
+
+Acabamos esta sección con tiros bloqueados, protagonizada por valerosos defensas centrales que se interponen entre su portería y un delantero.
+
+-------

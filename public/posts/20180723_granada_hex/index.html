@@ -206,7 +206,7 @@ El código que encontrarás aquí es totalmente reproducible y adaptable para tu
 
 
 <p>Hace unos días tuvo lugar la reunión sobre R de carácter anual <strong>useR!</strong>, celebrada este año en Brisbane, Australia. Para la ocasión, crearon un mapa del país compuesto por logos de paquetes de R, que son de forma hexagonal.</p>
-<p><img src="/posts/20180723_granada_hex/aus.png" /></p>
+<p><img src="/posts/images/2018/20180723_granada_hex/aus.png" /></p>
 <p>Siguiendo las instrucciones de <strong><a href="https://blog.mitchelloharawild.com/blog/user-2018-feature-wall/">esta publicación en el blog de Mitchell O’Hara-Wild</a></strong>, me propuse hacer lo mismo para la provincia de Granada, donde resido y trabajo.</p>
 <p>El código que encontrarás aquí es totalmente reproducible y adaptable para tu provincia.</p>
 <p>La información geográfica está descargada del <strong><a href="https://www.cnig.es">Instituto Geográfico Nacional</a></strong>, aunque también puedes usar el paquete <code>raster</code> como hicieron en la publicación original con Australia.</p>
@@ -227,7 +227,7 @@ granada &lt;- provincias %&gt;% subset(NAMEUNIT == &quot;Granada&quot;)
 
 # Representamos el mapa seleccionado
 ggplot() + geom_sf(data = st_as_sf(granada))</code></pre>
-<p><img src="/posts/20180723_granada_hex/ggranada.png" /></p>
+<p><img src="/posts/images/2018/20180723_granada_hex/ggranada.png" /></p>
 <pre class="r"><code># Seleccionamos el tamaño de los hexágonos, que variará en función a:
 #   - El tamaño del área que queramos cubrir
 #   - El número de logos que queramos incluir
@@ -243,10 +243,10 @@ granada_hex &lt;- HexPoints2SpatialPolygons(hex_points, dx = .1)
 ggplot() + 
   geom_sf(data = st_as_sf(granada)) + 
   geom_sf(data = st_as_sf(granada_hex), colour = &quot;blue&quot;, fill = NA)</code></pre>
-<p><img src="/posts/20180723_granada_hex/ggranada_hex.png" /></p>
+<p><img src="/posts/images/2018/20180723_granada_hex/ggranada_hex.png" /></p>
 <p>Si no te convence el resultado final, puedes volver a ejecutar la última caja de código para que se tome una muestra (ligeramente) distinta.</p>
 <p>Para finalizar, usamos una función, <code>hexwall</code>, escrita por <strong><a href="https://github.com/mitchelloharawild/hexwall">Mitchell O’Hara-Wild, y disponible en su GitHub</a></strong>. Puedes descargarte el script en .zip (Clone or download -&gt; Download ZIP) y luego cargarlo en R usando <code>source</code>.</p>
-<p><img src="/posts/20180723_granada_hex/git.png" alt="git" width=75%/></p>
+<p><img src="/posts/images/2018/20180723_granada_hex/git.png" alt="git" width=75%/></p>
 <pre class="r"><code>source(&quot;hexwall-master/hexwall.R&quot;)</code></pre>
 <p>Los parámetros de la función <code>hexwall</code> son simples:</p>
 <ul>
@@ -262,7 +262,7 @@ ggplot() +
   coords = hex_points@coords,
   sort_mode = &quot;random&quot;
 )</code></pre>
-<p><img src="/posts/20180723_granada_hex/preview_random.png" /></p>
+<p><img src="/posts/images/2018/20180723_granada_hex/preview_random.png" /></p>
 <p>Y para terminar, os enseño cómo quedaría si ordenamos los stickers por color:</p>
 <pre class="r"><code>hexwall(
   &quot;samplehex&quot;,
@@ -270,7 +270,7 @@ ggplot() +
   coords = hex_points@coords,
   sort_mode = &quot;color&quot;
 )</code></pre>
-<p><img src="/posts/20180723_granada_hex/preview_color.png" /></p>
+<p><img src="/posts/images/2018/20180723_granada_hex/preview_color.png" /></p>
 
   </div>
   

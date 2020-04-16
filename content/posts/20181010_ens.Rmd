@@ -9,13 +9,13 @@ Hace unos meses se publicaron los resultados de la [Encuesta Nacional de Salud (
 
 La información de la ENS para adultos se proporciona como un fichero de ancho fijo, de la siguiente forma:
 
-![](\posts\20181010_ens\base_datos.png)
+![](\posts\images\2018\20181010_ens\base_datos.png)
 
 Este archivo puede desmotivar a más de uno, ante la incapacidad de llevarse esta información a un entorno de trabajo en el que se encuentre cómodo.
 
 Para importar esta base de datos a R, nos vamos a ayudar del fichero Excel que adjunta la ENS con el diseño de la encuesta, que consta de las variables "VARIABLE INE", "LONGITUD", "POSICIÓN INICIO", "POSICIÓN FINAL", y "DESCRIPCIÓN DEL CAMPO".
 
-![](\posts\20181010_ens\excel.png)
+![](\posts\images\2018\20181010_ens\excel.png)
 
 Con el siguiente código, podemos importar la ENS en R:
 
@@ -41,7 +41,7 @@ diccionario <- data.frame(variable = campos$X1, descripcion = campos$X5)
 
 En `tabla` tenemos la base de datos de la ENS, y en `diccionario` una lista con los nombres de las variables y su descripción:
 
-![](\posts\20181010_ens\diccionario.png)
+![](\posts\images\2018\20181010_ens\diccionario.png)
 
 Ya tenemos la ENS importada en R, y podemos comenzar a analizar los datos, como por ejemplo, un simple descriptivo de la altura, con un gráfico.
 
@@ -56,10 +56,10 @@ tabla %>% select(S109) %>% filter(S109 != 998 & S109 != 999) %>% summary()
 tabla %>% select(S109) %>% filter(S109 != 998 & S109 != 999) %>% table %>% plot(xlab = "Altura", ylab = "Frecuencia")
 ```
 
-![](\posts\20181010_ens\altura.png)
+![](\posts\images\2018\20181010_ens\altura.png)
 
 La altura mínima fue de 120 cm, mientras que la máxima fue de 204 cm, con una media de unos 167 cm.
 
-![](\posts\20181010_ens\grafico.png)
+![](\posts\images\2018\20181010_ens\grafico.png)
 
 Agradezco a mi compañera [Dafina](https://twitter.com/DafinaPetrova) su interés en este tema, me dio un rompecabezas muy interesante.

@@ -214,7 +214,7 @@ ggplot(data = estadisticas, aes(GF, Pt, label = equipo)) &#43;geom_point() &#43
 <p>Ahora que ha terminado la Liga, es buen momento para echar la vista atrás y
 visualizar algunas de las estadísticas que nos deja. En concreto, vamos a analizar la relación “Goles a favor” - “Puntos conseguidos”.</p>
 <p>Las estadísticas están sacadas de <a href="http://www.laliga.es/laliga-santander">la web de La Liga</a>, y los gráficos se harán usando <code>R</code>.</p>
-<p><img src="https://78.media.tumblr.com/cc0203b842d7ee58795418324bac8df5/tumblr_inline_pah2blXhWX1qemyzq_1280.png" /></p>
+<p><img src="\posts\images\2018\20180524_vis_laliga\cabecera.png" /></p>
 <p>En una primera representación con <code>ggplot</code>, las etiquetas no se verían correctamente:</p>
 <pre class="r"><code>ggplot(data = estadisticas, aes(GF, Pt, label = equipo)) +
     geom_point() + 
@@ -223,7 +223,7 @@ visualizar algunas de las estadísticas que nos deja. En concreto, vamos a anali
     xlab(&quot;Goles a favor&quot;) +
     ylab(&quot;Puntos&quot;) + 
     theme_classic()</code></pre>
-<p><img src="\posts\20180524_vis_laliga\GF_Pt_ggplot.svg" /></p>
+<p><img src="\posts\images\2018\20180524_vis_laliga\GF_Pt_ggplot.svg" /></p>
 <p>El gráfico mejora notablemente usando el paquete <code>ggrepel</code> para que las etiquetas se repelan:</p>
 <pre class="r"><code>ggplot(data = estadisticas, aes(GF, Pt, label = equipo)) +
     geom_point() +  
@@ -232,7 +232,7 @@ visualizar algunas de las estadísticas que nos deja. En concreto, vamos a anali
     xlab(&quot;Goles a favor&quot;) +
     ylab(&quot;Puntos&quot;) + 
     theme_classic()</code></pre>
-<p><img src="\posts\20180524_vis_laliga\GF_Pt_ggrepel.svg" /></p>
+<p><img src="\posts\images\2018\20180524_vis_laliga\GF_Pt_ggrepel.svg" /></p>
 <p>Por último, vamos a hacer el mismo gráfico usando los escudos de los equipos.</p>
 <p>Para añadir una imagen a un gráfico, usaremos los paquetes <code>ggplot2</code>, <code>png</code>, <code>dplyr</code>, y <code>grid</code>.</p>
 <p>Leemos el escudo:</p>
@@ -249,7 +249,7 @@ visualizar algunas de las estadísticas que nos deja. En concreto, vamos a anali
                      xmax = estadisticas$GF[1] + 4,
                      ymin = estadisticas$Pt[1] - 4,
                      ymax = estadisticas$Pt[1] + 4)</code></pre>
-<p><img src="\posts\20180524_vis_laliga\GF_Pt_solo_un_escudo.svg" /></p>
+<p><img src="\posts\images\2018\20180524_vis_laliga\GF_Pt_solo_un_escudo.svg" /></p>
 <p>Y para hacerlo con todos los escudos, usaremos un bucle y una función propia:</p>
 <pre class="r"><code># Leemos los escudos 
 
@@ -280,7 +280,7 @@ etiqueta_escudo &lt;- function(n_equipo, puntox, puntoy, altura = 4) {
 }</code></pre>
 <p>(El ciclo for va de 20 a 1 para que, en caso de superposición, los equipos con más puntos se muestren “encima” de los equipos con menos puntos)</p>
 <p>Obtenemos así el siguiente gráfico:</p>
-<p><img src="\posts\20180524_vis_laliga\GF_Pt.svg" /></p>
+<p><img src="\posts\images\2018\20180524_vis_laliga\GF_Pt.svg" /></p>
 
   </div>
   

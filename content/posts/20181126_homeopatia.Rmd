@@ -13,7 +13,7 @@ Y unos días después, el Gobierno presentaba el **[Plan de Protección de la Sa
 *	**Modificaciones legislativas** para evitar la publicidad engañosa de las pseudoterapias.
 *	**Eliminar de los centros sanitarios las pseudoterapias**.
 
-![](\posts\20181126_homeopatia\wordcloud.png)
+![](\posts\images\2018\20181126_homeopatia\wordcloud.png)
 *Nube de palabras del Plan de Protección de la Salud frente a las pseudoterapias.*
 
 Una de las pseudoterapias más utilizadas es la **homeopatía**. Para crear los “medicamentos” homeopáticos, se seleccionan sustancias que en grandes cantidades provocan síntomas parecidos a los que sufre el paciente y se diluyen en alcohol o agua destilada. Después de varios años de investigación, **[no hay evidencia científica](https://consultations.nhmrc.gov.au/files/consultations/drafts/nhmrcdrafthomeopathyinformationpaper140408.pdf)** de que la homeopatía tenga efectos curativos. Pese a ello, **no son pocas las personas convencidas de que la homeopatía funciona**. De hecho, **[la principal empresa de homeopatía, facturó el año pasado en España 17,8 millones de euros](https://elpais.com/economia/2018/10/26/actualidad/1540569452_141835.html)**, vendiendo tratamientos con la misma eficacia que un azucarillo. Un análisis en profundidad, relacionando las pseudoterapias con el efecto placebo, se puede encontrar en **[este artículo](http://www.cienciacognitiva.org/?p=1359)**.
@@ -36,11 +36,11 @@ Según la encuesta, 15.863 personas de las 23.089 encuestadas (un 69%) habían t
 
 Para responder a esta pregunta hemos utilizado los datos de las personas que declararon haber tomado algún medicamento en las últimas dos semanas, evaluando los factores que se relacionan con que este medicamento sea homeopático, mediante un modelo lineal generalizado. **El código del análisis realizado puedes encontrarlo al final de esta publicación.**  
 
-![](\posts\20181126_homeopatia\clase.png)
+![](\posts\images\2018\20181126_homeopatia\clase.png)
 
-![](\posts\20181126_homeopatia\sexo.png)
+![](\posts\images\2018\20181126_homeopatia\sexo.png)
 
-![](\posts\20181126_homeopatia\edad.png)
+![](\posts\images\2018\20181126_homeopatia\edad.png)
 
 ## **Hallamos que el consumo de estos medicamentos era más común entre los adultos de entre 30 y 64 años, las mujeres y las personas de alto nivel socioeconómico**.  
 

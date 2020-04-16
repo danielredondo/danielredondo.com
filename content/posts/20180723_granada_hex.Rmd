@@ -6,7 +6,7 @@ tags: ["mapas"]
 
 Hace unos días tuvo lugar la reunión sobre R de carácter anual **useR!**, celebrada este año en Brisbane, Australia. Para la ocasión, crearon un mapa del país compuesto por logos de paquetes de R, que son de forma hexagonal.
 
-![](/posts/20180723_granada_hex/aus.png)
+![](/posts/images/2018/20180723_granada_hex/aus.png)
 
 Siguiendo las instrucciones de **[esta publicación en el blog de Mitchell O'Hara-Wild]( https://blog.mitchelloharawild.com/blog/user-2018-feature-wall/)**, me propuse hacer lo mismo para la provincia de Granada, donde resido y trabajo.
 
@@ -34,7 +34,7 @@ granada <- provincias %>% subset(NAMEUNIT == "Granada")
 ggplot() + geom_sf(data = st_as_sf(granada))
 ```
 
-![](/posts/20180723_granada_hex/ggranada.png)
+![](/posts/images/2018/20180723_granada_hex/ggranada.png)
 ```{r eval = FALSE}
 # Seleccionamos el tamaño de los hexágonos, que variará en función a:
 #   - El tamaño del área que queramos cubrir
@@ -54,13 +54,13 @@ ggplot() +
 
 ```
 
-![](/posts/20180723_granada_hex/ggranada_hex.png)
+![](/posts/images/2018/20180723_granada_hex/ggranada_hex.png)
 
 Si no te convence el resultado final, puedes volver a ejecutar la última caja de código para que se tome una muestra (ligeramente) distinta.
 
 Para finalizar, usamos una función, `hexwall`, escrita por **[Mitchell O'Hara-Wild, y disponible en su GitHub](https://github.com/mitchelloharawild/hexwall)**. Puedes descargarte el script en .zip (Clone or download -> Download ZIP) y luego cargarlo en R usando `source`.
 
-<img src="/posts/20180723_granada_hex/git.png" alt="git" width=75%/>
+<img src="/posts/images/2018/20180723_granada_hex/git.png" alt="git" width=75%/>
 
 ```{r eval = FALSE}
 source("hexwall-master/hexwall.R")
@@ -85,7 +85,7 @@ hexwall(
 ```
 
 
-![](/posts/20180723_granada_hex/preview_random.png)
+![](/posts/images/2018/20180723_granada_hex/preview_random.png)
 
 Y para terminar, os enseño cómo quedaría si ordenamos los stickers por color:
 ```{r eval = FALSE}
@@ -99,7 +99,7 @@ hexwall(
 
 
 
-![](/posts/20180723_granada_hex/preview_color.png)
+![](/posts/images/2018/20180723_granada_hex/preview_color.png)
 
 
 

@@ -9,7 +9,7 @@ date: '2018-05-24'
 
 Las estadísticas están sacadas de [la web de La Liga](http://www.laliga.es/laliga-santander), y los gráficos se harán usando `R`.  
 
-![](https://78.media.tumblr.com/cc0203b842d7ee58795418324bac8df5/tumblr_inline_pah2blXhWX1qemyzq_1280.png)
+![](\posts\images\2018\20180524_vis_laliga\cabecera.png)
 
 En una primera representación con `ggplot`, las etiquetas no se verían correctamente:
 
@@ -23,7 +23,7 @@ ggplot(data = estadisticas, aes(GF, Pt, label = equipo)) +
     theme_classic()
 ```
 
-![](\posts\20180524_vis_laliga\GF_Pt_ggplot.svg)
+![](\posts\images\2018\20180524_vis_laliga\GF_Pt_ggplot.svg)
 
 El gráfico mejora notablemente usando el paquete `ggrepel` para que las etiquetas se repelan:
 
@@ -37,7 +37,7 @@ ggplot(data = estadisticas, aes(GF, Pt, label = equipo)) +
     theme_classic()
 ```
 
-![](\posts\20180524_vis_laliga\GF_Pt_ggrepel.svg)
+![](\posts\images\2018\20180524_vis_laliga\GF_Pt_ggrepel.svg)
 
 Por último, vamos a hacer el mismo gráfico usando los escudos de los equipos.
 
@@ -65,7 +65,7 @@ ggplot(estadisticas, aes(GF, Pt, label = equipo)) +
 ```
  
 
-![](\posts\20180524_vis_laliga\GF_Pt_solo_un_escudo.svg)
+![](\posts\images\2018\20180524_vis_laliga\GF_Pt_solo_un_escudo.svg)
 
 Y para hacerlo con todos los escudos, usaremos un bucle y una función propia:
 
@@ -110,4 +110,4 @@ for (i in 20:1) {
 
 Obtenemos así el siguiente gráfico:  
 
-![](\posts\20180524_vis_laliga\GF_Pt.svg)
+![](\posts\images\2018\20180524_vis_laliga\GF_Pt.svg)

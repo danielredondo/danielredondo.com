@@ -1,7 +1,7 @@
 ---
 title: "iDEAL, la web para visualizar noticias del IDEAL"
 date: '2018-04-18'
-tags: ["web scraping"]
+tags: ["web scraping", "shiny"]
 ---
 
 Hace unos días, con una treintena de líneas de código, conseguí leer noticias del periódico IDEAL sin salir de R, ese software libre de enfoque ~~estadístico~~ todoterreno. 
@@ -13,7 +13,7 @@ R ha madurado ahora en una web, más accesible y amigable:
 
 El manual de empleo es simple: pegas la URL del artículo que quieres leer, y la noticia aparece a la derecha, con un diseño mejorable, pero que cumple.  
 
-![](\posts\20180418_ideal_shiny\ejemplo.png)
+![](\posts\images\2018\20180418_ideal_shiny\ejemplo.png)
 
 ## **Contra las barreras, código abierto.**
 

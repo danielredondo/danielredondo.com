@@ -10,11 +10,16 @@ El periódico **[Ideal ](http://www.ideal.es/)** es el más leído en la provinc
 
 A principios de año, este diario adoptaba en su versión digital una medida llena de controversia: limitar el acceso a sus artículos, estableciendo un límite mensual de noticias. Al superar este límite, esto es todo lo que podemos ver en su página web:  
 
-![](https://78.media.tumblr.com/3fef1ae9ffa76c37679cecdb2ba7a1e6/tumblr_inline_pah2bmnaBj1qemyzq_1280.png)
+![](\posts\images\2018\20180403_ideal\ideal.png)
+
 
 Esta decisión ha encajado muy bien en la sociedad granadina, que tiene claro que debe pagar para acceder a contenidos actuales de calidad.  
 
-![](https://78.media.tumblr.com/c9affe0bf01c01fdfe42c1991561e282/tumblr_inline_pah2bmACgE1qemyzq_1280.png)![](https://78.media.tumblr.com/c3c362f73ebec52d6f9b91424b7d3d6d/tumblr_inline_pah2bm80Q81qemyzq_1280.png)![](https://78.media.tumblr.com/5c08079e08c649210cc95b06c0253252/tumblr_inline_pah2bnOhlu1qemyzq_1280.png)
+![](\posts\images\2018\20180403_ideal\tuit1.png)
+
+![](\posts\images\2018\20180403_ideal\tuit2.png)
+
+![](\posts\images\2018\20180403_ideal\tuit3.png)
 
 En fin, cambiando totalmente de tema, me estoy iniciando en esto del **[web scraping](https://es.wikipedia.org/wiki/Web_scraping)**, una técnica tan potente que pensé que estaba reservada sólo para unos pocos. Animado por **[este artículo](https://datacritics.com/2018/03/20/scrape-it-yourself-spotify-charts)**, y siguiendo sus directrices, me he lanzado a la piscina con un pequeño script en R.
 
@@ -55,6 +60,6 @@ imprimir_noticia(titulo, subtitulo, categoria, cuerpo)
 
 Y aquí la salida:  
 
-![](https://78.media.tumblr.com/ee7cfd621699e23141d25a1891f4957c/tumblr_inline_pah2bndVwh1qemyzq_1280.png)
+![](\posts\images\2018\20180403_ideal\salida.png)
 
 Este post continúa en: **[iDEAL, la web para visualizar noticias del periódico IDEAL](/posts/20180418_ideal_shiny/)**.

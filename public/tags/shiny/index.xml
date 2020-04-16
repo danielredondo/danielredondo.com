@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>shiny on Daniel Redondo</title>
+    <link>/tags/shiny/</link>
+    <description>Recent content in shiny on Daniel Redondo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 18 Apr 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/shiny/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>iDEAL, la web para visualizar noticias del IDEAL</title>
+      <link>/posts/20180418_ideal_shiny/</link>
+      <pubDate>Wed, 18 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/20180418_ideal_shiny/</guid>
+      <description>Hace unos días, con una treintena de líneas de código, conseguí leer noticias del periódico IDEAL sin salir de R, ese software libre de enfoque estadístico todoterreno.
+Lo que hace unos días era un pequeño script enR ha madurado ahora en una web, más accesible y amigable:
+http://bitly.com/iDEALgranadaEl manual de empleo es simple: pegas la URL del artículo que quieres leer, y la noticia aparece a la derecha, con un diseño mejorable, pero que cumple.</description>
+    </item>
+    
+  </channel>
+</rss>
