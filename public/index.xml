@@ -23,17 +23,17 @@
     </item>
     
     <item>
-      <title>Publicaciones científicas</title>
+      <title>Publicaciones</title>
       <link>/publicaciones/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/publicaciones/</guid>
-      <description>cvauroc: Command to compute cross-validated area under the curve for ROC analysis after predictive modeling for binary outcomes.
+      <description>Blog En este enlace puedes ver las publicaciones del blog.
+Publicaciones científicas   cvauroc: Command to compute cross-validated area under the curve for ROC analysis after predictive modeling for binary outcomes.
 Miguel Angel Luque-Fernandez, Daniel Redondo-Sánchez, Camille Maringe.
 The Stata Journal (Link)
-  Educational Note: Paradoxical Collider Effect in the Analysis of Non-Communicable Disease Epidemiological Data: a reproducible illustration and web application.
-Miguel Angel Luque-Fernandez, Michael Schomaker, Daniel Redondo-Sánchez, Maria Jose Sanchez Perez, Anand Vaidya, Mireille E Schnitzer.
-International Journal of Epidemiology (Link - Open Access)</description>
+  Multimorbidity by Patient and Tumor Factors and Time-to-Surgery Among Colorectal Cancer Patients in Spain: A Population-Based Study.
+Miguel Angel Luque-Fernandez, Daniel Redondo-Sanchez, Shing Fung Lee, Miguel Rodríguez-Barranco, Mª Carmen Carmona-García, Rafael Marcos-Gragera, María José Sánchez.</description>
     </item>
     
     <item>
@@ -43,8 +43,7 @@ International Journal of Epidemiology (Link - Open Access)</description>
       
       <guid>/about/</guid>
       <description>Soy Daniel Redondo Sánchez, y entre mi formación destaco:
- Licenciatura en Matemáticas (2009-2014) Experto en Epidemiología e Investigación Clínica (2016) Máster de Matemáticas (2019) Máster en Ciencia de Datos e Ingeniería de Computadores, especialidad en Ciencia de Datos y Tecnologías Inteligentes (en curso).  Desde 2018 trabajo como técnico de investigación del cáncer en el Instituto de Investigación Biosanitaria de Granada (ibs.GRANADA).
-Trabajo principalmente con R (shiny, tidyverse, leaflet, &amp;hellip;), Microsoft Access (SQL + VBA) y Stata.</description>
+ Licenciatura en Matemáticas (2009-2014) Experto en Epidemiología e Investigación Clínica (2016) Máster de Matemáticas (2019) Máster en Ciencia de Datos e Ingeniería de Computadores, especialidad en Ciencia de Datos y Tecnologías Inteligentes (en curso).  Desde 2018 trabajo como técnico de investigación del cáncer en el Instituto de Investigación Biosanitaria de Granada (ibs.GRANADA). En este enlace puedes ver mis publicaciones.</description>
     </item>
     
     <item>

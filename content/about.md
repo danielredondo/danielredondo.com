@@ -13,11 +13,9 @@ Soy **Daniel Redondo Sánchez**, y entre mi formación destaco:
 - Máster de **Matemáticas** (2019)
 - Máster en **Ciencia de Datos e Ingeniería de Computadores**, especialidad en Ciencia de Datos y Tecnologías Inteligentes (en curso).
 
-Desde 2018 trabajo como **técnico de investigación del cáncer** en el Instituto de Investigación Biosanitaria de Granada (ibs.GRANADA).
+Desde 2018 trabajo como **técnico de investigación del cáncer** en el Instituto de Investigación Biosanitaria de Granada (ibs.GRANADA). En [este enlace](/publicaciones) puedes ver mis publicaciones. 
 
-Trabajo principalmente con `R` (`shiny`, `tidyverse`, `leaflet`, ...), `Microsoft Access` (`SQL` + `VBA`) y `Stata`.
-
-Esta web está hecha con `R` + `blogdown` + Hugo + GitHub + Netlify.
+Mis herramientras de trabajo son `R` (`shiny`, `tidyverse`, `leaflet`, ...), `Microsoft Access` (`SQL` + `VBA`) y `Stata`.
 
 Aquí encontrarás publicaciones sobre [visualización de datos](/tags/dataviz/), [fútbol](/tags/futbol/), [aplicaciones web](/aplicaciones/), [mapas](/tags/mapas/) y otros temas que me resultan interesantes.
 
@@ -26,4 +24,6 @@ Aquí encontrarás publicaciones sobre [visualización de datos](/tags/dataviz/)
 * Github: [danielredondo](https://github.com/danielredondo)
 * Twitter: [@dredondosanchez](https://twitter.com/dredondosanchez)  
 * Linkedin: [dredondosanchez](https://www.linkedin.com/in/dredondosanchez/)
-* Correo: danielredondosanchez [at] hotmail.com.
+* Correo: danielredondosanchez [at] hotmail.com
+
+Esta web está hecha con `R` + `blogdown` + Hugo + GitHub + Netlify.

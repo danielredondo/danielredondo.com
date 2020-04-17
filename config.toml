@@ -47,7 +47,7 @@ paginate = 7
     identifier = "posts"
     url = "/posts/"
 [[menu.main]]
-    name = "PUBLICACIONES CIENTÍFICAS"
+    name = "PUBLICACIONES"
     weight = 110
     identifier = "publicaciones"
     url = "/publicaciones/"
