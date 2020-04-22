@@ -9,7 +9,7 @@ draft: no
 
 #### Hace unos días encontré [este tutorial](https://cartographicperspectives.org/index.php/journal/article/view/1536/1726) sobre cómo hacer mapas imitando la portada del álbum *Unknown Pleasures* de **Joy Division**. En esta publicación resumo el método y lo aplico en la provincia de Granada para hacer un mapa como este:
 
-![](/posts/20200125_joy_division/granada.jpg)
+![](/posts/images/2020/20200125_joy_division/granada.jpg)
 
 ## Herramientas
 
@@ -59,7 +59,7 @@ El procedimiento en QGIS es relativamente sencillo si has trabajado anteriorment
 ```
 
 Estado del mapa al final del paso 4.
-![](/posts/20200125_joy_division/granada_qgis.png)
+![](/posts/images/2020/20200125_joy_division/granada_qgis.png)
 
 ```{}
 # 5. De líneas a puntos
@@ -80,7 +80,7 @@ Estado del mapa al final del paso 4.
 El resultado final es un `.csv` con 4 variables: un campo autonumérico, el relieve de un punto en concreto, y las coordenadas x e de ese punto.
 
 Cabecera del fichero exportado por `QGIS`:
-![](/posts/20200125_joy_division/granada_csv2.png)
+![](/posts/images/2020/20200125_joy_division/granada_csv2.png)
 
 # Parte 2: R
 
@@ -101,7 +101,7 @@ ggplot(data, aes(x = Lon, y = Lat, group = Lat, height = Elev)) +
   geom_density_ridges(stat = "identity", scale = 30)
 ```
 
-![](/posts/20200125_joy_division/granada_previo.png)
+![](/posts/images/2020/20200125_joy_division/granada_previo.png)
 
 El parámetro `scale` de `geom_density_ridges` se puede aumentar para acentuar más el relieve.
 
@@ -132,7 +132,7 @@ ggsave("granada.png", dpi = 300)
 
 El resultado final es el siguiente:
 
-![](/posts/20200125_joy_division/granada.jpg)
+![](/posts/images/2020/20200125_joy_division/granada.jpg)
 
 ## Fondo transparente... para hacer camisetas
 
@@ -173,11 +173,11 @@ ggsave("granada_tr.png",
 
 La camiseta ha quedado así:
 
-![](/posts/20200125_joy_division/granada_camiseta.jpg)
+![](/posts/images/2020/20200125_joy_division/granada_camiseta.jpg)
 
 Para acabar, hice también un diseño con Almería:
 
-![](/posts/20200125_joy_division/almeria.jpg)
+![](/posts/images/2020/20200125_joy_division/almeria.jpg)
 
-![](/posts/20200125_joy_division/granada_almeria_camiseta.jpg)
+![](/posts/images/2020/20200125_joy_division/granada_almeria_camiseta.jpg)
 

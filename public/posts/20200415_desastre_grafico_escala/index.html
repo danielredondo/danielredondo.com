@@ -202,7 +202,7 @@
 
 
 <p>Hace unos días vi <a href="https://www.reddit.com/r/CrappyDesign/comments/fv0fpz/the_yaxis_on_this_fox_news_graph_of_coronavirus/">en Reddit</a> este gráfico sobre el coronavirus, con <strong>las peores divisiones del eje vertical que he visto en mucho tiempo</strong>. Echadle un vistazo con calma porque merece la pena. Al principio, las divisiones son de 30 en 30 (30, 60, 90) para luego pasar a 100 (!!), 130, 160, 190, dar un salto hasta 240 (??), 250, y a partir de ahí las divisiones son de 50 en 50 (300, 350, 400).</p>
-<p><img src="\posts\20200415_desastre_grafico_escala\bad_scale.jpg" />
+<p><img src="\posts\images\2020\20200415_desastre_grafico_escala\bad_scale.jpg" />
 <em>El gráfico apareció en la emisora local de Fox en Denver, Colorado</em>.</p>
 <p>Hacer el gráfico con <code>R</code> y el paquete <code>ggplot2</code> usando una <strong>escala sensata</strong> es muy sencillo. Dejo el código reproducible:</p>
 <pre class="r"><code># Carga de paquetes
@@ -249,7 +249,7 @@ a_j \rightarrow j
 <p><span class="math display">\[v_i = j - \frac{a_j-x_i}{a_j-a_{j-a}}\]</span></p>
 <p>Como único escenario que no se ha contemplado, si <span class="math inline">\(x_i = a_j\)</span> para algún <span class="math inline">\(i\)</span> y algún <span class="math inline">\(j\)</span>, entonces <span class="math inline">\(v_i = j\)</span>.</p>
 <p>Puede parecer complejo, pero por ejemplo el proceso para <span class="math inline">\(i = 1\)</span> es el siguiente:</p>
-<p><img src="\posts\20200415_desastre_grafico_escala\ejemplo.png" /></p>
+<p><img src="\posts\images\2020\20200415_desastre_grafico_escala\ejemplo.png" /></p>
 <p>Lo programamos en R: para cada <span class="math inline">\(x_i = \text{valor[i]}\)</span>, buscamos el intervalo <span class="math inline">\((a_{j-1}, a_j) = (\text{i_inf}, \text{i_sup})\)</span> al que pertenece, y calculamos <span class="math inline">\(v_i = \text{valores_mal[i]}\)</span>.</p>
 <pre class="r"><code>escala_mal &lt;- c(30, 60, 90, 100, 130, 160, 190, 240, 250, 300, 350, 400)
 valores_mal &lt;- c()
@@ -292,7 +292,7 @@ data.frame(dias, valores_mal, valores) %&gt;%
         panel.grid.major.y = element_line())</code></pre>
 <p><img src="/posts/20200415_desastre_grafico_escala_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 <p>En el siguiente gif se pueden ver fácilmente las diferencias entre el gráfico correcto y el incorrecto:</p>
-<p><img src="\posts\20200415_desastre_grafico_escala\gif.gif" /></p>
+<p><img src="\posts\images\2020\20200415_desastre_grafico_escala\gif.gif" /></p>
 <p>Resumo las conclusiones en dos:</p>
 <ol style="list-style-type: decimal">
 <li><p><code>R</code> y <code>ggplot2</code> todo lo pueden.</p></li>

@@ -7,7 +7,7 @@ tags: ['dataviz']
 
 Hace unos días vi [en Reddit](https://www.reddit.com/r/CrappyDesign/comments/fv0fpz/the_yaxis_on_this_fox_news_graph_of_coronavirus/) este gráfico sobre el coronavirus, con **las peores divisiones del eje vertical que he visto en mucho tiempo**. Echadle un vistazo con calma porque merece la pena. Al principio, las divisiones son de 30 en 30 (30, 60, 90) para luego pasar a 100 (!!), 130, 160, 190, dar un salto hasta 240 (??), 250, y a partir de ahí las divisiones son de 50 en 50 (300, 350, 400).
 
-![](\posts\20200415_desastre_grafico_escala\bad_scale.jpg)
+![](\posts\images\2020\20200415_desastre_grafico_escala\bad_scale.jpg)
 *El gráfico apareció en la emisora local de Fox en Denver, Colorado*.
 
 Hacer el gráfico con `R` y el paquete `ggplot2` usando una **escala sensata** es muy sencillo. Dejo el código reproducible:
@@ -70,7 +70,7 @@ Como único escenario que no se ha contemplado, si $x_i = a_j$ para algún $i$ y
 
 Puede parecer complejo, pero por ejemplo el proceso para $i = 1$ es el siguiente:
 
-![](\posts\20200415_desastre_grafico_escala\ejemplo.png)
+![](\posts\images\2020\20200415_desastre_grafico_escala\ejemplo.png)
 
 
 
@@ -122,7 +122,7 @@ data.frame(dias, valores_mal, valores) %>%
 
 En el siguiente gif se pueden ver fácilmente las diferencias entre el gráfico correcto y el incorrecto:
 
-![](\posts\20200415_desastre_grafico_escala\gif.gif)
+![](\posts\images\2020\20200415_desastre_grafico_escala\gif.gif)
 
 
 Resumo las conclusiones en dos:

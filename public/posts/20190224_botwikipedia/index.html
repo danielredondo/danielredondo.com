@@ -24,12 +24,12 @@
 <meta name="twitter:title" content="Creando un bot de Twitter usando R: @BotWikipedia"/>
 <meta name="twitter:description" content="Un bot, según la Wikipedia, es un programa informático que efectúa automáticamente tareas repetitivas a través de Internet, cuya realización por parte de una persona sería imposible o muy tediosa.
 En esta publicación encontrarás un tutorial sobre cómo hacer un bot que tuiteará automáticamente usando el programa todoterreno R.
-Este tutorial está basado en mi propia experiencia creando @BotWikipedia, una cuenta que tuitea diariamente sobre lo más leído de la Wikipedia en español."/>
+Este tutorial está basado en mi propia experiencia creando @BotWikipedia, una cuenta que tuitea diariamente sobre lo más leído de Wikipedia en español."/>
 
 <meta property="og:title" content="Creando un bot de Twitter usando R: @BotWikipedia" />
 <meta property="og:description" content="Un bot, según la Wikipedia, es un programa informático que efectúa automáticamente tareas repetitivas a través de Internet, cuya realización por parte de una persona sería imposible o muy tediosa.
 En esta publicación encontrarás un tutorial sobre cómo hacer un bot que tuiteará automáticamente usando el programa todoterreno R.
-Este tutorial está basado en mi propia experiencia creando @BotWikipedia, una cuenta que tuitea diariamente sobre lo más leído de la Wikipedia en español." />
+Este tutorial está basado en mi propia experiencia creando @BotWikipedia, una cuenta que tuitea diariamente sobre lo más leído de Wikipedia en español." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/posts/20190224_botwikipedia/" />
 <meta property="article:published_time" content="2019-02-24T00:00:00+00:00" />
@@ -207,21 +207,21 @@ Este tutorial está basado en mi propia experiencia creando @BotWikipedia, una c
 
 <p>Un bot, <a href="https://es.wikipedia.org/wiki/Bot">según la Wikipedia</a>, es un programa informático que efectúa automáticamente tareas repetitivas a través de Internet, cuya realización por parte de una persona sería imposible o muy tediosa.</p>
 <p>En esta publicación encontrarás un tutorial sobre cómo hacer un bot que tuiteará automáticamente usando el programa todoterreno R.</p>
-<div id="este-tutorial-esta-basado-en-mi-propia-experiencia-creando-botwikipedia-una-cuenta-que-tuitea-diariamente-sobre-lo-mas-leido-de-la-wikipedia-en-espanol." class="section level2">
-<h2>Este tutorial está basado en mi propia experiencia creando <a href="https://twitter.com/BotWikipedia">@BotWikipedia</a>, una cuenta que tuitea diariamente sobre lo más leído de la Wikipedia en español.</h2>
-<p><img src="\posts\20190224_botwikipedia\tweet14f.png" />
+<div id="este-tutorial-está-basado-en-mi-propia-experiencia-creando-botwikipedia-una-cuenta-que-tuitea-diariamente-sobre-lo-más-leído-de-wikipedia-en-español." class="section level2">
+<h2>Este tutorial está basado en mi propia experiencia creando <a href="https://twitter.com/BotWikipedia">@BotWikipedia</a>, una cuenta que tuitea diariamente sobre lo más leído de Wikipedia en español.</h2>
+<p><img src="\posts\images\2019\20190224_botwikipedia\tweet14f.png" />
 <em>Artículos más leídos del 14 de Febrero</em></p>
 <div id="paso-1.-instala-r-rstudio-y-el-paquete-rtweet." class="section level3">
-<h3>Paso 1. Instala R, RStudio, y el paquete <code>rtweet</code>.</h3>
+<h3>Paso 1. Instala R, RStudio, y el paquete rtweet.</h3>
 <p>Aunque hace unos meses el principal paquete para trabajar con Twitter desde R era <code>twitteR</code> (en <a href="https://github.com/geoffjentry/twitteR">GitHub</a>), está empezando a estar obsoleto en favor de <code>rtweet</code> (en <a href="https://github.com/mkearney/rtweet">GitHub</a>). Entre las limitaciones de <code>twitteR</code> he encontrado dos muy molestas: tiene problemas con las tildes, y no permite tuitear más de 140 caracteres.</p>
-<p><img src="\posts\20190224_botwikipedia\rtweet.png" /></p>
+<p><img src="\posts\images\2019\20190224_botwikipedia\rtweet.png" /></p>
 </div>
 <div id="paso-2.-la-burocracia-de-twitter." class="section level3">
 <h3>Paso 2. La burocracia de Twitter.</h3>
 <p>Necesitarás una cuenta de usuario en Twitter. Cuando la tengas, dirígete a <a href="https://developer.twitter.com/en/apply/user">https://developer.twitter.com/en/apply/user</a> y solicita una cuenta de desarrollador. Te la asignarán automáticamente, pero tendrás que dar una descripción detallada del uso que darás a la aplicación, y deberás asociar a tu cuenta un número de teléfono, si no lo has hecho ya.</p>
-<p><img src="\posts\20190224_botwikipedia\twitterapp.PNG" /></p>
+<p><img src="\posts\images\2019\20190224_botwikipedia\twitterapp.PNG" /></p>
 <p>Una vez completado el proceso, podrás acceder a tu aplicación en <a href="https://developer.twitter.com/en/apps/">https://developer.twitter.com/en/apps/</a>. En el apartado “Keys and tokens” tendrás todo lo necesario para conectar con R en el siguiente paso.</p>
-<p><img src="\posts\20190224_botwikipedia\tokens.PNG" /></p>
+<p><img src="\posts\images\2019\20190224_botwikipedia\tokens.PNG" /></p>
 </div>
 <div id="paso-3.-crea-el-script-que-quieras-automatizar." class="section level3">
 <h3>Paso 3. Crea el script que quieras automatizar.</h3>
@@ -300,7 +300,7 @@ write(tuit, paste0(&quot;RUTA/Archive/tuit_&quot;, Sys.Date() - 1, &quot;.csv&qu
 <p>Como último consejo, te recomiendo que sigas tu cuenta bot recién creada desde otra cuenta de Twitter, para estar al tanto de las nuevas publicaciones activando las notificaciones de todos sus tuits.</p>
 </div>
 </div>
-<div id="y-hasta-aqui-el-tutorial-espero-que-te-haya-sido-de-utilidad-y-te-recomiendo-seguir-la-cuenta-de-botwikipedia.-contacta-conmigo-para-ensenarme-tu-bot-o-para-consultarme-cualquier-duda-con-respecto-al-tutorial." class="section level3">
+<div id="y-hasta-aquí-el-tutorial-espero-que-te-haya-sido-de-utilidad-y-te-recomiendo-seguir-la-cuenta-de-botwikipedia.-contacta-conmigo-para-enseñarme-tu-bot-o-para-consultarme-cualquier-duda-con-respecto-al-tutorial." class="section level3">
 <h3>¡Y hasta aquí el tutorial! Espero que te haya sido de utilidad, y te recomiendo seguir la cuenta de <a href="https://twitter.com/BotWikipedia">@BotWikipedia</a>. <a href="/about/">Contacta conmigo</a> para enseñarme tu bot, o para consultarme cualquier duda con respecto al tutorial.</h3>
 </div>
 </div>

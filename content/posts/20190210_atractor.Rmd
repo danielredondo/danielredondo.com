@@ -9,7 +9,7 @@ Hace unas semanas, Antonio Sánchez Chinchón escribía **[en su muy recomendabl
 
 Todo ello, ilustrado con imágenes tan artísticas como:
 
-![](\posts\20190210_atractor\imagen.png)
+![](\posts\images\2019\20190210_atractor\imagen.png)
 
 Las gráficas me gustaron tanto que quise usarlas de fondo de pantalla. Y aprovechando que Antonio [dejó el código en su GitHub](https://github.com/aschinchon/general-2D-map), pensé en **darles un toque de color, sin salir de R**.
 

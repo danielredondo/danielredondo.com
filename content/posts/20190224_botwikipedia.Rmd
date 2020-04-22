@@ -11,26 +11,26 @@ Un bot, [según la Wikipedia](https://es.wikipedia.org/wiki/Bot), es un programa
 
 En esta publicación encontrarás un tutorial sobre cómo hacer un bot que tuiteará automáticamente usando el programa todoterreno R.  
 
-## Este tutorial está basado en mi propia experiencia creando [\@BotWikipedia](https://twitter.com/BotWikipedia), una cuenta que tuitea diariamente sobre lo más leído de la Wikipedia en español.   
+## Este tutorial está basado en mi propia experiencia creando [\@BotWikipedia](https://twitter.com/BotWikipedia), una cuenta que tuitea diariamente sobre lo más leído de Wikipedia en español.   
 
-![](\posts\20190224_botwikipedia\tweet14f.png)
+![](\posts\images\2019\20190224_botwikipedia\tweet14f.png)
 *Artículos más leídos del 14 de Febrero*
 
-### Paso 1. Instala R, RStudio, y el paquete `rtweet`.
+### Paso 1. Instala R, RStudio, y el paquete rtweet.
 
 Aunque hace unos meses el principal paquete para trabajar con Twitter desde R era `twitteR` (en [GitHub](https://github.com/geoffjentry/twitteR)), está empezando a estar obsoleto en favor de `rtweet` (en [GitHub](https://github.com/mkearney/rtweet)). Entre las limitaciones de `twitteR` he encontrado dos muy molestas: tiene problemas con las tildes, y no permite tuitear más de 140 caracteres.
 
-![](\posts\20190224_botwikipedia\rtweet.png)
+![](\posts\images\2019\20190224_botwikipedia\rtweet.png)
 
 ### Paso 2. La burocracia de Twitter.
 
 Necesitarás una cuenta de usuario en Twitter. Cuando la tengas, dirígete a [https://developer.twitter.com/en/apply/user](https://developer.twitter.com/en/apply/user) y solicita una cuenta de desarrollador. Te la asignarán automáticamente, pero tendrás que dar una descripción detallada del uso que darás a la aplicación, y deberás asociar a tu cuenta un número de teléfono, si no lo has hecho ya.
 
-![](\posts\20190224_botwikipedia\twitterapp.PNG)
+![](\posts\images\2019\20190224_botwikipedia\twitterapp.PNG)
 
 Una vez completado el proceso, podrás acceder a tu aplicación en [https://developer.twitter.com/en/apps/](https://developer.twitter.com/en/apps/). En el apartado "Keys and tokens" tendrás todo lo necesario para conectar con R en el siguiente paso.
 
-![](\posts\20190224_botwikipedia\tokens.PNG)
+![](\posts\images\2019\20190224_botwikipedia\tokens.PNG)
 
 ### Paso 3. Crea el script que quieras automatizar.
 

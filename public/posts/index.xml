@@ -48,7 +48,7 @@ Se crea un data.frame con 3 variables:
       <pubDate>Sat, 25 Jan 2020 00:00:00 +0000</pubDate>
       
       <guid>/posts/20200125_joy_division/</guid>
-      <description>Hace unos días encontré este tutorial sobre cómo hacer mapas imitando la portada del álbum Unknown Pleasures de Joy Division. En esta publicación resumo el método y lo aplico en la provincia de Granada para hacer un mapa como este:  Herramientas La principal ventaja de este método frente a muchos otros es que utiliza dos herramientas que son gratuitas y tienen un uso muy extendido: QGIS y R.</description>
+      <description>Hace unos días encontré este tutorial sobre cómo hacer mapas imitando la portada del álbum Unknown Pleasures de Joy Division. En esta publicación resumo el método y lo aplico en la provincia de Granada para hacer un mapa como este:HerramientasLa principal ventaja de este método frente a muchos otros es que utiliza dos herramientas que son gratuitas y tienen un uso muy extendido: QGIS y R.</description>
     </item>
     
     <item>
@@ -59,7 +59,7 @@ Se crea un data.frame con 3 variables:
       <guid>/posts/20190224_botwikipedia/</guid>
       <description>Un bot, según la Wikipedia, es un programa informático que efectúa automáticamente tareas repetitivas a través de Internet, cuya realización por parte de una persona sería imposible o muy tediosa.
 En esta publicación encontrarás un tutorial sobre cómo hacer un bot que tuiteará automáticamente usando el programa todoterreno R.
-Este tutorial está basado en mi propia experiencia creando @BotWikipedia, una cuenta que tuitea diariamente sobre lo más leído de la Wikipedia en español.</description>
+Este tutorial está basado en mi propia experiencia creando @BotWikipedia, una cuenta que tuitea diariamente sobre lo más leído de Wikipedia en español.</description>
     </item>
     
     <item>

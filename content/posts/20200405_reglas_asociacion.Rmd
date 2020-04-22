@@ -31,12 +31,12 @@ Esto no quiere decir que TODOS los defensas tiren mal, sino que en general cuand
 
 **FIFA Ultimate Team** es un modo de juego online de la serie de videojuegos de fútbol FIFA, al que juegan más de 10 millones de usuarios anualmente. En este modo de juego, los jugadores reales de fútbol se representan como cartas (o cromos) que pueden ser vendidos o comprados a cambio de dinero virtual. Las cartas virtuales de los jugadores tienen estadísticas asociadas (velocidad, pase, defensa, ...) para hacer que sean parecidas a los jugadores reales.
 
-![](\posts\20200405_reglas_asociacion\fifa.png)
+![](\posts\images\2020\20200405_reglas_asociacion\fifa.png)
 *Ejemplo de equipo de FIFA Ultimate Team.*  
 
 [Futbin](https://www.futbin.com) es una página web que permite conocer las estadísticas de los jugadores, así como su precio actual.
 
-![](\posts\20200405_reglas_asociacion\soldado.png)
+![](\posts\images\2020\20200405_reglas_asociacion\soldado.png)
 *Estadísticas y precios de Soldado en Futbin.*
 
 El conjunto de datos que se analiza a continuación está obtenido mediante web scraping en  Futbin y contiene todos los jugadores que tienen precio distinto de cero, no son porteros y tienen una puntuación media mayor o igual a 75. El web scraping se realizó el 20 de enero de 2020.
@@ -45,7 +45,7 @@ Tanto el conjunto de datos como el preprocesamiento realizado se omiten en esta 
 
 ```{r, include = FALSE}
 # Lectura del conjunto de datos
-load(file = "20200405_reglas_asociacion/futbin.RData")
+load(file = "images/2020/20200405_reglas_asociacion/futbin.RData")
 futbin <- tabla
 
 # Se eliminan variables y se quitan porteros y jugadores sin precio
