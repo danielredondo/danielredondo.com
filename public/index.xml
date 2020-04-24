@@ -18,7 +18,7 @@
       
       <guid>/aplicaciones/</guid>
       <description>Las siguientes aplicaciones web están desarrolladas con R y shiny.
- COVID-19: Aplicación desarrollada en una hora con gráficos interactivos que muestran la evolución temporal de las defunciones por COVID-19 en España, mostrando datos por Comunidades Autónomas.   iDEAL Granada: Aplicación basada en web-scraping para visualizar noticias del periódico IDEAL, con código abierto, y menos de 60 líneas.  Desarrollo aplicaciones web de contexto científico, que a menudo acompañan a artículos, como co-autor junto a Miguel Ángel Luque-Fernández.</description>
+ COVID-19: Aplicación desarrollada como reto en una hora. Gráficos interactivos que muestran la evolución temporal de las defunciones por COVID-19 en España, mostrando datos por Comunidades Autónomas.   iDEAL Granada: Aplicación basada en web-scraping para visualizar noticias del periódico IDEAL, con código abierto.  Desarrollo aplicaciones web de contexto científico, que a menudo acompañan a artículos, como co-autor junto a Miguel Ángel Luque-Fernández.</description>
     </item>
     
     <item>

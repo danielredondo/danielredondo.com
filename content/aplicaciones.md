@@ -6,11 +6,11 @@ type: about
 
 Las siguientes aplicaciones web están desarrolladas con `R` y `shiny`.
 
-* [COVID-19](https://dredondo.shinyapps.io/covid/): Aplicación desarrollada en una hora con gráficos interactivos que muestran la evolución temporal de las defunciones por COVID-19 en España, mostrando datos por Comunidades Autónomas.
+* [COVID-19](https://dredondo.shinyapps.io/covid/): Aplicación desarrollada como reto en una hora. Gráficos interactivos que muestran la evolución temporal de las defunciones por COVID-19 en España, mostrando datos por Comunidades Autónomas.
 
 ![](/aplicaciones/covid.png)
 
-* [iDEAL Granada](http://bit.ly/iDEALgranada): Aplicación basada en web-scraping para visualizar noticias del periódico IDEAL, con [código abierto, y menos de 60 líneas](https://github.com/danielredondo/iDEAL-Granada/blob/master/app.R).
+* [iDEAL Granada](http://bit.ly/iDEALgranada): Aplicación basada en web-scraping para visualizar noticias del periódico IDEAL, con [código abierto](https://github.com/danielredondo/iDEAL-Granada/blob/master/app.R).
 
 ![](/aplicaciones/ideal.png)
 
