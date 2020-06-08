@@ -23,7 +23,7 @@
 <meta property="og:description" content="danielredondo.com" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="/" />
-<meta property="og:updated_time" content="2020-04-15T00:00:00+00:00" />
+<meta property="og:updated_time" content="2020-06-08T00:00:00+00:00" />
 
 
     
@@ -191,6 +191,28 @@
       
       <div class="post-list__item">
         <span class="item__title--big">
+          <a href="/posts/20181205_vox/" >¿Quién votó a VOX en Andalucía? Mapa interactivo por municipios</a>
+        </span>
+        <span class="item__date">
+          2018-12-11
+        </span>
+        <span >
+        
+        Hace un par de semanas estuve en un taller de Datos Espaciales en Salud, impartido en la Escuela Nacional de Sanidad, mostrando alguna de las maravillas que se pueden hacer con leaflet en R. Hoy os enseñaré otra aplicación, ilustrada con código reproducible.
+El domingo 2 de diciembre tuvieron lugar las elecciones al Parlamento Andaluz, en las que el partido de ultraderecha VOX obtuvo 12 escaños.
+        
+        </span>
+        
+          ... <a class="read-more-symbol" href="/posts/20181205_vox/">➦</a>
+        
+        </div>
+        
+     
+      
+        
+      
+      <div class="post-list__item">
+        <span class="item__title--big">
           <a href="/posts/20181126_homeopatia/" >Desde la homeopatía hasta la ciudadanía informada: análisis rápido de la Encuesta Nacional de Salud de 2017</a>
         </span>
         <span class="item__date">
@@ -317,30 +339,6 @@ En esta nueva entrega, nos centraremos en las estadísticas individuales de los 
         </span>
         
           ... <a class="read-more-symbol" href="/posts/20180614_vis_laliga/">➦</a>
-        
-        </div>
-        
-     
-      
-        
-      
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/posts/20180524_vis_laliga/" >Visualizando... la Liga (o cómo añadir imágenes a un ggplot)</a>
-        </span>
-        <span class="item__date">
-          2018-05-24
-        </span>
-        <span >
-        
-        Ahora que ha terminado la Liga, es buen momento para echar la vista atrás yvisualizar algunas de las estadísticas que nos deja. En concreto, vamos a analizar la relación “Goles a favor” - “Puntos conseguidos”.
-Las estadísticas están sacadas de la web de La Liga, y los gráficos se harán usando R.
-En una primera representación con ggplot, las etiquetas no se verían correctamente:
-ggplot(data = estadisticas, aes(GF, Pt, label = equipo)) +geom_point() + geom_smooth(method = &quot;lm&quot;, se = FALSE) +geom_text() + xlab(&quot;Goles a favor&quot;) +ylab(&quot;Puntos&quot;) + theme_classic()El gráfico mejora notablemente usando el paquete ggrepel para que las etiquetas se repelan:
-        
-        </span>
-        
-          ... <a class="read-more-symbol" href="/posts/20180524_vis_laliga/">➦</a>
         
         </div>
         
