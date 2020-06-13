@@ -11,7 +11,7 @@
 <meta http-equiv="Cache-Control" content="public" />
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.63.2" />
+<meta name="generator" content="Hugo 0.63.1" />
 
     
     
@@ -22,12 +22,20 @@
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Reglas de asociación (y detección de anomalías) con futbolistas usando R y estadísticas de FIFA"/>
-<meta name="twitter:description" content="Aprovecho la cuarentena provocada por la pandemia del coronavirus para adaptar para esta web un trabajo que realicé para la asignatura Minería de datos: Aprendizaje no supervisado y detección de anomalías del Máster de Ciencia de Datos de la Universidad de Granada.
-Las reglas de asociación son una técnica de aprendizaje no supervisado usada para extraer información relevante a partir de grandes conjuntos de datos. Sin entrar mucho en detalle, cada regla de asociación tiene vinculadas distintas medidas numéricas para determinar la relevancia de la regla."/>
+<meta name="twitter:description" content="
+
+
+Las reglas de asociación son una técnica de aprendizaje no supervisado usada para extraer información relevante a partir de grandes conjuntos de datos. Sin entrar mucho en detalle, cada regla de asociación tiene vinculadas distintas medidas numéricas para determinar la relevancia de la regla. Su punto fuerte es la interpretabilidad, que cada vez tiene más importancia en el mundo del machine learning.
+En esta publicación se aplican reglas de asociación sobre los datos de jugadores de FIFA 20.
+"/>
 
 <meta property="og:title" content="Reglas de asociación (y detección de anomalías) con futbolistas usando R y estadísticas de FIFA" />
-<meta property="og:description" content="Aprovecho la cuarentena provocada por la pandemia del coronavirus para adaptar para esta web un trabajo que realicé para la asignatura Minería de datos: Aprendizaje no supervisado y detección de anomalías del Máster de Ciencia de Datos de la Universidad de Granada.
-Las reglas de asociación son una técnica de aprendizaje no supervisado usada para extraer información relevante a partir de grandes conjuntos de datos. Sin entrar mucho en detalle, cada regla de asociación tiene vinculadas distintas medidas numéricas para determinar la relevancia de la regla." />
+<meta property="og:description" content="
+
+
+Las reglas de asociación son una técnica de aprendizaje no supervisado usada para extraer información relevante a partir de grandes conjuntos de datos. Sin entrar mucho en detalle, cada regla de asociación tiene vinculadas distintas medidas numéricas para determinar la relevancia de la regla. Su punto fuerte es la interpretabilidad, que cada vez tiene más importancia en el mundo del machine learning.
+En esta publicación se aplican reglas de asociación sobre los datos de jugadores de FIFA 20.
+" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/posts/20200405_reglas_asociacion/" />
 <meta property="article:published_time" content="2020-04-05T00:00:00+00:00" />
@@ -199,10 +207,7 @@ Las reglas de asociación son una técnica de aprendizaje no supervisado usada p
   
   
   <div class="post">
-    
-
-
-<p>Aprovecho la cuarentena provocada por la pandemia del coronavirus para adaptar para esta web un trabajo que realicé para la asignatura <em>Minería de datos: Aprendizaje no supervisado y detección de anomalías</em> del Máster de Ciencia de Datos de la Universidad de Granada.</p>
+    <p>Aprovecho la cuarentena provocada por la pandemia del coronavirus para adaptar para esta web un trabajo que realicé para la asignatura <em>Minería de datos: Aprendizaje no supervisado y detección de anomalías</em> del Máster de Ciencia de Datos de la Universidad de Granada.</p>
 <p>Las reglas de asociación son una técnica de <strong>aprendizaje no supervisado</strong> usada para extraer información relevante a partir de grandes conjuntos de datos. Sin entrar mucho en detalle, cada regla de asociación tiene vinculadas distintas medidas numéricas para determinar la relevancia de la regla. Su punto fuerte es la <strong>interpretabilidad</strong>, que cada vez tiene más importancia en el mundo del <em>machine learning</em>.</p>
 <p>Un ejemplo de <strong>regla de asociación</strong> es <span class="math inline">\(A \Rightarrow B\)</span>, donde <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> son conjuntos de items (itemsets) disjuntos. <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> son llamados, respectivamente, el <em>antecedente</em> y el <em>consecuente</em> de la regla.</p>
 <p>Un ejemplo aplicado al mundo del fútbol podría ser:</p>
@@ -366,13 +371,20 @@ rulesPruned &lt;- rulesSorted[!redundant] </code></pre>
 <p>Se eliminan ahora las reglas con confianza 1, que son fruto de que las variables <code>atacante</code>, <code>mediocentro</code> y <code>defensa</code> sean excluyentes.</p>
 <pre class="r"><code># Se muestran las reglas con confianza 1
 subset(rulesPruned, subset = confidence == 1) %&gt;% inspect
-##     lhs                 rhs              support   confidence lift     count
-## [1] {atacante=si}    =&gt; {mediocentro=no} 0.2368278 1          1.830020 436  
-## [2] {atacante=si}    =&gt; {defensa=no}     0.2368278 1          1.448466 436  
-## [3] {defensa=si}     =&gt; {mediocentro=no} 0.3096143 1          1.830020 570  
-## [4] {defensa=si}     =&gt; {atacante=no}    0.3096143 1          1.310320 570  
-## [5] {mediocentro=si} =&gt; {defensa=no}     0.4535578 1          1.448466 835  
-## [6] {mediocentro=si} =&gt; {atacante=no}    0.4535578 1          1.310320 835
+##     lhs                 rhs              support   confidence coverage 
+## [1] {atacante=si}    =&gt; {mediocentro=no} 0.2368278 1          0.2368278
+## [2] {atacante=si}    =&gt; {defensa=no}     0.2368278 1          0.2368278
+## [3] {defensa=si}     =&gt; {mediocentro=no} 0.3096143 1          0.3096143
+## [4] {defensa=si}     =&gt; {atacante=no}    0.3096143 1          0.3096143
+## [5] {mediocentro=si} =&gt; {defensa=no}     0.4535578 1          0.4535578
+## [6] {mediocentro=si} =&gt; {atacante=no}    0.4535578 1          0.4535578
+##     lift     count
+## [1] 1.830020 436  
+## [2] 1.448466 436  
+## [3] 1.830020 570  
+## [4] 1.310320 570  
+## [5] 1.448466 835  
+## [6] 1.310320 835
 
 # Se eliminan esas reglas
 reglas_seleccionadas &lt;- subset(rulesPruned, subset = confidence &lt; 1)</code></pre>
@@ -383,8 +395,8 @@ reglas_seleccionadas &lt;- subset(rulesPruned, subset = confidence &lt; 1)</code
 
 # Se muestra la regla con mayor confianza
 inspect(head(reglas_altura, 1)) 
-##     lhs           rhs          support   confidence lift     count
-## [1] {hei=Bajo} =&gt; {defensa=no} 0.2466051 0.8239564  1.193473 454</code></pre>
+##     lhs           rhs          support   confidence coverage  lift     count
+## [1] {hei=Bajo} =&gt; {defensa=no} 0.2466051 0.8239564  0.2992939 1.193473 454</code></pre>
 <p>Se podría concluir que los jugadores bajos no suelen ser defensas.</p>
 </div>
 <div id="selección-de-reglas-relevantes" class="section level3">
@@ -399,18 +411,18 @@ quality(reglas_seleccionadas) &lt;- cbind(quality(reglas_seleccionadas), mIntere
 <pre class="r"><code>subset(reglas_seleccionadas, subset = support &gt; .2 &amp; support &lt; .4) %&gt;%
   head(by = &quot;gini&quot;, n = 5) %&gt;%
   inspect
-##     lhs               rhs              support   confidence lift     count
-## [1] {defensa=si}   =&gt; {sho=Muy bajo}   0.2819120 0.9105263  2.253063 519  
-## [2] {atacante=si}  =&gt; {def=Muy bajo}   0.2357414 0.9954128  2.184213 434  
-## [3] {pas=Muy bajo} =&gt; {mediocentro=no} 0.2346551 0.9250535  1.692866 432  
-## [4] {sho=Bajo}     =&gt; {defensa=no}     0.3623031 0.9315642  1.349339 667  
-## [5] {skills=4}     =&gt; {defensa=no}     0.2819120 0.9351351  1.354511 519  
-##     gini       chiSquared
-## [1] 0.23000828 879.2154  
-## [2] 0.18076588 670.8387  
-## [3] 0.09744229 361.9048  
-## [4] 0.07404027 318.8445  
-## [5] 0.05170417 222.6571</code></pre>
+##     lhs               rhs              support   confidence coverage  lift    
+## [1] {defensa=si}   =&gt; {sho=Muy bajo}   0.2819120 0.9105263  0.3096143 2.253063
+## [2] {atacante=si}  =&gt; {def=Muy bajo}   0.2357414 0.9954128  0.2368278 2.184213
+## [3] {pas=Muy bajo} =&gt; {mediocentro=no} 0.2346551 0.9250535  0.2536665 1.692866
+## [4] {sho=Bajo}     =&gt; {defensa=no}     0.3623031 0.9315642  0.3889191 1.349339
+## [5] {skills=4}     =&gt; {defensa=no}     0.2819120 0.9351351  0.3014666 1.354511
+##     count gini       chiSquared
+## [1] 519   0.23000828 879.2154  
+## [2] 434   0.18076588 670.8387  
+## [3] 432   0.09744229 361.9048  
+## [4] 667   0.07404027 318.8445  
+## [5] 519   0.05170417 222.6571</code></pre>
 <p>Por interpretar algunas reglas, se podría concluir que los defensas tienen disparo muy bajo (regla 1), los atacantes defienden muy mal (regla 2), y los jugadores con pase muy bajo no suelen ser centrocampistas (regla 3).</p>
 </div>
 </div>
@@ -439,24 +451,24 @@ reglas_seleccionadas %&gt;%
 <pre class="r"><code>subset(reglas_seleccionadas, subset = support &gt; .15 &amp; support &lt; .4) %&gt;%
   head(by = &quot;confidence&quot;, n = 8) %&gt;%
   inspect
-##     lhs               rhs            support   confidence lift     count
-## [1] {def=Bajo}     =&gt; {atacante=no}  0.2721347 0.9980080  1.307710 501  
-## [2] {def=Alto}     =&gt; {atacante=no}  0.2069527 0.9973822  1.306890 381  
-## [3] {atacante=si}  =&gt; {def=Muy bajo} 0.2357414 0.9954128  2.184213 434  
-## [4] {sho=Alto}     =&gt; {defensa=no}   0.1553504 0.9930556  1.438407 286  
-## [5] {skills=2}     =&gt; {atacante=no}  0.2015209 0.9686684  1.269266 371  
-## [6] {phy=Muy bajo} =&gt; {defensa=no}   0.1933732 0.9621622  1.393659 356  
-## [7] {dri=Muy alto} =&gt; {defensa=no}   0.1591526 0.9482201  1.373464 293  
-## [8] {skills=2}     =&gt; {sho=Muy bajo} 0.1950027 0.9373368  2.319405 359  
-##     gini       chiSquared
-## [1] 0.04135059 210.5961  
-## [2] 0.02872427 146.2910  
-## [3] 0.18076588 670.8387  
-## [4] 0.03397735 146.3189  
-## [5] 0.02218600 112.9919  
-## [6] 0.03715719 160.0125  
-## [7] 0.02681708 115.4842  
-## [8] 0.14937075 570.9754</code></pre>
+##     lhs               rhs            support   confidence coverage  lift    
+## [1] {def=Bajo}     =&gt; {atacante=no}  0.2721347 0.9980080  0.2726779 1.307710
+## [2] {def=Alto}     =&gt; {atacante=no}  0.2069527 0.9973822  0.2074959 1.306890
+## [3] {atacante=si}  =&gt; {def=Muy bajo} 0.2357414 0.9954128  0.2368278 2.184213
+## [4] {sho=Alto}     =&gt; {defensa=no}   0.1553504 0.9930556  0.1564367 1.438407
+## [5] {skills=2}     =&gt; {atacante=no}  0.2015209 0.9686684  0.2080391 1.269266
+## [6] {phy=Muy bajo} =&gt; {defensa=no}   0.1933732 0.9621622  0.2009777 1.393659
+## [7] {dri=Muy alto} =&gt; {defensa=no}   0.1591526 0.9482201  0.1678436 1.373464
+## [8] {skills=2}     =&gt; {sho=Muy bajo} 0.1950027 0.9373368  0.2080391 2.319405
+##     count gini       chiSquared
+## [1] 501   0.04135059 210.5961  
+## [2] 381   0.02872427 146.2910  
+## [3] 434   0.18076588 670.8387  
+## [4] 286   0.03397735 146.3189  
+## [5] 371   0.02218600 112.9919  
+## [6] 356   0.03715719 160.0125  
+## [7] 293   0.02681708 115.4842  
+## [8] 359   0.14937075 570.9754</code></pre>
 <pre class="r"><code># Se recuperan los nombres de los jugadores
 futbin_w_names &lt;- cbind(name = nombres_jugadores, futbin)</code></pre>
 <p><strong>¿Hay atacantes que saben defender?</strong> (Reglas 1, 2 y 3)</p>
@@ -532,7 +544,7 @@ futbin_w_names %&gt;% filter(atacante == &quot;si&quot; &amp; def != &quot;Muy b
   as.vector
 ##  [1] &quot;Casemiro&quot;            &quot;Blaise Matuidi&quot;      &quot;Edin Džeko&quot;         
 ##  [4] &quot;Sami Khedira&quot;        &quot;Diego Costa&quot;         &quot;Luuk de Jong&quot;       
-##  [7] &quot;Bas Dost&quot;            &quot;Lukasz Piszczek&quot;     &quot;Luka Milivojevic&quot;   
+##  [7] &quot;Bas Dost&quot;            &quot;Łukasz Piszczek&quot;     &quot;Luka Milivojevic&quot;   
 ## [10] &quot;Fabian Schär&quot;        &quot;Andreas Samaris&quot;     &quot;Leander Dendoncker&quot; 
 ## [13] &quot;Manu García&quot;         &quot;Troy Deeney&quot;         &quot;Mikel San José&quot;     
 ## [16] &quot;Glenn Murray&quot;        &quot;Chris Wood&quot;          &quot;Klaas-Jan Huntelaar&quot;

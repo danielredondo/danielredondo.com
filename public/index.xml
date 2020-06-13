@@ -74,8 +74,12 @@ Miguel Angel Luque-Fernandez, Daniel Redondo-Sanchez, Shing Fung Lee, Miguel Rod
       <pubDate>Sun, 05 Apr 2020 00:00:00 +0000</pubDate>
       
       <guid>/posts/20200405_reglas_asociacion/</guid>
-      <description>Aprovecho la cuarentena provocada por la pandemia del coronavirus para adaptar para esta web un trabajo que realicé para la asignatura Minería de datos: Aprendizaje no supervisado y detección de anomalías del Máster de Ciencia de Datos de la Universidad de Granada.
-Las reglas de asociación son una técnica de aprendizaje no supervisado usada para extraer información relevante a partir de grandes conjuntos de datos. Sin entrar mucho en detalle, cada regla de asociación tiene vinculadas distintas medidas numéricas para determinar la relevancia de la regla.</description>
+      <description>
+
+
+&lt;p&gt;Las reglas de asociación son una técnica de aprendizaje no supervisado usada para extraer información relevante a partir de grandes conjuntos de datos. Sin entrar mucho en detalle, cada regla de asociación tiene vinculadas distintas medidas numéricas para determinar la relevancia de la regla. Su punto fuerte es la interpretabilidad, que cada vez tiene más importancia en el mundo del &lt;em&gt;machine learning&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;En esta publicación se aplican reglas de asociación sobre los datos de jugadores de FIFA 20.&lt;/p&gt;
+</description>
     </item>
     
     <item>
