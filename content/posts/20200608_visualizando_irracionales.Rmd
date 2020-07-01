@@ -6,9 +6,7 @@ tags: ['dataviz']
 
 Un número irracional es aquel que no se puede expresar como fracción de enteros, o equivalentemente, que tiene infinitos decimales no periódicos.
 
-En esta publicación se utilizarán diagramas de cuerdas para visualizar con R los primeros decimales de los 3 números irracionales más famosos: $\pi$, $\varphi$ y $e$.
-
-<!--more-->
+En esta publicación se utilizarán diagramas de cuerdas para visualizar con R los primeros decimales de los 3 números irracionales más famosos: $\pi$, $\varphi$ y $e$. <!--more-->
 
 Un número irracional es aquel que no se puede expresar como fracción de enteros, o equivalentemente, que tiene infinitos decimales no periódicos.
 

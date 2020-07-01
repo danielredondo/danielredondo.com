@@ -21,8 +21,7 @@
 
 
 &lt;p&gt;Un número irracional es aquel que no se puede expresar como fracción de enteros, o equivalentemente, que tiene infinitos decimales no periódicos.&lt;/p&gt;
-&lt;p&gt;En esta publicación se utilizarán diagramas de cuerdas para visualizar con R los primeros decimales de los 3 números irracionales más famosos: &lt;span class=&#34;math inline&#34;&gt;\(\pi\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(\varphi\)&lt;/span&gt; y &lt;span class=&#34;math inline&#34;&gt;\(e\)&lt;/span&gt;.&lt;/p&gt;
-</description>
+&lt;p&gt;En esta publicación se utilizarán diagramas de cuerdas para visualizar con R los primeros decimales de los 3 números irracionales más famosos: &lt;span class=&#34;math inline&#34;&gt;\(\pi\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(\varphi\)&lt;/span&gt; y &lt;span class=&#34;math inline&#34;&gt;\(e\)&lt;/span&gt;. </description>
     </item>
     
     <item>
@@ -34,8 +33,7 @@
       <description>
 
 
-&lt;p&gt;En esta publicación se replica un gráfico sobre el coronavirus con una escala horrible mostrado en televisión. Se utilizan para ello algunas fórmulas básicas y &lt;code&gt;ggplot2&lt;/code&gt;. ¡Qué complicado es hacer las cosas mal!&lt;/p&gt;
-</description>
+&lt;p&gt;En esta publicación se replica un gráfico sobre el coronavirus con una escala horrible mostrado en televisión. Se utilizan para ello algunas fórmulas básicas y &lt;code&gt;ggplot2&lt;/code&gt;. ¡Qué complicado es hacer las cosas mal! </description>
     </item>
     
     <item>
@@ -48,8 +46,7 @@
 
 
 &lt;p&gt;Las reglas de asociación son una técnica de aprendizaje no supervisado usada para extraer información relevante a partir de grandes conjuntos de datos. Sin entrar mucho en detalle, cada regla de asociación tiene vinculadas distintas medidas numéricas para determinar la relevancia de la regla. Su punto fuerte es la interpretabilidad, que cada vez tiene más importancia en el mundo del &lt;em&gt;machine learning&lt;/em&gt;.&lt;/p&gt;
-&lt;p&gt;En esta publicación se aplican reglas de asociación sobre los datos de jugadores de FIFA 20.&lt;/p&gt;
-</description>
+&lt;p&gt;En esta publicación se aplican reglas de asociación sobre los datos de jugadores de FIFA 20. </description>
     </item>
     
     <item>

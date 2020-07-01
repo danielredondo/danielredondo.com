@@ -21,8 +21,7 @@
 
 
 &lt;p&gt;Las reglas de asociación son una técnica de aprendizaje no supervisado usada para extraer información relevante a partir de grandes conjuntos de datos. Sin entrar mucho en detalle, cada regla de asociación tiene vinculadas distintas medidas numéricas para determinar la relevancia de la regla. Su punto fuerte es la interpretabilidad, que cada vez tiene más importancia en el mundo del &lt;em&gt;machine learning&lt;/em&gt;.&lt;/p&gt;
-&lt;p&gt;En esta publicación se aplican reglas de asociación sobre los datos de jugadores de FIFA 20.&lt;/p&gt;
-</description>
+&lt;p&gt;En esta publicación se aplican reglas de asociación sobre los datos de jugadores de FIFA 20. </description>
     </item>
     
     <item>
