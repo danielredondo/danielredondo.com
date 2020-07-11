@@ -34,6 +34,10 @@ European Journal of Cancer [(Link - Open Access)](https://doi.org/10.1016/j.ejca
 *Elena Salamanca-Fernández, Miguel Rodríguez-Barranco, Yoe-Ling Chang-Chan, Daniel Redondo-Sánchez et al.*  
 Endocrine [(Link).](https://doi.org/10.1007/s12020-018-1681-6)
 
+* **Association of plasma biomarkers of fruit and vegetable intake with incident type 2 diabetes: The EPIC-InterAct case-cohort study in eight European countries.**  
+*Ju-Sheng Zheng, Stephen J Sharp, Fumiaki Imamura, Rajiv Chowdhury, et al.*  
+British Medical Journal [(Link.)](https://doi.org/10.1136/bmj.m2194)
+
 * **Blood pressure and risk of cancer in the European Prospective Investigation into Cancer and nutrition.**  
 *Sofia Christakoudi, Artemisia Kakourou, Georgios Markozannes, Ioanna Tzoulaki et al.*  
 International Journal of Cancer [(Link)](https://doi.org/10.1002/ijc.32576)
