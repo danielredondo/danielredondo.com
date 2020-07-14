@@ -34,6 +34,10 @@ European Journal of Cancer [(Enlace - Open Access)](https://doi.org/10.1016/j.ej
 *Elena Salamanca-Fernández, Miguel Rodríguez-Barranco, Yoe-Ling Chang-Chan, Daniel Redondo-Sánchez et al.*  
 Endocrine [(Enlace)](https://doi.org/10.1007/s12020-018-1681-6)
 
+* **Protocolo del Estudio Poblacional Multinivel de las Desigualdades Socioeconómicas en la Distribución Geográfica de la Incidencia, la Mortalidad y Supervivencia Neta del Cáncer en España: Estudio DESOCANES**  
+*Miguel Ángel Luque-Fernández, Daniel Redondo-Sánchez, Pablo Fernández, Elena Salamanca-Fernández et al.*  
+Gaceta Sanitaria [(Enlace - Open Access)](https://www.doi.org/10.1016/j.gaceta.2020.02.015)
+
 * **Association of plasma biomarkers of fruit and vegetable intake with incident type 2 diabetes: The EPIC-InterAct case-cohort study in eight European countries.**  
 *Ju-Sheng Zheng, Stephen J Sharp, Fumiaki Imamura, Rajiv Chowdhury, et al.*  
 British Medical Journal [(Enlace - Open Access)](https://doi.org/10.1136/bmj.m2194)
