@@ -10,6 +10,10 @@ En [este enlace](/posts) puedes ver las publicaciones del blog.
 
 ### Publicaciones científicas
 
+* **Socioeconomic Inequalities in Colorectal Cancer Survival in Southern Spain: A Multilevel Population-Based Cohort Study**  
+*Miguel Angel Luque-Fernandez, Daniel Redondo-Sánchez, Miguel Rodríguez-Barranco, Yoe Ling Chang-Chan, Elena Salamanca-Fernández, Olivier Núñez, Pablo Fernández-Navarro, Marina Pollán Santamaría, María-José Sánchez.*  
+Clinical Epidemiology [(Enlace - Open Access)](https://doi.org/10.2147/CLEP.S261355)
+
 * **cvauroc: Command to compute cross-validated area under the curve for ROC analysis after predictive modeling for binary outcomes.**  
 *Miguel Angel Luque-Fernandez, Daniel Redondo-Sánchez, Camille Maringe.*  
 The Stata Journal [(Enlace)](https://doi.org/10.1177/1536867X19874237)
@@ -46,7 +50,8 @@ British Medical Journal [(Enlace - Open Access)](https://doi.org/10.1136/bmj.m21
 *Sofia Christakoudi, Artemisia Kakourou, Georgios Markozannes, Ioanna Tzoulaki et al.*  
 International Journal of Cancer [(Enlace)](https://doi.org/10.1002/ijc.32576)
 
-* **Dietary intake of Advanced Glycation Endproducts (AGEs), changes in body weight and obesity development in European adults.**  
+
+* **Dietary intake of advanced glycation end products (AGEs) and changes in body weight in European adults.**  
 *Reynalda Cordova, Viktoria Knaze, Vivian Viallon, Petra Rust et al.*  
 European Journal of Nutrition [(Enlace)](https://doi.org/10.1007/s00394-019-02129-8)
 
