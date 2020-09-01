@@ -11,15 +11,19 @@ En [este enlace](/posts) puedes ver las publicaciones del blog.
 ### Publicaciones científicas
 
 * **Socioeconomic Inequalities in Colorectal Cancer Survival in Southern Spain: A Multilevel Population-Based Cohort Study**  
-*Miguel Angel Luque-Fernandez, Daniel Redondo-Sánchez, Miguel Rodríguez-Barranco, Yoe Ling Chang-Chan, Elena Salamanca-Fernández, Olivier Núñez, Pablo Fernández-Navarro, Marina Pollán Santamaría, María-José Sánchez.*  
+*Miguel Angel Luque-Fernandez, Daniel Redondo-Sánchez, Miguel Rodríguez-Barranco, Yoe Ling Chang-Chan et al.*  
 Clinical Epidemiology [(Enlace - Open Access)](https://doi.org/10.2147/CLEP.S261355)
 
 * **cvauroc: Command to compute cross-validated area under the curve for ROC analysis after predictive modeling for binary outcomes.**  
 *Miguel Angel Luque-Fernandez, Daniel Redondo-Sánchez, Camille Maringe.*  
 The Stata Journal [(Enlace)](https://doi.org/10.1177/1536867X19874237)
 
+* **Deprivation gap in colorectal cancer survival attributable to stage at diagnosis: a population-based study in Spain**  
+*Olivier Nuñez, Miguel Rodríguez Barranco, Pablo Fernández-Navarro, Daniel Redondo Sánchez et al.*  
+Cancer Epidemiology [(Enlace)](https://doi.org/10.1016/j.canep.2020.101794)
+
 * **Multimorbidity by Patient and Tumor Factors and Time-to-Surgery Among Colorectal Cancer Patients in Spain: A Population-Based Study.**  
-*Miguel Angel Luque-Fernandez, Daniel Redondo-Sanchez, Shing Fung Lee, Miguel Rodríguez-Barranco, Mª Carmen Carmona-García, Rafael Marcos-Gragera, María José Sánchez.*  
+*Miguel Angel Luque-Fernandez, Daniel Redondo-Sanchez, Shing Fung Lee, Miguel Rodríguez-Barranco et al.*  
 Clinical Epidemiology [(Enlace - Open Access)](http://doi.org/10.2147/CLEP.S229935)
 
 * **Standardizing effect size from linear regression models with log-transformed variables for meta-analysis.**  
@@ -27,11 +31,11 @@ Clinical Epidemiology [(Enlace - Open Access)](http://doi.org/10.2147/CLEP.S2299
 BMC Medical Research Methodology [(Enlace - Open Access)](https://doi.org/10.1186/s12874-017-0322-8)
 
 * **Educational Note: Paradoxical Collider Effect in the Analysis of Non-Communicable Disease Epidemiological Data: a reproducible illustration and web application.**  
-*Miguel Angel Luque-Fernandez, Michael Schomaker, Daniel Redondo-Sánchez, Maria Jose Sanchez Perez, Anand Vaidya, Mireille E Schnitzer.*  
+*Miguel Angel Luque-Fernandez, Michael Schomaker, Daniel Redondo-Sánchez, Maria Jose Sanchez Perez et al.*  
 International Journal of Epidemiology [(Enlace - Open Access)](https://doi.org/10.1093/ije/dyy275)
 
 * **Multimorbidity and short-term overall mortality among colorectal cancer patients in Spain: A population-based cohort study.**  
-*Miguel A.Luque-Fernandez, Karen Gonçalves, Elena Salamanca-Fernándeza, Daniel Redondo-Sanchez, Shing F.Lee, Miguel Rodríguez-Barranco, Mª C. Carmona-García, Rafael Marcos-Gragera, María-José Sánchez*   
+*Miguel A.Luque-Fernandez, Karen Gonçalves, Elena Salamanca-Fernándeza, Daniel Redondo-Sanchez et al.*   
 European Journal of Cancer [(Enlace - Open Access)](https://doi.org/10.1016/j.ejca.2020.01.021)
 
 * **Thyroid Cancer Epidemiology in South Spain: a population-based time trend study.**  
