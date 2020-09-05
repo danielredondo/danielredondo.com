@@ -8,7 +8,7 @@
 <meta http-equiv="Cache-Control" content="public" />
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.63.2" />
+<meta name="generator" content="Hugo 0.63.1" />
 
     
 
@@ -198,10 +198,10 @@
         </span>
         <span >
         
-        Ahora que ha terminado la Liga, es buen momento para echar la vista atrás yvisualizar algunas de las estadísticas que nos deja. En concreto, vamos a analizar la relación “Goles a favor” - “Puntos conseguidos”.
+        Ahora que ha terminado la Liga, es buen momento para echar la vista atrás y visualizar algunas de las estadísticas que nos deja. En concreto, vamos a analizar la relación “Goles a favor” - “Puntos conseguidos”.
 Las estadísticas están sacadas de la web de La Liga, y los gráficos se harán usando R.
 En una primera representación con ggplot, las etiquetas no se verían correctamente:
-ggplot(data = estadisticas, aes(GF, Pt, label = equipo)) +geom_point() + geom_smooth(method = &quot;lm&quot;, se = FALSE) +geom_text() + xlab(&quot;Goles a favor&quot;) +ylab(&quot;Puntos&quot;) + theme_classic()El gráfico mejora notablemente usando el paquete ggrepel para que las etiquetas se repelan:
+ggplot(data = estadisticas, aes(GF, Pt, label = equipo)) + geom_point() + geom_smooth(method = &quot;lm&quot;, se = FALSE) + geom_text() + xlab(&quot;Goles a favor&quot;) + ylab(&quot;Puntos&quot;) + theme_classic() El gráfico mejora notablemente usando el paquete ggrepel para que las etiquetas se repelan:
         
         </span>
         
