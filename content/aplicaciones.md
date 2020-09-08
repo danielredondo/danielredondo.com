@@ -6,6 +6,10 @@ type: about
 
 Las siguientes aplicaciones web están desarrolladas con `R` y `shiny`.
 
+* [biomarkeRs](https://dredondo.shinyapps.io/biomarkeRs/): Integración de machine learning en transcriptómica para detección de biomarcadores y diagnóstico de tumores. Aplicación desarrollada como parte de mi [Trabajo Final del Máster en Ciencia de Datos e Ingeniería de Computadores](https://github.com/danielredondo/TFM_ciencia_de_datos).
+
+![](/aplicaciones/biomarkers.png)
+
 * [COVID-19](https://dredondo.shinyapps.io/covid/): Aplicación desarrollada como reto en una hora. Gráficos interactivos que muestran la evolución temporal de las defunciones por COVID-19 en España, mostrando datos por Comunidades Autónomas.
 
 ![](/aplicaciones/covid.png)

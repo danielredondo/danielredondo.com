@@ -18,7 +18,7 @@
       
       <guid>/aplicaciones/</guid>
       <description>Las siguientes aplicaciones web están desarrolladas con R y shiny.
- COVID-19: Aplicación desarrollada como reto en una hora. Gráficos interactivos que muestran la evolución temporal de las defunciones por COVID-19 en España, mostrando datos por Comunidades Autónomas.   iDEAL Granada: Aplicación basada en web-scraping para visualizar noticias del periódico IDEAL, con código abierto.  Desarrollo aplicaciones web de contexto científico, que a menudo acompañan a artículos, como co-autor junto a Miguel Ángel Luque-Fernández.</description>
+ biomarkeRs: Integración de machine learning en transcriptómica para detección de biomarcadores y diagnóstico de tumores. Aplicación desarrollada como parte de mi Trabajo Final del Máster en Ciencia de Datos e Ingeniería de Computadores.   COVID-19: Aplicación desarrollada como reto en una hora. Gráficos interactivos que muestran la evolución temporal de las defunciones por COVID-19 en España, mostrando datos por Comunidades Autónomas.</description>
     </item>
     
     <item>
