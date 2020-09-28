@@ -10,6 +10,10 @@ En [este enlace](/posts) puedes ver las publicaciones del blog.
 
 ### Publicaciones científicas
 
+* **The spread of SARS-CoV-2 in Spain: hygiene habits, sociodemographic profile, mobility patterns and comorbidities**  
+*Miguel Rodríguez Barranco, Lorenzo Rivas García, José L. Quiles, Daniel Redondo Sánchez, Pilar Aranda Ramírez, Juan Llopis González, María José Sánchez Pérez, Cristina Sánchez González.*  
+Environmental Research [(Enlace - Open Access)](https://doi.org/10.1016/j.envres.2020.110223)
+
 * **Socioeconomic Inequalities in Colorectal Cancer Survival in Southern Spain: A Multilevel Population-Based Cohort Study**  
 *Miguel Angel Luque-Fernandez, Daniel Redondo-Sánchez, Miguel Rodríguez-Barranco, Yoe Ling Chang-Chan et al.*  
 Clinical Epidemiology [(Enlace - Open Access)](https://doi.org/10.2147/CLEP.S261355)
