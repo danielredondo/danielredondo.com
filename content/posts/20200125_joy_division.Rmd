@@ -23,7 +23,7 @@ La principal ventaja de este método frente a muchos otros es que utiliza dos he
 "NOMBRE_PROVINCIA" = 'GRANADA'
 ```
 
-- **Relieve**. El relieve será lo que marque la altitud de las diferentes líneas del mapa. Se descarga en formato GEOTIFF de [esta web](http://dwtkns.com/srtm/) haciendo clic en el cuadrado correspondiente (puedes juntar varios cuadrados si tu área ocupa más de una zona predeterminado).
+- **Relieve**. El relieve será lo que marque la altitud de las diferentes líneas del mapa. Se descarga en formato GEOTIFF de [esta web](http://dwtkns.com/srtm/) haciendo clic en el cuadrado correspondiente (puedes juntar varios cuadrados si tu área ocupa más de una zona predeterminada).
 
 # Parte 1: QGIS
 
@@ -32,7 +32,7 @@ El procedimiento en QGIS es relativamente sencillo si has trabajado anteriorment
 ```{}
 # 1. Obtención de silueta
 # Abrir QGIS -> Nuevo proyecto
-# Cargar archivo sHP
+# Cargar archivo SHP
 # Si hace falta filtrar una zona: botón derecho en capa -> Filtrar
 # Caja de herramientas -> Disolver (útil si hay que eliminar subdivisiones)
 
@@ -52,7 +52,7 @@ El procedimiento en QGIS es relativamente sencillo si has trabajado anteriorment
 # Se seleccionan todas las líneas horizontales -> Exportar ->
 #     Guardar objetos seleccionados como... -> Archivo shp
 
-# 4. Intersección + Líneas a puntos
+# 4. Intersección
 # Caja de herramientas -> Intersección:
 #   Capa de entrada: cuadrícula horizontal
 #   Capa de superposición: Disuelto
