@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    
+
+
+    <head>
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Cache-Control" content="public" />
+<!-- Enable responsiveness on mobile devices -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.63.1" />
+
+    
+    
+    
+
+<title>Detección de biomarcadores en cáncer • Daniel Redondo</title>
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Detección de biomarcadores en cáncer"/>
+<meta name="twitter:description" content="
+
+
+Tras acabar el Máster de Ciencia de Datos, quiero compartir en esta web un resumen de mi Trabajo Fin de Máster. Está titulado “Epidemiología y detección de biomarcadores en cáncer” y ha sido tutorizado por Daniel Castillo Secilla y Luis Javier Herrera. Estoy además muy orgulloso porque ha sido evaluado con un 10.
+El código del análisis (R), el documento (LaTeX &#43; PDF) y la presentación de la defensa (PDF) están disponibles en GitHub."/>
+
+<meta property="og:title" content="Detección de biomarcadores en cáncer" />
+<meta property="og:description" content="
+
+
+Tras acabar el Máster de Ciencia de Datos, quiero compartir en esta web un resumen de mi Trabajo Fin de Máster. Está titulado “Epidemiología y detección de biomarcadores en cáncer” y ha sido tutorizado por Daniel Castillo Secilla y Luis Javier Herrera. Estoy además muy orgulloso porque ha sido evaluado con un 10.
+El código del análisis (R), el documento (LaTeX &#43; PDF) y la presentación de la defensa (PDF) están disponibles en GitHub." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/posts/20201013_biomarcadores_cancer/" />
+<meta property="article:published_time" content="2020-10-06T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-10-06T00:00:00+00:00" />
+
+
+    
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/scss/hyde-hyde.9e8ea8827e8c49bc2e0e658d3103a33ada1814e1f04207faccfc5b5b41008ecf.css" integrity="sha256-no6ogn6MSbwuDmWNMQOjOtoYFOHwQgf6zPxbW0EAjs8=">
+
+
+<link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
+
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+    <link rel="shortcut icon" href="/favicon.png">
+    
+</head>
+
+
+    <body class=" ">
+    
+<div class="sidebar">
+  <div class="container ">
+    <div class="sidebar-about">
+      <span class="site__title">
+        <a href="/">Daniel Redondo</a>
+      </span>
+      
+        
+        
+        
+        <div class="author-image">
+          <img src="/img/piramide.png" alt="Author Image" class="img--circle img--headshot element--center">
+        </div>
+        
+      
+      
+      <p class="site__description">
+         danielredondo.com 
+      </p>
+    </div>
+    <div class="collapsible-menu">
+      <input type="checkbox" id="menuToggle">
+      <label for="menuToggle">Daniel Redondo</label>
+      <div class="menu-content">
+        <div>
+	<ul class="sidebar-nav">
+		 
+		 
+			 
+				<li>
+					<a href="/posts/">
+						<span>BLOG</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/publicaciones/">
+						<span>PUBLICACIONES</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/aplicaciones/">
+						<span>APLICACIONES WEB</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/about/">
+						<span>SOBRE MÍ</span>
+					</a>
+				</li>
+			 
+		
+	</ul>
+</div>
+
+        <section class="social">
+	
+	<a href="https://twitter.com/dredondosanchez" rel="me"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	<a href="https://github.com/danielredondo" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	<a href="https://linkedin.com/in/dredondosanchez" rel="me"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	
+</section>
+
+      </div>
+    </div>
+    
+
+
+  </div>
+</div>
+
+        <div class="content container">
+            
+    
+<article>
+  <header>
+    <h1>Detección de biomarcadores en cáncer</h1>
+    
+    
+<div class="post__meta">
+    
+    
+      <i class="fas fa-calendar-alt"></i> 2020-10-06
+    
+    
+    
+    
+    
+      
+      
+          <br/>
+           <i class="fas fa-tags"></i>
+          
+          <a class="badge badge-tag" href="/tags/dataviz">dataviz</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/shiny">shiny</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/machine-learning">machine learning</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/cancer">cancer</a>
+          
+      
+    
+    
+    <br/>
+    <i class="fas fa-clock"></i> 3 min read
+</div>
+
+
+  </header>
+  
+  
+  <div class="post">
+    </p>
+<p>Tras acabar el Máster de Ciencia de Datos, quiero compartir en esta web un resumen de mi Trabajo Fin de Máster. Está titulado “Epidemiología y detección de biomarcadores en cáncer” y ha sido tutorizado por Daniel Castillo Secilla y Luis Javier Herrera. Estoy además muy orgulloso porque ha sido evaluado con un 10.</p>
+<p>El código del análisis (R), el documento (LaTeX + PDF) y la presentación de la defensa (PDF) están disponibles en <a href="https://github.com/danielredondo/TFM_ciencia_de_datos">GitHub</a>.</p>
+<p><img src="/img/2020/20201013_biomarcadores_cancer/Diapositiva1.png" /></p>
+<div id="introducción" class="section level2">
+<h2>Introducción</h2>
+<p>El trabajo se centra en el cáncer de colon-recto y en el cáncer de hígado, dos cánceres muy frecuentes y con alta mortalidad.</p>
+<p><img src="/img/2020/20201013_biomarcadores_cancer/Diapositiva4.png" />
+<img src="/img/2020/20201013_biomarcadores_cancer/Diapositiva6.png" />
+<img src="/img/2020/20201013_biomarcadores_cancer/Diapositiva7.png" /></p>
+</div>
+<div id="metodología" class="section level2">
+<h2>Metodología</h2>
+<p>Los datos provienen de GDC Portal y son de acceso abierto. Se realiza una partición entrenamiento (75%) - test (25%) de los datos con equilibrio de clases. Se realiza validación cruzada 5-fold con 3 métodos de selección de características (mRMR, random forest y DA) y 3 algoritmos de clasificación (máquinas de soporte vectorial, random forest y kNN).</p>
+<p><img src="/img/2020/20201013_biomarcadores_cancer/Diapositiva9.png" />
+<img src="/img/2020/20201013_biomarcadores_cancer/Diapositiva10.png" /></p>
+<p>El código es abierto y reproducible: se ha utilizado R con varios paquetes del tidyverse (para preprocesamiento, ingeniería de datos y visualización), KnowSeq (para machine learning con datos transcriptómicos) y Shiny (para desarrollar una aplicación web).</p>
+<p><img src="/img/2020/20201013_biomarcadores_cancer/Diapositiva12.png" />
+## Resultados</p>
+<p>El análisis biclase (tejido tumoral vs tejido sano) lo ilustro con el cáncer de colon-recto. En los datos hay desequilibrio de clases (~13 tejidos tumorales por cada tejido sano) así que se utiliza F1-Score como medida de evaluación.</p>
+<p><img src="/img/2020/20201013_biomarcadores_cancer/Diapositiva15.png" /></p>
+<p>Para cada método de selección de características (mRMR, random forest y DA) se calcula el ranking de los 10 genes más relevantes.</p>
+<p><img src="/img/2020/20201013_biomarcadores_cancer/Diapositiva16.png" /></p>
+<p>Con estos genes se procede a entrenar modelos de clasificación usando SVM, random forest y kNN con optimización de parámetros. Por ejemplo, para random forest el mejor F1 se obtiene para 4 genes seleccionados mediante mRMR.</p>
+<p><img src="/img/2020/20201013_biomarcadores_cancer/Diapositiva17.png" /></p>
+<p>Con un simple diagrama de cajas y bigotes se puede observar que la expresión de estos 4 genes varía en función del tipo de tejido (tejido tumoral en rojo, tejido normal en verde).</p>
+<p><img src="/img/2020/20201013_biomarcadores_cancer/Diapositiva18.png" /></p>
+<p>Para el análisis biclase de colon-recto, los tres algoritmos de clasificación distinguen perfectamente entre tumor y tejido sano usando menos de 5 genes. F1-Score: 100% en entrenamiento, 100% en test.</p>
+<p><img src="/img/2020/20201013_biomarcadores_cancer/Diapositiva19.png" />
+<img src="/img/2020/20201013_biomarcadores_cancer/Diapositiva20.png" /></p>
+<p>Proceso análogo para el análisis multiclase en cáncer de hígado (distintos tipos de tumor vs. tejido sano). Los mejores modelos separan tejidos tumorales de tejidos sanos, aunque tienen dificultad en distinguir los distintos tipos de tumor. F1: 95% en entrenamiento, 92% en test.</p>
+<p><img src="/img/2020/20201013_biomarcadores_cancer/Diapositiva21.png" />
+<img src="/img/2020/20201013_biomarcadores_cancer/Diapositiva24.png" /></p>
+<p><img src="/img/2020/20201013_biomarcadores_cancer/Diapositiva25.png" />
+<img src="/img/2020/20201013_biomarcadores_cancer/Diapositiva26.png" /></p>
+<p>He desarrollado una aplicación web interactiva de código abierto para que usuarios sin conocimientos previos de programación puedan realizar los análisis anteriores de forma interactiva. Está disponible en <a href="https://dredondo.shinyapps.io/biomarkeRs/">este enlace</a>.</p>
+<p><img src="/img/2020/20201013_biomarcadores_cancer/Diapositiva27.png" /></p>
+<p><img src="/img/2020/20201013_biomarcadores_cancer/Diapositiva28.png" /></p>
+</div>
+<div id="conclusiones" class="section level2">
+<h2>Conclusiones</h2>
+<p>Resumiendo las conclusiones: 1) Los modelos que usan pocos genes tienen muchas ventajas (bajo coste, interpretabilidad, …) y 2) Cuando los modelos son efectivos, se puede lograr un aumento del diagnóstico temprano que se acaba traduciendo en una mejora del pronóstico.</p>
+<p><img src="/img/2020/20201013_biomarcadores_cancer/Diapositiva30.png" />
+<img src="/img/2020/20201013_biomarcadores_cancer/Diapositiva31.png" /></p>
+<p>Las líneas abiertas del trabajo se centran en encontrar mejores modelos (p.ej. usando ensembles, o realizando análisis complementarios) y en seguir mejorando #KnowSeq y la aplicación web (de código abierto).</p>
+<p><img src="/img/2020/20201013_biomarcadores_cancer/Diapositiva33.png" /></p>
+<p>¡Y eso es todo! Muchas gracias si has llegado hasta aquí. Recordaros que el documento, así como el código desarrollado y la presentación, está disponible en GitHub: <a href="https://github.com/danielredondo/TFM_ciencia_de_datos">https://github.com/danielredondo/TFM_ciencia_de_datos</a></p>
+</div>
+
+  </div>
+  
+
+<div class="navigation navigation-single">
+    
+    <a href="/posts/20200608_visualizando_irracionales/" class="navigation-prev">
+      <i aria-hidden="true" class="fa fa-chevron-left"></i>
+      <span class="navigation-tittle">Visualizando números irracionales</span>
+    </a>
+    
+    
+</div>
+
+
+  
+
+  
+    
+
+
+</article>
+
+
+
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+    
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+            processEscapes: true,
+            processEnvironments: true
+        },
+        // Center justify equations in code and markdown cells. Elsewhere
+        // we use CSS to left justify single line equations in code cells.
+        displayAlign: 'center',
+        "HTML-CSS": {
+            styles: {'.MathJax_Display': {"margin": 0}},
+            linebreaks: { automatic: true }
+        }
+    });
+    </script>
+    
+
+
+        </div>
+        
+    
+
+  
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-129757599-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+<script defer src="https://use.fontawesome.com/releases/v5.5.0/js/all.js" integrity="sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0" crossorigin="anonymous"></script>
+
+
+    
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+        
+            
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/r.min.js"></script>
+            
+        
+    
+    <script type="text/javascript">
+        
+        hljs.configure({languages: ["r"]});
+        
+        hljs.initHighlightingOnLoad();
+    </script>
+    
+
+
+
+
+    
+
+
+
+    </body>
+</html>

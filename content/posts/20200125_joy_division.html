@@ -24,7 +24,7 @@ draft: no
 </ul>
 <pre><code>&quot;NOMBRE_PROVINCIA&quot; = &#39;GRANADA&#39;</code></pre>
 <ul>
-<li><strong>Relieve</strong>. El relieve será lo que marque la altitud de las diferentes líneas del mapa. Se descarga en formato GEOTIFF de <a href="http://dwtkns.com/srtm/">esta web</a> haciendo clic en el cuadrado correspondiente (puedes juntar varios cuadrados si tu área ocupa más de una zona predeterminado).</li>
+<li><strong>Relieve</strong>. El relieve será lo que marque la altitud de las diferentes líneas del mapa. Se descarga en formato GEOTIFF de <a href="http://dwtkns.com/srtm/">esta web</a> haciendo clic en el cuadrado correspondiente (puedes juntar varios cuadrados si tu área ocupa más de una zona predeterminada).</li>
 </ul>
 </div>
 <div id="parte-1-qgis" class="section level1">
@@ -32,7 +32,7 @@ draft: no
 <p>El procedimiento en QGIS es relativamente sencillo si has trabajado anteriormente con Sistemas de Información Geográfica, y sólo hay que seguir las instrucciones del tutorial. Yo he reestructurado y simplificado ligeramente los pasos, y los dejo aquí abajo por si pueden ser de utilidad, pero recomiendo seguir el <a href="https://cartographicperspectives.org/index.php/journal/article/view/1536/1726">tutorial original</a> (que viene además con imágenes detalladas).</p>
 <pre><code># 1. Obtención de silueta
 # Abrir QGIS -&gt; Nuevo proyecto
-# Cargar archivo sHP
+# Cargar archivo SHP
 # Si hace falta filtrar una zona: botón derecho en capa -&gt; Filtrar
 # Caja de herramientas -&gt; Disolver (útil si hay que eliminar subdivisiones)
 
@@ -52,7 +52,7 @@ draft: no
 # Se seleccionan todas las líneas horizontales -&gt; Exportar -&gt;
 #     Guardar objetos seleccionados como... -&gt; Archivo shp
 
-# 4. Intersección + Líneas a puntos
+# 4. Intersección
 # Caja de herramientas -&gt; Intersección:
 #   Capa de entrada: cuadrícula horizontal
 #   Capa de superposición: Disuelto</code></pre>

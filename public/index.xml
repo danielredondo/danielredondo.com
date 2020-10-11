@@ -6,7 +6,7 @@
     <description>Recent content on Daniel Redondo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 08 Jun 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 06 Oct 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
@@ -42,6 +42,19 @@ Environmental Research (Enlace - Open Access)
       <guid>/about/</guid>
       <description>Soy Daniel Redondo Sánchez, y entre mi formación destaco:
  Licenciatura en Matemáticas (2009-2014) Experto en Epidemiología e Investigación Clínica (2016) Máster de Matemáticas (2019) Máster en Ciencia de Datos e Ingeniería de Computadores, especialidad en Ciencia de Datos y Tecnologías Inteligentes (en curso).  Desde 2018 trabajo como técnico de investigación del cáncer en el Instituto de Investigación Biosanitaria de Granada (ibs.GRANADA). En este enlace puedes ver mis publicaciones.</description>
+    </item>
+    
+    <item>
+      <title>Detección de biomarcadores en cáncer</title>
+      <link>/posts/20201013_biomarcadores_cancer/</link>
+      <pubDate>Tue, 06 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/20201013_biomarcadores_cancer/</guid>
+      <description>
+
+
+&lt;p&gt;Tras acabar el Máster de Ciencia de Datos, quiero compartir en esta web un resumen de mi Trabajo Fin de Máster. Está titulado “Epidemiología y detección de biomarcadores en cáncer” y ha sido tutorizado por Daniel Castillo Secilla y Luis Javier Herrera. Estoy además muy orgulloso porque ha sido evaluado con un 10.&lt;/p&gt;
+&lt;p&gt;El código del análisis (R), el documento (LaTeX + PDF) y la presentación de la defensa (PDF) están disponibles en &lt;a href=&#34;https://github.com/danielredondo/TFM_ciencia_de_datos&#34;&gt;GitHub&lt;/a&gt;.</description>
     </item>
     
     <item>
