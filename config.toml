@@ -2,7 +2,7 @@
 baseurl = "/"
 theme = "hyde-hyde"
 languageCode = "en"
-ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
+ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_cache$", "\\.knit\\.md$", "\\.utf8\\.md$"]
 title = "Daniel Redondo"
 paginate = 7
 # paginatepath = "page"

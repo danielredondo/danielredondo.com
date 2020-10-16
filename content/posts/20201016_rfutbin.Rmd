@@ -1,0 +1,75 @@
+---
+title: "rfutbin, mi primer paquete de R: FIFA + R"
+date: '2020-10-16'
+draft: no
+tags: ["dataviz", "futbol"]
+---
+  
+`rfutbin` es un paquete de R que descarga información (estadísticas y precio) sobre jugadores del modo Ultimate Team de FIFA, utilizando la web de [futbin](https://www.futbin.com/players).<!--more-->
+  
+`rfutbin` es un paquete de R que descarga información (estadísticas y precio) sobre jugadores del modo Ultimate Team de FIFA, utilizando la web de [futbin](https://www.futbin.com/players). A continuación os dejo algunos ejemplos de uso, y si os interesa podéis leer toda la documentación en su repositorio de GitHub: [https://github.com/danielredondo/rfutbin](https://github.com/danielredondo/rfutbin)
+
+Instalar el paquete es sencillo:
+  
+```{r, eval = FALSE, results='hide'}
+library(devtools)
+install_github("danielredondo/rfutbin")
+```
+
+`rfutbin` permite extraer la información de uno o varios jugadores con `futbin_search`: 
+  
+```{r}
+library(rfutbin)
+futbin_search(name = "Cristiano Ronaldo")
+```
+```{r, echo = FALSE, results = 'hide'}
+Sys.sleep(1)
+``` 
+
+![](/posts/images/2020/20201016_rfutbin/cr.png) 
+
+```{r}
+futbin_search(name = c("Ibrahimovic", "Neymar"))
+```
+```{r, echo = FALSE, results = 'hide'}
+Sys.sleep(1)
+``` 
+
+Incluye además una función para descargar grandes conjuntos de datos, `futbin_scrap`.
+
+### **La base de datos completa de jugadores en formato RData** a día de hoy (16/10/2020) se puede encontrar en [este enlace](https://danielredondo.com/futbin_16102020.RData) y se ha descargado usando `futbin_scrap("https://www.futbin.com/21/players?page=1")`. El conjunto de datos contiene información de 16.900 jugadores y se puede usar para realizar machine learning ([como hice en un post anterior](https://danielredondo.com/posts/20200405_reglas_asociacion/)), scouting de jugadores, seguimiento y predicción de precios...
+
+A continuación se muestra otro ejemplo de `futbin_scrap` para obtener la información de todos los jugadores del Granada CF:
+  
+```{r}
+granada <- futbin_scrap(url = "https://www.futbin.com/21/players?page=1&club=110832")
+head(granada$name)
+```
+```{r, echo = FALSE, results = 'hide'}
+Sys.sleep(1)
+``` 
+
+Por último, he programado también la función `futbin_plot` que permite hacer un **gráfico de radar interactivo con las estadísticas de los jugadores** similar a los del videojuego FIFA. En este ejemplo, se descargan y comparan las estadísticas de tres delanteros del FC Barcelona. 
+
+```{r, eval = FALSE}
+library(dplyr)
+futbin_search(name = c("Griezmann", "Ansu Fati", "Lionel Messi"),
+              version = "Rare") %>% 
+  futbin_plot 
+```
+
+```{r, eval = FALSE, echo = FALSE, results = "hide"}
+# Para guardar el gráfico interactivo como HTML
+# e incluirlo luego como iframe
+library(rfutbin)
+library(dplyr)
+library(htmlwidgets)
+
+g <- futbin_search(name = c("Griezmann", "Ansu Fati", "Lionel Messi"),
+              version = "Rare") %>% 
+  futbin_plot
+
+saveWidget(g, file = "grafico_rfutbin.html")
+```
+
+<iframe src = "https://danielredondo.com/grafico_rfutbin" width="100%" height="700" style="border:none;"> </iframe>
