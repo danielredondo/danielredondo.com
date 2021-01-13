@@ -22,6 +22,10 @@ Clinical Epidemiology [(Enlace - Open Access)](https://doi.org/10.2147/CLEP.S261
 *Miguel Angel Luque-Fernandez, Daniel Redondo-Sánchez, Camille Maringe.*  
 The Stata Journal [(Enlace)](https://doi.org/10.1177/1536867X19874237)
 
+* **Trends of incidence, mortality and survival of multiple myeloma in Spain. A twenty-three-years population-based study.**  
+*Daysis-Yoe-Ling Chang-Chan, Rafael Ríos-Tamayo, Miguel Rodríguez Barranco, Daniel Redondo-Sánchez, Yolanda González, Rafael Marcos-Gragera, María José Sánchez.*  
+Clinical and Translational Oncology [(Enlace)](https://link.springer.com/article/10.1007/s12094-020-02541-1)
+
 * **Deprivation gap in colorectal cancer survival attributable to stage at diagnosis: a population-based study in Spain**  
 *Olivier Nuñez, Miguel Rodríguez Barranco, Pablo Fernández-Navarro, Daniel Redondo Sánchez et al.*  
 Cancer Epidemiology [(Enlace)](https://doi.org/10.1016/j.canep.2020.101794)
