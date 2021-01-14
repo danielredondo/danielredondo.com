@@ -95,6 +95,8 @@ International Journal of Cancer [(Enlace - Open Access)](https://doi.org/10.1002
 
 - "Día Mundial Cáncer Infantil: Incidencia de cáncer infantil en Andalucía, 2010-2013 y supervivencia de Cáncer Infantil en Granada, 2004-2013." Informe semanal del Sistema de Vigilancia Epidemiológica de Andalucía (SVEA), volumen 24, nº8.  Disponible en: [Repositorio Salud Andalucía](https://www.repositoriosalud.es/handle/10668/2984).
 
+- "Estimaciones de la incidencia de cáncer en Andalucía para 2019." Informe semanal del Sistema de Vigilancia Epidemiológica de Andalucía (SVEA), volumen 25, nº52.
+
 También he colaborado en dos artículos divulgativos sobre matemáticas de Gizmodo en Español, con más de 160.000 visitas:
 
 - [Descubren un extraño patrón en los números primos que tiene desconcertados a los matemáticos](https://es.gizmodo.com/descubren-un-extrano-patron-en-los-numeros-primos-que-t-1764975601).
