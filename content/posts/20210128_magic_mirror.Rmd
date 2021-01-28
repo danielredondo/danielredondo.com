@@ -1,0 +1,59 @@
+---
+title: "MagicMirror con Raspberry Pi"
+date: '2021-01-28'
+draft: no
+tags: ["raspberry pi", "javascript"]
+---
+
+
+MagicMirror es un proyecto *open-source* en JavaScript para crear un espejo inteligente. Está documentado de forma excelente y cuenta con una amplia comunidad.
+
+En este post os muestro cómo he configurado mi MagicMirror.<!--more-->
+
+# ¿Qué es MagicMirror?
+
+**MagicMirror** es un proyecto *open-source* en JavaScript para **crear un espejo inteligente**. Está documentado de forma excelente y cuenta con una amplia comunidad. En resumen, MagicMirror lanza una web local que puede ser visualizada en una pantalla colocada tras un espejo especial que deja pasar algo de luz, de forma que puedas ver a la vez tu reflejo y la pantalla.
+
+![](/posts/images/2021/20210128_magic_mirror/magic_mirror_main.png) 
+
+MagicMirror está desarrollado para ser ejecutado en una [**Raspberry Pi**](https://es.wikipedia.org/wiki/Raspberry_Pi), un pequeño ordenador de bajo coste. Además de para MagicMirror, puedes usar una Raspberry Pi para hacer miles de proyectos: crear una nube personal ([ownCloud](https://owncloud.com/es/)), un centro multimedia ([Kodi](https://kodi.tv/)), un *arcade retro* ([RetroPie](https://retropie.org.uk/)), bloquear anuncios ([Pi-hole](https://pi-hole.net/)), ... El uso más reciente que le he dado yo ha sido [alojar un bot de Twitter que tuitea diariamente](https://danielredondo.com/posts/20190224_botwikipedia/).
+
+![](/posts/images/2021/20210128_magic_mirror/raspberry.jpg) 
+
+# Mi configuración para MagicMirror
+
+Además de la [documentación original](https://docs.magicmirror.builders/), hay múltiples tutoriales online y vídeos en Youtube sobre cómo crear tu propio MagicMirror. Por tanto, **me voy a centrar en comentar los diferentes elementos (módulos) que he elegido para visualizar en mi MagicMirror**.
+
+Distingo entre dos tipos de módulos: los que vienen por defecto en la instalación (en la carpeta *modules/default*) y los [creados por terceros](https://github.com/MichMich/MagicMirror/wiki/3rd-Party-Modules).
+
+![](/posts/images/2021/20210128_magic_mirror/magic_mirror_main_modulos.png) 
+
+### Módulos por defecto
+
+- **Reloj**. Sin más. Utiliza la hora y día del sistema.
+
+- **Calendario**. Permite importar calendarios iCalendar (.ICS) online y locales. En mi caso, utiliza un calendario online de festivos nacionales y uno local.
+
+- **Mensajes**. Muestra mensajes personalizados que se pueden programar en función del día o la hora del día. 
+
+- **Noticias**. Enlaza con noticias RSS, acepta varias fuentes.
+
+- **Tiempo**. Mediante [una API de OpenWeather](https://openweathermap.org/api) permite ver el tiempo y su predicción.
+
+### Módulos de terceros
+
+- **Nieve**. El módulo [MMM-Snow](https://github.com/MichMich/MMM-Snow) añade un efecto de nieve en la pantalla, aunque tiene otros diseños: corazones y burbujas.
+
+![](/posts/images/2021/20210128_magic_mirror/MMM-snow_2.png) 
+
+- **Twitter**. El módulo [MMM-TweetsByTimelineOrList](https://github.com/AdamMoses-GitHub/MMM-TweetsByTimelineOrList) permite ver los últimos tuits de tu timeline o de alguna lista en concreto (yo he hecho una lista con @[BotWikipedia](https://twitter.com/i/lists/1343513739698577414)). Es un módulo que tiene mucho que mejorar, pero gracias a dos issues en su repositorio he podido [encontrar el ID de la lista de Twitter](https://github.com/AdamMoses-GitHub/MMM-TweetsByTimelineOrList/issues/12) y [mostrar tuits de más de 140 caracteres](https://github.com/AdamMoses-GitHub/MMM-TweetsByTimelineOrList/issues/9). Hace falta tener una [API gratuita de desarrollador en Twitter](https://developer.twitter.com/).
+
+- **Reddit**. Con [MMM-Reddit](https://github.com/kjb085/MMM-Reddit) puedes especificar varios subreddits de los que muestran imágenes.
+
+- **Clasificación fútbol**. Gracias a [MMM-soccer](https://github.com/fewieden/MMM-soccer) he configurado la clasificación de la liga española con el Granada CF resaltado. Hace falta una API gratuita de [football-data.org](https://www.football-data.org).
+
+- Módulos **"invisibles"**. Algunos módulos no tienen un lugar asignado en la pantalla pero cumplen funciones interesantes. [MMM-BurnIn](https://github.com/werthdavid/MMM-BurnIn)  revierte los colores de la pantalla de vez en cuando para evitar que la pantalla se queme por mostrar lo mismo durante mucho tiempo. Y [MMM-Screencast](https://github.com/kevinatown/MMM-Screencast) permite enviar vídeos de Youtube desde el móvil a la pantalla.
+
+![](/posts/images/2021/20210128_magic_mirror/screencast.png) 
+
+Las posibilidades son infinitas: se puede añadir un asistente de voz [como Alexa](https://github.com/dolanmiu/MMM-awesome-alexa), integrar una [pantalla táctil](https://github.com/EbenKouao/MMM-SmartTouch), ... Y si algo no está hecho, siempre puedes [desarrollarlo tú](https://github.com/roramirez/MagicMirror-Module-Template).
