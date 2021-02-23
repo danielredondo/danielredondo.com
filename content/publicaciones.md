@@ -10,6 +10,10 @@ En [este enlace](/posts) puedes ver las publicaciones del blog.
 
 ### Publicaciones científicas
 
+* **Physical comorbidities as a marker for high risk of psychological distress in cancer patients**  
+*Dafina Petrova, Daniel Redondo Sánchez, Miguel Rodríguez Barranco, Antonio Romero Ruiz, Andrés Catena, Rocio Garcia-Retamero, María-José Sánchez.*  
+Psycho-Oncology. [(Enlace)](https://doi.org/10.1002/pon.5632)
+
 * **The spread of SARS-CoV-2 in Spain: hygiene habits, sociodemographic profile, mobility patterns and comorbidities**  
 *Miguel Rodríguez Barranco, Lorenzo Rivas García, José L. Quiles, Daniel Redondo Sánchez, Pilar Aranda Ramírez, Juan Llopis González, María José Sánchez Pérez, Cristina Sánchez González.*  
 Environmental Research [(Enlace - Open Access)](https://doi.org/10.1016/j.envres.2020.110223)

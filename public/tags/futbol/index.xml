@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>futbol on Daniel Redondo</title>
@@ -6,10 +6,24 @@
     <description>Recent content in futbol on Daniel Redondo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 05 Apr 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 16 Oct 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/futbol/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>rfutbin, mi primer paquete de R: FIFA &#43; R</title>
+      <link>/posts/20201016_rfutbin/</link>
+      <pubDate>Fri, 16 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/20201016_rfutbin/</guid>
+      <description>
+&lt;link href=&#34;/rmarkdown-libs/anchor-sections/anchor-sections.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;script src=&#34;/rmarkdown-libs/anchor-sections/anchor-sections.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;&lt;code&gt;rfutbin&lt;/code&gt; es un paquete de R que descarga información (estadísticas y precio) sobre jugadores del modo Ultimate Team de FIFA, utilizando la web de &lt;a href=&#34;https://www.futbin.com/players&#34;&gt;futbin&lt;/a&gt;.</description>
+    </item>
     
     <item>
       <title>Reglas de asociación (y detección de anomalías) con futbolistas usando R y estadísticas de FIFA</title>
