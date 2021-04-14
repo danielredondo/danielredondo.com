@@ -14,6 +14,10 @@ En [este enlace](/posts) puedes ver las publicaciones del blog.
 *Daniel Redondo-Sánchez, Miguel Rodriguez-Barranco, Alberto Ameijide, Francisco Javier Alonso, Pablo Fernández-Navarro, Jose Juan Himenez Moleón, Maria-José Sánchez.*  
 BMC Population Health Metrics [(Enlace - Open Access)](https://doi.org/10.1186/s12963-021-00248-1)
 
+* **KnowSeq R-Bioc Package: The Automatic Smart Gene Expression Tool For Retrieving Relevant Biological Knowledge**  
+*Daniel Castillo-Secilla, Juan Manuel Gálvez, Francisco Carrillo-Perez, Marta Verona-Almeida, Daniel Redondo-Sánchez, Francisco Manuel Ortuno, Luis Javier Herrera, Ignacio Rojas.*  
+Computers in Biology and Medicine. [(Enlace - Open Access)](https://doi.org/10.1016/j.compbiomed.2021.104387)
+
 * **Physical comorbidities as a marker for high risk of psychological distress in cancer patients**  
 *Dafina Petrova, Daniel Redondo Sánchez, Miguel Rodríguez Barranco, Antonio Romero Ruiz, Andrés Catena, Rocio Garcia-Retamero, María-José Sánchez.*  
 Psycho-Oncology [(Enlace)](https://doi.org/10.1002/pon.5632)
