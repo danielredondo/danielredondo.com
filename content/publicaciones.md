@@ -10,6 +10,11 @@ En [este enlace](/posts) puedes ver las publicaciones del blog.
 
 ### Publicaciones científicas
 
+
+* **Lung, Breast and Colorectal Cancer Incidence by Socioeconomic Status in Spain: A Population-Based Multilevel Study**  
+*Daniel Redondo-Sánchez, Rafael Marcos-Gragera, Marià Carulla, Arantza Lopez de Munain, Consol Sabater Gregori, Rosario Jimenez Chillarón, Marcela Guevara, Olivier Nuñez, Pablo Fernández-Navarro, María-José Sánchez, Miguel Angel Luque-Fernandez.*  
+Cancers [(Enlace - Open Access)](https://doi.org/10.3390/cancers13112820)
+
 * **Cancer Incidence Estimation from Mortality Data: A Validation Study within a Population-Based Cancer Registry**  
 *Daniel Redondo-Sánchez, Miguel Rodriguez-Barranco, Alberto Ameijide, Francisco Javier Alonso, Pablo Fernández-Navarro, Jose Juan Himenez Moleón, Maria-José Sánchez.*  
 BMC Population Health Metrics [(Enlace - Open Access)](https://doi.org/10.1186/s12963-021-00248-1)
