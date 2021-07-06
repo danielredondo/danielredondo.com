@@ -31,6 +31,10 @@ Psycho-Oncology [(Enlace)](https://doi.org/10.1002/pon.5632)
 *Miguel Rodríguez Barranco, Lorenzo Rivas García, José L. Quiles, Daniel Redondo Sánchez, Pilar Aranda Ramírez, Juan Llopis González, María José Sánchez Pérez, Cristina Sánchez González.*  
 Environmental Research [(Enlace - Open Access)](https://doi.org/10.1016/j.envres.2020.110223)
 
+* **Physical comorbidities and depression in recent and long-term adult cancer survivors: NHANES 2007-2018**  
+*Dafina Petrova, Andrés Catena, Miguel Rodríguez-Barranco, Daniel Redondo-Sánchez, Eloisa Bayo-Lozano, Rocio Garcia-Retamero, José J Jiménez-Moleón, Maria-Jose Sánchez.*  
+Cancers [(Enlace - Open Access)](https://doi.org/10.3390/cancers13133368)
+
 * **Socioeconomic Inequalities in Colorectal Cancer Survival in Southern Spain: A Multilevel Population-Based Cohort Study**  
 *Miguel Angel Luque-Fernandez, Daniel Redondo-Sánchez, Miguel Rodríguez-Barranco, Yoe Ling Chang-Chan et al.*  
 Clinical Epidemiology [(Enlace - Open Access)](https://doi.org/10.2147/CLEP.S261355)
