@@ -19,8 +19,13 @@ paginate = 7
     description = "danielredondo.com"
     authorimage = "/img/piramide.png"
     dateformat = "2006-01-02"
-    # themeColor = "theme-custom-drs" # Para cambiar colores, ir a:
-                                      # \themes\hyde-hyde\assets\scss\hyde-hyde\_variables.scss
+    # themeColor = "theme-custom-drs"
+      # Ya no hace falta. Para cambiar colores, ir a:
+      # \themes\hyde-hyde\assets\scss\hyde-hyde\_variables.scss, líneas 55 y 92
+      # Si se actualiza Hugo, también restaurar:
+        # themes\hyde-hyde\layouts\404.html
+        # themes\hyde-hyde\static\favicon.png
+        # themes\hyde-hyde\static\apple-touch-icon-144-precomposed.png
     highlightjs = true
     highlightjsstyle = "github"
     highlightjslanguages = ["r"]

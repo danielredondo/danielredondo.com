@@ -177,15 +177,6 @@ a.sidebar-nav-item:focus {
 
 /* Base16 (http://chriskempson.github.io/base16/#default) */
 
-/* Custom */
-.theme-custom-drs .sidebar {
-  background-color: #0D3069;
-}
-.theme-custom-drs .content a,
-.theme-custom-drs .related-posts li a:hover {
-  color: #0D3069;
-}
-
 /* Red */
 .theme-base-08 .sidebar {
   background-color: #ac4142;

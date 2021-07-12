@@ -1,0 +1,70 @@
+{{ define "header" }}
+  {{ partial "header.html" . }}
+{{ end }}
+
+{{ define "content" }}
+  <div class="post-list">
+  <!-- Loading mathjax macro -->
+<!-- Load mathjax -->
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+    <!-- MathJax configuration -->
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+            processEscapes: true,
+            processEnvironments: true
+        },
+        // Center justify equations in code and markdown cells. Elsewhere
+        // we use CSS to left justify single line equations in code cells.
+        displayAlign: 'center',
+        "HTML-CSS": {
+            styles: {'.MathJax_Display': {"margin": 0}},
+            linebreaks: { automatic: true }
+        }
+    });
+    </script>
+    <!-- End of mathjax configuration -->
+
+
+
+    {{ $paginator := .Paginate (where .Site.RegularPages "Type" "in" site.Params.mainSections) }}
+    {{ range $paginator.Pages }}
+      {{ if .Draft }}
+        {{ .Scratch.Set "draftPage" true }}
+      {{ else }}
+        {{ .Scratch.Set "draftPage" false }}
+      {{ end }}
+      <div class="post-list__item">
+        <span class="item__title--big">
+          <a href="{{ .RelPermalink }}" {{if .Scratch.Get "draftPage" }}class="draft"{{end}}>{{ .Title }}</a>
+        </span>
+        <span class="item__date">
+          {{ .Date.Format (.Site.Params.dateformat | default "Jan 02, 2006") }}
+        </span>
+        <span {{if .Scratch.Get "draftPage" }}class="draft"{{end}}>
+        {{ if .Description }}
+        {{ .Description }}
+        {{ else }}
+        {{ .Summary }}
+        {{ end }}
+        </span>
+        {{ if .Truncated }}
+          ... <a class="read-more-symbol" href="{{ .RelPermalink }}">➦</a>
+        {{ end }}
+        </div>
+        {{ .Scratch.Delete "draftPage" }}
+     {{ end }}
+  </div>
+  {{ partial "pagination.html" . }}
+{{ end }}
+
+{{ define "footer" }}
+  {{ if .Site.GoogleAnalytics }}
+    <!-- Google Analytics -->
+    {{ template "_internal/google_analytics_async.html" . }}
+  {{ end }}
+  {{ partial "footer/font-awesome-js.html" . }}
+{{ end }}
+

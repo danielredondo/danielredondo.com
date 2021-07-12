@@ -1,0 +1,56 @@
+{{ $include_toc := .Params.include_toc}}
+<article>
+  <header>
+    <h1>{{ .Title }}</h1>
+    {{ with .Params.subtitle }}
+    <span class="post__subtitle">
+      {{.}}
+    </span>
+    {{ end }}
+    {{ partial "page-single/post-meta.html" . }}
+  </header>
+  {{ $tableOfContents := .TableOfContents }}
+  {{ with .Site.Params.toc }}
+  {{ if ne $include_toc false }}
+    <div class="toc-wrapper">
+      <input type="checkbox" id="tocToggle">
+      <label for="tocToggle">Table of Content</label>
+      {{ if eq . "hugo" }}
+          {{ $tableOfContents }}
+      {{ else if eq . "tocbot"}}
+        <div class="toc" id="TableOfContents"></div>
+      {{ end }}
+    </div>
+  {{ end }}
+  {{ end }}
+  <div class="post">
+    {{ .Content }}
+  </div>
+  {{ partial "page-single/post-navigation.html" . }}
+  {{ partial "page-single/post-related.html" . }}
+  {{ partial "page-single/post-comment.html" . }}
+</article>
+
+
+<!-- Loading mathjax macro -->
+<!-- Load mathjax -->
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+    <!-- MathJax configuration -->
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+            processEscapes: true,
+            processEnvironments: true
+        },
+        // Center justify equations in code and markdown cells. Elsewhere
+        // we use CSS to left justify single line equations in code cells.
+        displayAlign: 'center',
+        "HTML-CSS": {
+            styles: {'.MathJax_Display': {"margin": 0}},
+            linebreaks: { automatic: true }
+        }
+    });
+    </script>
+    <!-- End of mathjax configuration -->
